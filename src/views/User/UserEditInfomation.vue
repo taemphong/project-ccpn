@@ -7,15 +7,13 @@
 
         <v-row style="justify-content: center;">
           <v-col cols="12" sm="4">
-            <div>คำนำหน้าชื่อ</div>
             <v-text-field
-              v-model="prefix"
-              outlined
-              color="grey lighten-2"
-            ></v-text-field>
+            label="คำนำหน้าชื่อ"
+            placeholder="นาย"
+            outlined
+          ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
-            <div>ชื่อจริง</div>
             <v-text-field
               v-model="firstName"
               outlined
@@ -23,7 +21,6 @@
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
-            <div>นามสกุล</div>
             <v-text-field
               v-model="lastName"
               outlined
@@ -34,25 +31,22 @@
 
         <v-row style="justify-content: center;">
           <v-col cols="12" sm="4">
-            <div>เลขบัตรประชาชน</div>
             <v-text-field
-              v-model="prefix"
+              v-model="IDcardnumber"
               outlined
               color="grey lighten-2"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
-            <div>อีเมล</div>
             <v-text-field
-              v-model="firstName"
+              v-model="Email"
               outlined
               color="grey lighten-2"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
-            <div>เบอร์โทรศัพท์</div>
             <v-text-field
-              v-model="lastName"
+              v-model="Phonenumber"
               outlined
               color="grey lighten-2"
             ></v-text-field>
@@ -61,17 +55,15 @@
 
         <v-row >
           <v-col cols="12" sm="4">
-            <div>เพศ</div>
             <v-text-field
-              v-model="prefix"
+              v-model="Gender"
               outlined
               color="grey lighten-2"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
-            <div>วัน-เดือน-ปีเกิด</div>
             <v-text-field
-              v-model="firstName"
+              v-model="Birthday"
               outlined
               color="grey lighten-2"
             ></v-text-field>
