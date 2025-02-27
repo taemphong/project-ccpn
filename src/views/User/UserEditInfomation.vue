@@ -8,6 +8,8 @@
         <v-row style="justify-content: center;">
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
+            v-model="prefix"
             label="คำนำหน้าชื่อ"
             placeholder="นาย"
             outlined
@@ -15,16 +17,20 @@
           </v-col>
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
               v-model="firstName"
               outlined
-              color="grey lighten-2"
+              label="ชื่อจริง"
+              placeholder="กรอกชื่อจริง"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
               v-model="lastName"
               outlined
-              color="grey lighten-2"
+              label="นามสกุล"
+              placeholder="กรอกนามสกุล"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -32,23 +38,29 @@
         <v-row style="justify-content: center;">
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
               v-model="IDcardnumber"
               outlined
-              color="grey lighten-2"
+              label="เลขบัตรประชาชน"
+              placeholder="กรอกเลขบัตรประชาชน"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
               v-model="Email"
               outlined
-              color="grey lighten-2"
+              label="อีเมล"
+              placeholder="กรอกอีเมล"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
               v-model="Phonenumber"
               outlined
-              color="grey lighten-2"
+              label="เบอร์โทรศัพท์"
+              placeholder="กรอกเบอร์โทรศัพท์"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -56,16 +68,20 @@
         <v-row >
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
               v-model="Gender"
               outlined
-              color="grey lighten-2"
+              label="เพศ"
+              placeholder="กรอกเพศ"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
             <v-text-field
+            background-color="#f5f5f5"
               v-model="Birthday"
               outlined
-              color="grey lighten-2"
+              label="วัน-เดือน-ปีเกิด"
+              placeholder="กรอกวัน-เดือน-ปีเกิด"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -73,12 +89,12 @@
         <v-container class="d-flex justify-center align-center">
   <v-row justify="center" >
     <v-col cols="auto" class="mx-4" >
-      <v-btn color="success">
+      <v-btn color="success" large>
         Submit
       </v-btn>
     </v-col>
     <v-col cols="auto" class="mx-4" >
-      <v-btn color="error">
+      <v-btn color="error " large>
         Cancle
       </v-btn>
     </v-col>
@@ -96,7 +112,12 @@
       return {
         prefix: '',
         firstName: '',
-        lastName: ''
+        lastName: '',
+        IDcardnumber: '',
+        Email: '',
+        Phonenumber: '',
+        Gender: '',
+        Birthday: ''
       };
     }
   };
