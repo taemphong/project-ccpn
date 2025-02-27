@@ -23,7 +23,7 @@
       </v-btn>
     </v-app-bar>
     <v-main :style="{
-      backgroundImage: `url(${require('@/assets/images/bg2.jpg')})`,
+      backgroundImage: `url(${require('@/assets/images/bg.png')})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }">
