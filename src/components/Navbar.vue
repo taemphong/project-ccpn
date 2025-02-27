@@ -22,9 +22,8 @@
         <v-icon>mdi-account</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-main style="background-color: #e0e0e0;">
-      <v-container
-        style="background-image: url('/path/to/your/image.jpg'); background-size: cover; background-position: center;">
+    <v-main style="background-image: url('../assets/images/');">
+      <v-container>
         <router-view></router-view>
       </v-container>
     </v-main>
