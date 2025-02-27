@@ -22,16 +22,17 @@
         <v-icon>mdi-account</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-main style="background-color: #e0e0e0;">
-      <v-container
-        style="background-image: url('/path/to/your/image.jpg'); background-size: cover; background-position: center;">
+    <v-main :style="{
+      backgroundImage: `url(${require('@/assets/images/bg2.jpg')})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }">
+      <v-container>
         <router-view></router-view>
       </v-container>
     </v-main>
   </v-app>
 </template>
-
-<!-- asdasdasdasdasdasdffff -->
 
 <script>
 export default {
