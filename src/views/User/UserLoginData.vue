@@ -8,7 +8,7 @@
               <img :src="user.photo" alt="Profile Photo" />
             </v-avatar>
             <v-col cols="12">
-              <v-btn color="primary" x-large elevation="2" rounded class="mt-2 mr-2" @click="uploadNewPhoto">Upload New
+              <v-btn color="primary" x-large elevation="2" rounded class="mr-2" @click="uploadNewPhoto">Upload New
                 Photo</v-btn>
               <v-btn color="error" x-large elevation="2" rounded @click="resetForm">Reset</v-btn>
             </v-col>
