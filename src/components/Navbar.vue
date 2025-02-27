@@ -23,11 +23,10 @@
       </v-btn>
     </v-app-bar>
     <v-main :style="{
-      backgroundImage: `url(${require('@/assets/images/bg1.jpg')})`,
+      backgroundImage: `url(${require('@/assets/images/bg2.jpg')})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }">
-
       <v-container>
         <router-view></router-view>
       </v-container>
