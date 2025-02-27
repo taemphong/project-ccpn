@@ -1,46 +1,129 @@
 <template>
   <v-container>
-    <v-card class="pa-5">
+    <v-card class="pa-5" style="border-radius: 20px;">
       <v-row>
-        <v-col cols="12" md="12" class="text-center">
-          <v-avatar size="120">
-            <img :src="user.photo" alt="Profile Photo" />
-          </v-avatar>
-          <v-file-input label="Upload New photo" @change="uploadPhoto"></v-file-input>
-          <v-btn color="primary" class="mt-2" @click="uploadNewPhoto">Upload New Photo</v-btn>
-          <v-btn color="grey" class="mt-2" @click="resetForm">Reset</v-btn>
-        </v-col>
-        <v-col cols="12" md="12" class="text-center">
-          <v-form ref="form">
-            <v-row>
-              <v-col cols="12" sm="6">
-                <v-text-field v-model="user.title" label="คำนำหน้าชื่อ"></v-text-field>
-                <v-text-field v-model="user.firstname" label="ชื่อจริง"></v-text-field>
-                <v-text-field v-model="user.lastname" label="นามสกุล"></v-text-field>
-                <v-text-field v-model="user.nationality" label="สัญชาติ"></v-text-field>
-                <v-text-field v-model="user.religion" label="ศาสนา"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-text-field v-model="user.idCard" label="บัตรประชาชน"></v-text-field>
-                <v-text-field v-model="user.birthday" label="วันเกิด" type="date"></v-text-field>
-                <v-text-field v-model="user.position" label="ตำแหน่งงาน"></v-text-field>
-                <v-text-field v-model="user.email" label="อีเมลที่ทำงาน"></v-text-field>
-              </v-col>
-            </v-row>
-            <v-btn color="primary" @click="saveData">Save Changes</v-btn>
-          </v-form>
-        </v-col>
+        <v-container class="pa-10">
+          <v-col cols="12" md="12" class="text-center">
+            <v-avatar size="240" class="light-blue lighten-1 white--text">
+              <img :src="user.photo" alt="Profile Photo" />
+            </v-avatar>
+            <v-col cols="12">
+              <v-btn color="primary" x-large elevation="2" rounded class="mt-2 mr-2" @click="uploadNewPhoto">Upload New
+                Photo</v-btn>
+              <v-btn color="error" x-large elevation="2" rounded @click="resetForm">Reset</v-btn>
+            </v-col>
+          </v-col>
+          <v-col cols="12" md="12" class="text-center">
+            <v-form ref="form">
+              <v-row>
+                <v-col cols="12" md="4">
+                  <v-text-field label="คำนำหน้าชื่อ" placeholder="กรอกคำนำหน้าชื่อ" outlined
+                    v-model="user.title"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="ชื่อจริง" placeholder="กรอกชื่อจริง" outlined
+                    v-model="user.firstname"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="นามสกุล" placeholder="กรอกนามสกุล" outlined
+                    v-model="user.lastname"></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="4">
+                  <v-text-field label="คำนำหน้าชื่อ (อังกฤษ)" placeholder="กรอกคำนำหน้าชื่อ (อังกฤษ)" outlined
+                    v-model="user.title"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="ชื่อจริง (อังกฤษ)" placeholder="กรอกชื่อจริง (อังกฤษ)" outlined
+                    v-model="user.firstname"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="นามสกุล (อังกฤษ)" placeholder="กรอกนามสกุล (อังกฤษ)" outlined
+                    v-model="user.lastname"></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="4">
+                  <v-text-field label="สัญชาติ" placeholder="กรอกสัญชาติ" outlined
+                    v-model="user.nationality"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="เชื้อชาติ" placeholder="กรอกเชื้อชาติ" outlined
+                    v-model="user.religion"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="ศาสนา" placeholder="กรอกศาสนา" outlined v-model="user.birthday"></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="4">
+                  <v-text-field label="กรุ๊ปเลือด" placeholder="กรอกกรุ๊ปเลือด" outlined
+                    v-model="user.nationality"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="เพศ" placeholder="กรอกเพศ" outlined v-model="user.religion"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="วัน-เดือน-ปี เกิด" placeholder="กรอก วัน-เดือน-ปี เกิด" outlined
+                    v-model="user.birthday"></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="4">
+                  <v-text-field label="บัตรประชาชน / หนังสือเดินทาง" placeholder="กรอกเลขบัตร" outlined
+                    v-model="user.idCard"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="วันหมดอายุบัตรประชาชน / หนังสือเดินทาง" placeholder="กรอกวันหมดอายุ" outlined
+                    v-model="user.position"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="ตำแหน่งงาน" placeholder="กรอกตำแหน่งงาน" outlined
+                    v-model="user.email"></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="4">
+                  <v-text-field label="บัตรประชาชน / หนังสือเดินทาง" placeholder="กรอกเลขบัตร" outlined
+                    v-model="user.idCard"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="ตำแหน่งงาน" placeholder="กรอกตำแหน่งงาน" outlined
+                    v-model="user.position"></v-text-field>
+                </v-col>
+                <v-col cols="12" md="4">
+                  <v-text-field label="อีเมลที่ทำงาน" placeholder="กรอกอีเมลที่ทำงาน" outlined
+                    v-model="user.email"></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row cols="12" md="12">
+                <v-col>
+                  <v-text-field label="ที่อยู่ในการจัดส่งเอกสาร" placeholder="กรอกที่อยู่" outlined></v-text-field>
+                </v-col>
+              </v-row>
+              <row cols="12" md="12">
+                <div class="mt-5 mb-5">
+                  <v-btn color="success" x-large class="mr-2" elevation="2" rounded @click="saveData">Save
+                    Changes</v-btn>
+                  <v-btn color="error" x-large elevation="2" rounded @click="resetForm">Reset</v-btn>
+                </div>
+              </row>
+            </v-form>
+          </v-col>
+        </v-container>
       </v-row>
     </v-card>
   </v-container>
 </template>
+
 
 <script>
 export default {
   data() {
     return {
       user: {
-        photo: 'https://via.placeholder.com/120',
+        photo: 'https://source.boringavatars.com/marble/120',
         title: '',
         firstname: '',
         lastname: '',
@@ -53,6 +136,7 @@ export default {
       },
     };
   },
+
   methods: {
     uploadPhoto(event) {
       const file = event.target.files[0];
@@ -65,7 +149,7 @@ export default {
     },
     resetForm() {
       this.user = {
-        photo: 'https://via.placeholder.com/120',
+        photo: 'https://source.boringavatars.com/marble/120',
         title: '',
         firstname: '',
         lastname: '',
