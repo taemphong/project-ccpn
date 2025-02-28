@@ -15,8 +15,8 @@ const routes = [
   { path: '/about', component: Test },
   { path: '/user-login-data', component: UserLoginData },
   { path: '/user-personal-information', component: UserPersonalInformation },
-  { path: '/user-address-information', component: UserAddressInformation },
   { path: '/user-edit-information', component: UserEditInformation },
+  { path: '/user-address-information', component: UserAddressInformation },
   { path: '/user-education-information', component: UserEducationInfo },
 ];
 
