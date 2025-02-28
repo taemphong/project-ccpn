@@ -1,12 +1,12 @@
 <template>
     <v-container>
-      <v-card style="padding: 100px; margin: 50px; width: 95%; border-radius: 20px;">
+      <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
         <v-row>
           <v-col cols="2">
             <v-select :items="items" label="ประเภท" outlined></v-select>
           </v-col>
-          <v-col cols="2">
-            <v-btn large>ค้นหา</v-btn>
+          <v-col cols="2" >
+            <v-btn large color="success">ค้นหา</v-btn>
           </v-col>
         </v-row>
   
