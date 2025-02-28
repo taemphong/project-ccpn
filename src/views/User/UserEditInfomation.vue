@@ -7,24 +7,25 @@
 
         <v-row style="justify-content: center;">
           <v-col cols="12" sm="4">
+            <div>คำนำหน้าชื่อ</div>
             <v-text-field
             background-color="#f5f5f5"
             v-model="prefix"
-            label="คำนำหน้าชื่อ"
-            placeholder="นาย"
+            placeholder="นาย/นางสาว/นาง"
             outlined
           ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
+            <div>ชื่อจริง</div>
             <v-text-field
             background-color="#f5f5f5"
               v-model="firstName"
               outlined
-              label="ชื่อจริง"
               placeholder="กรอกชื่อจริง"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
+            <div>นามสกุล</div>
             <v-text-field
             background-color="#f5f5f5"
               v-model="lastName"
@@ -37,29 +38,29 @@
 
         <v-row style="justify-content: center;">
           <v-col cols="12" sm="4">
+            <div>เลขบัตรประชาชน</div>
             <v-text-field
             background-color="#f5f5f5"
               v-model="IDcardnumber"
               outlined
-              label="เลขบัตรประชาชน"
               placeholder="กรอกเลขบัตรประชาชน"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
+            <div>อีเมล</div>
             <v-text-field
             background-color="#f5f5f5"
               v-model="Email"
               outlined
-              label="อีเมล"
               placeholder="กรอกอีเมล"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
+            <div>เบอร์โทรศัพท์</div>
             <v-text-field
             background-color="#f5f5f5"
               v-model="Phonenumber"
               outlined
-              label="เบอร์โทรศัพท์"
               placeholder="กรอกเบอร์โทรศัพท์"
             ></v-text-field>
           </v-col>
@@ -67,20 +68,20 @@
 
         <v-row >
           <v-col cols="12" sm="4">
+            <div>เพศ</div>
             <v-text-field
             background-color="#f5f5f5"
               v-model="Gender"
               outlined
-              label="เพศ"
               placeholder="กรอกเพศ"
             ></v-text-field>
           </v-col>
           <v-col cols="12" sm="4">
+            <div>วัน-เดือน-ปีเกิด</div>
             <v-text-field
             background-color="#f5f5f5"
               v-model="Birthday"
               outlined
-              label="วัน-เดือน-ปีเกิด"
               placeholder="กรอกวัน-เดือน-ปีเกิด"
             ></v-text-field>
           </v-col>

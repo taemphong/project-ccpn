@@ -6,6 +6,7 @@ import UserLoginData from '@/views/User/UserLoginData.vue';
 import UserPersonalInformation from '@/views/User/UserPersonalInformation.vue';
 import UserAddressInformation from '@/views/User/UserAddressInformation.vue';
 import UserEditInformation from '@/views/User/UserEditInfomation.vue';
+import UserEducationInfo from '@/views/User/UserEducationInfo.vue';
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,7 @@ const routes = [
   { path: '/user-personal-information', component: UserPersonalInformation },
   { path: '/user-address-information', component: UserAddressInformation },
   { path: '/user-edit-information', component: UserEditInformation },
+  { path: '/user-education-information', component: UserEducationInfo },
 ];
 
 const router = new VueRouter({
