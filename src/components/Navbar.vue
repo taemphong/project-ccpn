@@ -1,21 +1,12 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img
-        :src="require('@/assets/images/logp4.jpg')"
-        contain
-        max-height="120"
-        class="drawer-image"
-      ></v-img>
+      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
 
       <v-list dense>
         <v-list-item-group>
           <!-- subitems -->
-          <v-list-item
-            v-for="item in normalMenuItems"
-            :key="item.text"
-            :to="item.to"
-          >
+          <v-list-item v-for="item in normalMenuItems" :key="item.text" :to="item.to">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -25,10 +16,7 @@
           </v-list-item>
 
           <!-- dropdown -->
-          <v-list-group
-            v-for="dropdown in dropdownMenuItems"
-            :key="dropdown.text"
-          >
+          <v-list-group v-for="dropdown in dropdownMenuItems" :key="dropdown.text">
             <template v-slot:activator>
               <v-list-item-icon>
                 <v-icon>{{ dropdown.icon }}</v-icon>
@@ -38,11 +26,7 @@
               </v-list-item-content>
             </template>
 
-            <v-list-item
-              v-for="subItem in dropdown.subItems"
-              :key="subItem.text"
-              :to="subItem.to"
-            >
+            <v-list-item v-for="subItem in dropdown.subItems" :key="subItem.text" :to="subItem.to">
               <v-list-item-content>
                 <v-list-item-title>{{ subItem.text }}</v-list-item-title>
               </v-list-item-content>
@@ -53,14 +37,8 @@
     </v-navigation-drawer>
     <v-app-bar app color="white">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-text-field
-        placeholder="ค้นหา"
-        prepend-inner-icon="mdi-magnify"
-        dense
-        outlined
-        hide-details
-        class="search-bar"
-      ></v-text-field>
+      <v-text-field placeholder="ค้นหา" prepend-inner-icon="mdi-magnify" dense outlined hide-details
+        class="search-bar"></v-text-field>
       <v-spacer></v-spacer>
       <div class="d-flex">
         <v-avatar size="50">
@@ -75,13 +53,11 @@
         </div>
       </div>
     </v-app-bar>
-    <v-main
-      :style="{
-        backgroundImage: `url(${require('@/assets/images/bg3.png')})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }"
-    >
+    <v-main :style="{
+      backgroundImage: `url(${require('@/assets/images/bg3.png')})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }">
       <v-container>
         <router-view></router-view>
       </v-container>
