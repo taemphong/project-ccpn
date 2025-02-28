@@ -1,7 +1,14 @@
 <template>
-  <div>
-    <Navbar v-if="$route.name !== 'login'" />
-  </div>
+  <v-app>
+    <Navbar />
+    <v-main class="mt-8" :style="{
+      backgroundImage: `url(${require('@/assets/images/bg3.png')})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }">
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
