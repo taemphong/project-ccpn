@@ -3,15 +3,23 @@
     <v-card elevation="3" class="pa-5" style="border-radius: 20px;">
       <v-row>
         <v-container class="pa-12">
-          <v-col cols="12" md="12" class="text-center">
-            <v-avatar size="240" class="light-blue lighten-1 white--text">
-              <img :src="user.photo" alt="Profile Photo" />
+          <v-col cols="12" md="6" class="text-left">
+            <v-avatar class="avatar-wrapper light-blue lighten-1 white--text"
+              style="width: 180px; height: 240px; border-radius: 16px; position: relative; overflow: hidden;">
+              <img :src="user.photo" alt="Profile Photo" class="avatar-image" />
+
+              <!-- เมื่อ hover จะแสดง overlay -->
+              <div class="avatar-overlay">
+                <v-btn icon color="primary" class="upload-btn" @click="uploadNewPhoto">
+                  <v-icon>mdi-upload</v-icon>
+                </v-btn>
+                <v-btn icon color="error" class="delete-btn" @click="removePhoto">
+                  <v-icon>mdi-delete</v-icon>
+                </v-btn>
+              </div>
             </v-avatar>
-            <v-col cols="12">
-              <v-btn color="primary" x-large elevation="2" rounded class="mr-2" @click="uploadNewPhoto">Upload New
-                Photo</v-btn>
-              <v-btn color="error" x-large elevation="2" rounded @click="resetForm">Reset</v-btn>
-            </v-col>
+            <div class="text-subtitle-1 text-medium-emphasis">คำนำหน้าชื่อ</div>
+
           </v-col>
           <v-col cols="12" md="12" class="">
             <v-form ref="form">
@@ -160,14 +168,11 @@ export default {
   },
 
   methods: {
-    uploadPhoto(event) {
-      const file = event.target.files[0];
-      if (file) {
-        this.user.photo = URL.createObjectURL(file);
-      }
-    },
     uploadNewPhoto() {
       this.$refs.fileInput.click();
+    },
+    removePhoto() {
+      this.user.photo = 'https://picsum.photos/200/300';
     },
     resetForm() {
       this.user = {
@@ -198,5 +203,49 @@ export default {
 .v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 2px;
+}
+
+.avatar-wrapper {
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.avatar-wrapper:hover {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.avatar-wrapper:hover .avatar-overlay {
+  opacity: 1;
+}
+
+.upload-btn,
+.delete-btn {
+  background: rgba(255, 255, 255, 0.8);
+  transition: transform 0.2s ease-in-out;
+}
+
+.upload-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.1);
 }
 </style>

@@ -102,11 +102,10 @@
   </v-row>
 </v-container>
 
-        
       </v-card>
     </v-container>
   </template>
-  
+
   <script>
   export default {
     data() {
@@ -123,7 +122,7 @@
     }
   };
   </script>
-  
+
   <style scoped>
   </style>
   
