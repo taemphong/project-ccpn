@@ -3,10 +3,10 @@
       <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
         <v-row>
           <v-col cols="2">
-            <v-select :items="items" label="ประเภท" outlined></v-select>
+            <v-select :items="items" label="ประเภท" outlined dense></v-select>
           </v-col>
           <v-col cols="2" >
-            <v-btn large color="success">ค้นหา</v-btn>
+            <v-btn  color="#1cad21" style="width: 150px;">ค้นหา</v-btn>
           </v-col>
         </v-row>
   
@@ -20,14 +20,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in Address" :key="item.type">
-                <td>
-                  <span :class="getBackgroundClass(item.type)">{{ item.type }}</span>
-                </td>
-                <td>{{ item.address }}</td>
-                <td>{{ item.phonenumber }}</td>
-              </tr>
-            </tbody>
+  <tr v-for="item in Address" :key="item.type">
+    <td><span :class="getBackgroundClass(item.type)">
+      <v-icon v-if="item.type === 'ที่อยู่ปัจจุบัน'" color="black">mdi-map-marker</v-icon>
+      <v-icon v-else-if="item.type === 'ที่อยู่ที่ทำงาน'" color="black">mdi-office-building</v-icon>
+      <v-icon v-else-if="item.type === 'ที่อยู่ตามทะเบียนบ้าน'" color="black">mdi-home</v-icon>
+      {{ item.type }}</span>
+    </td>
+    <td>{{ item.address }}</td>
+    <td>{{ item.phonenumber }}</td>
+  </tr>
+</tbody>
+
           </template>
         </v-simple-table>
       </v-card>
@@ -61,21 +65,21 @@
   <style scoped>
   /* สไตล์พื้นหลังให้เฉพาะตัวอักษร */
   .bg-purple {
-    background-color: #D8BFD8;
+    background-color: #4C1F7AB2;
     padding: 4px 8px;
     border-radius: 5px;
     display: inline-block;
   }
   
   .bg-orange {
-    background-color: #FFA500;
+    background-color: #FF8000B2;
     padding: 4px 8px;
     border-radius: 5px;
     display: inline-block;
   }
   
   .bg-yellow {
-    background-color: #FFFF99;
+    background-color: #FADFA1B2;
     padding: 4px 8px;
     border-radius: 5px;
     display: inline-block;
@@ -94,7 +98,7 @@
   }
   
   .table-header {
-    background-color: #81ee84;
+    background-color: #3D8E5699;
     color: white;
     font-weight: bold;
   }
