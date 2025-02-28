@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <v-navigation-drawer v-model="drawer" app>
       <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
 
@@ -53,16 +53,7 @@
         </div>
       </div>
     </v-app-bar>
-    <v-main :style="{
-      backgroundImage: `url(${require('@/assets/images/bg3.png')})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }">
-      <v-container>
-        <router-view></router-view>
-      </v-container>
-    </v-main>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -83,8 +74,8 @@ export default {
           subItems: [
             { text: "o ข้อมูลล็อคอิน", to: "/user-login-data" },
             { text: "o ข้อมูลส่วนตัว", to: "/b" },
-            { text: "o ข้อมูลที่อยู่", to: "/user-address-information" },
-            { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
+            { text: "o ข้อมูลที่อยู่", to: "/c" },
+            { text: "o ข้อมูลการศึกษา", to: "/d" },
           ],
         },
         {
