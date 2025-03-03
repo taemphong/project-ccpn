@@ -50,7 +50,7 @@
             user.role
           }}</span>
         </div>
-        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-x class="menu-container">
+        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y class="menu-container">
           <template v-slot:activator="{ on, attrs }">
             <v-icon v-bind="attrs" v-on="on" color="gray" size="30" class="ml-3">
               mdi-arrow-down-drop-circle-outline
@@ -76,14 +76,15 @@
             <v-divider></v-divider>
 
             <v-list>
-              <v-list-item>
+              <v-list-item :to="{ path: '/user-personal-information' }">
                 <v-list-item-title>
                   <v-icon left>mdi-account</v-icon>
                   Profile
                 </v-list-item-title>
               </v-list-item>
 
-              <v-list-item>
+
+              <v-list-item :to="{ path: '/setting' }">
                 <v-list-item-title>
                   <v-icon left>mdi-pencil</v-icon>
                   Settings
