@@ -1,12 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img
-        :src="require('@/assets/images/logp4.jpg')"
-        contain
-        max-height="120"
-        class="drawer-image"
-      ></v-img>
+      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
       <v-list dense>
         <v-list-item-group>
           <!-- subitems -->
@@ -55,13 +50,7 @@
             user.role
           }}</span>
         </div>
-        <v-menu
-          v-model="menu"
-          :close-on-content-click="false"
-          :nudge-width="200"
-          offset-y
-          :nudge-bottom="10"
-        >
+        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
           <template v-slot:activator="{ on, attrs }">
             <v-icon v-bind="attrs" v-on="on" color="gray" size="30" class="ml-3">
               mdi-arrow-down-drop-circle-outline
@@ -96,7 +85,7 @@
 
               <v-list-item>
                 <v-list-item-title>
-                  <v-icon left>mdi-pencil</v-icon>
+                  <v-icon left>mdi-cog</v-icon>
                   Settings
                 </v-list-item-title>
               </v-list-item>
@@ -253,5 +242,4 @@ export default {
   border-radius: 25px !important;
   padding: 5px 10px !important;
 }
-
 </style>
