@@ -7,18 +7,18 @@
             <!-- Avatar -->
             <v-col cols="auto">
               <v-avatar class="light-blue lighten-1 white--text mb-12"
-                style="width: 220px; height: 280px; border-radius: 16px;">
+                style="width: 180px; height: 220px; border-radius: 16px;">
                 <img :src="user.photo" alt="Profile Photo" style="width: 100%; height: 100%; object-fit: cover;" />
               </v-avatar>
             </v-col>
 
             <!-- ปุ่ม -->
-            <v-col cols="auto" class="d-flex flex-column">
-              <v-btn color="primary" large elevation="2" rounded class="mb-2" @click="uploadNewPhoto">
-                Upload Photo
+            <v-col cols="2" class="d-flex justify-space-between">
+              <v-btn large elevation="2" rounded class="upload-btn mr-2 " @click="uploadNewPhoto">
+                อัพโหลดรูปภาพ
               </v-btn>
-              <v-btn color="error" elevation="2" rounded @click="resetForm">
-                Clear
+              <v-btn large elevation="2" rounded class="reset-btn text-white mb-2" @click="resetForm">
+                รีเซ็ต
               </v-btn>
             </v-col>
           </v-row>
@@ -215,5 +215,25 @@ export default {
   margin-top: auto;
   justify-content: center;
   align-items: center;
+}
+
+.textfield {
+  width: 100%;
+}
+
+.upload-btn {
+  color: white !important;
+  background-color: rgb(95, 106, 255) !important;
+  width: 150px;
+  border-radius: 10px;
+  font-size: 16px !important;
+}
+
+.reset-btn {
+  color: white !important;
+  background-color: #bebebe !important;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 16px !important;
 }
 </style>

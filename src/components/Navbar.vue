@@ -50,6 +50,57 @@
             user.role
           }}</span>
         </div>
+        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon v-bind="attrs" v-on="on" color="gray" size="30" class="ml-3">
+              mdi-arrow-down-drop-circle-outline
+            </v-icon>
+          </template>
+
+          <v-card>
+            <v-list>
+              <v-list-item>
+                <v-list-item-avatar>
+                  <img :src="user.avatar" alt="User Avatar" />
+                </v-list-item-avatar>
+
+                <v-list-item-content>
+                  <v-list-item-title>{{ user.name }}</v-list-item-title>
+                  <v-list-item-subtitle>{{ user.role }}</v-list-item-subtitle>
+                </v-list-item-content>
+
+                <v-list-item-action> </v-list-item-action>
+              </v-list-item>
+            </v-list>
+
+            <v-divider></v-divider>
+
+            <v-list>
+              <v-list-item>
+                <v-list-item-title>
+                  <v-icon left>mdi-account</v-icon>
+                  Profile
+                </v-list-item-title>
+              </v-list-item>
+
+              <v-list-item>
+                <v-list-item-title>
+                  <v-icon left>mdi-cog</v-icon>
+                  Settings
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+
+              <v-btn tile color="success">
+                <v-icon left> mdi-logout </v-icon>
+                Logout
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-menu>
       </div>
     </v-app-bar>
   </div>
@@ -62,7 +113,7 @@ export default {
       user: {
         name: "นาย นรก",
         role: "Admin",
-        avatar: require("@/assets/images/narok.png"),
+        avatar: require("@/assets/images/bot.png"),
       },
       drawer: false,
       menuItems: [
@@ -72,9 +123,9 @@ export default {
           icon: "mdi-account-outline",
           subItems: [
             { text: "o ข้อมูลล็อคอิน", to: "/user-login-data" },
-            { text: "o ข้อมูลส่วนตัว", to: "/b" },
-            { text: "o ข้อมูลที่อยู่", to: "/c" },
-            { text: "o ข้อมูลการศึกษา", to: "/d" },
+            { text: "o ข้อมูลส่วนตัว", to: "/user-personal-information" },
+            { text: "o ข้อมูลที่อยู่", to: "/user-address" },
+            { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
           ],
         },
         {
