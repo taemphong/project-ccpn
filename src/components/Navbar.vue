@@ -73,8 +73,8 @@ export default {
           subItems: [
             { text: "o ข้อมูลล็อคอิน", to: "/user-login-data" },
             { text: "o ข้อมูลส่วนตัว", to: "/b" },
-            { text: "o ข้อมูลที่อยู่", to: "/user-address-information" },
-            { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
+            { text: "o ข้อมูลที่อยู่", to: "/c" },
+            { text: "o ข้อมูลการศึกษา", to: "/d" },
           ],
         },
         {
