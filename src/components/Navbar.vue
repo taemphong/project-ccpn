@@ -68,11 +68,11 @@
           }}</span>
         </div>
         <v-menu
-          v-model="menu"
-          :close-on-content-click="false"
-          :nudge-width="200"
-          offset-x
-          class="menu-container"
+        v-model="menu"
+  :close-on-content-click="false"
+  :nudge-width="200"
+  offset-y 
+  :nudge-bottom="10"
         >
           <template v-slot:activator="{ on, attrs }">
             <v-icon
