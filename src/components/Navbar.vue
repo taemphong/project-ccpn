@@ -2,7 +2,6 @@
   <div>
     <v-navigation-drawer v-model="drawer" app>
       <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
-
       <v-list dense>
         <v-list-item-group>
           <!-- subitems -->

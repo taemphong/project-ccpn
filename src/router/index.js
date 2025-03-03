@@ -6,6 +6,7 @@ import UserLoginData from "@/views/User/UserLoginData.vue";
 import UserPersonalInformation from "@/views/User/UserPersonalInformation.vue";
 import UserAddressInformation from "@/views/User/UserAddressInformation.vue";
 import UserEditInformation from "@/views/User/UserEditInfomation.vue";
+import UserEducationInformation from "@/views/User/UserEducationInformation.vue";
 import Login from "@/views/login.vue";
 import 'vuetify/dist/vuetify.min.css';
 Vue.use(VueRouter);
@@ -17,7 +18,8 @@ const routes = [
   { path: "/user-login-data", name: "user-login-data", component: UserLoginData },
   { path: "/user-personal-information", name: "user-personal-information", component: UserPersonalInformation },
   { path: "/user-address-information", name: "user-address-information", component: UserAddressInformation },
-  { path: "/user-edit-information", name: "user-edit-information", component: UserEditInformation }
+  { path: "/user-edit-information", name: "user-edit-information", component: UserEditInformation },
+  { path: "/user-education-information", name: "user-education-information", component: UserEducationInformation }
 ];
 
 const router = new VueRouter({
