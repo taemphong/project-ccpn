@@ -18,7 +18,7 @@
                 Upload Photo
               </v-btn>
               <v-btn color="error" elevation="2" rounded @click="resetForm">
-                Reset
+                Clear
               </v-btn>
             </v-col>
           </v-row>
@@ -139,7 +139,7 @@
                 <v-btn style="background-color: #5c8a6e; color: white;" x-large class="mr-2" elevation="2" rounded
                   @click="saveData">Save
                   Changes</v-btn>
-                <v-btn color="error" x-large elevation="2" rounded class="text-white" @click="resetForm">Reset</v-btn>
+                <v-btn color="error" x-large elevation="2" rounded class="text-white" @click="resetForm">Clear</v-btn>
               </div>
 
             </v-form>
