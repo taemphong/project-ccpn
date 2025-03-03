@@ -254,12 +254,4 @@ export default {
   padding: 5px 10px !important;
 }
 
-<<<<<<< HEAD
 </style>
-=======
-.menu-container .v-menu__content {
-  z-index: 10;
-  margin-top: 10px;
-}
-</style>
->>>>>>> 9484a5aecca0b561805a2d27288dcb9f87afc0b1
