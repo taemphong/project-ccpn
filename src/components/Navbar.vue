@@ -1,7 +1,12 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
+      <v-img
+        :src="require('@/assets/images/logp4.jpg')"
+        contain
+        max-height="120"
+        class="drawer-image"
+      ></v-img>
       <v-list dense>
         <v-list-item-group>
           <!-- subitems -->
@@ -68,11 +73,11 @@
           }}</span>
         </div>
         <v-menu
-        v-model="menu"
-  :close-on-content-click="false"
-  :nudge-width="200"
-  offset-y 
-  :nudge-bottom="10"
+          v-model="menu"
+          :close-on-content-click="false"
+          :nudge-width="200"
+          offset-y
+          :nudge-bottom="10"
         >
           <template v-slot:activator="{ on, attrs }">
             <v-icon
@@ -272,8 +277,4 @@ export default {
   padding: 5px 10px !important;
 }
 
-.menu-container .v-menu__content {
-  z-index: 10; 
-  margin-top: 10px; 
-}
 </style>
