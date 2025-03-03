@@ -1,22 +1,15 @@
 <template>
   <v-container>
     <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
-      <v-row>
-        <v-col cols="2">
-          <v-select :items="items" label="ประเภท" outlined dense></v-select>
-        </v-col>
-        <v-col cols="2">
-          <v-btn class="white--text" color="#1cad21" style="width: 150px;">ค้นหา</v-btn>
-        </v-col>
-      </v-row>
+     
 
       <v-simple-table class="custom-table">
         <template v-slot:default>
           <thead>
-            <tr>
-              <th class="table-header">ประเภท</th>
-              <th class="table-header">ที่อยู่</th>
-              <th class="table-header">เบอร์โทร</th>
+            <tr >
+              <th class="column-type">ประเภท</th>
+              <th class="column-address">ที่อยู่</th>
+              <th class="column-phone">เบอร์โทร</th>
             </tr>
           </thead>
           <tbody >
@@ -127,12 +120,32 @@ width: 100%;
 .custom-table td {
 border: 1px solid #ddd;
 padding: 12px;
-text-align: left;
+text-align: center;
 }
 
-.table-header {
-background-color: #6CC54B;
-color: white;
-font-weight: bold;
+.column-type {
+  width: 20%;
+  background-color: #6CC54B;
+  color: white;
+  font-weight: bold;
+  text-align: center !important; /* จัดกลางเฉพาะหัวตาราง */
+  font-size: 1.2rem !important;;
+}
+.column-address {
+  width: 50%;
+  background-color: #6CC54B;
+  color: white;
+  font-weight: bold;
+  text-align: center !important; /* จัดกลางเฉพาะหัวตาราง */
+  font-size: 1.2rem !important;;
+}
+
+.column-phone {
+  width: 30%;
+    background-color: #6CC54B;
+  color: white;
+  font-weight: bold;
+  text-align: center !important; /* จัดกลางเฉพาะหัวตาราง */
+  font-size: 1.2rem !important;;
 }
 </style>
