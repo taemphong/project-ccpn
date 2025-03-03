@@ -5,11 +5,7 @@
       <v-list dense>
         <v-list-item-group>
           <!-- subitems -->
-          <v-list-item
-            v-for="item in normalMenuItems"
-            :key="item.text"
-            :to="item.to"
-          >
+          <v-list-item v-for="item in normalMenuItems" :key="item.text" :to="item.to">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -19,10 +15,7 @@
           </v-list-item>
 
           <!-- dropdown -->
-          <v-list-group
-            v-for="dropdown in dropdownMenuItems"
-            :key="dropdown.text"
-          >
+          <v-list-group v-for="dropdown in dropdownMenuItems" :key="dropdown.text">
             <template v-slot:activator>
               <v-list-item-icon>
                 <v-icon>{{ dropdown.icon }}</v-icon>
@@ -32,11 +25,7 @@
               </v-list-item-content>
             </template>
 
-            <v-list-item
-              v-for="subItem in dropdown.subItems"
-              :key="subItem.text"
-              :to="subItem.to"
-            >
+            <v-list-item v-for="subItem in dropdown.subItems" :key="subItem.text" :to="subItem.to">
               <v-list-item-content>
                 <v-list-item-title>{{ subItem.text }}</v-list-item-title>
               </v-list-item-content>
@@ -47,14 +36,8 @@
     </v-navigation-drawer>
     <v-app-bar app color="white">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-text-field
-        placeholder="ค้นหา"
-        prepend-inner-icon="mdi-magnify"
-        dense
-        outlined
-        hide-details
-        class="search-bar"
-      ></v-text-field>
+      <v-text-field placeholder="ค้นหา" prepend-inner-icon="mdi-magnify" dense outlined hide-details
+        class="search-bar"></v-text-field>
       <v-spacer></v-spacer>
       <div class="d-flex">
         <v-avatar size="50">
@@ -67,21 +50,9 @@
             user.role
           }}</span>
         </div>
-        <v-menu
-          v-model="menu"
-          :close-on-content-click="false"
-          :nudge-width="200"
-          offset-x
-          class="menu-container"
-        >
+        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-x class="menu-container">
           <template v-slot:activator="{ on, attrs }">
-            <v-icon
-              v-bind="attrs"
-              v-on="on"
-              color="gray"
-              size="30"
-              class="ml-3"
-            >
+            <v-icon v-bind="attrs" v-on="on" color="gray" size="30" class="ml-3">
               mdi-arrow-down-drop-circle-outline
             </v-icon>
           </template>
@@ -152,9 +123,9 @@ export default {
           icon: "mdi-account-outline",
           subItems: [
             { text: "o ข้อมูลล็อคอิน", to: "/user-login-data" },
-            { text: "o ข้อมูลส่วนตัว", to: "/b" },
-            { text: "o ข้อมูลที่อยู่", to: "/c" },
-            { text: "o ข้อมูลการศึกษา", to: "/d" },
+            { text: "o ข้อมูลส่วนตัว", to: "/user-personal-information" },
+            { text: "o ข้อมูลที่อยู่", to: "/user-address" },
+            { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
           ],
         },
         {
@@ -273,7 +244,7 @@ export default {
 }
 
 .menu-container .v-menu__content {
-  z-index: 10; 
-  margin-top: 10px; 
+  z-index: 10;
+  margin-top: 10px;
 }
 </style>
