@@ -23,7 +23,7 @@
             <tr v-for="item in Address" :key="item.type">
               <td >
                 <span :class="getBackgroundClass(item.type)" style="color: white; margin: 30px;" >
-                  <v-icon v-if="item.type === 'ที่อยู่ปัจจุบันงับบ'" color="white">mdi-map-marker</v-icon>
+                  <v-icon v-if="item.type === 'ที่อยู่ปัจจุบัน'" color="white">mdi-map-marker</v-icon>
                   <v-icon v-else-if="item.type === 'ที่อยู่ที่ทำงาน'" color="white">mdi-office-building</v-icon>
                   <v-icon v-else-if="item.type === 'ที่อยู่ตามทะเบียนบ้าน'" color="white">mdi-home</v-icon>
                   {{ item.type }}
@@ -38,24 +38,17 @@
       </v-col>
       <v-col class="text-right">
         <v-btn icon small @click="editPhoneNumber(item)"> 
-          <v-icon color="blue">mdi-alien</v-icon>
+          <v-icon color="blue">mdi-square-edit-outline</v-icon>
         </v-btn>
         <v-btn icon small @click="deletePhoneNumber(item)">
-          <v-icon color="red">mdi-emoticon-devil</v-icon>
+          <v-icon color="red">mdi-delete-outline</v-icon>
         </v-btn>
       </v-col>
     </v-row>
     
 
 
-      <!-- <v-col class="text-right">
-        <v-btn icon small @click="editPhoneNumber(item)"> 
-          <v-icon color="blue">mdi-square-edit-outline</v-icon>
-        </v-btn>
-        <v-btn icon small @click="deletePhoneNumber(item)">
-          <v-icon color="red">mdi-delete-outline</v-icon>
-        </v-btn>
-      </v-col> -->
+
 
 </td>
             </tr>
