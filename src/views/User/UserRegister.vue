@@ -9,9 +9,8 @@
                 max-width="auto"
             />
         </div>
-        <div style="justify-items: center; background-color: violet;" >
-        <v-stepper v-model="e1" alt-labels style="width: 1000px; justify-items: center;"> 
-            <v-stepper-header style="width: 500px; ">
+        <v-stepper v-model="e1" alt-labels > 
+            <v-stepper-header >
                 <v-stepper-step :complete="e1 > 1" step="1">
                     กรอกข้อมูล
                 </v-stepper-step>
@@ -52,7 +51,6 @@
                 </v-stepper-content>
             </v-stepper-items>
         </v-stepper>
-    </div>
     </v-container>
 </template>
 
