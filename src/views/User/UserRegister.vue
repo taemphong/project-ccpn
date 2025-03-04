@@ -9,22 +9,23 @@
                 max-width="auto"
             />
         </div>
-        <v-stepper v-model="e1" alt-labels>
-            <v-stepper-header>
+        <div style="justify-items: center; background-color: violet;" >
+        <v-stepper v-model="e1" alt-labels style="width: 1000px; justify-items: center;"> 
+            <v-stepper-header style="width: 500px; ">
                 <v-stepper-step :complete="e1 > 1" step="1">
-                    Name of step 1
+                    กรอกข้อมูล
                 </v-stepper-step>
 
                 <v-divider></v-divider>
 
                 <v-stepper-step :complete="e1 > 2" step="2">
-                    Name of step 2
+                    ตรวจสอบข้อมูล
                 </v-stepper-step>
 
                 <v-divider></v-divider>
 
                 <v-stepper-step step="3">
-                    Name of step 3
+                    ชำระเงิน
                 </v-stepper-step>
             </v-stepper-header>
 
@@ -51,6 +52,7 @@
                 </v-stepper-content>
             </v-stepper-items>
         </v-stepper>
+    </div>
     </v-container>
 </template>
 
