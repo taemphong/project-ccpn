@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <v-card elevation="3" class="pa-5 mx-auto" style="border-radius: 20px; width: 1280px;">
+    <v-card elevation="3" class="pa-5 mx-auto" style="border-radius: 14px; width: 1280px;">
+      <h1 class="text-center mt2 mb-4">User Login Data Page</h1>
+      <v-divider></v-divider>
       <v-row>
         <v-container class="pa-12">
           <v-row class="text-left" align="center">
@@ -27,7 +29,7 @@
             <v-form ref="form">
               <v-row>
                 <v-col cols="12" md="4">
-                  <div class="text-subtitle-1 text-medium-emphasis">คำนำหน้าชื่อ:</div>
+                  <div class="text-subtitle-1 text-medium">คำนำหน้าชื่อ:</div>
                   <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกคำนำหน้าชื่อ" outlined
                     v-model="user.title"></v-text-field>
                 </v-col>
@@ -136,10 +138,8 @@
               </v-row>
 
               <div class="mt-5 mb-5 text-center">
-                <v-btn style="background-color: #5c8a6e; color: white;" x-large class="mr-2" elevation="2" rounded
-                  @click="saveData">Save
-                  Changes</v-btn>
-                <v-btn color="error" x-large elevation="2" rounded class="text-white" @click="resetForm">Clear</v-btn>
+                <v-btn large elevation="2" class="mr-2 save-btn" @click="saveData">บันทึก</v-btn>
+                <v-btn large elevation="2" class="reset-btn" @click="resetForm">ล้าง</v-btn>
               </div>
 
             </v-form>
@@ -208,7 +208,7 @@ export default {
 
 .v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
-  border-width: 2px;
+  border-width: 1px;
 }
 
 .botton-group1 {
@@ -233,6 +233,14 @@ export default {
   color: white !important;
   background-color: #bebebe !important;
   width: 100px;
+  border-radius: 10px;
+  font-size: 16px !important;
+}
+
+.save-btn {
+  color: white !important;
+  background-color: #2a8f50 !important;
+  width: 150px;
   border-radius: 10px;
   font-size: 16px !important;
 }
