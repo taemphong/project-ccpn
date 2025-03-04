@@ -9,8 +9,9 @@
                 max-width="auto"
             />
         </div>
-        <v-stepper v-model="e1" alt-labels > 
-            <v-stepper-header >
+        <div style="justify-items: center; " >
+        <v-stepper v-model="e1" alt-labels style="width: 2000px; justify-items: center;"> 
+            <v-stepper-header style="width: 700px; border: none; box-shadow: none;">
                 <v-stepper-step :complete="e1 > 1" step="1">
                     กรอกข้อมูล
                 </v-stepper-step>
@@ -43,7 +44,7 @@
                 </v-stepper-content>
 
                 <v-stepper-content step="3">
-                    <UserRegisterStep3 />
+                    <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
 
                     <v-btn color="primary" @click="e1 = 1"> Continue </v-btn>
 
@@ -51,17 +52,16 @@
                 </v-stepper-content>
             </v-stepper-items>
         </v-stepper>
+    </div>
     </v-container>
 </template>
 
 <script>
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
-import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
 
 export default {
     components: {
         UserRegisterStep1,
-        UserRegisterStep3
     },
     data() {
         return {
