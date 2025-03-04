@@ -28,7 +28,7 @@
           <h2
             class="text3"
           >
-          คุณสามารถ <router-link to="/register" class="highlight">สมัครได้ที่นี้ !</router-link>
+          คุณสามารถ <router-link to="/user-register" class="highlight">สมัครได้ที่นี้ !</router-link>
           </h2>
         </div>
       </v-col>
@@ -63,7 +63,7 @@
     </v-icon>
   </template>
 </v-text-field>
-          <div class="forgot-password">ลืมรหัสผ่าน?</div>
+          <router-link to="/forgotpassword" class="forgot-password">ลืมรหัสผ่าน?</router-link>
           <v-btn block class="custom-button">
             เข้าสู่ระบบ
           </v-btn>
@@ -179,13 +179,15 @@ export default {
 }
 
 .forgot-password {
+  display: block; /* หรือใช้ inline-block */
   color: #B0B0B0;
   cursor: pointer;
   font-size: 0.9rem;
   text-align: right;
-  position: relative; /* เพิ่มตำแหน่งให้กับข้อความ */
-  top: -20px; /* ปรับให้ข้อความชิดขึ้น */
+  position: relative;
+  top: -20px;
 }
+
 
 .forgot-password:hover {
   text-decoration: underline;
