@@ -2,8 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import Test from "@/views/test.vue";
-import UserLoginData from "@/views/User/UserLoginData.vue";
-import UserPersonalInformation from "@/views/User/UserPersonalInformation.vue";
+import UserInformation from "@/views/User/UserInformation.vue";
+import Profile from "@/views/User/UserPersonalInformation.vue";
 import UserAddressInformation from "@/views/User/UserAddressInformation.vue";
 import UserEducationInformation from "@/views/User/UserEducationInformation.vue";
 import Login from "@/views/login.vue";
@@ -15,8 +15,8 @@ const routes = [
   { path: "/", name: "login", component: Login },
   { path: "/about", name: "about", component: Test },
   { path: "/home", name: "home", componen: Home },
-  { path: "/user-login-data", name: "user-login-data", component: UserLoginData },
-  { path: "/user-personal-information", name: "user-personal-information", component: UserPersonalInformation },
+  { path: "/user-information", name: "user-information", component: UserInformation },
+  { path: "/user-profile", name: "user-profile", component: Profile },
   { path: "/user-address", name: "user-address-information", component: UserAddressInformation },
   { path: "/user-education-information", name: "user-education-information", component: UserEducationInformation },
   { path: "/user-register", name: "user-register", component: UserRegister }
