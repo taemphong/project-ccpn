@@ -44,7 +44,7 @@
           <img :src="user.avatar" alt="User Avatar" />
         </v-avatar>
         <v-spacer></v-spacer>
-        <div class="ml-3 d-flex flex-column">
+        <div class="ml-3 mr-4 d-flex flex-column">
           <span class="username font-weight-medium">{{ user.name }}</span>
           <span class="user-role text-grey-darken-1 text-caption">{{
             user.role
@@ -52,9 +52,12 @@
         </div>
         <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
           <template v-slot:activator="{ on, attrs }">
-            <v-icon v-bind="attrs" v-on="on" color="gray" size="30" class="ml-3">
-              {{ menu ? 'mdi-arrow-up-drop-circle-outline' : 'mdi-arrow-down-drop-circle-outline' }}
-            </v-icon>
+            <v-btn v-bind="attrs" v-on="on" icon class="icon-btn" elevation="0">
+              <v-icon :class="{ 'rotate-icon': menu }" color="gray" size="30">
+                {{ menu ? 'mdi-arrow-up-drop-circle-outline' : 'mdi-arrow-down-drop-circle-outline' }}
+              </v-icon>
+            </v-btn>
+
           </template>
 
           <v-card>
@@ -76,12 +79,13 @@
             <v-divider></v-divider>
 
             <v-list>
-              <v-list-item>
+              <v-list-item to="/user-profile">
                 <v-list-item-title>
                   <v-icon left>mdi-account</v-icon>
                   Profile
                 </v-list-item-title>
               </v-list-item>
+
 
               <v-list-item>
                 <v-list-item-title>
@@ -122,7 +126,7 @@ export default {
           text: "ข้อมูล",
           icon: "mdi-account-outline",
           subItems: [
-            { text: "o ข้อมูลส่วนตัว", to: "/user-personal-information" },
+            { text: "o ข้อมูลส่วนตัว", to: "/user-information" },
             { text: "o ข้อมูลที่อยู่", to: "/user-address" },
             { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
           ],
@@ -240,5 +244,26 @@ export default {
   max-width: 350px;
   border-radius: 25px !important;
   padding: 5px 10px !important;
+}
+
+.icon-btn {
+  transition: background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+  background-color: rgba(120, 228, 123, 0.2) !important;
+}
+
+.rotate-icon {
+  transition: transform 0.3s ease;
+  transform: rotate(360deg);
+}
+
+.icon-btn {
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 </style>
