@@ -9,8 +9,9 @@
                 max-width="auto"
             />
         </div>
-        <v-stepper v-model="e1" alt-labels>
-            <v-stepper-header>
+        <div style="justify-items: center; background-color: violet;" >
+        <v-stepper v-model="e1" alt-labels style="width: 1000px; justify-items: center;"> 
+            <v-stepper-header style="width: 500px; ">
                 <v-stepper-step :complete="e1 > 1" step="1">
                     Name of step 1
                 </v-stepper-step>
@@ -51,6 +52,7 @@
                 </v-stepper-content>
             </v-stepper-items>
         </v-stepper>
+    </div>
     </v-container>
 </template>
 
