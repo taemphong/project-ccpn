@@ -65,6 +65,7 @@
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
+    </div>
   </v-container>
 </template>
 
