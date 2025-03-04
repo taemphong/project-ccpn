@@ -1,12 +1,8 @@
 <template>
   <v-app>
     <v-main>
-      <Navbar v-if="$route.name !== 'login'" />
-      <v-app :style="{
-        backgroundImage: `url(${require('@/assets/images/bg3.png')})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }">
+      <Navbar v-if="$route.name !== 'login' && $route.name !== 'user-register'" />
+      <v-app :style="backgroundStyle">
         <router-view />
       </v-app>
     </v-main>
@@ -18,6 +14,18 @@ import Navbar from "./components/Navbar.vue";
 export default {
   components: {
     Navbar,
+  },
+  computed: {
+    backgroundStyle() {
+      if (this.$route.name === 'user-register') {
+        return {};
+      }
+      return {
+        backgroundImage: `url(${require('@/assets/images/bg3.png')})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      };
+    },
   },
 };
 </script>

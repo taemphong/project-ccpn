@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card elevation="3" class="pa-5 mx-auto" style="border-radius: 14px; width: 1280px;">
+    <v-card elevation="3" class="pa-5 mx-auto" style="border-radius: 14px; width: 1680px;">
       <h1 class="text-center mt2 mb-4">User Login Data Page</h1>
       <v-divider></v-divider>
       <v-row>
