@@ -47,7 +47,9 @@
       color="#42B6F6"
       height="50px"
       width="400px"
-      style="color: white; font-size: 18px"
+      variant="tonal"
+      style="color: white; 
+      font-size: 18px"
     >
       <v-icon left size="30">mdi-magnify</v-icon>
       ตรวจสอบสถานะคำขอเป็นสมาชิก
@@ -64,7 +66,7 @@
 }
 
 .textheader {
-  font-size: 30px;
+  font-size: 20px;
   color: #34854b;
 }
 </style>
