@@ -10,14 +10,11 @@
                 max-width="auto"
             />
         </div>
-        <v-stepper v-model="e1">
-    <v-stepper-header>
-      <v-stepper-step
-        :complete="e1 > 1"
-        step="1"
-      >
-        Name of step 1
-      </v-stepper-step>
+        <v-stepper v-model="e1" alt-labels>
+            <v-stepper-header>
+                <v-stepper-step :complete="e1 > 1" step="1">
+                    Name of step 1
+                </v-stepper-step>
 
       <v-divider></v-divider>
 
@@ -88,12 +85,10 @@
           Continue
         </v-btn>
 
-        <v-btn text>
-          Cancel
-        </v-btn>
-      </v-stepper-content>
-    </v-stepper-items>
-  </v-stepper>
+                    <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
+                </v-stepper-content>
+            </v-stepper-items>
+        </v-stepper>
     </v-container>
 </template>
 
