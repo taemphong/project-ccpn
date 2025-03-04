@@ -53,7 +53,7 @@
         <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
           <template v-slot:activator="{ on, attrs }">
             <v-icon v-bind="attrs" v-on="on" color="gray" size="30" class="ml-3">
-              mdi-arrow-down-drop-circle-outline
+              {{ menu ? 'mdi-arrow-up-drop-circle-outline' : 'mdi-arrow-down-drop-circle-outline' }}
             </v-icon>
           </template>
 
@@ -122,7 +122,6 @@ export default {
           text: "ข้อมูล",
           icon: "mdi-account-outline",
           subItems: [
-            { text: "o ข้อมูลล็อคอิน", to: "/user-login-data" },
             { text: "o ข้อมูลส่วนตัว", to: "/user-personal-information" },
             { text: "o ข้อมูลที่อยู่", to: "/user-address" },
             { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
