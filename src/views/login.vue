@@ -47,6 +47,7 @@
 
 <script>
 import axios from 'axios';
+import variable from "../../main.config.js";
 
 export default {
   data() {
@@ -62,7 +63,7 @@ export default {
     },
     async login() {
       try {
-        const response = await axios.post('http://localhost:8002/ccph/api/login', {
+        const response = await axios.post(variable.URL_BACKEND + "/login", {
           ml_customer_id: this.ml_customer_id,
           ml_licenses: this.ml_licenses,
         });
