@@ -10,7 +10,6 @@
             กรอกข้อมูล
           </v-stepper-step>
 
-
           <v-divider></v-divider>
 
           <v-stepper-step :complete="e1 > 2" step="2" color="green">
@@ -31,18 +30,14 @@
           </v-stepper-content>
 
           <v-stepper-content step="2">
-            <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-
+            <UserRegisterStep2 />
             <v-btn color="primary" @click="e1 = 3"> Continue </v-btn>
-
             <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
           </v-stepper-content>
 
           <v-stepper-content step="3">
-            <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
-
+            <UserRegisterStep3 />
             <v-btn color="primary" @click="e1 = 1"> Continue </v-btn>
-
             <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
           </v-stepper-content>
         </v-stepper-items>
@@ -53,10 +48,14 @@
 
 <script>
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
+import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
+import UserRegisterStep2 from "@/components/Form/UserRegisterStep2.vue";
 
 export default {
   components: {
     UserRegisterStep1,
+    UserRegisterStep2,
+    UserRegisterStep3
   },
   data() {
     return {

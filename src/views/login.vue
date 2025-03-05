@@ -37,7 +37,7 @@
               </template>
             </v-text-field>
             <router-link to="/forgotpassword" class="forgot-password">ลืมรหัสผ่าน?</router-link>
-            <v-btn block class="custom-button" type="submit"> เข้าสู่ระบบ </v-btn>
+            <v-btn block class="custom-button"> เข้าสู่ระบบ </v-btn>
           </v-form>
         </v-col>
       </v-col>
