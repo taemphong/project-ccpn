@@ -38,8 +38,8 @@
             <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
           </v-stepper-content>
 
-                <v-stepper-content step="3">
-                    <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+          <v-stepper-content step="3">
+            <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
 
             <v-btn color="primary" @click="e1 = 1"> Continue </v-btn>
 
@@ -53,16 +53,15 @@
 
 <script>
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
-import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
 
 export default {
-    components: {
-        UserRegisterStep1,
-    },
-    data() {
-        return {
-            e1: 1,
-        };
-    },
+  components: {
+    UserRegisterStep1,
+  },
+  data() {
+    return {
+      e1: 1,
+    };
+  },
 };
 </script>
