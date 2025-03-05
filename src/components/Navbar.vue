@@ -43,14 +43,6 @@
     </v-navigation-drawer>
     <v-app-bar app color="white">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-text-field
-        placeholder="ค้นหา"
-        prepend-inner-icon="mdi-magnify"
-        dense
-        outlined
-        hide-details
-        class="search-bar"
-      ></v-text-field>
       <v-spacer></v-spacer>
       <div class="d-flex">
         <v-avatar size="50">
@@ -177,14 +169,6 @@ export default {
       ],
     };
   },
-  // computed: {
-  //   normalMenuItems() {
-  //     return this.menuItems.filter((item) => !item.subItems);
-  //   },
-  //   dropdownMenuItems() {
-  //     return this.menuItems.filter((item) => item.subItems);
-  //   },
-  // },
   methods: {
     logout() {
       localStorage.removeItem("authToken");
@@ -268,11 +252,6 @@ export default {
   color: black !important;
 }
 
-.search-bar {
-  max-width: 350px;
-  border-radius: 25px !important;
-  padding: 5px 10px !important;
-}
 
 .icon-btn {
   transition: background-color 0.3s ease;
