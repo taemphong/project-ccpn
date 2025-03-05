@@ -10,58 +10,60 @@
             />
         </div>
         <div style="justify-items: center; " >
-        <v-stepper v-model="e1" alt-labels style="width: auto; border: none; box-shadow: none; justify-items: center;"> 
+        <v-stepper v-model="e1" alt-labels style="width: 2000px; justify-items: center;"> 
             <v-stepper-header style="width: 700px; border: none; box-shadow: none;">
-                <v-stepper-step :complete="e1 > 1" step="">
+                <v-stepper-step :complete="e1 > 1" step="1">
                     กรอกข้อมูล
                 </v-stepper-step>
 
-                <v-divider></v-divider>
+          <v-divider></v-divider>
 
-                <v-stepper-step :complete="e1 > 2" step="">
+                <v-stepper-step :complete="e1 > 2" step="2">
                     ตรวจสอบข้อมูล
                 </v-stepper-step>
 
-                <v-divider></v-divider>
+          <v-divider></v-divider>
 
-                <v-stepper-step step="">
+                <v-stepper-step step="3">
                     ชำระเงิน
                 </v-stepper-step>
             </v-stepper-header>
 
-            <v-stepper-items>
-                <v-stepper-content step="1">
-                    <UserRegisterStep1 />
-                    <v-btn color="primary" @click="e1 = 2"> Continue </v-btn>
-                </v-stepper-content>
-
                 <v-stepper-content step="2">
-                    <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+                    
+                    <UserRegisterStep2 />
 
-                    <v-btn color="primary" @click="e1 = 3"> Continue </v-btn>
+          <v-stepper-content step="2">
+            <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
 
-                    <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
-                </v-stepper-content>
+            <v-btn color="primary" @click="e1 = 3"> Continue </v-btn>
+
+            <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
+          </v-stepper-content>
 
                 <v-stepper-content step="3">
                     <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
 
-                    <v-btn color="primary" @click="e1 = 1"> Continue </v-btn>
+            <v-btn color="primary" @click="e1 = 1"> Continue </v-btn>
 
-                    <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
-                </v-stepper-content>
-            </v-stepper-items>
-        </v-stepper>
+            <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
+          </v-stepper-content>
+        </v-stepper-items>
+      </v-stepper>
     </div>
-    </v-container>
+  </v-container>
 </template>
 
 <script>
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
+import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
+import UserRegisterStep2 from "@/components/Form/UserRegisterStep2.vue";
 
 export default {
     components: {
         UserRegisterStep1,
+        UserRegisterStep2,
+        UserRegisterStep3
     },
     data() {
         return {
@@ -70,6 +72,3 @@ export default {
     },
 };
 </script>
-
-<style>
-</style>

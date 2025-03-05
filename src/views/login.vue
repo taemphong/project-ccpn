@@ -3,13 +3,7 @@
     <v-row no-gutters class="fill-height">
       <!-- ด้านซ้าย  -->
       <v-col cols="7" class="left-side">
-        <v-img
-          :src="require('@/assets/images/logo5.png')"
-          alt="Logo"
-          class="logo"
-          contain
-          max-width="500"
-        />
+        <v-img :src="require('@/assets/images/logo5.png')" alt="Logo" class="logo" contain max-width="500" />
         <div>
           <h2 class="text1">สภาการสาธารณสุขชุมชน</h2>
         </div>
@@ -19,40 +13,22 @@
         <div>
           <h2 class="text3">
             คุณสามารถ
-            <router-link to="/user-register" class="highlight"
-              >สมัครได้ที่นี้ !</router-link
-            >
+            <router-link to="/user-register" class="highlight">สมัครได้ที่นี้ !</router-link>
           </h2>
         </div>
       </v-col>
       <!-- ด้านขวา  -->
-      <v-col
-        cols="12"
-        class="right-side d-flex align-center"
-        style="padding-left: 150px"
-      >
+      <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
         <v-col cols="12" sm="6" md="6">
-          <h1>คำขอเป็นสมาชิก</h1>
+          <h1>เข้าสู่ระบบ</h1>
           <br />
           <v-form class="login-form">
             <div class="mb-4">เลขบัตรประชาชน</div>
-            <v-text-field
-              filled
-              solo
-              class="custom-input"
-              placeholder="เลขบัตรประชาชน"
-              background-color="#82D6631F"
-            ></v-text-field>
+            <v-text-field filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
+              background-color="#82D6631F"></v-text-field>
             <div class="mb-4">รหัสความปลอดภัย</div>
-            <v-text-field
-              v-model="password"
-              :type="passwordVisible ? 'text' : 'password'"
-              filled
-              solo
-              class="custom-input"
-              placeholder="รหัสผ่าน"
-              background-color="#82D6631F"
-            >
+            <v-text-field v-model="password" :type="passwordVisible ? 'text' : 'password'" filled solo
+              class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F">
               <template v-slot:append>
                 <!-- ใช้ไอคอนจาก Vuetify -->
                 <v-icon @click="togglePasswordVisibility">
@@ -63,7 +39,7 @@
             <router-link to="/forgotpassword" class="forgot-password"
               >ลืมรหัสผ่าน?</router-link
             >
-            <v-btn block class="custom-button"> เข้าสู่ระบบ </v-btn>
+            <v-btn block class="custom-button"> <v-icon left size="30">mdi-magnify</v-icon> ค้นหา </v-btn>
           </v-form>
         </v-col>
       </v-col>
@@ -146,36 +122,50 @@ export default {
 
 /* ปรับขนาดช่องกรอกข้อมูล */
 .custom-input ::v-deep(input) {
-  font-size: 1.2rem; /* ขนาดตัวอักษรใหญ่ขึ้น */
-  height: 56px; /* ปรับความสูง */
+  font-size: 1.2rem;
+  /* ขนาดตัวอักษรใหญ่ขึ้น */
+  height: 56px;
+  /* ปรับความสูง */
 }
 
 .custom-input ::v-deep .v-input__control .v-input__slot input::placeholder {
   color: #468041 !important;
 }
+
 /* ปรับขนาดปุ่ม */
 .custom-button {
   margin-top: 40px;
-  background-color: #48bf6a !important; /* เพิ่ม !important เพื่อบังคับใช้ */
-  color: white !important; /* เพิ่มสีข้อความ */
-  font-size: 1.4rem !important; /* ขนาดตัวอักษร */
-  height: 56px !important; /* ความสูงของปุ่ม */
-  border-radius: 8px; /* มุมโค้ง */
-  box-shadow: 1px 1px 80px 10px #4d47c366 !important; /* เงา */
+  background-color: #48bf6a !important;
+  /* เพิ่ม !important เพื่อบังคับใช้ */
+  color: white !important;
+  /* เพิ่มสีข้อความ */
+  font-size: 1.4rem !important;
+  /* ขนาดตัวอักษร */
+  height: 56px !important;
+  /* ความสูงของปุ่ม */
+  border-radius: 8px;
+  /* มุมโค้ง */
+  box-shadow: 1px 1px 80px 10px #4d47c366 !important;
+  /* เงา */
 }
 
 .custom-button:hover {
-  background-color: #468041 !important; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* เพิ่มเงาขณะ hover */
-  transform: translateY(-2px); /* ปรับตำแหน่งเมื่อ hover */
+  background-color: #468041 !important;
+  /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  /* เพิ่มเงาขณะ hover */
+  transform: translateY(-2px);
+  /* ปรับตำแหน่งเมื่อ hover */
 }
 
 .custom-button:focus {
-  outline: none; /* ลบเส้นขอบเมื่อคลิก */
+  outline: none;
+  /* ลบเส้นขอบเมื่อคลิก */
 }
 
 .forgot-password {
-  display: block; /* หรือใช้ inline-block */
+  display: block;
+  /* หรือใช้ inline-block */
   color: #b0b0b0;
   cursor: pointer;
   font-size: 0.9rem;

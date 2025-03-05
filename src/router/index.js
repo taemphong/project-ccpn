@@ -9,6 +9,9 @@ import UserEducationInformation from "@/views/User/UserEducationInformation.vue"
 import Login from "@/views/login.vue";
 import 'vuetify/dist/vuetify.min.css';
 import UserRegister from "@/views/User/UserRegister.vue";
+import UserRegisterRequest from "@/views/User/UserRegisterRequest.vue";
+import CheckDocumentStatus from "@/views/Document/CheckDocumentStatus.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -19,7 +22,9 @@ const routes = [
   { path: "/user-profile", name: "user-profile", component: Profile },
   { path: "/user-address", name: "user-address-information", component: UserAddressInformation },
   { path: "/user-education-information", name: "user-education-information", component: UserEducationInformation },
-  { path: "/user-register", name: "user-register", component: UserRegister }
+  { path: "/user-register", name: "user-register", component: UserRegister },
+  { path: "/user-register-request", name: "user-register-request", component: UserRegisterRequest },
+  { path: "/chect-document-status", name: "check-document-status", component: CheckDocumentStatus },
 ];
 
 const router = new VueRouter({
