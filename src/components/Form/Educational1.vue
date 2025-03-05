@@ -51,34 +51,6 @@
 </v-col>
  
       
-<v-col cols="12" md="12">
-    <h2 class="mb-5" >การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่างๆ (สมาคมที่เกี่ยวข้องเป็นหลัก)</h2>
-        <div class="mb-3 required">โปรดระบุ (ถ้ามี) </div>
-        <v-text-field v-model="educational_institution" :items="educationalInstitutions" outlined></v-text-field>
-      </v-col>
-
-      <v-col cols="12" md="12">
-    <h2 class="mb-5" >แนบหลักฐานประกอบการพิจารณา</h2>
-        <div class="mb-3 required">ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก ซึ่งถ่ายไว้แล้วไม่เกิน 6 เดือน ขนาด 1 นิ้ว </div>
-        <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
-        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png และ .jpeg</div> 
-        
-        <div class="mb-3 required">สำเนาทะเบียนบ้าน </div>
-        <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
-        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
-
-        <div class="mb-3 required">สำเนาบัตรประจำตัวประชาชน </div>
-        <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
-        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
-
-        <div class="mb-3 required">ใบรับรองแพทย์ </div>
-        <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
-        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
-
-        <div class="mb-3 required">ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่นๆ (ถ้ามี) </div>
-        <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
-        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
-      </v-col>
 
 
 </v-row>
@@ -110,6 +82,14 @@
       yeargraduationOptions: Array.from({ length: 50 }, (_, i) => (new Date().getFullYear() - i).toString()),
       Transcript: null,
       educational_qualifications: null,
+
+      educational_institution: null,
+      educational_qualification: null,
+      fieldofstudy: null,
+
+      daygraduation: null,
+      monthgraduation: null,
+      yeargraduation: null,
     };
   },
     watch: {
