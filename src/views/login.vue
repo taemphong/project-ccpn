@@ -69,6 +69,8 @@ export default {
           ml_licenses: this.ml_licenses,
         });
         console.log(response.data);
+        // Store the authentication token in localStorage
+        localStorage.setItem('authToken', response.data.token);
         this.$router.push('/home');
       } catch (error) {
         console.error(error);

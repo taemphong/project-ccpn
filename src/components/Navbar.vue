@@ -119,6 +119,7 @@ export default {
         avatar: require("@/assets/images/bot.png"),
       },
       drawer: false,
+      menu: false, // Add this line
       menuItems: [
         { text: "หน้าแรก", icon: "mdi-home", to: "/asd" },
         {
@@ -164,13 +165,11 @@ export default {
   },
   methods: {
     logout() {
-      localStorage.clear();
-      this.$router.push('/');
+      localStorage.removeItem('authToken');
+      this.$router.push({ name: 'login' });
     }
   }
 };
-
-
 </script>
 
 <style scoped>
