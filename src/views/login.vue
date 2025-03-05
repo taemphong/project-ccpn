@@ -37,7 +37,7 @@
               </template>
             </v-text-field>
             <router-link to="/forgotpassword" class="forgot-password">ลืมรหัสผ่าน?</router-link>
-            <v-btn block class="custom-button"> เข้าสู่ระบบ </v-btn>
+            <v-btn block class="custom-button" @click="login"> เข้าสู่ระบบ </v-btn>
           </v-form>
         </v-col>
       </v-col>
@@ -67,6 +67,8 @@ export default {
           ml_licenses: this.ml_licenses,
         });
         console.log(response.data);
+        // Store the authentication token in localStorage
+        localStorage.setItem('authToken', response.data.token);
         this.$router.push('/home');
       } catch (error) {
         console.error(error);
@@ -75,10 +77,6 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-/* existing styles */
-</style>
 
 <style scoped>
 .login-container {
