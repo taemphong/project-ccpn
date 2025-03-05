@@ -110,12 +110,11 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
       user: {
-        name: "นาย นรก",
-        role: "Admin",
         avatar: require("@/assets/images/bot.png"),
       },
       drawer: false,
@@ -162,6 +161,34 @@ export default {
     dropdownMenuItems() {
       return this.menuItems.filter((item) => item.subItems);
     },
+  },
+  async mounted() {
+    try {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        console.error('No auth token found');
+        return;
+      }
+
+      const userData = JSON.parse(authToken);
+      const payload = { CustomerID: userData.ml_customer_id };
+
+      const response = await axios.post('http://localhost:8002/ccph/api/get-info-member', payload);
+
+      if (response.data.code === 200 && response.data.data.length > 0) {
+        const data = response.data.data[0];
+
+        this.user = {
+          name: `${data.mp_name2} ${data.mp_name3}`,
+          role: data.mp_name1 || "N/A",  // กันค่า null หรือ undefined
+          avatar: require("@/assets/images/bot.png"),
+        };
+      } else {
+        console.error('Data not found');
+      }
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
   },
   methods: {
     logout() {
