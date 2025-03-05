@@ -1,11 +1,36 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
+      <v-img
+        :src="require('@/assets/images/logp4.jpg')"
+        contain
+        max-height="120"
+        class="drawer-image"
+      ></v-img>
       <v-list dense>
-        <v-list-item-group>
-          <!-- subitems -->
-          <v-list-item v-for="item in normalMenuItems" :key="item.text" :to="item.to">
+        <template v-for="item in menuItems">
+          <v-list-group v-if="item.subItems" :key="item.text">
+            <template v-slot:activator>
+              <v-list-item-icon>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.text }}</v-list-item-title>
+              </v-list-item-content>
+            </template>
+
+            <v-list-item
+              v-for="subItem in item.subItems"
+              :key="subItem.text"
+              :to="subItem.to"
+            >
+              <v-list-item-content>
+                <v-list-item-title>{{ subItem.text }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-group>
+
+          <v-list-item v-else :key="item.text" :to="item.to">
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
@@ -13,30 +38,11 @@
               <v-list-item-title>{{ item.text }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <!-- dropdown -->
-          <v-list-group v-for="dropdown in dropdownMenuItems" :key="dropdown.text">
-            <template v-slot:activator>
-              <v-list-item-icon>
-                <v-icon>{{ dropdown.icon }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>{{ dropdown.text }}</v-list-item-title>
-              </v-list-item-content>
-            </template>
-
-            <v-list-item v-for="subItem in dropdown.subItems" :key="subItem.text" :to="subItem.to">
-              <v-list-item-content>
-                <v-list-item-title>{{ subItem.text }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-group>
-        </v-list-item-group>
+        </template>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar app color="white">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-text-field placeholder="ค้นหา" prepend-inner-icon="mdi-magnify" dense outlined hide-details
-        class="search-bar"></v-text-field>
       <v-spacer></v-spacer>
       <div class="d-flex">
         <v-avatar size="50">
@@ -49,14 +55,23 @@
             user.role
           }}</span>
         </div>
-        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
+        <v-menu
+          v-model="menu"
+          :close-on-content-click="false"
+          :nudge-width="200"
+          offset-y
+          :nudge-bottom="10"
+        >
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-bind="attrs" v-on="on" icon class="icon-btn" elevation="0">
               <v-icon :class="{ 'rotate-icon': menu }" color="gray" size="30">
-                {{ menu ? 'mdi-arrow-up-drop-circle-outline' : 'mdi-arrow-down-drop-circle-outline' }}
+                {{
+                  menu
+                    ? "mdi-arrow-up-drop-circle-outline"
+                    : "mdi-arrow-down-drop-circle-outline"
+                }}
               </v-icon>
             </v-btn>
-
           </template>
 
           <v-card>
@@ -84,7 +99,6 @@
                   Profile
                 </v-list-item-title>
               </v-list-item>
-
 
               <v-list-item>
                 <v-list-item-title>
@@ -162,40 +176,12 @@ export default {
       return this.menuItems.filter((item) => item.subItems);
     },
   },
-  async mounted() {
-    try {
-      const authToken = localStorage.getItem('authToken');
-      if (!authToken) {
-        console.error('No auth token found');
-        return;
-      }
-
-      const userData = JSON.parse(authToken);
-      const payload = { CustomerID: userData.ml_customer_id };
-
-      const response = await axios.post('http://localhost:8002/ccph/api/get-info-member', payload);
-
-      if (response.data.code === 200 && response.data.data.length > 0) {
-        const data = response.data.data[0];
-
-        this.user = {
-          name: `${data.mp_name2} ${data.mp_name3}`,
-          role: data.mp_name1 || "N/A",  // กันค่า null หรือ undefined
-          avatar: require("@/assets/images/bot.png"),
-        };
-      } else {
-        console.error('Data not found');
-      }
-    } catch (error) {
-      console.error('Error fetching user info:', error);
-    }
-  },
   methods: {
     logout() {
-      localStorage.removeItem('authToken');
-      this.$router.push({ name: 'login' });
-    }
-  }
+      localStorage.removeItem("authToken");
+      this.$router.push({ name: "login" });
+    },
+  },
 };
 </script>
 
@@ -273,11 +259,6 @@ export default {
   color: black !important;
 }
 
-.search-bar {
-  max-width: 350px;
-  border-radius: 25px !important;
-  padding: 5px 10px !important;
-}
 
 .icon-btn {
   transition: background-color 0.3s ease;
