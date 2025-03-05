@@ -36,7 +36,8 @@
                 </v-stepper-content>
 
                 <v-stepper-content step="2">
-                    <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+                    
+                    <UserRegisterStep2 />
 
                     <v-btn color="primary" @click="e1 = 3"> Continue </v-btn>
 
@@ -59,10 +60,12 @@
 <script>
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
 import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
+import UserRegisterStep2 from "@/components/Form/UserRegisterStep2.vue";
 
 export default {
     components: {
         UserRegisterStep1,
+        UserRegisterStep2,
         UserRegisterStep3
     },
     data() {
