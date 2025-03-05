@@ -24,9 +24,11 @@
           </v-stepper-step>
         </v-stepper-header>
 
-                <v-stepper-content step="2">
-                    
-                    <UserRegisterStep2 />
+        <v-stepper-items>
+          <v-stepper-content step="1">
+            <UserRegisterStep1 />
+            <v-btn color="primary" @click="e1 = 2"> Continue </v-btn>
+          </v-stepper-content>
 
           <v-stepper-content step="2">
             <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
@@ -51,7 +53,6 @@
 
 <script>
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
-<<<<<<< HEAD
 
 export default {
   components: {
@@ -62,21 +63,5 @@ export default {
       e1: 1,
     };
   },
-=======
-import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
-import UserRegisterStep2 from "@/components/Form/UserRegisterStep2.vue";
-
-export default {
-    components: {
-        UserRegisterStep1,
-        UserRegisterStep2,
-        UserRegisterStep3
-    },
-    data() {
-        return {
-            e1: 1,
-        };
-    },
->>>>>>> be2d51648c43a81236df147b0f749a918f7483d8
 };
 </script>
