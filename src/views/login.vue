@@ -1,14 +1,13 @@
 <template>
   <v-container fluid class="login-container fill-height">
     <v-row no-gutters class="fill-height">
-      <!-- ด้านซ้าย  -->
       <v-col cols="7" class="left-side">
         <v-img :src="require('@/assets/images/logo5.png')" alt="Logo" class="logo" contain max-width="500" />
         <div>
           <h2 class="text1">สภาการสาธารณสุขชุมชน</h2>
         </div>
         <div>
-          <h2 class="text2">หากคุณยังไมม่มีบัญชี กรุณาสมัครสมาชิก</h2>
+          <h2 class="text2">หากคุณยังไม่มีบัญชี กรุณาสมัครสมาชิก</h2>
         </div>
         <div>
           <h2 class="text3">
@@ -17,27 +16,25 @@
           </h2>
         </div>
       </v-col>
-      <!-- ด้านขวา  -->
       <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
         <v-col cols="12" sm="6" md="6">
           <h1>เข้าสู่ระบบ</h1>
           <br />
-          <v-form class="login-form" @submit.prevent="login">
+          <v-form class="login-form" @submit.prevent="loginUser">
             <div class="mb-4">เลขบัตรประชาชน</div>
             <v-text-field v-model="ml_customer_id" filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
-              background-color="#82D6631F"></v-text-field>
+              background-color="#82D6631F" required></v-text-field>
             <div class="mb-4">รหัสความปลอดภัย</div>
             <v-text-field v-model="ml_licenses" :type="passwordVisible ? 'text' : 'password'" filled solo
-              class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F">
+              class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F" required>
               <template v-slot:append>
-                <!-- ใช้ไอคอนจาก Vuetify -->
                 <v-icon @click="togglePasswordVisibility">
                   {{ passwordVisible ? "mdi-eye-off" : "mdi-eye" }}
                 </v-icon>
               </template>
             </v-text-field>
             <router-link to="/forgotpassword" class="forgot-password">ลืมรหัสผ่าน?</router-link>
-            <v-btn block class="custom-button"> เข้าสู่ระบบ </v-btn>
+            <v-btn type="submit" block class="custom-button"> เข้าสู่ระบบ </v-btn>
           </v-form>
         </v-col>
       </v-col>
@@ -46,9 +43,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import variable from "../../main.config.js";
-
 export default {
   data() {
     return {
@@ -61,21 +57,30 @@ export default {
     togglePasswordVisibility() {
       this.passwordVisible = !this.passwordVisible;
     },
-    async login() {
+    async loginUser() {
       try {
-        const response = await axios.post(variable.URL_BACKEND + "/login", {
+        const payload = {
           ml_customer_id: this.ml_customer_id,
           ml_licenses: this.ml_licenses,
-        });
-        console.log(response.data);
-        this.$router.push('/home');
+        };
+
+        const response = await axios.post(variable.URL_BACKEND + "/login", payload);
+
+        if (response.data.code === 200) {
+          localStorage.setItem("authToken", JSON.stringify(response.data.data));
+          this.$router.push("/home"); // ไปที่หน้า home
+        } else {
+          alert("เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง");
+        }
       } catch (error) {
-        console.error(error);
+        console.error("Login error:", error);
+        alert("เกิดข้อผิดพลาดในการเข้าสู่ระบบ");
       }
     },
   },
 };
 </script>
+
 
 <style scoped>
 .login-container {
