@@ -10,21 +10,21 @@
             />
         </div>
         <div style="justify-items: center; " >
-        <v-stepper v-model="e1" alt-labels style="width: 2000px; justify-items: center;"> 
+        <v-stepper v-model="e1" alt-labels style="width: auto; border: none; box-shadow: none; justify-items: center;"> 
             <v-stepper-header style="width: 700px; border: none; box-shadow: none;">
-                <v-stepper-step :complete="e1 > 1" step="1">
+                <v-stepper-step :complete="e1 > 1" step="">
                     กรอกข้อมูล
                 </v-stepper-step>
 
                 <v-divider></v-divider>
 
-                <v-stepper-step :complete="e1 > 2" step="2">
+                <v-stepper-step :complete="e1 > 2" step="">
                     ตรวจสอบข้อมูล
                 </v-stepper-step>
 
                 <v-divider></v-divider>
 
-                <v-stepper-step step="3">
+                <v-stepper-step step="">
                     ชำระเงิน
                 </v-stepper-step>
             </v-stepper-header>

@@ -63,7 +63,7 @@
             <router-link to="/forgotpassword" class="forgot-password"
               >ลืมรหัสผ่าน?</router-link
             >
-            <v-btn block class="custom-button"> <v-icon left size="30">mdi-magnify</v-icon> ค้นหา </v-btn>
+            <v-btn block class="custom-button"> เข้าสู่ระบบ </v-btn>
           </v-form>
         </v-col>
       </v-col>
