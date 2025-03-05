@@ -44,7 +44,7 @@
 
 <script>
 import axios from "axios";
-
+import variable from "../../main.config.js";
 export default {
   data() {
     return {
@@ -64,7 +64,7 @@ export default {
           ml_licenses: this.ml_licenses,
         };
 
-        const response = await axios.post("http://localhost:8002/ccph/api/login", payload);
+        const response = await axios.post(variable.URL_BACKEND + "/login", payload);
 
         if (response.data.code === 200) {
           localStorage.setItem("authToken", JSON.stringify(response.data.data));

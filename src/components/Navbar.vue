@@ -110,6 +110,7 @@
 
 <script>
 import axios from 'axios';
+import variable from "../../main.config.js";
 export default {
   data() {
     return {
@@ -164,7 +165,7 @@ export default {
       const userData = JSON.parse(authToken);
       const payload = { CustomerID: userData.ml_customer_id };
 
-      const response = await axios.post('http://localhost:8002/ccph/api/get-info-member', payload);
+      const response = await axios.post(variable.URL_BACKEND + "/get-info-member", payload);
 
       if (response.data.code === 200 && response.data.data.length > 0) {
         const data = response.data.data[0];
