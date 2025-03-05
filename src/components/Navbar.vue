@@ -97,7 +97,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn tile color="success">
+              <v-btn tile color="success" @click="logout">
                 <v-icon left> mdi-logout </v-icon>
                 Logout
               </v-btn>
@@ -162,7 +162,15 @@ export default {
       return this.menuItems.filter((item) => item.subItems);
     },
   },
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.push('/');
+    }
+  }
 };
+
+
 </script>
 
 <style scoped>

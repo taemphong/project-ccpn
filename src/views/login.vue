@@ -13,7 +13,7 @@
         <div>
           <h2 class="text3">
             คุณสามารถ
-            <router-link to="/user-register" class="highlight">สมัครได้ที่นี้ !</router-link>
+            <router-link to="/user-register-request" class="highlight">สมัครได้ที่นี้ !</router-link>
           </h2>
         </div>
       </v-col>
@@ -22,12 +22,12 @@
         <v-col cols="12" sm="6" md="6">
           <h1>เข้าสู่ระบบ</h1>
           <br />
-          <v-form class="login-form">
+          <v-form class="login-form" @submit.prevent="login">
             <div class="mb-4">เลขบัตรประชาชน</div>
-            <v-text-field filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
+            <v-text-field v-model="ml_customer_id" filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
               background-color="#82D6631F"></v-text-field>
             <div class="mb-4">รหัสความปลอดภัย</div>
-            <v-text-field v-model="password" :type="passwordVisible ? 'text' : 'password'" filled solo
+            <v-text-field v-model="ml_licenses" :type="passwordVisible ? 'text' : 'password'" filled solo
               class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F">
               <template v-slot:append>
                 <!-- ใช้ไอคอนจาก Vuetify -->
@@ -36,10 +36,8 @@
                 </v-icon>
               </template>
             </v-text-field>
-            <router-link to="/forgotpassword" class="forgot-password"
-              >ลืมรหัสผ่าน?</router-link
-            >
-            <v-btn block class="custom-button"> <v-icon left size="30">mdi-magnify</v-icon> ค้นหา </v-btn>
+            <router-link to="/forgotpassword" class="forgot-password">ลืมรหัสผ่าน?</router-link>
+            <v-btn block class="custom-button"> เข้าสู่ระบบ </v-btn>
           </v-form>
         </v-col>
       </v-col>
@@ -48,10 +46,13 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
-      password: "",
+      ml_customer_id: "",
+      ml_licenses: "",
       passwordVisible: false,
     };
   },
@@ -59,9 +60,25 @@ export default {
     togglePasswordVisibility() {
       this.passwordVisible = !this.passwordVisible;
     },
+    async login() {
+      try {
+        const response = await axios.post('http://localhost:8002/ccph/api/login', {
+          ml_customer_id: this.ml_customer_id,
+          ml_licenses: this.ml_licenses,
+        });
+        console.log(response.data);
+        this.$router.push('/home');
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 };
 </script>
+
+<style scoped>
+/* existing styles */
+</style>
 
 <style scoped>
 .login-container {
