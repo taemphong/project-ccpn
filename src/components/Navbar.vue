@@ -1,12 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img
-        :src="require('@/assets/images/logp4.jpg')"
-        contain
-        max-height="120"
-        class="drawer-image"
-      ></v-img>
+      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
       <v-list dense>
         <template v-for="item in menuItems">
           <v-list-group v-if="item.subItems" :key="item.text">
@@ -19,11 +14,7 @@
               </v-list-item-content>
             </template>
 
-            <v-list-item
-              v-for="subItem in item.subItems"
-              :key="subItem.text"
-              :to="subItem.to"
-            >
+            <v-list-item v-for="subItem in item.subItems" :key="subItem.text" :to="subItem.to">
               <v-list-item-content>
                 <v-list-item-title>{{ subItem.text }}</v-list-item-title>
               </v-list-item-content>
@@ -55,13 +46,7 @@
             user.role
           }}</span>
         </div>
-        <v-menu
-          v-model="menu"
-          :close-on-content-click="false"
-          :nudge-width="200"
-          offset-y
-          :nudge-bottom="10"
-        >
+        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-bind="attrs" v-on="on" icon class="icon-btn" elevation="0">
               <v-icon :class="{ 'rotate-icon': menu }" color="gray" size="30">
@@ -167,6 +152,34 @@ export default {
         },
       ],
     };
+  },
+  async mounted() {
+    try {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        console.error('No auth token found');
+        return;
+      }
+
+      const userData = JSON.parse(authToken);
+      const payload = { CustomerID: userData.ml_customer_id };
+
+      const response = await axios.post('http://localhost:8002/ccph/api/get-info-member', payload);
+
+      if (response.data.code === 200 && response.data.data.length > 0) {
+        const data = response.data.data[0];
+
+        this.user = {
+          name: `${data.mp_name2} ${data.mp_name3}`,
+          role: data.mp_name1 || "N/A",  // กันค่า null หรือ undefined
+          avatar: require("@/assets/images/bot.png"),
+        };
+      } else {
+        console.error('Data not found');
+      }
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
   },
   computed: {
     normalMenuItems() {
