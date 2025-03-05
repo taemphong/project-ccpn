@@ -13,7 +13,6 @@
               <v-list-item-title>{{ item.text }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-
           <!-- dropdown -->
           <v-list-group v-for="dropdown in dropdownMenuItems" :key="dropdown.text">
             <template v-slot:activator>
