@@ -22,7 +22,7 @@
         <v-col cols="12" sm="6" md="6">
           <h1>เข้าสู่ระบบ</h1>
           <br />
-          <v-form class="login-form" @submit.prevent="login">
+          <v-form class="login-form">
             <div class="mb-4">เลขบัตรประชาชน</div>
             <v-text-field v-model="ml_customer_id" filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
               background-color="#82D6631F"></v-text-field>
@@ -37,7 +37,7 @@
               </template>
             </v-text-field>
             <router-link to="/forgotpassword" class="forgot-password">ลืมรหัสผ่าน?</router-link>
-            <v-btn block class="custom-button"> เข้าสู่ระบบ </v-btn>
+            <v-btn block class="custom-button" @click="login()"> เข้าสู่ระบบ </v-btn>
           </v-form>
         </v-col>
       </v-col>
@@ -63,7 +63,8 @@ export default {
     },
     async login() {
       try {
-        const response = await axios.post(variable.URL_BACKEND + "/login", {
+        console.log('aasd',`${variable.URL_BACKEND}`)
+        const response = await axios.post(`${variable.URL_BACKEND}` + "/login", {
           ml_customer_id: this.ml_customer_id,
           ml_licenses: this.ml_licenses,
         });
