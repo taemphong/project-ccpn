@@ -415,6 +415,126 @@
         <h2>หลักฐานการสมัครสมาชิกสภาการสาธรณสุขชุมชน</h2>
       </v-col>
     </v-row>  
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <div class="mb-3">สำเนาทะเบียนบ้าน</div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3">
+          สำเนาบัตรประจำตัวประชาชน
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" dark style="width: 300px; height: 50px">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" dark style="width: 300px; height: 50px">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <div class="mb-3">ใบรับรองแพทย์</div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3">
+          ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่น ๆ ถ้ามี
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" dark style="width: 300px; height: 50px">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" dark style="width: 300px; height: 50px">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <v-row>
+<v-col cols="12" md="12">
+    <h2 class="mb-5" >หลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชน</h2>
+    <h3 class="mb-5 required2" style="font-weight: 500; margin-top: -15px;"  >ข้าพเจ้าได้แนบหลักฐานประกอบการสมัครสมาชิกสภาการสาธาณสุขชุมชน ดังต่อไปนี้</h3>
+    <v-container fluid>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาทะเบียนบ้าน 1 ฉบับ"
+      value="สำเนาทะเบียนบ้าน 1 ฉบับ"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+      value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
+      value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
+    ></v-checkbox>
+    <div style="margin-left: 30px;">
+    <v-checkbox
+      v-model="selected2"
+      label="Transcript"
+      value="Transcript"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="ปริญญาบัคร"
+      value="ปริญญาบัคร"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="อนุปริญญาบัคร"
+      value="อนุปริญญาบัคร"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+      value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+    ></v-checkbox>
+  </div>
+  <v-checkbox
+      v-model="selected2"
+      label="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
+      value="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="ใบรับรองแพทย์"
+      value="ใบรับรองแพทย์"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+      value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+    ></v-checkbox>
+
+    <v-col cols="12" md="12">
+      <h2 class="mb-5 required2" >การให้ความยินยอม</h2>
+    </v-col>
+    <v-checkbox
+      v-model="selected2"
+      label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
+      value="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
+    ></v-checkbox>
+
+  </v-container>
+      </v-col>
+    </v-row>
+
   </v-container>
 </template>
 
@@ -549,8 +669,17 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap');
+
 .required::after {
   content: "*";
   color: red;
+}
+
+* {
+  font-size: 18px;
+  color: black;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
 }
 </style>

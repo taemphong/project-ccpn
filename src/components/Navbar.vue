@@ -1,10 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <router-link to="/home">
-        <v-img :src="require('@/assets/images/Logo4.png')" contain max-height="120"
-          class="drawer-image align-top"></v-img>
-      </router-link>
+      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
       <v-list dense>
         <template v-for="item in menuItems">
           <v-list-group v-if="item.subItems" :key="item.text">
@@ -53,7 +50,7 @@
             user.role
           }}</span>
         </div>
-        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
+        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="20">
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-bind="attrs" v-on="on" icon class="icon-btn" elevation="0">
               <v-icon :class="{ 'rotate-icon': menu }" color="gray" size="30">
@@ -103,10 +100,10 @@
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn tile color="success" @click="logout">
-                <v-icon left> mdi-logout </v-icon>
-                Logout
-              </v-btn>
+              <v-btn tile color="#3D8E56CC" @click="logout" style="width: 220px; height: 45px; margin-right: 15px;">
+  ลงชื่อออก
+  <v-icon left>mdi-logout</v-icon>
+</v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>
@@ -114,6 +111,7 @@
     </v-app-bar>
   </div>
 </template>
+
 <script>
 import axios from 'axios';
 import variable from "../../main.config.js";
@@ -207,6 +205,7 @@ export default {
 </script>
 
 <style scoped>
+
 .text {
   color: black;
 }
@@ -231,6 +230,7 @@ export default {
   border-radius: 8px;
   width: 90% !important;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  
 }
 
 :deep(.v-list-item:hover) {
@@ -302,10 +302,8 @@ export default {
   padding: 0;
 }
 
-.align-top {
-  margin-top: 0;
-  padding-top: 0;
-  display: block;
-  margin-bottom: auto;
+:deep(.v-list-item-title) {
+  font-family: 'Prompt', sans-serif !important;
+  font-weight: 400 !important;
 }
 </style>
