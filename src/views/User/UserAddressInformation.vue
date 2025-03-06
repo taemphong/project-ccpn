@@ -22,40 +22,47 @@
                 </span>
               </td>
               <td>{{ item.address }}</td>
+              <td>{{ item.phonenumber }}</td>
               <td>
-                <v-row justify="space-between" align="center">
-                  <v-col>
-                    {{ item.phonenumber }}
-                  </v-col>
-                </v-row>
-              </td>
-              <td>
-                <v-row justify="space-between" align="center">
-                  <v-col class="text-right">
-                    <v-btn icon small>
-                      <v-icon color="blue">mdi-square-edit-outline</v-icon>
-                    </v-btn>
-                    <v-btn icon small>
-                      <v-icon color="red">mdi-delete-outline</v-icon>
-                    </v-btn>
-                  </v-col>
-                </v-row>
+                <v-btn icon small @click="openEditAddressModal(item)">
+                  <v-icon color="blue">mdi-square-edit-outline</v-icon>
+                </v-btn>
+                <v-btn icon small @click="openDeleteAddressModal(item)">
+                  <v-icon color="red">mdi-delete-outline</v-icon>
+                </v-btn>
               </td>
             </tr>
           </tbody>
         </template>
       </v-simple-table>
+
+      <EditAddressModal :show="showEditAddressModal" :addressData="selectedItem" @close="showEditAddressModal = false"
+        @confirmEdit="handleEditAddress" />
+
+      <DeleteAddressModal :show="showDeleteAddressModal" @close="showDeleteAddressModal = false"
+        @confirmDelete="handleDeleteAddress" />
+
+
     </v-card>
   </v-container>
 </template>
 
 <script>
 import axios from 'axios';
+import EditAddressModal from '@/components/Modal/UserModal/EditAddressModal.vue';
+import DeleteAddressModal from '@/components/Modal/UserModal/DeleteAddressModal.vue';
 
 export default {
+  components: {
+    EditAddressModal,
+    DeleteAddressModal
+  },
   data() {
     return {
       Address: [],
+      showEditAddressModal: false,
+      showDeleteAddressModal: false,
+      selectedItem: null,
     };
   },
   mounted() {
@@ -64,10 +71,7 @@ export default {
   methods: {
     async fetchAddressData() {
       const authToken = localStorage.getItem('authToken');
-      if (!authToken) {
-        console.error('No auth token found');
-        return;
-      }
+      if (!authToken) return;
 
       const userData = JSON.parse(authToken);
       const payload = { CustomerID: userData.ml_customer_id };
@@ -77,7 +81,6 @@ export default {
         const result = response.data;
         if (result.code === 200 && result.data.length > 0) {
           const data = result.data[0];
-
           this.Address = [
             { type: "ที่อยู่ปัจจุบัน", address: data.moa_address, phonenumber: data.mp_tel },
             { type: "ที่อยู่ที่ทำงาน", address: data.mha_address, phonenumber: data.mp_tel },
@@ -88,6 +91,14 @@ export default {
         console.error("Error fetching address data:", error);
       }
     },
+    openEditAddressModal(item) {
+      this.selectedItem = item;
+      this.showEditAddressModal = true;
+    },
+    openDeleteAddressModal(item) {
+      this.selectedItem = item;
+      this.showDeleteAddressModal = true;
+    },
     getBackgroundClass(type) {
       return {
         "ที่อยู่ปัจจุบัน": "bg-purple",
@@ -95,31 +106,38 @@ export default {
         "ที่อยู่ตามทะเบียนบ้าน": "bg-yellow",
       }[type] || "";
     },
+    handleEditAddress(updatedAddress) {
+      const index = this.Address.findIndex(addr => addr.type === updatedAddress.type);
+      if (index !== -1) {
+        this.Address[index] = updatedAddress;
+      }
+      this.showEditAddressModal = false;
+    },
+    handleDeleteAddress() {
+      // Handle the address deletion logic here
+      this.showDeleteAddressModal = false;
+    }
   },
 };
 </script>
 
 <style scoped>
-/* สไตล์พื้นหลังให้เฉพาะตัวอักษร */
 .bg-purple {
   background-color: #4C1F7AB2;
   padding: 4px 8px;
   border-radius: 5px;
-  display: inline-block;
 }
 
 .bg-orange {
   background-color: #FF8000B2;
   padding: 4px 8px;
   border-radius: 5px;
-  display: inline-block;
 }
 
 .bg-yellow {
   background-color: #287483B2;
   padding: 4px 8px;
   border-radius: 5px;
-  display: inline-block;
 }
 
 .custom-table {
@@ -141,7 +159,7 @@ export default {
   background-color: #6CC54B;
   color: white;
   font-weight: bold;
-  text-align: center !important;
-  font-size: 1.2rem !important;
+  text-align: center;
+  font-size: 1.2rem;
 }
 </style>

@@ -6,21 +6,22 @@
     <div style="justify-items: center;">
       <v-stepper v-model="e1" alt-labels style="padding-left: 200px;padding-right: 200px; justify-items: center;">
         <v-stepper-header style="width: 100%; max-width: 700px; border: none; box-shadow: none;">
-          <v-stepper-step :complete="e1 > 1" step="1" color="green" class="no-number">
+          <v-stepper-step :complete="e1 > 1" step="1" :color="e1 >= 1 ? 'green' : 'grey'" class="no-number">
             กรอกข้อมูล
           </v-stepper-step>
 
           <v-divider></v-divider>
 
-          <v-stepper-step :complete="e1 > 2" step="2" color="green" class="no-number">
+          <v-stepper-step :complete="e1 > 2" step="2" :color="e1 >= 2 ? 'green' : 'grey'" class="no-number">
             ตรวจสอบข้อมูล
           </v-stepper-step>
 
           <v-divider></v-divider>
 
-          <v-stepper-step step="3" color="green" class="no-number">
+          <v-stepper-step step="3" :color="e1 >= 3 ? 'green' : 'grey'" class="no-number">
             ชำระเงิน
           </v-stepper-step>
+
         </v-stepper-header>
 
         <v-stepper-items>
@@ -114,15 +115,10 @@ export default {
 
 /* ซ่อนตัวเลขใน v-stepper-step */
 .no-number>>>.v-stepper__step__step {
-  color: transparent;
-  border: 2px solid #00B69B !important; /* กำหนดสีขอบให้ชัดเจน */
-  background-color: white !important; /* ให้พื้นหลังเป็นสีขาว */
-}
-
-/* เมื่อเป็น step ปัจจุบันหรือเสร็จสมบูรณ์ */
-.no-number >>> .v-stepper__step--active .v-stepper__step__step,
-.no-number >>> .v-stepper__step--complete .v-stepper__step__step {
-  background-color: #00B69B !important;
-  color: white !important;
+  color: #FFFFFF;
+  border: 2px solid #00B69B !important;
+  /* กำหนดสีขอบให้ชัดเจน */
+  background-color: white !important;
+  /* ให้พื้นหลังเป็นสีขาว */
 }
 </style>

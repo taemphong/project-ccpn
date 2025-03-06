@@ -95,18 +95,16 @@
                   Settings
                 </v-list-item-title>
               </v-list-item>
+              <!-- ปรับการจัดตำแหน่งปุ่มลงชื่อออกให้กึ่งกลาง -->
+              <v-btn class="d-flex justify-center" tile color="#3D8E56CC" @click="logout"
+                style="width: 220px;border-radius: 14px; height: 45px; margin: 15px auto;">
+                ลงชื่อออก
+                <v-icon left>mdi-logout</v-icon>
+              </v-btn>
             </v-list>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-
-              <v-btn tile color="#3D8E56CC" @click="logout" style="width: 220px; height: 45px; margin-right: 15px;">
-  ลงชื่อออก
-  <v-icon left>mdi-logout</v-icon>
-</v-btn>
-            </v-card-actions>
           </v-card>
         </v-menu>
+
       </div>
     </v-app-bar>
   </div>
@@ -205,7 +203,6 @@ export default {
 </script>
 
 <style scoped>
-
 .text {
   color: black;
 }
@@ -230,7 +227,7 @@ export default {
   border-radius: 8px;
   width: 90% !important;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  
+
 }
 
 :deep(.v-list-item:hover) {
