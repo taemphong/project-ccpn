@@ -123,14 +123,16 @@ export default {
   }
 }
 
-/* ซ่อนตัวเลขใน v-stepper-step */
 .no-number >>> .v-stepper__step__step {
   color: transparent;
+  border: 2px solid #00B69B !important; /* กำหนดสีขอบให้ชัดเจน */
+  background-color: white !important; /* ให้พื้นหลังเป็นสีขาว */
 }
 
-/* ทำให้วงกลมมีแค่ขอบและพื้นหลังสีขาว */
-.no-number >>> .v-stepper__step__step {
-  border: 2px solid currentColor;
-  background-color: white !important;
+/* เมื่อเป็น step ปัจจุบันหรือเสร็จสมบูรณ์ */
+.no-number >>> .v-stepper__step--active .v-stepper__step__step,
+.no-number >>> .v-stepper__step--complete .v-stepper__step__step {
+  background-color: #00B69B !important;
+  color: white !important;
 }
 </style>
