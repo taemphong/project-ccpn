@@ -19,9 +19,10 @@
                 <v-icon>{{ subItem.icon }}</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>{{ subItem.text }}</v-list-item-title>
+                <v-list-item-title class="large-font">{{ subItem.text }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
+
 
           </v-list-group>
 
@@ -46,7 +47,7 @@
         <v-spacer></v-spacer>
         <div class="ml-3 mr-4 d-flex flex-column">
           <span class="username font-weight-medium">{{ user.name }}</span>
-          <span class="user-role text-grey-darken-1 text-caption">{{
+          <span class="user-role" style="font-size: 14px;">{{
             user.role
           }}</span>
         </div>
@@ -99,7 +100,7 @@
               <v-btn class="d-flex justify-center" tile color="#3D8E56CC" @click="logout"
                 style="width: 220px;border-radius: 14px; height: 45px; margin: 15px auto;">
                 ลงชื่อออก
-                <v-icon left>mdi-logout</v-icon>
+                <v-icon class="ml-4" left>mdi-logout</v-icon>
               </v-btn>
             </v-list>
           </v-card>
@@ -212,8 +213,8 @@ export default {
 }
 
 :deep(.v-list-item.v-list-item--active) {
-  background: linear-gradient(45deg, #1cad21, #78e47b) !important;
-  box-shadow: 0px 2px 6px rgba(142, 161, 142, 0.3) !important;
+  background: linear-gradient(45deg, #48BF6A, #64CA97CC) !important;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3) !important;
   padding: 10px 16px !important;
   border-radius: 8px !important;
   width: 90% !important;
@@ -283,7 +284,7 @@ export default {
 }
 
 .icon-btn:hover {
-  background-color: rgba(120, 228, 123, 0.2) !important;
+  background-color: rgba(0, 0, 0, 0.178) !important;
 }
 
 .rotate-icon {
@@ -297,10 +298,5 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0;
-}
-
-:deep(.v-list-item-title) {
-  font-family: 'Prompt', sans-serif !important;
-  font-weight: 400 !important;
 }
 </style>
