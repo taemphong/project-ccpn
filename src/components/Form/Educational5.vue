@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-checkbox
+      color="light-green"
       v-model="localSelected"
       @change="updateSelected"
       :label="label"
@@ -128,6 +129,8 @@ color: red;
   border-width: 1px;
   background: #F5F6FA;
 }
+
+
 
 
 </style>
