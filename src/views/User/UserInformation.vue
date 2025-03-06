@@ -28,110 +28,109 @@
               <v-row>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium">คำนำหน้าชื่อ:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกคำนำหน้าชื่อ" outlined
+                  <v-text-field class="textfield" placeholder="กรอกคำนำหน้าชื่อ" outlined
                     v-model="user.title"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">ชื่อจริง:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกชื่อจริง" outlined
+                  <v-text-field class="textfield" placeholder="กรอกชื่อจริง" outlined
                     v-model="user.firstname"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">นามสกุล:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกนามสกุล" outlined
+                  <v-text-field class="textfield" placeholder="กรอกนามสกุล" outlined
                     v-model="user.lastname"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">คำนำหน้าชื่อ (อังกฤษ):</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกคำนำหน้าชื่อ (อังกฤษ)"
-                    outlined v-model="user.title_eng"></v-text-field>
+                  <v-text-field class="textfield" placeholder="กรอกคำนำหน้าชื่อ (อังกฤษ)" outlined
+                    v-model="user.title_eng"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">ชื่อจริง (อังกฤษ):</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกชื่อจริง (อังกฤษ)"
-                    outlined v-model="user.firstname_eng"></v-text-field>
+                  <v-text-field class="textfield" placeholder="กรอกชื่อจริง (อังกฤษ)" outlined
+                    v-model="user.firstname_eng"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">นามสกุล (อังกฤษ):</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกนามสกุล (อังกฤษ)" outlined
+                  <v-text-field class="textfield" placeholder="กรอกนามสกุล (อังกฤษ)" outlined
                     v-model="user.lastname_eng"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">สัญชาติ:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกสัญชาติ" outlined
+                  <v-text-field class="textfield" placeholder="กรอกสัญชาติ" outlined
                     v-model="user.nationality"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">เชื้อชาติ:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกเชื้อชาติ" outlined
+                  <v-text-field class="textfield" placeholder="กรอกเชื้อชาติ" outlined
                     v-model="user.race"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">ศาสนา:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกศาสนา" outlined
+                  <v-text-field class="textfield" placeholder="กรอกศาสนา" outlined
                     v-model="user.religion"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">กรุ๊ปเลือด:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกกรุ๊ปเลือด" outlined
+                  <v-text-field class="textfield" placeholder="กรอกกรุ๊ปเลือด" outlined
                     v-model="user.blood_group"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">เพศ:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกเพศ" outlined
-                    v-model="user.gender"></v-text-field>
+                  <v-text-field class="textfield" placeholder="กรอกเพศ" outlined v-model="user.gender"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">วัน-เดือน-ปี เกิด:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอก วัน-เดือน-ปี เกิด"
-                    outlined v-model="user.birthday"></v-text-field>
+                  <v-text-field class="textfield" placeholder="กรอก วัน-เดือน-ปี เกิด" outlined
+                    v-model="user.birthday"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">บัตรประชาชน / หนังสือเดินทาง:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7"
-                    placeholder="กรอกเลขบัตรประชาชน / หนังสือเดินทาง" outlined v-model="user.idCard"></v-text-field>
+                  <v-text-field class="textfield" placeholder="กรอกเลขบัตรประชาชน / หนังสือเดินทาง" outlined
+                    v-model="user.idCard"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">วันหมดอายุ:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกวันหมดอายุ" outlined
+                  <v-text-field class="textfield" placeholder="กรอกวันหมดอายุ" outlined
                     v-model="user.expiration_date"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">ตำแหน่งงาน:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกตำแหน่งงาน" outlined
+                  <v-text-field class="textfield" placeholder="กรอกตำแหน่งงาน" outlined
                     v-model="user.job_position"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">ประเภทหน่วยงาน:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกประเภทหน่วยงาน" outlined
+                  <v-text-field class="textfield" placeholder="กรอกประเภทหน่วยงาน" outlined
                     v-model="user.organization_type"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">สถานที่ทำงาน:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกสถานที่ทำงาน" outlined
+                  <v-text-field class="textfield" placeholder="กรอกสถานที่ทำงาน" outlined
                     v-model="user.workplace"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div class="text-subtitle-1 text-medium-emphasis">อีเมลที่ทำงาน:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกอีเมลที่ทำงาน" outlined
+                  <v-text-field class="textfield" placeholder="กรอกอีเมลที่ทำงาน" outlined
                     v-model="user.work_email"></v-text-field>
                 </v-col>
               </v-row>
               <v-row cols="12" md="12">
                 <v-col>
                   <div class="text-subtitle-1 text-medium-emphasis">ที่อยู่ในการจัดส่งเอกสาร:</div>
-                  <v-text-field class="textfield" background-color="#f0f2f7" placeholder="กรอกที่อยู่ในการจัดส่งเอกสาร"
-                    outlined v-model="user.address"></v-text-field>
+                  <v-text-field class="textfield" placeholder="กรอกที่อยู่ในการจัดส่งเอกสาร" outlined
+                    v-model="user.address"></v-text-field>
                 </v-col>
               </v-row>
 
@@ -226,6 +225,7 @@ export default {
 .v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
+  background: #f0f2f7;
 }
 
 .botton-group1 {
