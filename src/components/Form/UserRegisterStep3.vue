@@ -1,7 +1,7 @@
 <template>
   <v-container
-    class="d-flex flex-column align-center justify-center"
-    style="min-height: 100vh"
+    class="d-flex flex-column align-center justify-center mt-n7"
+    style="min-height: 90vh"
   >
     <h2 class="textheader text-center mb-4">
       เอกสารการสมัครของท่านได้รับส่งเข้าสู่ระบบเรียบร้อยแล้ว
@@ -44,7 +44,7 @@
     <br />
     <v-btn
       class="ma-2 mt-5"
-      color="#42B6F6"
+      color="#A0D8F6"
       height="50px"
       width="400px"
       variant="tonal"
@@ -76,5 +76,10 @@
   color: black;
   font-family: 'Prompt', sans-serif;
   font-weight: 400; /* Regular 400 */
+}
+
+.text {
+  font-size: 16px; /* ปรับขนาดตัวหนังสือ */
+  line-height: 1.8; /* ปรับระยะห่างระหว่างบรรทัด */
 }
 </style>
