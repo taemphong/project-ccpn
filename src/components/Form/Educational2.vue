@@ -2,6 +2,7 @@
   <div>
     <v-checkbox
       v-model="localSelected"
+      color="light-green"
       @change="updateSelected"
       :label="label"
       :value="value"

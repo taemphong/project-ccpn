@@ -4,8 +4,8 @@
       <v-img :src="require('@/assets/images/banner1.png')" alt="Logo" class="logo" contain max-width="auto" />
     </div>
     <div style="justify-items: center;">
-      <v-stepper v-model="e1" alt-labels style="padding-left: 200px;padding-right: 200px; justify-items: center;">
-        <v-stepper-header style="width: 100%; max-width: 700px; border: none; box-shadow: none;">
+      <v-stepper v-model="e1" alt-labels style="padding-left: 160px;padding-right: 160px; justify-items: center;">
+        <v-stepper-header style="width: 100%; max-width: 900px; border: none; box-shadow: none;">
           <v-stepper-step :complete="e1 > 1" step="1" color="green" class="no-number">
             กรอกข้อมูล
           </v-stepper-step>
@@ -39,22 +39,19 @@
               <v-btn @click="e1 = 3" class="my-btn" :style="{ backgroundColor: '#00B69B', color: '#fff' }">
                 ถัดไป
               </v-btn>
-            </div>
-            <div class="d-flex justify-center">
-              <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn mt-5"
+              <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn ml-5"
                 :style="{ backgroundColor: '#4169E1', color: '#fff' }"> ย้อนกลับ </v-btn>
             </div>
+
           </v-stepper-content>
 
           <v-stepper-content step="3">
             <UserRegisterStep3 />
             <div class="d-flex justify-center">
-              <v-btn @click="e1 = 1" class="my-btn" :style="{ backgroundColor: '#00B69B', color: '#fff' }">
+              <v-btn @click="e1 = 3" class="my-btn" :style="{ backgroundColor: '#00B69B', color: '#fff' }">
                 ถัดไป
               </v-btn>
-            </div>
-            <div class="d-flex justify-center">
-              <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn mt-5"
+              <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn ml-5"
                 :style="{ backgroundColor: '#4169E1', color: '#fff' }"> ย้อนกลับ </v-btn>
             </div>
           </v-stepper-content>
