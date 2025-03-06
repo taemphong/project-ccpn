@@ -129,7 +129,6 @@ export default {
   background-color: white !important; /* ให้พื้นหลังเป็นสีขาว */
 }
 
-/* เมื่อเป็น step ปัจจุบันหรือเสร็จสมบูรณ์ */
 .no-number >>> .v-stepper__step--active .v-stepper__step__step,
 .no-number >>> .v-stepper__step--complete .v-stepper__step__step {
   background-color: #00B69B !important;
