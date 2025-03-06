@@ -22,8 +22,8 @@
           (4) สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ
           ปริญญา <br />
           ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร
-          หรือวุฒิบัตรในวิชาชีพการสารณสุขชุมชน <br />
-          ขากสถาบันการศึกษาที่สภาการสาธรณสุขชุมชนรับรอง <br />
+          หรือวุฒิบัตรในวิชาชีพการสารธรณสุขชุมชน <br />
+          จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง <br />
           - Transcript <br />
           - ปริญญาบัตร <br />
           - อนุปริญญาบัตร <br />
@@ -48,8 +48,7 @@
       height="50px"
       width="400px"
       variant="tonal"
-      style="color: white; 
-      font-size: 18px"
+      style="color: white; font-size: 18px"
     >
       <v-icon left size="30">mdi-magnify</v-icon>
       ตรวจสอบสถานะคำขอเป็นสมาชิก
@@ -60,13 +59,22 @@
 <script setup></script>
 
 <style>
+/* โหลดฟอนต์ Prompt SemiBold 600 และ Regular 400 */
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap');
+
+/* กำหนดฟอนต์สำหรับหัวข้อ */
+.textheader {
+  font-size: 24px;
+  color: #34854b;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 600; /* SemiBold 600 */
+}
+
+/* กำหนดฟอนต์สำหรับเนื้อหาหลัก */
 .text {
   font-size: 18px;
   color: black;
-}
-
-.textheader {
-  font-size: 20px;
-  color: #34854b;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400; /* Regular 400 */
 }
 </style>

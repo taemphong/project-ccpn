@@ -1,7 +1,12 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
+      <v-img
+        :src="require('@/assets/images/logp4.jpg')"
+        contain
+        max-height="120"
+        class="drawer-image"
+      ></v-img>
       <v-list dense>
         <template v-for="item in menuItems">
           <v-list-group v-if="item.subItems" :key="item.text">
@@ -14,7 +19,11 @@
               </v-list-item-content>
             </template>
 
-            <v-list-item v-for="subItem in item.subItems" :key="subItem.text" :to="subItem.to">
+            <v-list-item
+              v-for="subItem in item.subItems"
+              :key="subItem.text"
+              :to="subItem.to"
+            >
               <v-list-item-icon>
                 <v-icon>{{ subItem.icon }}</v-icon>
               </v-list-item-icon>
@@ -22,7 +31,6 @@
                 <v-list-item-title>{{ subItem.text }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-
           </v-list-group>
 
           <v-list-item v-else :key="item.text" :to="item.to">
@@ -50,7 +58,13 @@
             user.role
           }}</span>
         </div>
-        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
+        <v-menu
+          v-model="menu"
+          :close-on-content-click="false"
+          :nudge-width="200"
+          offset-y
+          :nudge-bottom="20"
+        >
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-bind="attrs" v-on="on" icon class="icon-btn" elevation="0">
               <v-icon :class="{ 'rotate-icon': menu }" color="gray" size="30">
@@ -100,9 +114,14 @@
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn tile color="success" @click="logout">
-                <v-icon left> mdi-logout </v-icon>
-                Logout
+              <v-btn
+                tile
+                color="#3D8E56CC"
+                @click="logout"
+                style="width: 220px; height: 45px; margin-right: 15px"
+              >
+                ลงชื่อออก
+                <v-icon left>mdi-logout</v-icon>
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -113,7 +132,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import variable from "../../main.config.js";
 export default {
   data() {
@@ -129,11 +148,22 @@ export default {
           text: "ข้อมูล",
           icon: "mdi-account-outline",
           subItems: [
-            { text: "ข้อมูลส่วนตัว", icon: "mdi-circle-small", to: "/user-information" },
-            { text: "ข้อมูลที่อยู่", icon: "mdi-circle-small", to: "/user-address" },
-            { text: "ข้อมูลการศึกษา", icon: "mdi-circle-small", to: "/user-education-information" },
+            {
+              text: "ข้อมูลส่วนตัว",
+              icon: "mdi-circle-small",
+              to: "/user-information",
+            },
+            {
+              text: "ข้อมูลที่อยู่",
+              icon: "mdi-circle-small",
+              to: "/user-address",
+            },
+            {
+              text: "ข้อมูลการศึกษา",
+              icon: "mdi-circle-small",
+              to: "/user-education-information",
+            },
           ],
-
         },
         {
           text: "หลักสูตรที่เปิดอบรม",
@@ -161,30 +191,33 @@ export default {
   },
   async mounted() {
     try {
-      const authToken = localStorage.getItem('authToken');
+      const authToken = localStorage.getItem("authToken");
       if (!authToken) {
-        console.error('No auth token found');
+        console.error("No auth token found");
         return;
       }
 
       const userData = JSON.parse(authToken);
       const payload = { CustomerID: userData.ml_customer_id };
 
-      const response = await axios.post(variable.URL_BACKEND + "/get-info-member", payload);
+      const response = await axios.post(
+        variable.URL_BACKEND + "/get-info-member",
+        payload
+      );
 
       if (response.data.code === 200 && response.data.data.length > 0) {
         const data = response.data.data[0];
 
         this.user = {
           name: `${data.mp_name2} ${data.mp_name3}`,
-          role: data.mp_name1 || "N/A",  // กันค่า null หรือ undefined
+          role: data.mp_name1 || "N/A", // กันค่า null หรือ undefined
           avatar: require("@/assets/images/bot.png"),
         };
       } else {
-        console.error('Data not found');
+        console.error("Data not found");
       }
     } catch (error) {
-      console.error('Error fetching user info:', error);
+      console.error("Error fetching user info:", error);
     }
   },
   computed: {
@@ -205,6 +238,15 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap");
+
+* {
+  font-size: 18px;
+  color: black;
+  font-family: "Prompt";
+  font-weight: 400; /* Regular 400 */
+}
+
 .text {
   color: black;
 }
@@ -278,7 +320,6 @@ export default {
   color: black !important;
 }
 
-
 .icon-btn {
   transition: background-color 0.3s ease;
 }
@@ -298,5 +339,10 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0;
+}
+
+:deep(.v-list-item-title) {
+  font-family: "Prompt", sans-serif !important;
+  font-weight: 400 !important;
 }
 </style>
