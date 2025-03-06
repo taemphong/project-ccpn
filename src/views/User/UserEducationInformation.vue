@@ -56,7 +56,7 @@ export default {
     },
   },
   methods: {
-    async festchEducationData() {
+    async fetchEducationData() {
       const authToken = localStorage.getItem('authToken');
       if (!authToken) {
         console.error('No auth token found');
@@ -95,6 +95,10 @@ export default {
 .custom-table {
   border-collapse: collapse;
   width: 100%;
+  border-radius: 10px;
+  /* เพิ่มมุมมนให้กับตาราง */
+  overflow: hidden;
+  /* ซ่อนส่วนที่เกินจากมุมโค้ง */
 }
 
 .custom-table th,
@@ -104,9 +108,27 @@ export default {
   text-align: left;
 }
 
-.table-header {
-  background-color: #3D8E5699;
+/* ทำให้หัวตาราง (thead) เป็นบาร์เดียวที่มีไล่สี */
+.custom-table thead {
+  background: linear-gradient(to right, #6CC54B, #4FC281);
+  /* ไล่สีเขียวจากซ้ายไปขวา */
   color: white;
+}
+
+.table-header {
   font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* เพิ่มมุมมนให้กับ v-card */
+.v-card {
+  padding: 50px;
+  margin: 50px;
+  width: 95%;
+  border-radius: 20px;
+  /* เพิ่มมุมมนให้กับ v-card */
+  overflow: hidden;
+  /* ซ่อนส่วนเกินที่เกินมุมโค้ง */
 }
 </style>
