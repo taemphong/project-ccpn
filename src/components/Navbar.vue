@@ -1,7 +1,10 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
+      <router-link to="/home">
+        <v-img :src="require('@/assets/images/Logo4.png')" contain max-height="120"
+          class="drawer-image align-top"></v-img>
+      </router-link>
       <v-list dense>
         <template v-for="item in menuItems">
           <v-list-group v-if="item.subItems" :key="item.text">
@@ -111,7 +114,6 @@
     </v-app-bar>
   </div>
 </template>
-
 <script>
 import axios from 'axios';
 import variable from "../../main.config.js";
@@ -298,5 +300,12 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0;
+}
+
+.align-top {
+  margin-top: 0;
+  padding-top: 0;
+  display: block;
+  margin-bottom: auto;
 }
 </style>
