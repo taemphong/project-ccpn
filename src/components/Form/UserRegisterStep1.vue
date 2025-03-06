@@ -525,6 +525,6 @@ export default {
 .v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
-  background: #f0f2f7;
+  background: #F5F6FA;
 }
 </style>
