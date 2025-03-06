@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid class="login-container fill-height">
+  <v-container fluid class="login-container left-side fill-height">
     <v-row no-gutters class="fill-height">
-      <v-col cols="7" class="left-side">
+      <v-col cols="7">
         <v-img :src="require('@/assets/images/logo5.png')" alt="Logo" class="logo" contain max-width="500" />
         <div>
           <h2 class="text1">สภาการสาธารณสุขชุมชน</h2>
@@ -45,8 +45,6 @@
 <script>
 import axios from "axios";
 import variable from "../../main.config.js";
-import Swal from "sweetalert2";
-
 export default {
   data() {
     return {
@@ -70,15 +68,7 @@ export default {
 
         if (response.data.code === 200) {
           localStorage.setItem("authToken", JSON.stringify(response.data.data));
-          Swal.fire({
-            title: 'เข้าสู่ระบบสำเร็จ!',
-            text: 'คุณจะถูกนำไปยังหน้าแรกในไม่ช้า',
-            icon: 'success',
-            timer: 1000,
-            showConfirmButton: false
-          }).then(() => {
-            this.$router.push("/home");
-          });
+          this.$router.push("/home"); // ไปที่หน้า home
         } else {
           alert("เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง");
         }
@@ -91,13 +81,14 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .login-container {
   height: 100vh;
 }
 
 .left-side {
-  background-image: url("@/assets/images/bg3.png");
+  background-image: url("@/assets/images/bgreal.jpg");
   background-size: cover;
   background-position: center;
 }
