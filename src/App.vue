@@ -32,7 +32,10 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: 'Kanit', sans-serif;
+* {
+  font-size: 18px;
+  color: black;
+  font-family: 'Prompt', sans-serif;
+  font-weight: 400;
 }
 </style>
