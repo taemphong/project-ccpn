@@ -545,5 +545,7 @@ import Educational5 from "./Educational5.vue";
   color: red;
 }
 
+
+
   </style>
   
