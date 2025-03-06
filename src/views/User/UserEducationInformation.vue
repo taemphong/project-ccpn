@@ -56,7 +56,7 @@ export default {
     },
   },
   methods: {
-    async fetchEducationData() {
+    async festchEducationData() {
       const authToken = localStorage.getItem('authToken');
       if (!authToken) {
         console.error('No auth token found');

@@ -45,6 +45,8 @@
 <script>
 import axios from "axios";
 import variable from "../../main.config.js";
+import Swal from "sweetalert2";
+
 export default {
   data() {
     return {
@@ -68,7 +70,15 @@ export default {
 
         if (response.data.code === 200) {
           localStorage.setItem("authToken", JSON.stringify(response.data.data));
-          this.$router.push("/home"); // ไปที่หน้า home
+          Swal.fire({
+            title: 'เข้าสู่ระบบสำเร็จ!',
+            text: 'คุณจะถูกนำไปยังหน้าแรกในไม่ช้า',
+            icon: 'success',
+            timer: 1000,
+            showConfirmButton: false
+          }).then(() => {
+            this.$router.push("/home");
+          });
         } else {
           alert("เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง");
         }
@@ -80,7 +90,6 @@ export default {
   },
 };
 </script>
-
 
 <style scoped>
 .login-container {
