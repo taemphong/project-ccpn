@@ -79,8 +79,8 @@ export default {
           const data = result.data[0];
 
           this.Address = [
-            { type: "ที่อยู่ปัจจุบัน", address: data.mha_address, phonenumber: data.mp_tel },
-            { type: "ที่อยู่ที่ทำงาน", address: data.moa_address, phonenumber: data.mp_tel },
+            { type: "ที่อยู่ปัจจุบัน", address: data.moa_address, phonenumber: data.mp_tel },
+            { type: "ที่อยู่ที่ทำงาน", address: data.mha_address, phonenumber: data.mp_tel },
             { type: "ที่อยู่ตามทะเบียนบ้าน", address: data.mca_address, phonenumber: data.mp_tel },
           ];
         }
