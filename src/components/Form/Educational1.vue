@@ -124,6 +124,11 @@ content: '*';
 color: red;
 }
 
+.v-text-field--outlined>>>fieldset {
+  border-color: rgba(218, 218, 218, 0.986);
+  border-width: 1px;
+  background: #F5F6FA;
+}
 
 </style>
   
