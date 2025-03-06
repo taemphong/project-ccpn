@@ -3,9 +3,9 @@
     <div>
       <v-img :src="require('@/assets/images/banner1.png')" alt="Logo" class="logo" contain max-width="auto" />
     </div>
-    <div style="justify-items: center; ">
-      <v-stepper v-model="e1" alt-labels style="width: 2000px; justify-items: center;">
-        <v-stepper-header style="width: 700px; border: none; box-shadow: none;">
+    <div style="justify-items: center;">
+      <v-stepper v-model="e1" alt-labels style="padding-left: 200px;padding-right: 200px; justify-items: center;">
+        <v-stepper-header style="width: 100%; max-width: 700px; border: none; box-shadow: none;">
           <v-stepper-step :complete="e1 > 1" step="1" color="green">
             กรอกข้อมูล
           </v-stepper-step>
@@ -26,19 +26,55 @@
         <v-stepper-items>
           <v-stepper-content step="1">
             <UserRegisterStep1 />
-            <v-btn color="primary" @click="e1 = 2"> Continue </v-btn>
+            <div class="d-flex justify-center">
+              <v-btn 
+                @click="e1 = 2" 
+                class="my-btn"
+                :style="{ backgroundColor: '#00B69B', color: '#fff' }"
+              >
+                ถัดไป
+              </v-btn>
+            </div>
           </v-stepper-content>
 
           <v-stepper-content step="2">
             <UserRegisterStep2 />
-            <v-btn color="primary" @click="e1 = 3"> Continue </v-btn>
-            <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
+            <div class="d-flex justify-center">
+              <v-btn 
+                @click="e1 = 3" 
+                class="my-btn"
+                :style="{ backgroundColor: '#00B69B', color: '#fff' }"
+              >
+                ถัดไป
+              </v-btn>
+            </div>
+            <div class="d-flex justify-center">
+            <v-btn
+            v-if="e1 > 1" 
+            text @click="e1--"
+            class="my-btn mt-5"
+                :style="{ backgroundColor: '#4169E1', color: '#fff' }"> ย้อนกลับ </v-btn>
+              </div>
           </v-stepper-content>
 
           <v-stepper-content step="3">
             <UserRegisterStep3 />
-            <v-btn color="primary" @click="e1 = 1"> Continue </v-btn>
-            <v-btn v-if="e1 > 1" text @click="e1--"> ย้อนกลับ </v-btn>
+            <div class="d-flex justify-center">
+              <v-btn 
+                @click="e1 = 1" 
+                class="my-btn"
+                :style="{ backgroundColor: '#00B69B', color: '#fff' }"
+              >
+                ถัดไป
+              </v-btn>
+            </div>
+            <div class="d-flex justify-center">
+            <v-btn
+            v-if="e1 > 1" 
+            text @click="e1--"
+            class="my-btn mt-5"
+                :style="{ backgroundColor: '#4169E1', color: '#fff' }"> ย้อนกลับ </v-btn>
+              </div>
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
@@ -64,3 +100,26 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.my-btn {
+  width: 100%; /* ทำให้ปุ่มยาวเต็ม */
+  max-width: 300px; /* กำหนดความกว้างสูงสุด */
+  height: 50px !important; /* กำหนดความสูงของปุ่ม */
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .my-btn {
+    max-width: 200px; /* ขนาดปุ่มจะเล็กลงเมื่อหน้าจอขนาดเล็ก */
+    height: 40px !important; /* ลดความสูงของปุ่ม */
+  }
+}
+
+@media (max-width: 480px) {
+  .my-btn {
+    max-width: 150px; /* ขนาดปุ่มจะเล็กลงอีกเมื่อหน้าจอขนาดเล็กลง */
+    height: 35px !important; /* ลดความสูงของปุ่มมากขึ้น */
+  }
+}
+</style>
