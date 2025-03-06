@@ -15,10 +15,14 @@
             </template>
 
             <v-list-item v-for="subItem in item.subItems" :key="subItem.text" :to="subItem.to">
+              <v-list-item-icon>
+                <v-icon>{{ subItem.icon }}</v-icon>
+              </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title>{{ subItem.text }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
+
           </v-list-group>
 
           <v-list-item v-else :key="item.text" :to="item.to">
@@ -125,10 +129,11 @@ export default {
           text: "ข้อมูล",
           icon: "mdi-account-outline",
           subItems: [
-            { text: "o ข้อมูลส่วนตัว", to: "/user-information" },
-            { text: "o ข้อมูลที่อยู่", to: "/user-address" },
-            { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
+            { text: "ข้อมูลส่วนตัว", icon: "mdi-circle-small", to: "/user-information" },
+            { text: "ข้อมูลที่อยู่", icon: "mdi-circle-small", to: "/user-address" },
+            { text: "ข้อมูลการศึกษา", icon: "mdi-circle-small", to: "/user-education-information" },
           ],
+
         },
         {
           text: "หลักสูตรที่เปิดอบรม",
