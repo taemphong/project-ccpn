@@ -6,7 +6,6 @@
         @change="updateSelected"
         :label="label"
         :value="value"
-
       ></v-checkbox>
   
       <p v-if="localSelected">ประกาศนียบัตร</p>
