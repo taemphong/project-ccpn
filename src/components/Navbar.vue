@@ -1,12 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app>
-      <v-img
-        :src="require('@/assets/images/logp4.jpg')"
-        contain
-        max-height="120"
-        class="drawer-image"
-      ></v-img>
+      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
       <v-list dense>
         <template v-for="item in menuItems">
           <v-list-group v-if="item.subItems" :key="item.text">
@@ -19,15 +14,15 @@
               </v-list-item-content>
             </template>
 
-            <v-list-item
-              v-for="subItem in item.subItems"
-              :key="subItem.text"
-              :to="subItem.to"
-            >
+            <v-list-item v-for="subItem in item.subItems" :key="subItem.text" :to="subItem.to">
+              <v-list-item-icon>
+                <v-icon>{{ subItem.icon }}</v-icon>
+              </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title>{{ subItem.text }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
+
           </v-list-group>
 
           <v-list-item v-else :key="item.text" :to="item.to">
@@ -55,13 +50,7 @@
             user.role
           }}</span>
         </div>
-        <v-menu
-          v-model="menu"
-          :close-on-content-click="false"
-          :nudge-width="200"
-          offset-y
-          :nudge-bottom="10"
-        >
+        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="10">
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-bind="attrs" v-on="on" icon class="icon-btn" elevation="0">
               <v-icon :class="{ 'rotate-icon': menu }" color="gray" size="30">
@@ -124,12 +113,12 @@
 </template>
 
 <script>
+import axios from 'axios';
+import variable from "../../main.config.js";
 export default {
   data() {
     return {
       user: {
-        name: "นาย นรก",
-        role: "Admin",
         avatar: require("@/assets/images/bot.png"),
       },
       drawer: false,
@@ -140,10 +129,11 @@ export default {
           text: "ข้อมูล",
           icon: "mdi-account-outline",
           subItems: [
-            { text: "o ข้อมูลส่วนตัว", to: "/user-information" },
-            { text: "o ข้อมูลที่อยู่", to: "/user-address" },
-            { text: "o ข้อมูลการศึกษา", to: "/user-education-information" },
+            { text: "ข้อมูลส่วนตัว", icon: "mdi-circle-small", to: "/user-information" },
+            { text: "ข้อมูลที่อยู่", icon: "mdi-circle-small", to: "/user-address" },
+            { text: "ข้อมูลการศึกษา", icon: "mdi-circle-small", to: "/user-education-information" },
           ],
+
         },
         {
           text: "หลักสูตรที่เปิดอบรม",
@@ -168,6 +158,42 @@ export default {
         },
       ],
     };
+  },
+  async mounted() {
+    try {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        console.error('No auth token found');
+        return;
+      }
+
+      const userData = JSON.parse(authToken);
+      const payload = { CustomerID: userData.ml_customer_id };
+
+      const response = await axios.post(variable.URL_BACKEND + "/get-info-member", payload);
+
+      if (response.data.code === 200 && response.data.data.length > 0) {
+        const data = response.data.data[0];
+
+        this.user = {
+          name: `${data.mp_name2} ${data.mp_name3}`,
+          role: data.mp_name1 || "N/A",  // กันค่า null หรือ undefined
+          avatar: require("@/assets/images/bot.png"),
+        };
+      } else {
+        console.error('Data not found');
+      }
+    } catch (error) {
+      console.error('Error fetching user info:', error);
+    }
+  },
+  computed: {
+    normalMenuItems() {
+      return this.menuItems.filter((item) => !item.subItems);
+    },
+    dropdownMenuItems() {
+      return this.menuItems.filter((item) => item.subItems);
+    },
   },
   methods: {
     logout() {

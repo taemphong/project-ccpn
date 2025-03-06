@@ -32,17 +32,17 @@ const router = new VueRouter({
   routes,
 });
 
-function isAuthenticated() {
-  return !!localStorage.getItem('authToken');
-}
-
 router.beforeEach((to, from, next) => {
   const publicPages = ['login', 'user-register', 'user-register-request', 'check-document-status'];
   const authRequired = !publicPages.includes(to.name);
-  const loggedIn = isAuthenticated();
+  const loggedIn = localStorage.getItem('authToken');
 
   if (authRequired && !loggedIn) {
     return next('/');
+  }
+
+  if (loggedIn && to.name === 'login') {
+    return next('/home');
   }
 
   next();

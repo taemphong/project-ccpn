@@ -293,6 +293,112 @@
 
 
 
+<v-row>
+<v-col cols="12" md="12">
+    <h2 class="mb-5" >การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่างๆ (สมาคมที่เกี่ยวข้องเป็นหลัก)</h2>
+        <div class="mb-3 required">โปรดระบุ (ถ้ามี) </div>
+        <v-text-field v-model="associations_involved" outlined></v-text-field>
+      </v-col>
+
+
+
+      <v-col cols="12" md="12">
+    <h2 class="mb-5" >แนบหลักฐานประกอบการพิจารณา</h2>
+        <div class="mb-3 required">ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก ซึ่งถ่ายไว้แล้วไม่เกิน 6 เดือน ขนาด 1 นิ้ว </div>
+        <v-file-input v-model="photo" outlined placeholder="File input"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png และ .jpeg</div> 
+        
+        <div class="mb-3 required">สำเนาทะเบียนบ้าน </div>
+        <v-file-input v-model="Copyof_houseregistration" outlined placeholder="File input"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
+
+        <div class="mb-3 required">สำเนาบัตรประจำตัวประชาชน </div>
+        <v-file-input v-model="Copyof_IDcard" outlined placeholder="File input"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
+
+        <div class="mb-3 required">ใบรับรองแพทย์ </div>
+        <v-file-input v-model="Medical_certificate" outlined placeholder="File input"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
+
+        <div class="mb-3 required">ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่นๆ (ถ้ามี) </div>
+        <v-file-input v-model="Namechange_certificate" outlined placeholder="File input"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
+      </v-col>
+    </v-row>
+
+    <v-row>
+<v-col cols="12" md="12">
+    <h2 class="mb-5" >หลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชน</h2>
+    <h3 class="mb-5 required2" style="font-weight: 500; margin-top: -15px;"  >ข้าพเจ้าได้แนบหลักฐานประกอบการสมัครสมาชิกสภาการสาธาณสุขชุมชน ดังต่อไปนี้</h3>
+    <v-container fluid>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาทะเบียนบ้าน 1 ฉบับ"
+      value="สำเนาทะเบียนบ้าน 1 ฉบับ"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+      value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
+      value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
+    ></v-checkbox>
+    <div style="margin-left: 30px;">
+    <v-checkbox
+      v-model="selected2"
+      label="Transcript"
+      value="Transcript"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="ปริญญาบัคร"
+      value="ปริญญาบัคร"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="อนุปริญญาบัคร"
+      value="อนุปริญญาบัคร"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+      value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+    ></v-checkbox>
+  </div>
+  <v-checkbox
+      v-model="selected2"
+      label="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
+      value="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="ใบรับรองแพทย์"
+      value="ใบรับรองแพทย์"
+    ></v-checkbox>
+    <v-checkbox
+      v-model="selected2"
+      label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+      value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+    ></v-checkbox>
+
+    <v-col cols="12" md="12">
+      <h2 class="mb-5 required2" >การให้ความยินยอม</h2>
+    </v-col>
+    <v-checkbox
+      v-model="selected2"
+      label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
+      value="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
+    ></v-checkbox>
+
+  </v-container>
+      </v-col>
+    </v-row>
+
+
+
     </v-container>
   </template>
   
@@ -406,6 +512,12 @@ import Educational5 from "./Educational5.vue";
     radios: '',
 
     selected: [],
+    selected2: [],
+    photo: null,
+    Copyof_houseregistration: null,
+    Copyof_IDcard: null,
+    Medical_certificate: null,
+    Namechange_certificate: null,
 
     
 
@@ -424,6 +536,11 @@ import Educational5 from "./Educational5.vue";
   
   <style scoped>
   .required::after {
+  content: '*';
+  color: red;
+}
+
+.required2::before {
   content: '*';
   color: red;
 }
