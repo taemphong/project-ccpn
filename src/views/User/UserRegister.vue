@@ -37,11 +37,12 @@
           <v-stepper-content step="2">
             <UserRegisterStep2 />
             <div class="d-flex justify-center">
-              <v-btn @click="e1 = 3" class="my-btn" :style="{ backgroundColor: '#00B69B', color: '#fff' }">
-                ถัดไป
-              </v-btn>
-              <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn ml-5"
+ 
+              <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn "
                 :style="{ backgroundColor: '#4169E1', color: '#fff' }"> ย้อนกลับ </v-btn>
+                <v-btn @click="e1 = 3" class="my-btn ml-5" :style="{ backgroundColor: '#00B69B', color: '#fff' }">
+                ส่งใบสมัคร
+              </v-btn>
             </div>
 
           </v-stepper-content>
@@ -50,10 +51,9 @@
             <UserRegisterStep3 />
             <div class="d-flex justify-center">
               <v-btn @click="e1 = 3" class="my-btn" :style="{ backgroundColor: '#00B69B', color: '#fff' }">
-                ถัดไป
+                <v-icon left size="30">mdi-magnify</v-icon>ตรวจสถานะคำขอเป็นสมาชิก
               </v-btn>
-              <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn ml-5"
-                :style="{ backgroundColor: '#4169E1', color: '#fff' }"> ย้อนกลับ </v-btn>
+    
             </div>
           </v-stepper-content>
         </v-stepper-items>
