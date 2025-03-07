@@ -6,180 +6,96 @@
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">คำนำหน้าชื่อ</div>
-        <v-text-field
-          v-model="prefixTh"
-          :items="prefixOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="prefixTh" :items="prefixOptions" outlined class="custom-input"></v-text-field>
       </v-col>
 
       <v-col cols="12" md="4">
         <div class="mb-3">ชื่อ</div>
-        <v-text-field
-          v-model="firstNameTh"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="firstNameTh" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">นามสกุล</div>
-        <v-text-field
-          v-model="lastNameTh"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="lastNameTh" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">คำนำหน้าชื่อ (อังกฤษ)</div>
-        <v-text-field
-          v-model="prefixEn"
-          :items="prefixOptionsEn"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="prefixEn" :items="prefixOptionsEn" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">ชื่อ (อังกฤษ)</div>
-        <v-text-field
-          v-model="firstNameEn"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="firstNameEn" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">นามสกุล (อังกฤษ)</div>
-        <v-text-field
-          v-model="lastNameEn"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="lastNameEn" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">เพศ</div>
-        <v-text-field
-          v-model="gender"
-          :items="genderOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="gender" :items="genderOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">สัญชาติ</div>
-        <v-text-field
-          v-model="nationality"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="nationality" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">เชื้อชาติ</div>
-        <v-text-field
-          v-model="ethnicity"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="ethnicity" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">ศาสนา</div>
-        <v-text-field
-          v-model="religion"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="religion" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">หมู่โลหิต</div>
-        <v-text-field
-          v-model="bloodType"
-          :items="bloodTypeOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="bloodType" :items="bloodTypeOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">ประเภทหน่วยงาน</div>
-        <v-text-field
-          v-model="organizationType"
-          :items="organizationTypeOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="organizationType" :items="organizationTypeOptions" outlined
+          class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">ตำแหน่ง</div>
-        <v-text-field
-          v-model="position"
-          :items="positionOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="position" :items="positionOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">โทรศัพท์มือถือ</div>
-        <v-text-field
-          v-model="phoneNumber"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="phoneNumber" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">อีเมล</div>
-        <v-text-field
-          v-model="email"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="email" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
     <v-row class="custom-left-margin"> วัน-เดือน-ปีเกิด </v-row>
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">วัน</div>
-        <v-text-field
-          v-model="day"
-          :items="dayOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="day" :items="dayOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เดือน</div>
-        <v-text-field
-          v-model="month"
-          :items="monthOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="month" :items="monthOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ปี</div>
-        <v-text-field
-          v-model="year"
-          :items="yearOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="year" :items="yearOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
-        <v-text-field
-          v-model="idCard"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="idCard" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
@@ -187,38 +103,19 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">วัน</div>
-        <v-text-field
-          v-model="expireDay"
-          :items="dayOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="expireDay" :items="dayOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เดือน</div>
-        <v-text-field
-          v-model="expireMonth"
-          :items="monthOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="expireMonth" :items="monthOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ปี</div>
-        <v-text-field
-          v-model="expireYear"
-          :items="yearOptions2"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="expireYear" :items="yearOptions2" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ออกโดย</div>
-        <v-text-field
-          v-model="issuedBy"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="issuedBy" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
@@ -231,68 +128,37 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <div class="mb-3">ชื่อสถานที่ทำงาน</div>
-        <v-text-field
-          v-model="workplaceName"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="workplaceName" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">จังหวัด</div>
-        <v-text-field
-          v-model="province"
-          :items="provinceOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="province" :items="provinceOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">อำเภอ/เขต</div>
-        <v-text-field
-          v-model="district"
-          :items="districtOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="district" :items="districtOptions" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">ตำบล/แขวง</div>
-        <v-text-field
-          v-model="subdistrict"
-          :items="subdistrictOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="subdistrict" :items="subdistrictOptions" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">รหัสไปรษณีย์</div>
-        <v-text-field
-          v-model="postalCode"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="postalCode" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">โทรศัพท์ที่ทำงาน</div>
-        <v-text-field
-          v-model="workPhone"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="workPhone" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">อีเมล</div>
-        <v-text-field
-          v-model="jobEmail"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="jobEmail" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
@@ -305,60 +171,36 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <div class="mb-3">ที่อยู่</div>
-        <v-text-field
-          v-model="currentAddress"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="currentAddress" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">จังหวัด</div>
-        <v-text-field
-          v-model="currentProvince"
-          :items="currentprovinceOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="currentProvince" :items="currentprovinceOptions" outlined
+          class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">อำเภอ/เขต</div>
-        <v-text-field
-          v-model="currentDistrict"
-          :items="currentdistrictOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="currentDistrict" :items="currentdistrictOptions" outlined
+          class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">ตำบล/แขวง</div>
-        <v-text-field
-          v-model="currentSubdistrict"
-          :items="currentsubdistrictOptions"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="currentSubdistrict" :items="currentsubdistrictOptions" outlined
+          class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">รหัสไปรษณีย์</div>
-        <v-text-field
-          v-model="currentPostalCode"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="currentPostalCode" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="4">
         <div class="mb-3">โทรศัพท์มือถือ</div>
-        <v-text-field
-          v-model="mobilePhone"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="mobilePhone" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
@@ -375,10 +217,7 @@
             <v-col cols="12" v-for="(option, index) in options" :key="index">
               <v-card outlined max-width="250px">
                 <v-card-text>
-                  <v-radio
-                    :label="option.label"
-                    :value="option.value"
-                  ></v-radio>
+                  <v-radio :label="option.label" :value="option.value"></v-radio>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -396,71 +235,42 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <div class="mb-3">ระดับการศึกษา</div>
-        <v-checkbox
-          v-for="(option, index) in educationLevels"
-          :key="index"
-          v-model="selectedEducation"
-          :label="option.label"
-          :value="option.value"
-        ></v-checkbox>
+        <v-checkbox v-for="(option, index) in educationLevels" :key="index" v-model="selectedEducation"
+          :label="option.label" :value="option.value"></v-checkbox>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <div class="mb-3">สถานที่ศึกษา</div>
-        <v-text-field
-          v-model="academy"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="academy" outlined class="custom-input"></v-text-field>
       </v-col>
 
       <v-col cols="12" md="6">
         <div class="mb-3">วุฒิการศึกษา</div>
-        <v-text-field
-          v-model="educational"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="educational" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <div class="mb-3">สาขาวิชา</div>
-        <v-text-field
-          v-model="major"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+        <v-text-field v-model="major" outlined class="custom-input"></v-text-field>
       </v-col>
 
       <v-col cols="12" md="6">
         <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
         <v-row class="d-flex">
           <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field
-              v-model="dayeducation"
-              outlined
-              class="custom-input"
-            ></v-text-field>
+            <v-text-field v-model="dayeducation" outlined class="custom-input"></v-text-field>
           </v-col>
 
           <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field
-              v-model="montheducation"
-              outlined
-              class="custom-input"
-            ></v-text-field>
+            <v-text-field v-model="montheducation" outlined class="custom-input"></v-text-field>
           </v-col>
 
           <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field
-              v-model="yeareducation"
-              outlined
-              class="custom-input"
-            ></v-text-field>
+            <v-text-field v-model="yeareducation" outlined class="custom-input"></v-text-field>
           </v-col>
         </v-row>
       </v-col>
@@ -486,22 +296,14 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.transcript)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.transcript)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.educational)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.educational)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -543,22 +345,14 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.picture">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.picture)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.picture)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6" v-if="files.houseregistration">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.houseregistration)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.houseregistration)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -575,22 +369,13 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.idCard">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.idCard)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black" @click="viewFile(files.idCard)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6" v-if="files.Namechange">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Namechange)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.Namechange)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -604,12 +389,8 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Medical)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.Medical)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -623,79 +404,36 @@
           ดังต่อไปนี้
         </h3>
         <v-container fluid>
-          <v-checkbox
-            v-model="selected2"
-            label="สำเนาทะเบียนบ้าน 1 ฉบับ"
-            value="สำเนาทะเบียนบ้าน 1 ฉบับ"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
-            label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
-            value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
+          <v-checkbox v-model="selected2" label="สำเนาทะเบียนบ้าน 1 ฉบับ" value="สำเนาทะเบียนบ้าน 1 ฉบับ"
+            color="success"></v-checkbox>
+          <v-checkbox v-model="selected2" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+            value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ" color="success"></v-checkbox>
+          <v-checkbox v-model="selected2"
             label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
             value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
-            color="success"
-          ></v-checkbox>
+            color="success"></v-checkbox>
           <div style="margin-left: 30px">
-            <v-checkbox
-              v-model="selected2"
-              label="Transcript"
-              value="Transcript"
-              color="success"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="selected2"
-              label="ปริญญาบัคร"
-              value="ปริญญาบัคร"
-              color="success"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="selected2"
-              label="อนุปริญญาบัคร"
-              value="อนุปริญญาบัคร"
-              color="success"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="selected2"
-              label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
-              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
-              color="success"
-            ></v-checkbox>
+            <v-checkbox v-model="selected2" label="Transcript" value="Transcript" color="success"></v-checkbox>
+            <v-checkbox v-model="selected2" label="ปริญญาบัคร" value="ปริญญาบัคร" color="success"></v-checkbox>
+            <v-checkbox v-model="selected2" label="อนุปริญญาบัคร" value="อนุปริญญาบัคร" color="success"></v-checkbox>
+            <v-checkbox v-model="selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา" color="success"></v-checkbox>
           </div>
-          <v-checkbox
-            v-model="selected2"
+          <v-checkbox v-model="selected2"
             label="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
             value="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
-            label="ใบรับรองแพทย์"
-            value="ใบรับรองแพทย์"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
-            label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
-            value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
-            color="success"
-          ></v-checkbox>
+            color="success"></v-checkbox>
+          <v-checkbox v-model="selected2" label="ใบรับรองแพทย์" value="ใบรับรองแพทย์" color="success"></v-checkbox>
+          <v-checkbox v-model="selected2" label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)" value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+            color="success"></v-checkbox>
 
           <v-col cols="12" md="12">
             <h2 class="mb-5">การให้ความยินยอม</h2>
           </v-col>
-          <v-checkbox
-            v-model="selected2"
-            class="mt-n3"
+          <v-checkbox v-model="selected2" class="mt-n3"
             label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
             value="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
-            color="success"
-          ></v-checkbox>
+            color="success"></v-checkbox>
         </v-container>
       </v-col>
     </v-row>
@@ -867,13 +605,18 @@ export default {
 }
 
 .custom-left-margin {
-  margin-left: 100px; /* ปรับระยะห่างจากขอบซ้าย */
+  margin-left: 100px;
+  /* ปรับระยะห่างจากขอบซ้าย */
 }
 
-.v-text-field--outlined >>> fieldset {
+.v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
-  background: #f5f6fa;
+  background: #f0f2f7;
+}
+
+.v-text-field {
+  border-radius: 10px;
 }
 
 .textheader {

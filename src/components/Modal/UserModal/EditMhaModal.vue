@@ -94,6 +94,9 @@ export default {
     border-color: rgba(218, 218, 218, 0.986);
     border-width: 1px;
     background: #f0f2f7;
-    border-radius: 14px;
+}
+
+.v-text-field {
+    border-radius: 10px;
 }
 </style>

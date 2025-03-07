@@ -226,6 +226,10 @@ export default {
   background: #f0f2f7;
 }
 
+.v-text-field {
+  border-radius: 10px;
+}
+
 .botton-group1 {
   margin-top: auto;
   justify-content: center;
