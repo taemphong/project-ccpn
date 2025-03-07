@@ -19,7 +19,7 @@
       </v-col>
     </v-row>
 
-    <v-row  class="v-raw-between">
+    <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ (อังกฤษ) </div>
         <v-select v-model="prefixEn" :items="prefixOptionsEn" outlined></v-select>
@@ -34,7 +34,7 @@
       </v-col>
     </v-row>
 
-    <v-row  class="v-raw-between">
+    <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">เพศ </div>
         <v-select v-model="gender" :items="genderOptions" outlined></v-select>
@@ -49,7 +49,7 @@
       </v-col>
     </v-row>
 
-    <v-row  class="v-raw-between">
+    <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ศาสนา </div>
         <v-text-field v-model="religion" outlined></v-text-field>
@@ -64,7 +64,7 @@
       </v-col>
     </v-row>
 
-    <v-row  class="v-raw-between">
+    <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำแหน่ง </div>
         <v-select v-model="position" :items="positionOptions" outlined></v-select>
@@ -82,47 +82,47 @@
       วัน-เดือน-ปีเกิด
     </v-row>
     <v-row class="v-raw-between">
-  <v-col cols="12" md="3"  class="custom-col">
-    <div class="mb-3 required">วัน</div>
-    <v-select v-model="day" :items="dayOptions" outlined></v-select>
-  </v-col>
-  <v-col cols="12" md="3"  class="custom-col">
-    <div class="mb-3 required">เดือน</div>
-    <v-select v-model="month" :items="monthOptions" outlined></v-select>
-  </v-col>
-  <v-col cols="12" md="3" class="custom-col margin-right">
-    <div class="mb-3 required">ปี</div>
-    <v-select v-model="year" :items="yearOptions" outlined></v-select>
-  </v-col>
-  <v-col cols="12" md="3"> 
-    <div class="mb-3">เลขบัตรประชาชน</div>
-    <v-text-field v-model="idCard" outlined></v-text-field>
-  </v-col>
-</v-row>
+      <v-col cols="12" md="3" class="custom-col">
+        <div class="mb-3 required">วัน</div>
+        <v-select v-model="day" :items="dayOptions" outlined></v-select>
+      </v-col>
+      <v-col cols="12" md="3" class="custom-col">
+        <div class="mb-3 required">เดือน</div>
+        <v-select v-model="month" :items="monthOptions" outlined></v-select>
+      </v-col>
+      <v-col cols="12" md="3" class="custom-col margin-right">
+        <div class="mb-3 required">ปี</div>
+        <v-select v-model="year" :items="yearOptions" outlined></v-select>
+      </v-col>
+      <v-col cols="12" md="3">
+        <div class="mb-3">เลขบัตรประชาชน</div>
+        <v-text-field v-model="idCard" outlined></v-text-field>
+      </v-col>
+    </v-row>
 
 
 
     <v-row class="mt-4 ml-1 required">
       วันหมดอายุบัตร
     </v-row>
-<v-row class="v-raw-between">
-  <v-col cols="12" md="3" class="custom-col">
-    <div class="mb-3 required">วัน</div>
-    <v-select v-model="expireDay" :items="dayOptions" outlined></v-select>
-  </v-col>
-  <v-col cols="12" md="3" class="custom-col">
-    <div class="mb-3 required">เดือน</div>
-    <v-select v-model="expireMonth" :items="monthOptions" outlined></v-select>
-  </v-col>
-  <v-col cols="12" md="3" class="custom-col margin-right">
-    <div class="mb-3 required">ปี</div>
-    <v-select v-model="expireYear" :items="yearOptions2" outlined></v-select>
-  </v-col>
-  <v-col cols="12" md="3">
-    <div class="mb-3">ออกโดย</div>
-    <v-text-field v-model="issuedBy" outlined></v-text-field>
-  </v-col>
-</v-row>
+    <v-row class="v-raw-between">
+      <v-col cols="12" md="3" class="custom-col">
+        <div class="mb-3 required">วัน</div>
+        <v-select v-model="expireDay" :items="dayOptions" outlined></v-select>
+      </v-col>
+      <v-col cols="12" md="3" class="custom-col">
+        <div class="mb-3 required">เดือน</div>
+        <v-select v-model="expireMonth" :items="monthOptions" outlined></v-select>
+      </v-col>
+      <v-col cols="12" md="3" class="custom-col margin-right">
+        <div class="mb-3 required">ปี</div>
+        <v-select v-model="expireYear" :items="yearOptions2" outlined></v-select>
+      </v-col>
+      <v-col cols="12" md="3">
+        <div class="mb-3">ออกโดย</div>
+        <v-text-field v-model="issuedBy" outlined></v-text-field>
+      </v-col>
+    </v-row>
 
 
     <v-row>
@@ -134,7 +134,7 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-textarea  v-model="homeaddress" outlined rows="3"></v-textarea>
+        <v-textarea v-model="homeaddress" outlined rows="3"></v-textarea>
       </v-col>
     </v-row>
 
@@ -194,7 +194,7 @@
       </v-col>
     </v-row>
 
-    
+
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
@@ -240,56 +240,56 @@
     </v-row>
 
     <v-row>
-  <v-col cols="12" md="3">
-    <div class="mb-3 required">รหัสไปรษณีย์ </div>
-    <v-text-field v-model="currentPostalCode" outlined></v-text-field>
-  </v-col>
-  <v-col cols="12" md="3" class="custom-margin">
-    <div class="mb-3 required">โทรศัพท์มือถือ </div>
-    <v-text-field v-model="currentPhone" outlined></v-text-field>
-  </v-col>
-</v-row>
+      <v-col cols="12" md="3">
+        <div class="mb-3 required">รหัสไปรษณีย์ </div>
+        <v-text-field v-model="currentPostalCode" outlined></v-text-field>
+      </v-col>
+      <v-col cols="12" md="3" class="custom-margin">
+        <div class="mb-3 required">โทรศัพท์มือถือ </div>
+        <v-text-field v-model="currentPhone" outlined></v-text-field>
+      </v-col>
+    </v-row>
 
 
     <v-row>
       <v-col cols="12">
-        <h2  style="  font-size: 1.5rem;
+        <h2 style="  font-size: 1.5rem;
         font-weight: 600;
         margin-bottom:-10px ;">สถานที่ที่ต้องการให้ติดต่อ / จัดส่งเอกสาร </h2>
       </v-col>
     </v-row>
 
     <v-container fluid>
-  <v-radio-group v-model="radios">
-    <v-sheet outlined class="radio-box">
-      <v-radio value="radiosHome">
-        <template v-slot:label>
-          <div>ที่อยู่ตามทะเบียนบ้าน</div>
-        </template>
-      </v-radio>
-    </v-sheet>
+      <v-radio-group v-model="radios">
+        <v-sheet outlined class="radio-box">
+          <v-radio value="radiosHome">
+            <template v-slot:label>
+              <div>ที่อยู่ตามทะเบียนบ้าน</div>
+            </template>
+          </v-radio>
+        </v-sheet>
 
-    <v-sheet outlined class="radio-box">
-      <v-radio value="radiosWork">
-        <template v-slot:label>
-          <div>สถานที่ทำงาน</div>
-        </template>
-      </v-radio>
-    </v-sheet>
+        <v-sheet outlined class="radio-box">
+          <v-radio value="radiosWork">
+            <template v-slot:label>
+              <div>สถานที่ทำงาน</div>
+            </template>
+          </v-radio>
+        </v-sheet>
 
-    <v-sheet outlined class="radio-box">
-      <v-radio value="radiosCurrent">
-        <template v-slot:label>
-          <div>ที่อยู่ปัจจุบัน</div>
-        </template>
-      </v-radio>
-    </v-sheet>
-  </v-radio-group>
-</v-container>
+        <v-sheet outlined class="radio-box">
+          <v-radio value="radiosCurrent">
+            <template v-slot:label>
+              <div>ที่อยู่ปัจจุบัน</div>
+            </template>
+          </v-radio>
+        </v-sheet>
+      </v-radio-group>
+    </v-container>
 
     <v-row>
       <v-col cols="12">
-        <h2  style="  font-size: 1.5rem;
+        <h2 style="  font-size: 1.5rem;
         font-weight: 600;
         margin-bottom:-10px ;">วุฒิการศึกษา</h2>
       </v-col>
@@ -298,7 +298,7 @@
     <v-row>
       <v-container fluid>
         <div class="required">ระดับการศึกษา</div>
-        <Educational1 :selected="selected"  />
+        <Educational1 :selected="selected" />
         <Educational2 :selected="selected" />
         <Educational3 :selected="selected" />
         <Educational4 :selected="selected" />
@@ -310,9 +310,9 @@
 
     <v-row>
       <v-col cols="12" md="12">
-        <h2  style="  font-size: 1.5rem;
+        <h2 style="  font-size: 1.5rem;
         font-weight: 600;margin-bottom: 20px;">
-        การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่างๆ (สมาคมที่เกี่ยวข้องเป็นหลัก)</h2>
+          การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่างๆ (สมาคมที่เกี่ยวข้องเป็นหลัก)</h2>
         <div class="mb-3 required">โปรดระบุ (ถ้ามี) </div>
         <v-text-field v-model="associations_involved" outlined></v-text-field>
       </v-col>
@@ -320,7 +320,7 @@
 
 
       <v-col cols="12" md="12">
-        <h2  style="  font-size: 1.5rem;
+        <h2 style="  font-size: 1.5rem;
         font-weight: 600;margin-bottom: 20px;">แนบหลักฐานประกอบการพิจารณา</h2>
         <div class="mb-3 required">ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก ซึ่งถ่ายไว้แล้วไม่เกิน 6
           เดือน
@@ -357,12 +357,13 @@
 
     <v-row>
       <v-col cols="12" md="12">
-        <h2  style="  font-size: 1.5rem;
+        <h2 style="  font-size: 1.5rem;
         font-weight: 600;margin-bottom: 20px;">หลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชน</h2>
         <h3 class=" required2" style="font-weight: 500; margin-top: -15px;">
           ข้าพเจ้าได้แนบหลักฐานประกอบการสมัครสมาชิกสภาการสาธาณสุขชุมชน ดังต่อไปนี้</h3>
         <v-container fluid>
-          <v-checkbox color="light-green" v-model="selected2" label="สำเนาทะเบียนบ้าน 1 ฉบับ" value="สำเนาทะเบียนบ้าน 1 ฉบับ"></v-checkbox>
+          <v-checkbox color="light-green" v-model="selected2" label="สำเนาทะเบียนบ้าน 1 ฉบับ"
+            value="สำเนาทะเบียนบ้าน 1 ฉบับ"></v-checkbox>
           <v-checkbox color="light-green" v-model="selected2" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
             value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"></v-checkbox>
           <v-checkbox color="light-green" v-model="selected2"
@@ -371,7 +372,8 @@
           <div style="margin-left: 30px;">
             <v-checkbox color="light-green" v-model="selected2" label="Transcript" value="Transcript"></v-checkbox>
             <v-checkbox color="light-green" v-model="selected2" label="ปริญญาบัคร" value="ปริญญาบัคร"></v-checkbox>
-            <v-checkbox color="light-green" v-model="selected2" label="อนุปริญญาบัคร" value="อนุปริญญาบัคร"></v-checkbox>
+            <v-checkbox color="light-green" v-model="selected2" label="อนุปริญญาบัคร"
+              value="อนุปริญญาบัคร"></v-checkbox>
             <v-checkbox color="light-green" v-model="selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
               value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"></v-checkbox>
           </div>
@@ -386,16 +388,16 @@
     </v-row>
 
     <v-row>
-          <v-col cols="12" md="12">
-            <h2  style=" font-size: 1.5rem;
+      <v-col cols="12" md="12">
+        <h2 style=" font-size: 1.5rem;
         font-weight: 600;" class="mt-5 required2">การให้ความยินยอม</h2>
         <v-container fluid>
           <v-checkbox color="light-green" v-model="selected2"
             label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
             value="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"></v-checkbox>
-          </v-container>
-          </v-col>
-         </v-row>
+        </v-container>
+      </v-col>
+    </v-row>
 
 
 
@@ -548,12 +550,17 @@ export default {
 .v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
-  background: #F5F6FA;
-  border-radius: 10px ;
+  background: #f0f2f7;
 }
+
+.v-text-field {
+  border-radius: 10px;
+}
+
 .v-raw-between {
   justify-content: space-between;
 }
+
 .custom-col {
   max-width: 300px;
 }
@@ -565,7 +572,8 @@ export default {
 /* ใช้ media query เพื่อกำหนด margin-right ให้หายไปเมื่อหน้าจอเล็กกว่า 600px */
 @media (max-width: 400px) {
   .margin-right {
-    margin-right: 0; /* ลบ margin-right เมื่อหน้าจอเล็ก */
+    margin-right: 0;
+    /* ลบ margin-right เมื่อหน้าจอเล็ก */
   }
 }
 
@@ -573,16 +581,18 @@ export default {
   margin-left: 190px;
 }
 
-@media (max-width: 960px) { /* Vuetify md breakpoint */
+@media (max-width: 960px) {
+
+  /* Vuetify md breakpoint */
   .custom-margin {
     margin-left: 0 !important;
   }
 }
 
-.sectionhead{
+.sectionhead {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom:30px ;
+  margin-bottom: 30px;
 }
 
 .radio-box {
@@ -591,7 +601,4 @@ export default {
   border-radius: 8px;
   margin-bottom: 10px;
 }
-
-
-
 </style>

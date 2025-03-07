@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import EditProfileModal from '../../components/User/EditProfileModal.vue';
+import EditProfileModal from '../../components/Modal/User/EditProfileModal.vue';
 import axios from 'axios';
 
 export default {

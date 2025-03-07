@@ -12,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in Address" :key="item.type">
+            <tr class="pa-5" v-for="item in Address" :key="item.type">
               <td>
                 <span :class="getBackgroundClass(item.type)" style="color: white; margin: 30px;">
                   <v-icon v-if="item.type === 'ที่อยู่ปัจจุบัน'" color="white">mdi-map-marker</v-icon>

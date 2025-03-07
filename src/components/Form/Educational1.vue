@@ -1,16 +1,11 @@
 <template>
-    <div>
-      <v-checkbox
-        color="light-green"
-        v-model="localSelected"
-        @change="updateSelected"
-        :label="label"
-        :value="value"
-      ></v-checkbox>
-  
-      <p v-if="localSelected">ประกาศนียบัตร</p>
-      <v-row v-if="localSelected">
-        <v-col cols="12" md="6">
+  <div>
+    <v-checkbox color="light-green" v-model="localSelected" @change="updateSelected" :label="label"
+      :value="value"></v-checkbox>
+
+    <p v-if="localSelected">ประกาศนียบัตร</p>
+    <v-row v-if="localSelected">
+      <v-col cols="12" md="6">
         <div class="mb-3 required">เลือกสถาบันสถานศึกษา </div>
         <v-select v-model="educational_institution" :items="educationalInstitutions" outlined></v-select>
       </v-col>
@@ -24,46 +19,49 @@
         <v-select v-model="fieldofstudy" :items="fieldsOfStudy" outlined></v-select>
       </v-col>
 
-  <v-col cols="12" md="6">
-  <div class="mb-3 required">วัน/เดือน/ปี ที่จบการศึกษา</div>
-  <v-row>
-    <v-col cols="12" md="4">
-      <v-select v-model="daygraduation" :items="daygraduationOptions" outlined></v-select>
-    </v-col>
-    <v-col cols="12" md="4">
-      <v-select v-model="monthgraduation" :items="monthgraduationOptions" outlined></v-select>
-    </v-col>
-    <v-col cols="12" md="4">
-      <v-select v-model="yeargraduation" :items="yeargraduationOptions" outlined></v-select>
-    </v-col>
-  </v-row>
-</v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3 required">วัน/เดือน/ปี ที่จบการศึกษา</div>
+        <v-row>
+          <v-col cols="12" md="4">
+            <v-select v-model="daygraduation" :items="daygraduationOptions" outlined></v-select>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-select v-model="monthgraduation" :items="monthgraduationOptions" outlined></v-select>
+          </v-col>
+          <v-col cols="12" md="4">
+            <v-select v-model="yeargraduation" :items="yeargraduationOptions" outlined></v-select>
+          </v-col>
+        </v-row>
+      </v-col>
 
-<v-col cols="12" md="12">
-    <div class="mb-3 required">Transcript({{ localSelected }})</div>
-    <v-file-input v-model="Transcript" outlined placeholder="File input"></v-file-input>
-    <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
-</v-col>
+      <v-col cols="12" md="12">
+        <div class="mb-3 required">Transcript({{ localSelected }})</div>
+        <v-file-input v-model="Transcript" outlined placeholder="File input"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
+          .pdf</div>
+      </v-col>
 
-<v-col cols="12" md="12">
-    <div class="mb-3 required">สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ประกาศนียบัตร </div>
-    <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
-    <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ .pdf</div> 
-</v-col>
- 
-      
+      <v-col cols="12" md="12">
+        <div class="mb-3 required">สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ประกาศนียบัตร
+        </div>
+        <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
+          .pdf</div>
+      </v-col>
 
 
-</v-row>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      selected: Array, 
-    },
-    data() {
+
+
+    </v-row>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    selected: Array,
+  },
+  data() {
     return {
       label: "ประกาศนียบัตร",
       value: "ประกาศนียบัตร",
@@ -93,43 +91,45 @@
       yeargraduation: null,
     };
   },
-    watch: {
-      selected: {
-        handler(newVal) {
-          this.localSelected = newVal.includes(this.value); 
-        },
-        immediate: true,
+  watch: {
+    selected: {
+      handler(newVal) {
+        this.localSelected = newVal.includes(this.value);
       },
+      immediate: true,
     },
-    methods: {
-      updateSelected() {
-        let newSelected = [...this.selected]; 
-        if (this.localSelected) {
-   
-          if (!newSelected.includes(this.value)) {
-            newSelected.push(this.value);
-          }
-        } else {
- 
-          newSelected = newSelected.filter((item) => item !== this.value);
+  },
+  methods: {
+    updateSelected() {
+      let newSelected = [...this.selected];
+      if (this.localSelected) {
+
+        if (!newSelected.includes(this.value)) {
+          newSelected.push(this.value);
         }
-        this.$emit("update:selected", newSelected);
-      },
+      } else {
+
+        newSelected = newSelected.filter((item) => item !== this.value);
+      }
+      this.$emit("update:selected", newSelected);
     },
-  };
-  </script>
+  },
+};
+</script>
 
 <style scoped>
 .required::after {
-content: '*';
-color: red;
+  content: '*';
+  color: red;
 }
 
 .v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
-  background: #F5F6FA;
+  background: #f0f2f7;
 }
 
+.v-text-field {
+  border-radius: 10px;
+}
 </style>
-  

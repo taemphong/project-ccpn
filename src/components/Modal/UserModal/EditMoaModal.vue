@@ -6,39 +6,20 @@
                 <v-form>
                     <v-card-title>ที่อยู่ปัจจุบัน</v-card-title>
                     <v-row>
-                        <v-col md="12">
-                            <div class="mb-2">ที่อยู่:</div>
+                        <v-col md="4">
+                            <div class="mb-2">ตึก:</div>
                             <v-text-field class="textfield" placeholder="กรอกที่อยู่" outlined
                                 v-model="editedAddress.moa_address"></v-text-field>
                         </v-col>
-                    </v-row>
-                    <v-row>
                         <v-col md="4">
-                            <div class="mb-2">จังหวัด:</div>
-                            <v-text-field class="textfield" placeholder="กรอกจังหวัด" outlined
-                                v-model="editedAddress.mca"></v-text-field>
+                            <div class="mb-2">บ้านเลขที่:</div>
+                            <v-text-field class="textfield" placeholder="กรอกที่อยู่" outlined
+                                v-model="editedAddress.moa_address"></v-text-field>
                         </v-col>
                         <v-col md="4">
-                            <div class="mb-2">อำเภอ / เขต:</div>
-                            <v-text-field class="textfield" placeholder="กรอกอำเภอ / เขต" outlined
-                                v-model="editedAddress.workplace"></v-text-field>
-                        </v-col>
-                        <v-col md="4">
-                            <div class="mb-2">ตำบล / แขวง:</div>
-                            <v-text-field class="textfield" placeholder="กรอกตำบล / แขวง" outlined
-                                v-model="editedAddress.work_email"></v-text-field>
-                        </v-col>
-                    </v-row>
-                    <v-row>
-                        <v-col md="4">
-                            <div class="mb-2">รหัสไปรษณีย์:</div>
-                            <v-text-field class="textfield" placeholder="กรอกรหัสไปรษณีย์" outlined
-                                v-model="editedAddress.mca"></v-text-field>
-                        </v-col>
-                        <v-col md="4">
-                            <div class="mb-2">โทรศัพท์มือถือ:</div>
-                            <v-text-field class="textfield" placeholder="กรอกโทรศัพท์มือถือ" outlined
-                                v-model="editedAddress.workplace"></v-text-field>
+                            <div class="mb-2">หมู่:</div>
+                            <v-text-field class="textfield" placeholder="กรอกที่อยู่" outlined
+                                v-model="editedAddress.moa_address"></v-text-field>
                         </v-col>
                     </v-row>
                 </v-form>
@@ -94,6 +75,9 @@ export default {
     border-color: rgba(218, 218, 218, 0.986);
     border-width: 1px;
     background: #f0f2f7;
-    border-radius: 14px;
+}
+
+.v-text-field {
+    border-radius: 10px;
 }
 </style>
