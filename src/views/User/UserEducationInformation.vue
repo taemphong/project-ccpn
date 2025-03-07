@@ -1,17 +1,6 @@
 <template>
   <v-container>
-<<<<<<< HEAD
     <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
-=======
-    <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 10px;">
-      <v-row>
-        <v-col cols="12">
-          <v-text-field background-color="#e0e0e0" v-model="search" label="ค้นหา..." outlined clearable dense
-            class="search-box" prepend-inner-icon="mdi-magnify"></v-text-field>
-        </v-col>
-      </v-row>
-
->>>>>>> 49576da48e05a6efd3223be708f5d36c76a6dbf3
       <v-simple-table class="custom-table">
         <template v-slot:default>
           <thead>
@@ -114,6 +103,8 @@ export default {
   padding: 50px;
   margin: 50px;
   width: 95%;
+  border-radius: 20px;
+  /* เพิ่มมุมมนให้กับ v-card */
   overflow: hidden;
   /* ซ่อนส่วนเกินที่เกินมุมโค้ง */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* เพิ่มเงาให้ v-card */
