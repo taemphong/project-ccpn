@@ -4,61 +4,61 @@
       <v-col cols="12">
         <h2 class="textheader">ข้อมูลส่วนตัว</h2>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3" >
         <div class="mb-3">คำนำหน้าชื่อ</div>
         <v-text-field v-model="prefixTh" :items="prefixOptions" outlined class="custom-input"></v-text-field>
       </v-col>
 
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ</div>
         <v-text-field v-model="firstNameTh" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">นามสกุล</div>
         <v-text-field v-model="lastNameTh" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ (อังกฤษ)</div>
         <v-text-field v-model="prefixEn" :items="prefixOptionsEn" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ (อังกฤษ)</div>
         <v-text-field v-model="firstNameEn" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">นามสกุล (อังกฤษ)</div>
         <v-text-field v-model="lastNameEn" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">เพศ</div>
         <v-text-field v-model="gender" :items="genderOptions" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">สัญชาติ</div>
         <v-text-field v-model="nationality" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">เชื้อชาติ</div>
         <v-text-field v-model="ethnicity" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ศาสนา</div>
         <v-text-field v-model="religion" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">หมู่โลหิต</div>
         <v-text-field v-model="bloodType" :items="bloodTypeOptions" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ประเภทหน่วยงาน</div>
         <v-text-field v-model="organizationType" :items="organizationTypeOptions" outlined
           class="custom-input"></v-text-field>
@@ -66,15 +66,15 @@
     </v-row>
 
     <v-row class="custom-left-margin">
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ตำแหน่ง</div>
         <v-text-field v-model="position" :items="positionOptions" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">โทรศัพท์มือถือ</div>
         <v-text-field v-model="phoneNumber" outlined class="custom-input"></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">อีเมล</div>
         <v-text-field v-model="email" outlined class="custom-input"></v-text-field>
       </v-col>
@@ -396,9 +396,9 @@
       </v-col>
     </v-row>
 
-    <v-row class="custom-left-margin">
+    <v-row class="custom-left-margin2">
       <v-col cols="12" md="12">
-        <h2 class="mb-5">หลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชน</h2>
+        <h2 class="mb-5 textheader">หลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชน</h2>
         <h3 class="mb-5 required2" style="font-weight: 500; margin-top: -15px">
           ข้าพเจ้าได้แนบหลักฐานประกอบการสมัครสมาชิกสภาการสาธาณสุขชุมชน
           ดังต่อไปนี้
@@ -428,7 +428,7 @@
             color="success"></v-checkbox>
 
           <v-col cols="12" md="12">
-            <h2 class="mb-5">การให้ความยินยอม</h2>
+            <h2 class="mb-5 textheader">การให้ความยินยอม</h2>
           </v-col>
           <v-checkbox v-model="selected2" class="mt-n3"
             label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
@@ -605,18 +605,13 @@ export default {
 }
 
 .custom-left-margin {
-  margin-left: 100px;
-  /* ปรับระยะห่างจากขอบซ้าย */
+  margin-left: 100px; /* ปรับระยะห่างจากขอบซ้าย */
 }
 
 .v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
-  background: #f0f2f7;
-}
-
-.v-text-field {
-  border-radius: 10px;
+  background: #f5f6fa;
 }
 
 .textheader {

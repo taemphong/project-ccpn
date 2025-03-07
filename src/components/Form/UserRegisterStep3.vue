@@ -42,7 +42,7 @@
       </v-card-text>
     </v-card>
     <br />
-    <v-btn
+    <!-- <v-btn
       class="ma-2 mt-5"
       color="#A0D8F6"
       height="50px"
@@ -52,7 +52,7 @@
     >
       <v-icon left size="30">mdi-magnify</v-icon>
       ตรวจสอบสถานะคำขอเป็นสมาชิก
-    </v-btn>
+    </v-btn> -->
   </v-container>
 </template>
 

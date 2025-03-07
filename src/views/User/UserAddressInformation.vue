@@ -1,14 +1,14 @@
 <template>
   <v-container>
     <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
-      <v-simple-table class="custom-table">
+      <v-simple-table class="custom-table" v-if="Address.length > 0">
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="column-type">ประเภท</th>
-              <th class="column-address">ที่อยู่</th>
-              <th class="column-phone">เบอร์โทร</th>
-              <th class="column-tool">เครื่องมือ</th>
+              <th class="column-type table-header">ประเภท</th>
+              <th class="column-address table-header">ที่อยู่</th>
+              <th class="column-phone table-header">เบอร์โทร</th>
+              <th class="column-tool table-header">จัดการ</th>
             </tr>
           </thead>
           <tbody>
@@ -36,16 +36,20 @@
         </template>
       </v-simple-table>
 
+      <!-- If no data is available -->
+      <div v-else style="text-align: center; font-size: 2rem; color: #888;">
+        ไม่มีข้อมูล
+      </div>
+
       <EditMoaModal :show="showEditMoaModal" :addressData="selectedItem" @close="showEditMoaModal = false"
         @confirmEdit="handleEditAddress" />
 
       <DeleteAddressModal :show="showDeleteAddressModal" @close="showDeleteAddressModal = false"
         @confirmDelete="handleDeleteAddress" />
-
-
     </v-card>
   </v-container>
 </template>
+
 
 <script>
 import axios from 'axios';
@@ -127,7 +131,7 @@ export default {
   border-collapse: collapse;
   width: 100%;
   border-radius: 10px;
-  /* เพิ่ม border-radius ให้กับตาราง */
+
   overflow: hidden;
   /* ซ่อนส่วนที่เกินจากมุมโค้ง */
 }
@@ -144,6 +148,13 @@ export default {
   background: linear-gradient(to right, #6CC54B, #4FC281);
   /* ไล่สีเขียวจากซ้ายไปขวา */
   color: white;
+  text-align: center;
+}
+
+.table-header {
+  font-weight: bold;
+  font-size: 1rem !important;
+  text-align: center !important;
 }
 
 .column-type,
