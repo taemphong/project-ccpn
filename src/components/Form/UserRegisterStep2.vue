@@ -870,10 +870,11 @@ export default {
   justify-content: space-between;
 }
 
-.v-text-field--outlined >>> fieldset {
+.v-text-field--outlined>>>fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
-  background: #f5f6fa;
+  background: #F5F6FA;
+  border-radius: 10px ;
 }
 
 .custom-left-margin2 {
