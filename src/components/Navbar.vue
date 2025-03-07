@@ -1,7 +1,8 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app>
-      <v-img :src="require('@/assets/images/logp4.jpg')" contain max-height="120" class="drawer-image"></v-img>
+    <v-navigation-drawer v-model="drawer" app width="300">
+
+      <v-img :src="require('@/assets/images/Logo4.png')" contain max-height="120" class="drawer-image"></v-img>
       <v-list dense>
         <template v-for="item in menuItems">
           <v-list-group v-if="item.subItems" :key="item.text">
@@ -278,6 +279,9 @@ export default {
   color: black !important;
 }
 
+:deep(.v-list-item__title) {
+  font-size: 16px !important;
+}
 
 .icon-btn {
   transition: background-color 0.3s ease;

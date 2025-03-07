@@ -29,108 +29,109 @@
                 <v-col cols="12" md="4">
                   <div>คำนำหน้าชื่อ:</div>
                   <v-text-field class="textfield" placeholder="กรอกคำนำหน้าชื่อ" outlined
-                    v-model="user.title"></v-text-field>
+                    v-model="user.mp_name1"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>ชื่อจริง:</div>
                   <v-text-field class="textfield" placeholder="กรอกชื่อจริง" outlined
-                    v-model="user.firstname"></v-text-field>
+                    v-model="user.mp_name2"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>นามสกุล:</div>
                   <v-text-field class="textfield" placeholder="กรอกนามสกุล" outlined
-                    v-model="user.lastname"></v-text-field>
+                    v-model="user.mp_name3"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div>คำนำหน้าชื่อ (อังกฤษ):</div>
                   <v-text-field class="textfield" placeholder="กรอกคำนำหน้าชื่อ (อังกฤษ)" outlined
-                    v-model="user.title_eng"></v-text-field>
+                    v-model="user.mp_name1_eng"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>ชื่อจริง (อังกฤษ):</div>
                   <v-text-field class="textfield" placeholder="กรอกชื่อจริง (อังกฤษ)" outlined
-                    v-model="user.firstname_eng"></v-text-field>
+                    v-model="user.mp_name2_eng"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>นามสกุล (อังกฤษ):</div>
                   <v-text-field class="textfield" placeholder="กรอกนามสกุล (อังกฤษ)" outlined
-                    v-model="user.lastname_eng"></v-text-field>
+                    v-model="user.mp_name3_eng"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div>สัญชาติ:</div>
                   <v-text-field class="textfield" placeholder="กรอกสัญชาติ" outlined
-                    v-model="user.nationality"></v-text-field>
+                    v-model="user.mp_nationality"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>เชื้อชาติ:</div>
                   <v-text-field class="textfield" placeholder="กรอกเชื้อชาติ" outlined
-                    v-model="user.race"></v-text-field>
+                    v-model="user.mp_ethnicity"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>ศาสนา:</div>
                   <v-text-field class="textfield" placeholder="กรอกศาสนา" outlined
-                    v-model="user.religion"></v-text-field>
+                    v-model="user.mp_religion"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div>กรุ๊ปเลือด:</div>
                   <v-text-field class="textfield" placeholder="กรอกกรุ๊ปเลือด" outlined
-                    v-model="user.blood_group"></v-text-field>
+                    v-model="user.mp_blood"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>เพศ:</div>
-                  <v-text-field class="textfield" placeholder="กรอกเพศ" outlined v-model="user.gender"></v-text-field>
+                  <v-text-field class="textfield" placeholder="กรอกเพศ" outlined
+                    v-model="user.mp_gender"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>วัน-เดือน-ปี เกิด:</div>
                   <v-text-field class="textfield" placeholder="กรอก วัน-เดือน-ปี เกิด" outlined
-                    v-model="user.birthday"></v-text-field>
+                    v-model="user.mp_birthday"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div>บัตรประชาชน / หนังสือเดินทาง:</div>
                   <v-text-field class="textfield" placeholder="กรอกเลขบัตรประชาชน / หนังสือเดินทาง" outlined
-                    v-model="user.idCard"></v-text-field>
+                    v-model="user.mp_customer_id"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>วันหมดอายุ:</div>
                   <v-text-field class="textfield" placeholder="กรอกวันหมดอายุ" outlined
-                    v-model="user.expiration_date"></v-text-field>
+                    v-model="user.mp_dateexp"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>ตำแหน่งงาน:</div>
                   <v-text-field class="textfield" placeholder="กรอกตำแหน่งงาน" outlined
-                    v-model="user.job_position"></v-text-field>
+                    v-model="user.mp_position"></v-text-field>
                 </v-col>
               </v-row>
               <v-row>
                 <v-col cols="12" md="4">
                   <div>ประเภทหน่วยงาน:</div>
                   <v-text-field class="textfield" placeholder="กรอกประเภทหน่วยงาน" outlined
-                    v-model="user.organization_type"></v-text-field>
+                    v-model="user.mp_company_type"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>สถานที่ทำงาน:</div>
                   <v-text-field class="textfield" placeholder="กรอกสถานที่ทำงาน" outlined
-                    v-model="user.workplace"></v-text-field>
+                    v-model="user.mp_company"></v-text-field>
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>อีเมลที่ทำงาน:</div>
                   <v-text-field class="textfield" placeholder="กรอกอีเมลที่ทำงาน" outlined
-                    v-model="user.work_email"></v-text-field>
+                    v-model="user.mp_email"></v-text-field>
                 </v-col>
               </v-row>
               <v-row cols="12" md="12">
                 <v-col>
                   <div>ที่อยู่ในการจัดส่งเอกสาร:</div>
                   <v-text-field class="textfield" placeholder="กรอกที่อยู่ในการจัดส่งเอกสาร" outlined
-                    v-model="user.address"></v-text-field>
+                    v-model="user.moa_address"></v-text-field>
                 </v-col>
               </v-row>
 
@@ -148,75 +149,72 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       user: {
         photo: 'https://picsum.photos/200/300',
-        title: '',
-        firstname: '',
-        lastname: '',
-        title_eng: '',
-        firstname_eng: '',
-        lastname_eng: '',
-        nationality: '',
-        race: '',
-        religion: '',
-        blood_group: '',
-        gender: '',
-        birthday: '',
-        idCard: '',
-        expiration_date: '',
-        job_position: '',
-        organization_type: '',
-        workplace: '',
-        work_email: '',
-        address: '',
+        mp_name1: '',
+        mp_name2: '',
+        mp_name3: '',
+        mp_name1_eng: '',
+        mp_name2_eng: '',
+        mp_name3_eng: '',
+        mp_nationality: '',
+        mp_ethnicity: '',
+        mp_religion: '',
+        mp_blood: '',
+        mp_gender: '',
+        mp_birthday: '',
+        mp_customer_id: '',
+        mp_dateexp: '',
+        mp_position: '',
+        mp_company_type: '',
+        mp_company: '',
+        mp_email: '',
+        moa_address: '',
       },
     };
   },
 
+  mounted() {
+    this.fetchUserData();
+  },
+
   methods: {
-    uploadPhoto(event) {
-      const file = event.target.files[0];
-      if (file) {
-        this.user.photo = URL.createObjectURL(file);
+    async fetchUserData() {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) return;
+
+      const userData = JSON.parse(authToken);
+      const payload = { CustomerID: userData.ml_customer_id };
+
+      try {
+        const response = await axios.post('http://localhost:8002/ccph/api/test-get-info-member', payload);
+        if (response.data.code === 200 && response.data.data.length > 0) {
+          this.user = { ...this.user, ...response.data.data[0] };
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
       }
     },
-    uploadNewPhoto() {
-      this.$refs.fileInput.click();
-    },
+
     resetForm() {
-      this.user = {
-        photo: 'https://picsum.photos/200/300',
-        title: '',
-        firstname: '',
-        lastname: '',
-        title_eng: '',
-        firstname_eng: '',
-        lastname_eng: '',
-        nationality: '',
-        race: '',
-        religion: '',
-        blood_group: '',
-        gender: '',
-        birthday: '',
-        idCard: '',
-        expiration_date: '',
-        job_position: '',
-        organization_type: '',
-        workplace: '',
-        work_email: '',
-        address: '',
-      };
+      this.fetchUserData();
     },
+
     saveData() {
       console.log('User data saved:', this.user);
+    },
+
+    uploadNewPhoto() {
+      console.log('Upload photo button clicked');
     },
   },
 };
 </script>
-
 <style scoped>
 .v-avatar {
   margin-bottom: 10px;

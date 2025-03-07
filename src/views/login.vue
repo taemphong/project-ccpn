@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid class="login-container fill-height">
+  <v-container fluid class="login-container left-side fill-height">
     <v-row no-gutters class="fill-height">
-      <v-col cols="7" class="left-side">
+      <v-col cols="7">
         <v-img :src="require('@/assets/images/logo5.png')" alt="Logo" class="logo" contain max-width="500" />
         <div>
           <h2 class="text1">สภาการสาธารณสุขชุมชน</h2>
@@ -18,7 +18,7 @@
       </v-col>
       <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
         <v-col cols="12" sm="6" md="6">
-          <h1>เข้าสู่ระบบ</h1>
+          <h1 class="text4">เข้าสู่ระบบ</h1>
           <br />
           <v-form class="login-form" @submit.prevent="loginUser">
             <div class="mb-4">เลขบัตรประชาชน</div>
@@ -45,8 +45,6 @@
 <script>
 import axios from "axios";
 import variable from "../../main.config.js";
-import Swal from "sweetalert2";
-
 export default {
   data() {
     return {
@@ -70,15 +68,7 @@ export default {
 
         if (response.data.code === 200) {
           localStorage.setItem("authToken", JSON.stringify(response.data.data));
-          Swal.fire({
-            title: 'เข้าสู่ระบบสำเร็จ!',
-            text: 'คุณจะถูกนำไปยังหน้าแรกในไม่ช้า',
-            icon: 'success',
-            timer: 1000,
-            showConfirmButton: false
-          }).then(() => {
-            this.$router.push("/home");
-          });
+          this.$router.push("/home"); // ไปที่หน้า home
         } else {
           alert("เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง");
         }
@@ -91,13 +81,14 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .login-container {
   height: 100vh;
 }
 
 .left-side {
-  background-image: url("@/assets/images/bg3.png");
+  background-image: url("@/assets/images/bgreal.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -117,6 +108,7 @@ export default {
   color: rgb(2, 2, 2);
   margin-top: 200px;
   text-align: center;
+  margin-right: 50px;
 }
 
 .text2 {
@@ -131,6 +123,11 @@ export default {
   color: #000000;
   margin-top: 5px;
   margin-left: 270px;
+}
+
+.text4 {
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .highlight {
