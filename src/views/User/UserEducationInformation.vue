@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
+    <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 10px;">
       <v-row>
         <v-col cols="12">
           <v-text-field background-color="#e0e0e0" v-model="search" label="ค้นหา..." outlined clearable dense
@@ -126,8 +126,6 @@ export default {
   padding: 50px;
   margin: 50px;
   width: 95%;
-  border-radius: 20px;
-  /* เพิ่มมุมมนให้กับ v-card */
   overflow: hidden;
   /* ซ่อนส่วนเกินที่เกินมุมโค้ง */
 }
