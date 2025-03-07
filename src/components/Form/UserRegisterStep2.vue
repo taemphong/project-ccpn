@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">ข้อมูลส่วนตัว</h2>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3" >
         <div class="mb-3">คำนำหน้าชื่อ</div>
         <v-text-field
           v-model="prefixTh"
@@ -14,7 +14,7 @@
         ></v-text-field>
       </v-col>
 
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ</div>
         <v-text-field
           v-model="firstNameTh"
@@ -22,7 +22,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">นามสกุล</div>
         <v-text-field
           v-model="lastNameTh"
@@ -32,8 +32,8 @@
       </v-col>
     </v-row>
 
-    <v-row >
-      <v-col cols="12" md="4">
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ (อังกฤษ)</div>
         <v-text-field
           v-model="prefixEn"
@@ -42,7 +42,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ (อังกฤษ)</div>
         <v-text-field
           v-model="firstNameEn"
@@ -50,7 +50,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">นามสกุล (อังกฤษ)</div>
         <v-text-field
           v-model="lastNameEn"
@@ -60,8 +60,8 @@
       </v-col>
     </v-row>
 
-    <v-row >
-      <v-col cols="12" md="4">
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="3">
         <div class="mb-3">เพศ</div>
         <v-text-field
           v-model="gender"
@@ -70,7 +70,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">สัญชาติ</div>
         <v-text-field
           v-model="nationality"
@@ -78,7 +78,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">เชื้อชาติ</div>
         <v-text-field
           v-model="ethnicity"
@@ -88,8 +88,8 @@
       </v-col>
     </v-row>
 
-    <v-row >
-      <v-col cols="12" md="4">
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="3">
         <div class="mb-3">ศาสนา</div>
         <v-text-field
           v-model="religion"
@@ -97,7 +97,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">หมู่โลหิต</div>
         <v-text-field
           v-model="bloodType"
@@ -106,7 +106,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">ประเภทหน่วยงาน</div>
         <v-text-field
           v-model="organizationType"
@@ -117,8 +117,8 @@
       </v-col>
     </v-row>
 
-    <v-row >
-      <v-col cols="12" md="4">
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="3">
         <div class="mb-3">ตำแหน่ง</div>
         <v-text-field
           v-model="position"
@@ -127,7 +127,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">โทรศัพท์มือถือ</div>
         <v-text-field
           v-model="phoneNumber"
@@ -135,7 +135,7 @@
           class="custom-input"
         ></v-text-field>
       </v-col>
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="3">
         <div class="mb-3">อีเมล</div>
         <v-text-field
           v-model="email"
@@ -144,8 +144,8 @@
         ></v-text-field>
       </v-col>
     </v-row>
-    <v-row > วัน-เดือน-ปีเกิด </v-row>
-    <v-row >
+    <v-row class="custom-left-margin"> วัน-เดือน-ปีเกิด </v-row>
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">วัน</div>
         <v-text-field
@@ -183,8 +183,8 @@
       </v-col>
     </v-row>
 
-    <v-row > วันหมดอายุบัตร </v-row>
-    <v-row >
+    <v-row class="custom-left-margin"> วันหมดอายุบัตร </v-row>
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">วัน</div>
         <v-text-field
@@ -222,13 +222,13 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">ที่อยู่ตามทะเบียนบ้าน</h2>
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <div class="mb-3">ชื่อสถานที่ทำงาน</div>
         <v-text-field
@@ -239,7 +239,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">จังหวัด</div>
         <v-text-field
@@ -269,7 +269,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">รหัสไปรษณีย์</div>
         <v-text-field
@@ -296,13 +296,13 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">ที่อยู่ปัจจุบัน</h2>
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <div class="mb-3">ที่อยู่</div>
         <v-text-field
@@ -313,7 +313,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">จังหวัด</div>
         <v-text-field
@@ -343,7 +343,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="4">
         <div class="mb-3">รหัสไปรษณีย์</div>
         <v-text-field
@@ -362,13 +362,13 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">สถานที่ที่ต้องการให้ติดต่อ / จัดส่งเอกสาร</h2>
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <v-radio-group v-model="radioGroup">
           <v-row class="d-flex flex-column">
@@ -387,13 +387,13 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">วุฒิการศึกษา</h2>
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <div class="mb-3">ระดับการศึกษา</div>
         <v-checkbox
@@ -406,7 +406,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <div class="mb-3">สถานที่ศึกษา</div>
         <v-text-field
@@ -426,7 +426,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <div class="mb-3">สาขาวิชา</div>
         <v-text-field
@@ -466,13 +466,13 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">สิ่งที่แนบมา</h2>
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <div class="mb-3">Transcript ({{ selectedEducation }})</div>
       </v-col>
@@ -484,7 +484,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <v-btn
           x-large
@@ -507,7 +507,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">
           การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่าง ๆ
@@ -516,20 +516,20 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="12">
         <div class="mb-3">โปรดระบุ (ถ้ามี)</div>
         <v-text-field v-model="A" outlined class="w-100"></v-text-field>
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">แนบหลักฐานประกอบการพิจารณา</h2>
       </v-col>
     </v-row>
     <!--  แนบไฟล์ -->
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.picture">
         <div class="mb-3">
           ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก <br />
@@ -541,7 +541,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.picture">
         <v-btn
           x-large
@@ -564,7 +564,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.idCard">
         <div class="mb-3">สำเนาบัตรประจำตัวประชาชน</div>
       </v-col>
@@ -573,7 +573,7 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.idCard">
         <v-btn
           x-large
@@ -596,13 +596,13 @@
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
         <div class="mb-3">ใบรับรองแพทย์</div>
       </v-col>
     </v-row>
 
-    <v-row >
+    <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
         <v-btn
           x-large
@@ -614,7 +614,6 @@
         </v-btn>
       </v-col>
     </v-row>
-    
 
     <v-row class="custom-left-margin2">
       <v-col cols="12" md="12">
@@ -688,7 +687,7 @@
           ></v-checkbox>
 
           <v-col cols="12" md="12">
-            <h2 class="mb-5 required2 textheader">การให้ความยินยอม</h2>
+            <h2 class="mb-5 textheader">การให้ความยินยอม</h2>
           </v-col>
           <v-checkbox
             v-model="selected2"
@@ -855,12 +854,6 @@ export default {
   color: red;
 }
 
-.required2::before {
-  content: '*';
-  color: red;
-}
-
-
 * {
   font-size: 18px;
   color: black;
@@ -873,16 +866,18 @@ export default {
   height: 80px;
 }
 
-
-.custom-left-margin2 {
-  margin-left: 100px; /* ปรับระยะห่างจากขอบซ้าย */
-  margin-top: 50px; /* ปรับระยะห่างจากขอบบน */
+.custom-left-margin {
+  justify-content: space-between;
 }
 
 .v-text-field--outlined >>> fieldset {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
   background: #f5f6fa;
+}
+
+.custom-left-margin2 {
+  margin-top: 50px;
 }
 
 .textheader {

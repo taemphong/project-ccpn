@@ -129,9 +129,9 @@ export default {
           text: "ข้อมูล",
           icon: "mdi-account-outline",
           subItems: [
-            { text: "ข้อมูลส่วนตัว", icon: "mdi-circle-small", to: "/user-information" },
-            { text: "ข้อมูลที่อยู่", icon: "mdi-circle-small", to: "/user-address" },
-            { text: "ข้อมูลการศึกษา", icon: "mdi-circle-small", to: "/user-education-information" },
+            { text: "ข้อมูลส่วนตัว", icon: "mdi-checkbox-blank-circle-outline", to: "/user-information" },
+            { text: "ข้อมูลที่อยู่", icon: "mdi-checkbox-blank-circle-outline", to: "/user-address" },
+            { text: "ข้อมูลการศึกษา", icon: "mdi-checkbox-blank-circle-outline", to: "/user-education-information" },
           ],
 
         },
