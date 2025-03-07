@@ -9,6 +9,8 @@
               <th class="table-header">สถาบัน</th>
               <th class="table-header">ปริญญา/วุฒิการศึกษา</th>
               <th class="table-header">หลักสูตร</th>
+              <th class="table-header">วันจบการศึกษา</th>
+              <th class="table-header">จัดการ</th>
             </tr>
           </thead>
           <tbody>
@@ -17,21 +19,57 @@
               <td>{{ item.me_institution }}</td>
               <td>{{ item.me_faculty }}</td>
               <td>{{ item.me_major }}</td>
+              <td>{{ item.me_graduated_date.slice(0,10) }}</td>
+              <td>
+                <v-btn icon small @click="openEditEduModal(item)">
+                  <v-icon color="blue">mdi-square-edit-outline</v-icon>
+                </v-btn>
+                <v-btn icon small @click="openDeleteEduModal(item)">
+                  <v-icon color="red">mdi-delete-outline</v-icon>
+                </v-btn>
+              </td>
             </tr>
           </tbody>
         </template>
       </v-simple-table>
+      <EditEduModal
+  v-model="editDialog"
+  :item="selectedEducation"
+  @save="updateEducation"
+  @close="editDialog = false"
+/>
+
+<DeleteEduModal
+  v-model="deleteDialog"
+  :item="selectedEducation"
+  @delete="deleteEducation"
+  @close="deleteDialog = false"
+/>
+
+
     </v-card>
   </v-container>
+
+  <!-- Include the EditEduModal and DeleteEduModal components -->
+
 </template>
 
 <script>
+import EditEduModal from '@/components/Modal/UserModal/EditEduModal.vue';
+import DeleteEduModal from '@/components/Modal/UserModal/DeleteAddressModal.vue';
 import axios from 'axios';
 
 export default {
+  components: {
+    EditEduModal,
+    DeleteEduModal,
+  },
   data() {
     return {
       Education: [],
+      selectedEducation: null,
+      editDialog: false,
+      deleteDialog: false,
     };
   },
   mounted() {
@@ -49,7 +87,6 @@ export default {
 
       try {
         const response = await axios.post("http://localhost:8002/ccph/api/get-education-member", payload);
-
         if (response.data.code === 200 && response.data.data.length > 0) {
           this.Education = response.data.data;
         }
@@ -65,9 +102,45 @@ export default {
       };
       return levelMapping[level] || level;
     },
+    openEditEduModal(item) {
+      this.selectedEducation = item;
+      this.editDialog = true;
+    },
+    openDeleteEduModal(item) {
+      this.selectedEducation = item;
+      this.deleteDialog = true;
+    },
+    async updateEducation(updatedData) {
+    try {
+      await axios.post("http://localhost:8002/ccph/api/update-education", updatedData);
+      this.fetchEducationData();
+      this.$swal("สำเร็จ", "แก้ไขข้อมูลเรียบร้อย", "success");
+    } catch (error) {
+      this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถแก้ไขข้อมูลได้", "error");
+    }
+  },
+  async deleteEducation(deletedData) {
+    console.log("กำลังส่ง API เพื่อลบข้อมูล:", deletedData);
+
+    try {
+      const response = await axios.post("http://localhost:8002/ccph/api/delete-education", { id: deletedData.me_id });
+
+      console.log("API Response:", response.data);
+      if (response.data.code === 200) {
+        this.$swal("สำเร็จ", "ลบข้อมูลเรียบร้อย", "success");
+        this.fetchEducationData();
+      } else {
+        this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถลบข้อมูลได้", "error");
+      }
+    } catch (error) {
+      console.error("ลบข้อมูลไม่สำเร็จ:", error);
+      this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถเชื่อมต่อ API", "error");
+    }
+  },
   },
 };
 </script>
+
 
 <style scoped>
 .custom-table {
