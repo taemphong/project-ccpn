@@ -1,13 +1,6 @@
 <template>
   <v-container>
     <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
-      <v-row>
-        <v-col cols="12">
-          <v-text-field background-color="#e0e0e0" v-model="search" label="ค้นหา..." outlined clearable dense
-            class="search-box" prepend-inner-icon="mdi-magnify"></v-text-field>
-        </v-col>
-      </v-row>
-
       <v-simple-table class="custom-table">
         <template v-slot:default>
           <thead>
@@ -19,7 +12,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in filteredEducation" :key="item.me_id">
+            <tr v-for="item in Education" :key="item.me_id">
               <td>{{ convertEducationLevel(item.me_level) }}</td>
               <td>{{ item.me_institution }}</td>
               <td>{{ item.me_faculty }}</td>
@@ -38,22 +31,11 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      search: "",
       Education: [],
     };
   },
   mounted() {
     this.fetchEducationData();
-  },
-  computed: {
-    filteredEducation() {
-      if (!this.search) return this.Education;
-      return this.Education.filter((item) =>
-        Object.values(item).some((value) =>
-          String(value).toLowerCase().includes(this.search.toLowerCase())
-        )
-      );
-    },
   },
   methods: {
     async fetchEducationData() {
@@ -88,10 +70,6 @@ export default {
 </script>
 
 <style scoped>
-.search-box {
-  border-radius: 8px;
-}
-
 .custom-table {
   border-collapse: collapse;
   width: 100%;
@@ -99,29 +77,28 @@ export default {
   /* เพิ่มมุมมนให้กับตาราง */
   overflow: hidden;
   /* ซ่อนส่วนที่เกินจากมุมโค้ง */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ตาราง */
 }
 
 .custom-table th,
 .custom-table td {
   border: 1px solid #ddd;
   padding: 12px;
-  text-align: left;
+  text-align: center; 
 }
 
 /* ทำให้หัวตาราง (thead) เป็นบาร์เดียวที่มีไล่สี */
 .custom-table thead {
   background: linear-gradient(to right, #6CC54B, #4FC281);
-  /* ไล่สีเขียวจากซ้ายไปขวา */
   color: white;
 }
 
 .table-header {
   font-weight: bold;
-  text-align: center;
-  font-size: 1.2rem;
+  font-size: 1rem !important;
+  text-align: center !important;
 }
 
-/* เพิ่มมุมมนให้กับ v-card */
 .v-card {
   padding: 50px;
   margin: 50px;
@@ -130,5 +107,6 @@ export default {
   /* เพิ่มมุมมนให้กับ v-card */
   overflow: hidden;
   /* ซ่อนส่วนเกินที่เกินมุมโค้ง */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* เพิ่มเงาให้ v-card */
 }
 </style>
