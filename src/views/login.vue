@@ -18,7 +18,7 @@
       </v-col>
       <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
         <v-col cols="12" sm="6" md="6">
-          <h1>เข้าสู่ระบบ</h1>
+          <h1 class="text4">เข้าสู่ระบบ</h1>
           <br />
           <v-form class="login-form" @submit.prevent="loginUser">
             <div class="mb-4">เลขบัตรประชาชน</div>
@@ -108,6 +108,7 @@ export default {
   color: rgb(2, 2, 2);
   margin-top: 200px;
   text-align: center;
+  margin-right: 50px;
 }
 
 .text2 {
@@ -122,6 +123,11 @@ export default {
   color: #000000;
   margin-top: 5px;
   margin-left: 270px;
+}
+
+.text4 {
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .highlight {
