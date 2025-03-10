@@ -24,7 +24,7 @@
               <td>{{ item.address }}</td>
               <td>{{ item.phonenumber }}</td>
               <td>
-                <v-btn icon small @click="openEditMoaModal(item)">
+                <v-btn icon small @click="openEditModal(item)">
                   <v-icon color="blue">mdi-square-edit-outline</v-icon>
                 </v-btn>
                 <v-btn icon small @click="openDeleteAddressModal(item)">
@@ -36,13 +36,16 @@
         </template>
       </v-simple-table>
 
-      <!-- If no data is available -->
       <div v-else style="text-align: center; font-size: 2rem; color: #888;">
         ไม่มีข้อมูล
       </div>
 
-      <EditMoaModal :show="showEditMoaModal" :addressData="selectedItem" @close="showEditMoaModal = false"
-        @confirmEdit="handleEditAddress" />
+      <EditMoaModal v-if="selectedType === 'ที่อยู่ปัจจุบัน'" :show="showEditModal" :addressData="selectedItem"
+        @close="showEditModal = false" @confirmEdit="handleEditAddress" />
+      <EditMcaModal v-if="selectedType === 'ที่อยู่ที่ทำงาน'" :show="showEditModal" :addressData="selectedItem"
+        @close="showEditModal = false" @confirmEdit="handleEditAddress" />
+      <EditMhaModal v-if="selectedType === 'ที่อยู่ตามทะเบียนบ้าน'" :show="showEditModal" :addressData="selectedItem"
+        @close="showEditModal = false" @confirmEdit="handleEditAddress" />
 
       <DeleteAddressModal :show="showDeleteAddressModal" @close="showDeleteAddressModal = false"
         @confirmDelete="handleDeleteAddress" />
@@ -50,26 +53,31 @@
   </v-container>
 </template>
 
-
 <script>
 import axios from 'axios';
 import EditMoaModal from '@/components/Modal/UserModal/EditMoaModal.vue';
+import EditMcaModal from '@/components/Modal/UserModal/EditMcaModal.vue';
+import EditMhaModal from '@/components/Modal/UserModal/EditMhaModal.vue';
 import DeleteAddressModal from '@/components/Modal/UserModal/DeleteAddressModal.vue';
 
 export default {
   components: {
     EditMoaModal,
+    EditMcaModal,
+    EditMhaModal,
     DeleteAddressModal
   },
   data() {
     return {
       Address: [],
-      showEditMoaModal: false,
+      showEditModal: false,
       showDeleteAddressModal: false,
       selectedItem: null,
+      selectedType: '',
     };
   },
   mounted() {
+
     this.fetchAddressData();
   },
   methods: {
@@ -81,23 +89,24 @@ export default {
       const payload = { CustomerID: userData.ml_customer_id };
 
       try {
-        const response = await axios.post("http://localhost:8002/ccph/api/test-get-house-address", payload);
+        const response = await axios.post("http://localhost:8002/ccph/api/get-house-address", payload);
         const result = response.data;
         if (result.code === 200 && result.data.length > 0) {
           const data = result.data[0];
           this.Address = [
             { type: "ที่อยู่ปัจจุบัน", address: data.moa_address, phonenumber: data.mp_tel },
-            { type: "ที่อยู่ที่ทำงาน", address: data.mha_address, phonenumber: data.mp_tel },
-            { type: "ที่อยู่ตามทะเบียนบ้าน", address: data.mca_address, phonenumber: data.mp_tel },
+            { type: "ที่อยู่ที่ทำงาน", address: data.mca_address, phonenumber: data.mp_tel },
+            { type: "ที่อยู่ตามทะเบียนบ้าน", address: data.mha_address, phonenumber: data.mp_tel },
           ];
         }
       } catch (error) {
         console.error("Error fetching address data:", error);
       }
     },
-    openEditMoaModal(item) {
+    openEditModal(item) {
       this.selectedItem = item;
-      this.showEditMoaModal = true;
+      this.selectedType = item.type;
+      this.showEditModal = true;
     },
     openDeleteAddressModal(item) {
       this.selectedItem = item;
@@ -115,10 +124,9 @@ export default {
       if (index !== -1) {
         this.Address[index] = updatedAddress;
       }
-      this.showEditMoaModal = false;
+      this.showEditModal = false;
     },
     handleDeleteAddress() {
-      // Handle the address deletion logic here
       this.showDeleteAddressModal = false;
     }
   },

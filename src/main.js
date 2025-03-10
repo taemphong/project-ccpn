@@ -22,10 +22,7 @@ const vuetify = new Vuetify({
     options: {
       customProperties: true,
     },
-  },
-  typography: {
-    fontFamily: 'Kanit, sans-serif',
-  },
+  }
 });
 
 new Vue({

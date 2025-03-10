@@ -192,7 +192,7 @@ export default {
       const payload = { CustomerID: userData.ml_customer_id };
 
       try {
-        const response = await axios.post('http://localhost:8002/ccph/api/test-get-info-member', payload);
+        const response = await axios.post('http://localhost:8002/ccph/api/get-info-member', payload);
         if (response.data.code === 200 && response.data.data.length > 0) {
           this.user = { ...this.user, ...response.data.data[0] };
         }
