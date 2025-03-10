@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-prd": "docker build -t registry.thaijobjob.com/team-teletubbies/ccph . && docker push registry.thaijobjob.com/team-teletubbies/ccph",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
