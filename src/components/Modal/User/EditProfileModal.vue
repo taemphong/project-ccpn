@@ -16,49 +16,50 @@
                         <v-row style="justify-content: center;">
                             <v-col cols="12" sm="4">
                                 <div>คำนำหน้าชื่อ</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="prefix"
-                                    placeholder="นาย/นางสาว/นาง" outlined></v-text-field>
+                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_name1"
+                                    placeholder="นาย/นางสาว/นาง" outlined readonly></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="4">
                                 <div>ชื่อจริง</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="firstName" outlined
-                                    placeholder="กรอกชื่อจริง"></v-text-field>
+                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_name2" outlined
+                                    placeholder="กรอกชื่อจริง" readonly></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="4">
                                 <div>นามสกุล</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="lastName" outlined
-                                    label="นามสกุล" placeholder="กรอกนามสกุล"></v-text-field>
+                                <v-text-field class="textfield" background-color="#f0f2f7" :value="mp_name3" outlined
+                                    placeholder="กรอกนามสกุล" readonly></v-text-field>
                             </v-col>
+
                         </v-row>
 
                         <v-row style="justify-content: center;">
                             <v-col cols="12" sm="4">
                                 <div>เลขบัตรประชาชน</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="IDcardnumber"
-                                    outlined placeholder="กรอกเลขบัตรประชาชน"></v-text-field>
+                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_customer_id"
+                                    outlined placeholder="กรอกเลขบัตรประชาชน" readonly></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="4">
                                 <div>อีเมล</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="Email" outlined
+                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_email" outlined
                                     placeholder="กรอกอีเมล"></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="4">
                                 <div>เบอร์โทรศัพท์</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="Phonenumber"
-                                    outlined placeholder="กรอกเบอร์โทรศัพท์"></v-text-field>
+                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_tel" outlined
+                                    placeholder="กรอกเบอร์โทรศัพท์"></v-text-field>
                             </v-col>
                         </v-row>
 
                         <v-row>
                             <v-col cols="12" sm="4">
                                 <div>เพศ</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="Gender" outlined
+                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_gender" outlined
                                     placeholder="กรอกเพศ"></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="4">
                                 <div>วัน-เดือน-ปีเกิด</div>
-                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="Birthday" outlined
-                                    placeholder="กรอกวัน-เดือน-ปีเกิด"></v-text-field>
+                                <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_birthday"
+                                    outlined placeholder="กรอกวัน-เดือน-ปีเกิด"></v-text-field>
                             </v-col>
                         </v-row>
 
@@ -80,8 +81,9 @@
         </v-card>
     </v-dialog>
 </template>
-
 <script>
+import axios from 'axios';
+
 export default {
     props: {
         value: {
@@ -91,14 +93,14 @@ export default {
     },
     data() {
         return {
-            prefix: '',
-            firstName: '',
-            lastName: '',
-            IDcardnumber: '',
-            Email: '',
-            Phonenumber: '',
-            Gender: '',
-            Birthday: ''
+            mp_name1: '',
+            mp_name2: '',
+            mp_name3: '',
+            mp_customer_id: '',
+            mp_email: '',
+            mp_tel: '',
+            mp_gender: '',
+            mp_birthday: ''
         };
     },
     computed: {
@@ -111,20 +113,45 @@ export default {
             }
         }
     },
+    mounted() {
+        this.fetchUserData();
+    },
     methods: {
+        async fetchUserData() {
+            const authToken = localStorage.getItem('authToken');
+            if (!authToken) {
+                console.error('No auth token found');
+                return;
+            }
+
+            const userData = JSON.parse(authToken);
+            const payload = { CustomerID: userData.ml_customer_id };
+
+            try {
+                const response = await axios.post('http://localhost:8002/ccph/api/get-info-member', payload);
+                const userInfo = response.data.data[0];
+
+                this.mp_name1 = userInfo.mp_name1 || '';
+                this.mp_name2 = userInfo.mp_name2 || '';
+                this.mp_name3 = userInfo.mp_name3 || '';
+                this.mp_customer_id = userInfo.mp_customer_id || '';
+
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        },
         submitData() {
-            // Logic to submit the data
             console.log("Submitted Data:", {
-                prefix: this.prefix,
-                firstName: this.firstName,
-                lastName: this.lastName,
-                IDcardnumber: this.IDcardnumber,
-                Email: this.Email,
-                Phonenumber: this.Phonenumber,
-                Gender: this.Gender,
-                Birthday: this.Birthday
+                mp_name1: this.mp_name1,
+                mp_name2: this.mp_name2,
+                mp_name3: this.mp_name3,
+                mp_customer_id: this.mp_customer_id,
+                mp_email: this.mp_email,
+                mp_tel: this.mp_tel,
+                mp_gender: this.mp_gender,
+                mp_birthday: this.mp_birthday
             });
-            this.dialog = false; // Close the dialog after submitting
+            this.dialog = false;
         }
     }
 };

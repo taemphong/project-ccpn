@@ -1,17 +1,9 @@
 <template>
-  <v-container
-    class="d-flex flex-column align-center justify-center mt-n7"
-    style="min-height: 90vh"
-  >
+  <div class="d-flex flex-column align-center justify-center mt-n7" style="min-height: 90vh">
     <h2 class="textheader text-center mb-4">
       เอกสารการสมัครของท่านได้รับส่งเข้าสู่ระบบเรียบร้อยแล้ว
     </h2>
-    <v-card
-      class="pa-4"
-      max-width="800"
-      width="100%"
-      style="background-color: #52d6794a"
-    >
+    <v-card class="pa-4" max-width="800" width="100%" style="background-color: #52d6794a">
       <v-card-text>
         <div class="text">
           ให้จัดเตรียมเอกสาร / หลักฐานต่าง ๆ พร้อมรับรองสำเนาถูกต้อง <br />
@@ -42,18 +34,7 @@
       </v-card-text>
     </v-card>
     <br />
-    <!-- <v-btn
-      class="ma-2 mt-5"
-      color="#A0D8F6"
-      height="50px"
-      width="400px"
-      variant="tonal"
-      style="color: white; font-size: 18px"
-    >
-      <v-icon left size="30">mdi-magnify</v-icon>
-      ตรวจสอบสถานะคำขอเป็นสมาชิก
-    </v-btn> -->
-  </v-container>
+  </div>
 </template>
 
 <script setup></script>
@@ -67,7 +48,8 @@
   font-size: 24px;
   color: #34854b;
   font-family: 'Prompt', sans-serif;
-  font-weight: 600; /* SemiBold 600 */
+  font-weight: 600;
+  /* SemiBold 600 */
 }
 
 /* กำหนดฟอนต์สำหรับเนื้อหาหลัก */
@@ -75,11 +57,14 @@
   font-size: 18px;
   color: black;
   font-family: 'Prompt', sans-serif;
-  font-weight: 400; /* Regular 400 */
+  font-weight: 400;
+  /* Regular 400 */
 }
 
 .text {
-  font-size: 16px; /* ปรับขนาดตัวหนังสือ */
-  line-height: 1.8; /* ปรับระยะห่างระหว่างบรรทัด */
+  font-size: 16px;
+  /* ปรับขนาดตัวหนังสือ */
+  line-height: 1.8;
+  /* ปรับระยะห่างระหว่างบรรทัด */
 }
 </style>

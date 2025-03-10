@@ -26,7 +26,7 @@
                         </v-text-field>
                         <!-- reCAPTCHA -->
                         <v-container cols="12" class="pa-0 d-flex justify-center">
-                            <vue-recaptcha ref="recaptcha" sitekey="6LfC_OkqAAAAAAYVh9H8TbPOZ79HkwntNh0D5lhn"
+                            <vue-recaptcha ref="recaptcha" sitekey="6Lfx2O8qAAAAAAfbIEAzyxBU_aLzcBECQLBKvYfS"
                                 size="normal" @verify="onVerify" @expired="onExpired"></vue-recaptcha>
                         </v-container>
                         <v-btn block class="custom-button" :disabled="!isRecaptchaVerified" @click="handleSearch">
