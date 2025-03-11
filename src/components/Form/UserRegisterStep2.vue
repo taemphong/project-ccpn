@@ -8,6 +8,7 @@
         <div class="mb-3">คำนำหน้าชื่อ</div>
         <v-text-field
           v-model="mp_name1"
+          :items="prefixOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -36,6 +37,7 @@
         <div class="mb-3">คำนำหน้าชื่อ (อังกฤษ)</div>
         <v-text-field
           v-model="mp_name1_eng"
+          :items="prefixOptionsEn"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -63,6 +65,7 @@
         <div class="mb-3">เพศ</div>
         <v-text-field
           v-model="mp_gender"
+          :items="genderOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -98,6 +101,7 @@
         <div class="mb-3">หมู่โลหิต</div>
         <v-text-field
           v-model="mp_blood"
+          :items="bloodTypeOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -106,6 +110,7 @@
         <div class="mb-3">ประเภทหน่วยงาน</div>
         <v-text-field
           v-model="mp_company_type"
+          :items="organizationTypeOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -117,6 +122,7 @@
         <div class="mb-3">ตำแหน่ง</div>
         <v-text-field
           v-model="mp_position"
+          :items="positionOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -144,6 +150,7 @@
         <div class="mb-3">วัน</div>
         <v-text-field
           v-model="day"
+          :items="mp_birthday"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -152,6 +159,7 @@
         <div class="mb-3">เดือน</div>
         <v-text-field
           v-model="month"
+          :items="mp_birthday"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -160,6 +168,7 @@
         <div class="mb-3">ปี</div>
         <v-text-field
           v-model="year"
+          :items="mp_birthday"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -180,6 +189,7 @@
         <div class="mb-3">วัน</div>
         <v-text-field
           v-model="mp_dateexp"
+          :items="dayOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -188,6 +198,7 @@
         <div class="mb-3">เดือน</div>
         <v-text-field
           v-model="mp_dateexp"
+          :items="monthOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -196,6 +207,7 @@
         <div class="mb-3">ปี</div>
         <v-text-field
           v-model="mp_dateexp"
+          :items="yearOptions2"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -228,6 +240,7 @@
         <div class="mb-3">จังหวัด</div>
         <v-text-field
           v-model="mha_province"
+          :items="positionOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -255,6 +268,7 @@
         <div class="mb-3">รหัสไปรษณีย์</div>
         <v-text-field
           v-model="mha_zipcode"
+          :items="positionOptions"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -285,7 +299,8 @@
       <v-col cols="12" md="3">
         <div class="mb-3">จังหวัด</div>
         <v-text-field
-          v-model="mca_province"
+          v-model="position"
+          :items="mca_province"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -313,6 +328,7 @@
         <div class="mb-3">รหัสไปรษณีย์</div>
         <v-text-field
           v-model="mca_zipcode"
+          :items="workpostalCode"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -352,6 +368,7 @@
         <div class="mb-3">จังหวัด</div>
         <v-text-field
           v-model="moa_province"
+          :items="currentProvince"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -379,6 +396,7 @@
         <div class="mb-3">รหัสไปรษณีย์</div>
         <v-text-field
           v-model="moa_zipcode"
+          :items="currentPostalCode"
           outlined
           class="custom-input"
         ></v-text-field>
@@ -527,14 +545,22 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
-        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.transcript)">
+        <v-btn
+          x-large
+          color="#FFD56D"
+          style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.transcript)"
+        >
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6">
-        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.educational)">
+        <v-btn
+          x-large
+          color="#FFD56D"
+          style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.educational)"
+        >
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -576,14 +602,22 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.picture">
-        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.picture)">
+        <v-btn
+          x-large
+          color="#FFD56D"
+          style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.picture)"
+        >
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6" v-if="files.houseregistration">
-        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.houseregistration)">
+        <v-btn
+          x-large
+          color="#FFD56D"
+          style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.houseregistration)"
+        >
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -600,13 +634,22 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.idCard">
-        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black" @click="viewFile(files.idCard)">
+        <v-btn
+          x-large
+          color="#FFD56D"
+          style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.idCard)"
+        >
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6" v-if="files.Namechange">
-        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Namechange)">
+        <v-btn
+          x-large
+          color="#FFD56D"
+          style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.Namechange)"
+        >
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -620,8 +663,12 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
-        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Medical)">
+        <v-btn
+          x-large
+          color="#FFD56D"
+          style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.Medical)"
+        >
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -635,36 +682,79 @@
           ดังต่อไปนี้
         </h3>
         <v-container fluid>
-          <v-checkbox v-model="selected2" label="สำเนาทะเบียนบ้าน 1 ฉบับ" value="สำเนาทะเบียนบ้าน 1 ฉบับ"
-            color="success"></v-checkbox>
-          <v-checkbox v-model="selected2" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
-            value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ" color="success"></v-checkbox>
-          <v-checkbox v-model="selected2"
+          <v-checkbox
+            v-model="selected2"
+            label="สำเนาทะเบียนบ้าน 1 ฉบับ"
+            value="สำเนาทะเบียนบ้าน 1 ฉบับ"
+            color="success"
+          ></v-checkbox>
+          <v-checkbox
+            v-model="selected2"
+            label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+            value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+            color="success"
+          ></v-checkbox>
+          <v-checkbox
+            v-model="selected2"
             label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
             value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
-            color="success"></v-checkbox>
+            color="success"
+          ></v-checkbox>
           <div style="margin-left: 30px">
-            <v-checkbox v-model="selected2" label="Transcript" value="Transcript" color="success"></v-checkbox>
-            <v-checkbox v-model="selected2" label="ปริญญาบัคร" value="ปริญญาบัคร" color="success"></v-checkbox>
-            <v-checkbox v-model="selected2" label="อนุปริญญาบัคร" value="อนุปริญญาบัคร" color="success"></v-checkbox>
-            <v-checkbox v-model="selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
-              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา" color="success"></v-checkbox>
+            <v-checkbox
+              v-model="selected2"
+              label="Transcript"
+              value="Transcript"
+              color="success"
+            ></v-checkbox>
+            <v-checkbox
+              v-model="selected2"
+              label="ปริญญาบัคร"
+              value="ปริญญาบัคร"
+              color="success"
+            ></v-checkbox>
+            <v-checkbox
+              v-model="selected2"
+              label="อนุปริญญาบัคร"
+              value="อนุปริญญาบัคร"
+              color="success"
+            ></v-checkbox>
+            <v-checkbox
+              v-model="selected2"
+              label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+              color="success"
+            ></v-checkbox>
           </div>
-          <v-checkbox v-model="selected2"
+          <v-checkbox
+            v-model="selected2"
             label="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
             value="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
-            color="success"></v-checkbox>
-          <v-checkbox v-model="selected2" label="ใบรับรองแพทย์" value="ใบรับรองแพทย์" color="success"></v-checkbox>
-          <v-checkbox v-model="selected2" label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)" value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
-            color="success"></v-checkbox>
+            color="success"
+          ></v-checkbox>
+          <v-checkbox
+            v-model="selected2"
+            label="ใบรับรองแพทย์"
+            value="ใบรับรองแพทย์"
+            color="success"
+          ></v-checkbox>
+          <v-checkbox
+            v-model="selected2"
+            label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+            value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+            color="success"
+          ></v-checkbox>
 
           <v-col cols="12" md="12">
             <h2 class="mb-5 textheader">การให้ความยินยอม</h2>
           </v-col>
-          <v-checkbox v-model="selected2" class="mt-n3"
+          <v-checkbox
+            v-model="selected2"
+            class="mt-n3"
             label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
             value="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
-            color="success"></v-checkbox>
+            color="success"
+          ></v-checkbox>
         </v-container>
       </v-col>
     </v-row>
@@ -738,7 +828,7 @@ export default {
 }
 
 .custom-left-margin {
-  margin-left: 100px; /* ปรับระยะห่างจากขอบซ้าย */
+  justify-content: space-between;
 }
 
 .v-text-field--outlined>>>fieldset {
