@@ -68,7 +68,7 @@ export default {
 
         if (response.data.code === 200) {
           localStorage.setItem("authToken", JSON.stringify(response.data.data));
-          this.$router.push("/home"); // ไปที่หน้า home
+          this.$router.push("/home");
         } else {
           alert("เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง");
         }
