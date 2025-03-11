@@ -47,8 +47,6 @@
       <EditMhaModal v-if="selectedType === 'ที่อยู่ตามทะเบียนบ้าน'" :show="showEditModal" :addressData="selectedItem"
         @close="showEditModal = false" @confirmEdit="handleEditAddress" />
 
-      <DeleteAddressModal :show="showDeleteAddressModal" @close="showDeleteAddressModal = false"
-        @confirmDelete="handleDeleteAddress" />
     </v-card>
   </v-container>
 </template>
@@ -58,14 +56,13 @@ import axios from 'axios';
 import EditMoaModal from '@/components/Modal/UserModal/EditMoaModal.vue';
 import EditMcaModal from '@/components/Modal/UserModal/EditMcaModal.vue';
 import EditMhaModal from '@/components/Modal/UserModal/EditMhaModal.vue';
-import DeleteAddressModal from '@/components/Modal/UserModal/DeleteAddressModal.vue';
+import Swal from 'sweetalert2';
 
 export default {
   components: {
     EditMoaModal,
     EditMcaModal,
     EditMhaModal,
-    DeleteAddressModal
   },
   data() {
     return {
@@ -109,9 +106,50 @@ export default {
       this.showEditModal = true;
     },
     openDeleteAddressModal(item) {
-      this.selectedItem = item;
-      this.showDeleteAddressModal = true;
-    },
+  this.selectedItem = item;
+  Swal.fire({
+  title: 'ต้องการลบข้อมูลใช่หรือไม่',
+  text: `ที่อยู่: ${item.address}`,
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'ใช่',
+  confirmButtonColor: '#00B69B',
+  cancelButtonText: 'ยกเลิก',
+  cancelButtonColor: '#FF0000',
+  reverseButtons: false,
+  didOpen: () => {
+
+    // เปลี่ยนสีข้อความของปุ่ม
+    const confirmButton = Swal.getConfirmButton();
+    const cancelButton = Swal.getCancelButton();
+    confirmButton.style.color = '#FFFFFF';  
+    cancelButton.style.color = '#FFFFFF';  
+    
+    // ปรับขนาดของปุ่ม
+    confirmButton.style.width ='158px'
+    cancelButton.style.width ='158px'
+    confirmButton.style.height ='54px'
+    cancelButton.style.height ='54px'
+
+    confirmButton.style.margin = '0px 15px'; 
+    cancelButton.style.margin = '0px 15px';  
+    confirmButton.style.marginBottom = '80px'; 
+    cancelButton.style.marginBottom = '80px'; 
+
+
+    const title = Swal.getTitle();
+    title.style.fontSize = '40px'; 
+    
+    const popup = Swal.getPopup();  
+    popup.style.width = '665px';   
+  }
+}).then((result) => {
+    if (result.isConfirmed) {
+      this.handleDeleteAddress(item);  // เรียกฟังก์ชันลบที่อยู่
+    }
+  });
+},
+
     getBackgroundClass(type) {
       return {
         "ที่อยู่ปัจจุบัน": "bg-purple",
@@ -126,9 +164,19 @@ export default {
       }
       this.showEditModal = false;
     },
-    handleDeleteAddress() {
-      this.showDeleteAddressModal = false;
-    }
+    handleDeleteAddress(item) {
+  // ลบที่อยู่จาก array
+  const index = this.Address.findIndex(addr => addr.type === item.type);
+  if (index !== -1) {
+    this.Address.splice(index, 1);  // ลบที่อยู่จาก array
+  }
+  Swal.fire(
+    'ลบสำเร็จ!',
+    'ที่อยู่ของคุณถูกลบแล้ว.',
+    'success'
+  );
+},
+
   },
 };
 </script>
