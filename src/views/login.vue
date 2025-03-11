@@ -23,10 +23,11 @@
           <v-form class="login-form" @submit.prevent="loginUser">
             <div class="mb-4">เลขบัตรประชาชน</div>
             <v-text-field v-model="ml_customer_id" filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
-              background-color="#82D6631F" required></v-text-field>
+              background-color="#82D6631F" required autocomplete="cc-number"></v-text-field>
             <div class="mb-4">รหัสความปลอดภัย</div>
             <v-text-field v-model="ml_licenses" :type="passwordVisible ? 'text' : 'password'" filled solo
-              class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F" required>
+              class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F" required
+              autocomplete="current-password">
               <template v-slot:append>
                 <v-icon @click="togglePasswordVisibility">
                   {{ passwordVisible ? "mdi-eye-off" : "mdi-eye" }}
@@ -68,7 +69,7 @@ export default {
 
         if (response.data.code === 200) {
           localStorage.setItem("authToken", JSON.stringify(response.data.data));
-          this.$router.push("/home"); // ไปที่หน้า home
+          this.$router.push("/home");
         } else {
           alert("เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง");
         }

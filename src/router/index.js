@@ -11,6 +11,7 @@ import 'vuetify/dist/vuetify.min.css';
 import UserRegister from "@/views/User/UserRegister.vue";
 import UserRegisterRequest from "@/views/User/UserRegisterRequest.vue";
 import CheckDocumentStatus from "@/views/Document/CheckDocumentStatus.vue";
+import PaymentPage from "@/views/Document/PaymentPage.vue";
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,7 @@ const routes = [
   { path: "/user-register", name: "user-register", component: UserRegister },
   { path: "/user-register-request", name: "user-register-request", component: UserRegisterRequest },
   { path: "/check-document-status", name: "check-document-status", component: CheckDocumentStatus },
+  { path: "/payment", name: "payment", component: PaymentPage },
 ];
 
 const router = new VueRouter({
@@ -33,7 +35,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['login', 'user-register', 'user-register-request', 'check-document-status'];
+  const publicPages = ['login', 'user-register', 'user-register-request', 'check-document-status', 'payment'];
   const authRequired = !publicPages.includes(to.name);
   const loggedIn = localStorage.getItem('authToken');
 

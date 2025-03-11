@@ -33,13 +33,15 @@
                     <tbody>
                         <tr v-for="(item, index) in items" :key="index">
                             <td>{{ item['วันที่จดทะเบียน'] }}</td>
-                            <td>{{ item['สถานะชำระเงิน'] }}</td>
+                            <td :style="{ color: item['สถานะชำระเงิน'] === 'รอชำระเงิน' ? 'red' : 'green' }">{{
+                                item['สถานะชำระเงิน'] }}</td>
                             <td :style="{ color: item['สถานะเอกสาร'] === 'ผ่าน' ? 'green' : 'red' }">
                                 {{ item['สถานะเอกสาร'] }}
                             </td>
                             <td>{{ item['หมายเหตุ'] }}</td>
                             <td>
-                                <v-btn v-if="item['ใบชำระเงิน'] === 'พิมพ์'" small color="warning" class="px-3">
+                                <v-btn to="/payment" v-if="item['ใบชำระเงิน'] === 'พิมพ์'" small color="warning"
+                                    class="px-3">
                                     {{ item['ใบชำระเงิน'] }}
                                 </v-btn>
                             </td>
