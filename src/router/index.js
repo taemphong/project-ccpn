@@ -35,7 +35,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['login', 'user-register', 'user-register-request', 'check-document-status'];
+  const publicPages = ['login', 'user-register', 'user-register-request', 'check-document-status', 'payment'];
   const authRequired = !publicPages.includes(to.name);
   const loggedIn = localStorage.getItem('authToken');
 

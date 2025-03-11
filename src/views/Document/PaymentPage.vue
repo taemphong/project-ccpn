@@ -1,135 +1,100 @@
 <template>
-    <v-container fluid class="pa-0">
+    <v-container fluid class="pa-0 white-background full-page">
         <!-- Banner image at the top -->
         <div>
             <v-img :src="require('@/assets/images/banner1.png')" alt="Logo" class="logo" contain max-width="auto" />
         </div>
-
-        <!-- Main content -->
         <div class="text-center my-6">
-            <p class="font-weight-bold" style="font-size: 28px;">สวัสดีคุณ ....</p>
-            <p class="font-weight-bold" style="font-size: 20px;">ตรวจสอบสถานะเอกสาร และตรวจสอบสถานะการชำระเงิน</p>
+            <p class="font-weight-bold" style="font-size: 28px; color: #48BF6A;">ข้อมูลการชำระเงิน</p>
         </div>
 
-        <!-- Check Button -->
-        <div class="text-center my-4">
-            <v-btn color="primary" @click="checkStatus">Check</v-btn>
-        </div>
+        <!-- QR Code Generator -->
+        <div class="text-center">
+            <div class="qrcode-container">
+                <qrcode-vue :value="paymentUrl" :size="600" level="H" />
+            </div>
 
-        <!-- Status table -->
-        <v-container style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
-            <v-simple-table class="custom-table">
-                <template v-slot:default>
-                    <thead>
-                        <tr>
-                            <th class="column-type table-header">วันที่จดทะเบียน</th>
-                            <th class="column-address table-header">สถานะชำระเงิน</th>
-                            <th class="column-phone table-header">สถานะเอกสาร</th>
-                            <th class="column-tool table-header">หมายเหตุ</th>
-                            <th class="column-tool table-header">ใบชำระเงิน</th>
-                            <th class="column-tool table-header">ใบเสร็จ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(item, index) in items" :key="index">
-                            <td>{{ item['วันที่จดทะเบียน'] }}</td>
-                            <td :style="{ color: item['สถานะชำระเงิน'] === 'รอชำระเงิน' ? 'red' : 'green' }">{{
-                                item['สถานะชำระเงิน'] }}</td>
-                            <td :style="{ color: item['สถานะเอกสาร'] === 'ผ่าน' ? 'green' : 'red' }">
-                                {{ item['สถานะเอกสาร'] }}
-                            </td>
-                            <td>{{ item['หมายเหตุ'] }}</td>
-                            <td>
-                                <v-btn v-if="item['ใบชำระเงิน'] === 'พิมพ์'" small color="warning" class="px-3">
-                                    {{ item['ใบชำระเงิน'] }}
-                                </v-btn>
-                            </td>
-                            <td>
-                                <v-btn small color="warning" class="px-3" v-if="item['ใบเสร็จ'] === 'พิมพ์'">
-                                    {{ item['ใบเสร็จ'] }}
-                                </v-btn>
-                            </td>
-                        </tr>
-                    </tbody>
-                </template>
-            </v-simple-table>
-        </v-container>
+            <p class="mt-2 expiration-text">
+                QR Code นี้จะหมดอายุภายในวันที่
+                <span class="text-danger">{{ expirationDate }}</span>
+                เวลา
+                <span class="text-danger">{{ expirationTime }}</span>
+            </p>
+
+            <p>กรณีเกิน 30 นาที QR Code นี้ จะไม่สามารถชำระเงินได้ กรุณา Reload หน้านี้ใหม่อีกครั้ง
+            </p>
+            <p>ท่านสามารถชำระเงินด้วย QR Code ผ่าน Mobile Banking ได้ทุกธนาคาร</p>
+        </div>
     </v-container>
 </template>
 
 <script>
+import QrcodeVue from 'qrcode.vue';
+
 export default {
     name: 'PaymentPage',
+    components: {
+        QrcodeVue
+    },
     data() {
         return {
-            items: [
-                {
-                    'วันที่จดทะเบียน': '3/4/2025',
-                    'สถานะชำระเงิน': 'รอชำระเงิน',
-                    'สถานะเอกสาร': 'รอตรวจสอบเอกสาร',
-                    'หมายเหตุ': '',
-                    'ใบชำระเงิน': '',
-                    'ใบเสร็จ': 'พิมพ์',
-                },
-            ],
+            paymentUrl: 'https://example.com/payment?amount=100',
+            expirationDate: '',
+            expirationTime: ''
         };
     },
-    methods: {
-        checkStatus() {
-            this.items.forEach(item => {
-                item['สถานะเอกสาร'] = 'ผ่าน';
-                item['ใบชำระเงิน'] = 'พิมพ์';
-            });
-        },
+    created() {
+        this.calculateExpiration();
     },
+    methods: {
+        calculateExpiration() {
+            const now = new Date();
+            now.setMinutes(now.getMinutes() + 30);
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            this.expirationDate = now.toLocaleDateString('th-TH', options);
+            this.expirationTime = now.toLocaleTimeString('th-TH');
+        }
+    }
 };
 </script>
 
 <style scoped>
-/* Custom table styles */
-.custom-table {
-    border-collapse: collapse;
+.white-background {
+    background-color: white;
+}
+
+.full-page {
+    min-height: 100vh;
     width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
 }
 
-.custom-table th,
-.custom-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
+.text-center {
     text-align: center;
 }
 
-.custom-table thead {
-    background: linear-gradient(to right, #6CC54B, #4FC281);
-    text-align: center;
-}
-
-.table-header {
+.text-danger {
+    color: red;
     font-weight: bold;
-    font-size: 1rem !important;
-    text-align: center !important;
 }
 
-.column-type,
-.column-address,
-.column-phone,
-.column-tool {
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.2rem;
+.qrcode-responsive {
+    max-width: 100%;
+    width: 500px;
+    height: auto;
 }
 
-.custom-table td {
-    background: none;
+.qrcode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-.v-card {
-    padding: 50px;
-    margin: 50px;
-    width: 95%;
-    border-radius: 20px;
-    overflow: hidden;
+.qrcode-container>* {
+    width: 150px !important;
+    height: 150px !important;
+    margin-bottom: 50px;
+    margin-top: 50px;
 }
 </style>
