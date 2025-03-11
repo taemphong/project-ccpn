@@ -192,7 +192,7 @@ export default {
       const payload = { CustomerID: userData.ml_customer_id };
 
       try {
-        const response = await axios.post('http://localhost:8002/ccph/api/test-get-info-member', payload);
+        const response = await axios.post('http://localhost:8002/ccph/api/get-info-member', payload);
         if (response.data.code === 200 && response.data.data.length > 0) {
           this.user = { ...this.user, ...response.data.data[0] };
         }
@@ -224,6 +224,10 @@ export default {
   border-color: rgba(218, 218, 218, 0.986);
   border-width: 1px;
   background: #f0f2f7;
+}
+
+.v-text-field {
+  border-radius: 10px;
 }
 
 .botton-group1 {

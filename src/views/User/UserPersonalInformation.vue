@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import EditProfileModal from '../../components/User/EditProfileModal.vue';
+import EditProfileModal from '../../components/Modal/User/EditProfileModal.vue';
 import axios from 'axios';
 
 export default {
@@ -82,7 +82,7 @@ export default {
 
                 this.userInfo = {
                     'เลขบัตรประชาชน': data.mp_customer_id,
-                    'ชื่อ - นามสกุล': `${data.mp_name2} ${data.mp_name3}`,
+                    'ชื่อ - นามสกุล': `${data.mp_name1} ${data.mp_name2} ${data.mp_name3}`,
                     'อีเมล': data.mp_email,
                     'เบอร์โทรศัพท์': data.mp_tel,
                     'เพศ': data.mp_gender,

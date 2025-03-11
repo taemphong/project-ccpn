@@ -32,32 +32,29 @@
           </tbody>
         </template>
       </v-simple-table>
+
       <EditEduModal
-  v-model="editDialog"
-  :item="selectedEducation"
-  @save="updateEducation"
-  @close="editDialog = false"
-/>
+        v-model="editDialog"
+        :item="selectedEducation"
+        @save="updateEducation"
+        @close="editDialog = false"
+      />
 
-<DeleteEduModal
-  v-model="deleteDialog"
-  :item="selectedEducation"
-  @delete="deleteEducation"
-  @close="deleteDialog = false"
-/>
-
-
+      <DeleteEduModal
+        v-model="deleteDialog"
+        :item="selectedEducation"
+        @delete="deleteEducation"
+        @close="deleteDialog = false"
+      />
     </v-card>
   </v-container>
-
-  <!-- Include the EditEduModal and DeleteEduModal components -->
-
 </template>
 
 <script>
 import EditEduModal from '@/components/Modal/UserModal/EditEduModal.vue';
 import DeleteEduModal from '@/components/Modal/UserModal/DeleteAddressModal.vue';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
   components: {
@@ -107,36 +104,48 @@ export default {
       this.editDialog = true;
     },
     openDeleteEduModal(item) {
-      this.selectedEducation = item;
-      this.deleteDialog = true;
-    },
+  this.selectedEducation = item;
+  Swal.fire({
+    title: 'ต้องการลบข้อมูลใช่หรือไม่',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#00B69B',
+    cancelButtonColor: '#FF0000',
+    confirmButtonText: '<span style="color: white;">ใช่</span>',
+    cancelButtonText: '<span style="color: white;">ยกเลิก</span>'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.deleteEducation(item);
+    }
+  });
+},
     async updateEducation(updatedData) {
-    try {
-      await axios.post("http://localhost:8002/ccph/api/update-education", updatedData);
-      this.fetchEducationData();
-      this.$swal("สำเร็จ", "แก้ไขข้อมูลเรียบร้อย", "success");
-    } catch (error) {
-      this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถแก้ไขข้อมูลได้", "error");
-    }
-  },
-  async deleteEducation(deletedData) {
-    console.log("กำลังส่ง API เพื่อลบข้อมูล:", deletedData);
-
-    try {
-      const response = await axios.post("http://localhost:8002/ccph/api/delete-education", { id: deletedData.me_id });
-
-      console.log("API Response:", response.data);
-      if (response.data.code === 200) {
-        this.$swal("สำเร็จ", "ลบข้อมูลเรียบร้อย", "success");
+      try {
+        await axios.post("http://localhost:8002/ccph/api/update-education", updatedData);
         this.fetchEducationData();
-      } else {
-        this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถลบข้อมูลได้", "error");
+        this.$swal("สำเร็จ", "แก้ไขข้อมูลเรียบร้อย", "success");
+      } catch (error) {
+        this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถแก้ไขข้อมูลได้", "error");
       }
-    } catch (error) {
-      console.error("ลบข้อมูลไม่สำเร็จ:", error);
-      this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถเชื่อมต่อ API", "error");
-    }
-  },
+    },
+    async deleteEducation(deletedData) {
+      console.log("กำลังส่ง API เพื่อลบข้อมูล:", deletedData);
+
+      try {
+        const response = await axios.post("http://localhost:8002/ccph/api/delete-education", { id: deletedData.me_id });
+
+        console.log("API Response:", response.data);
+        if (response.data.code === 200) {
+          this.$swal("สำเร็จ", "ลบข้อมูลเรียบร้อย", "success");
+          this.fetchEducationData();
+        } else {
+          this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถลบข้อมูลได้", "error");
+        }
+      } catch (error) {
+        console.error("ลบข้อมูลไม่สำเร็จ:", error);
+        this.$swal("เกิดข้อผิดพลาด", "ไม่สามารถเชื่อมต่อ API", "error");
+      }
+    },
   },
 };
 </script>

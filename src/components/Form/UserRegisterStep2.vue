@@ -527,22 +527,14 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.transcript)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.transcript)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.educational)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.educational)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -584,22 +576,14 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.picture">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.picture)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.picture)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6" v-if="files.houseregistration">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.houseregistration)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.houseregistration)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -616,22 +600,13 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.idCard">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.idCard)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black" @click="viewFile(files.idCard)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
       <v-col cols="12" md="6" v-if="files.Namechange">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Namechange)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.Namechange)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -645,12 +620,8 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
-        <v-btn
-          x-large
-          color="#FFD56D"
-          style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Medical)"
-        >
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.Medical)">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -664,79 +635,36 @@
           ดังต่อไปนี้
         </h3>
         <v-container fluid>
-          <v-checkbox
-            v-model="selected2"
-            label="สำเนาทะเบียนบ้าน 1 ฉบับ"
-            value="สำเนาทะเบียนบ้าน 1 ฉบับ"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
-            label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
-            value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
+          <v-checkbox v-model="selected2" label="สำเนาทะเบียนบ้าน 1 ฉบับ" value="สำเนาทะเบียนบ้าน 1 ฉบับ"
+            color="success"></v-checkbox>
+          <v-checkbox v-model="selected2" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+            value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ" color="success"></v-checkbox>
+          <v-checkbox v-model="selected2"
             label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
             value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
-            color="success"
-          ></v-checkbox>
+            color="success"></v-checkbox>
           <div style="margin-left: 30px">
-            <v-checkbox
-              v-model="selected2"
-              label="Transcript"
-              value="Transcript"
-              color="success"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="selected2"
-              label="ปริญญาบัคร"
-              value="ปริญญาบัคร"
-              color="success"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="selected2"
-              label="อนุปริญญาบัคร"
-              value="อนุปริญญาบัคร"
-              color="success"
-            ></v-checkbox>
-            <v-checkbox
-              v-model="selected2"
-              label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
-              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
-              color="success"
-            ></v-checkbox>
+            <v-checkbox v-model="selected2" label="Transcript" value="Transcript" color="success"></v-checkbox>
+            <v-checkbox v-model="selected2" label="ปริญญาบัคร" value="ปริญญาบัคร" color="success"></v-checkbox>
+            <v-checkbox v-model="selected2" label="อนุปริญญาบัคร" value="อนุปริญญาบัคร" color="success"></v-checkbox>
+            <v-checkbox v-model="selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา" color="success"></v-checkbox>
           </div>
-          <v-checkbox
-            v-model="selected2"
+          <v-checkbox v-model="selected2"
             label="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
             value="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
-            label="ใบรับรองแพทย์"
-            value="ใบรับรองแพทย์"
-            color="success"
-          ></v-checkbox>
-          <v-checkbox
-            v-model="selected2"
-            label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
-            value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
-            color="success"
-          ></v-checkbox>
+            color="success"></v-checkbox>
+          <v-checkbox v-model="selected2" label="ใบรับรองแพทย์" value="ใบรับรองแพทย์" color="success"></v-checkbox>
+          <v-checkbox v-model="selected2" label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)" value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+            color="success"></v-checkbox>
 
           <v-col cols="12" md="12">
             <h2 class="mb-5 textheader">การให้ความยินยอม</h2>
           </v-col>
-          <v-checkbox
-            v-model="selected2"
-            class="mt-n3"
+          <v-checkbox v-model="selected2" class="mt-n3"
             label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
             value="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
-            color="success"
-          ></v-checkbox>
+            color="success"></v-checkbox>
         </v-container>
       </v-col>
     </v-row>
@@ -810,7 +738,7 @@ export default {
 }
 
 .custom-left-margin {
-  justify-content: space-between;
+  margin-left: 100px; /* ปรับระยะห่างจากขอบซ้าย */
 }
 
 .v-text-field--outlined>>>fieldset {

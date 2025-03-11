@@ -67,7 +67,8 @@
   font-size: 24px;
   color: #34854b;
   font-family: 'Prompt', sans-serif;
-  font-weight: 600; /* SemiBold 600 */
+  font-weight: 600;
+  /* SemiBold 600 */
 }
 
 /* กำหนดฟอนต์สำหรับเนื้อหาหลัก */
@@ -75,11 +76,14 @@
   font-size: 18px;
   color: black;
   font-family: 'Prompt', sans-serif;
-  font-weight: 400; /* Regular 400 */
+  font-weight: 400;
+  /* Regular 400 */
 }
 
 .text {
-  font-size: 16px; /* ปรับขนาดตัวหนังสือ */
-  line-height: 1.8; /* ปรับระยะห่างระหว่างบรรทัด */
+  font-size: 16px;
+  /* ปรับขนาดตัวหนังสือ */
+  line-height: 1.8;
+  /* ปรับระยะห่างระหว่างบรรทัด */
 }
 </style>
