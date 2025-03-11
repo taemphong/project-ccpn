@@ -106,14 +106,41 @@ export default {
     openDeleteEduModal(item) {
   this.selectedEducation = item;
   Swal.fire({
-    title: 'ต้องการลบข้อมูลใช่หรือไม่',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#00B69B',
-    cancelButtonColor: '#FF0000',
-    confirmButtonText: '<span style="color: white;">ใช่</span>',
-    cancelButtonText: '<span style="color: white;">ยกเลิก</span>'
-  }).then((result) => {
+  title: 'ต้องการลบข้อมูลใช่หรือไม่',
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonText: 'ใช่',
+  confirmButtonColor: '#00B69B',
+  cancelButtonText: 'ยกเลิก',
+  cancelButtonColor: '#FF0000',
+  reverseButtons: false,
+  didOpen: () => {
+
+    // เปลี่ยนสีข้อความของปุ่ม
+    const confirmButton = Swal.getConfirmButton();
+    const cancelButton = Swal.getCancelButton();
+    confirmButton.style.color = '#FFFFFF';  
+    cancelButton.style.color = '#FFFFFF';  
+    
+    // ปรับขนาดของปุ่ม
+    confirmButton.style.width ='158px'
+    cancelButton.style.width ='158px'
+    confirmButton.style.height ='54px'
+    cancelButton.style.height ='54px'
+
+    confirmButton.style.margin = '40px 15px'; 
+    cancelButton.style.margin = '40px 15px';  
+    confirmButton.style.marginBottom = '80px'; 
+    cancelButton.style.marginBottom = '80px'; 
+
+
+    const title = Swal.getTitle();
+    title.style.fontSize = '40px'; 
+    
+    const popup = Swal.getPopup();  
+    popup.style.width = '665px';   
+  }
+}).then((result) => {
     if (result.isConfirmed) {
       this.deleteEducation(item);
     }

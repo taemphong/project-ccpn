@@ -109,7 +109,6 @@ export default {
   this.selectedItem = item;
   Swal.fire({
   title: 'ต้องการลบข้อมูลใช่หรือไม่',
-  text: `ที่อยู่: ${item.address}`,
   icon: 'warning',
   showCancelButton: true,
   confirmButtonText: 'ใช่',
@@ -131,8 +130,8 @@ export default {
     confirmButton.style.height ='54px'
     cancelButton.style.height ='54px'
 
-    confirmButton.style.margin = '0px 15px'; 
-    cancelButton.style.margin = '0px 15px';  
+    confirmButton.style.margin = '40px 15px'; 
+    cancelButton.style.margin = '40px 15px';  
     confirmButton.style.marginBottom = '80px'; 
     cancelButton.style.marginBottom = '80px'; 
 
