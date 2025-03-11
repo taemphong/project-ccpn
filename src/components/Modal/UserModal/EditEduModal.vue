@@ -2,28 +2,28 @@
   <v-dialog v-model="dialog" max-width="1090px">
     <v-card class="pa-5">
       <v-card-title class="d-flex justify-center" style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">
-  แก้ไขข้อมูลการศึกษา
-</v-card-title>
-      <v-card-text>
-        <v-form ref="form">
+        แก้ไขข้อมูลการศึกษา
+      </v-card-title>
+      <v-card-text style="padding: 50px;">
+        <v-form ref="form" v-model="valid">
           <v-row>
-            <v-col md="6">
-              <div class="mb-2">ระดับการศึกษา:</div>
+            <v-col md="12">
+              <div class="mb-2 required">สถาบันการศึกษา </div>
               <v-select
                 class="textfield"
-                v-model="editedItem.me_level"
-                :items="educationLevels"
+                v-model="editedItem.edit_institution"
+                :items="institutions"
                 outlined
                 :rules="[rules.required]"
               ></v-select>
             </v-col>
 
-            <v-col md="6">
-              <div class="mb-2">ชื่อสถาบัน:</div>
+            <v-col md="12">
+              <div class="mb-2 required">วุฒิการศึกษา </div>
               <v-select
                 class="textfield"
-                v-model="editedItem.me_institution"
-                :items="institutions"
+                v-model="editedItem.edit_educationLevel"
+                :items="educationLevels"
                 outlined
                 :rules="[rules.required]"
               ></v-select>
@@ -31,21 +31,11 @@
           </v-row>
 
           <v-row>
-            <v-col md="6">
-              <div class="mb-2">ปริญญา/วุฒิการศึกษา:</div>
+            <v-col md="12">
+              <div class="mb-2 required">สาขาวิชา </div>
               <v-select
                 class="textfield"
-                v-model="editedItem.me_faculty"
-                :items="degrees"
-                outlined
-                :rules="[rules.required]"
-              ></v-select>
-            </v-col>
-            <v-col md="6">
-              <div class="mb-2">หลักสูตร:</div>
-              <v-select
-                class="textfield"
-                v-model="editedItem.me_major"
+                v-model="editedItem.edit_major"
                 :items="majors"
                 outlined
                 :rules="[rules.required]"
@@ -53,67 +43,69 @@
             </v-col>
           </v-row>
 
-          <!-- ช่องแยกสำหรับวัน เดือน ปี -->
+          <v-row style="margin-bottom: -20px">
+            <v-col>
+              <div class="required">
+                วันที่จบการศึกษา 
+              </div>
+            </v-col>
+          </v-row>
           <v-row>
             <v-col md="4">
-              <div class="mb-2">วัน:</div>
               <v-select
                 class="textfield"
                 v-model="editedItem.graduated_day"
                 :items="graduationDays"
                 outlined
                 :rules="[rules.required]"
+                placeholder="วัน"
               ></v-select>
             </v-col>
             <v-col md="4">
-              <div class="mb-2">เดือน:</div>
               <v-select
                 class="textfield"
                 v-model="editedItem.graduated_month"
                 :items="graduationMonths"
                 outlined
                 :rules="[rules.required]"
+                placeholder="เดือน"
               ></v-select>
             </v-col>
             <v-col md="4">
-              <div class="mb-2">ปี:</div>
               <v-select
                 class="textfield"
                 v-model="editedItem.graduated_year"
                 :items="graduationYears"
                 outlined
                 :rules="[rules.required]"
+                placeholder="ปี"
               ></v-select>
             </v-col>
           </v-row>
-
         </v-form>
+        
+        <v-card-actions class="d-flex justify-center">
+          <v-btn 
+            class="rounded-xl px-10 my-btn" 
+            color="white" 
+            text 
+            @click="saveChanges"
+            style="background-color: green"
+          >
+            บันทึก
+          </v-btn>
+
+          <v-btn 
+            class="rounded-xl px-10 ml-8 my-btn" 
+            text 
+            color="white" 
+            @click="$emit('close')"
+            style="background-color: grey"
+          >
+            ยกเลิก
+          </v-btn>
+        </v-card-actions>
       </v-card-text>
-
-    <v-card-actions class="d-flex justify-center">
-
-      <v-btn 
-  class="rounded-xl px-5 py-3 ml-4 my-btn" 
-  color="white" 
-  text 
-  @click="saveChanges"
-  style=" background-color: green"
->
-  บันทึก
-</v-btn>
-
-<v-btn 
-  class="rounded-xl px-5 py-3 my-btn" 
-  text 
-  color="white" 
-  @click="$emit('close')"
-  style=" background-color: grey"
->
-  ยกเลิก
-</v-btn>
-
-</v-card-actions>
-
     </v-card>
   </v-dialog>
 </template>
@@ -131,10 +123,12 @@ export default {
         graduated_day: null,
         graduated_month: null,
         graduated_year: null,
+        edit_institution: null,
+        edit_educationLevel: null,
+        edit_major: null,
       },
       educationLevels: ["ปริญญาตรี", "ปริญญาโท", "ปริญญาเอก"],
       institutions: ["มหาวิทยาลัย A", "มหาวิทยาลัย B", "มหาวิทยาลัย C"],
-      degrees: ["วิทยาศาสตรบัณฑิต", "บริหารธุรกิจบัณฑิต", "ศิลปศาสตรบัณฑิต"],
       majors: ["วิทยาการคอมพิวเตอร์", "บริหารธุรกิจ", "วิศวกรรมศาสตร์"],
       graduationDays: Array.from({ length: 31 }, (_, i) => (i + 1).toString()), // 1-31
       graduationMonths: [
@@ -145,6 +139,7 @@ export default {
       rules: {
         required: (value) => !!value || "กรุณากรอกข้อมูล",
       },
+      valid: false,
     };
   },
   computed: {
@@ -173,12 +168,15 @@ export default {
   },
   methods: {
     saveChanges() {
-      if (this.$refs.form.validate()) {
-        this.editedItem.me_graduated_date = this.formattedGraduationDate;
-        this.$emit("save", this.editedItem);
-        this.$emit("close");
-      }
-    },
+  console.log("Before validation:", this.editedItem);
+  if (this.$refs.form.validate()) {
+    this.editedItem.me_graduated_date = this.formattedGraduationDate;
+    this.$emit("save", this.editedItem);
+    this.$emit("close");
+  } else {
+    console.log("Validation failed");
+  }
+},
   },
 };
 </script>
@@ -200,9 +198,13 @@ export default {
 }
 
 .required::after {
-content: '*';
-color: red;
+  content: '*';
+  color: red;
 }
 
+::v-deep(.v-messages__message) {
+  color: red !important;
+  margin: 5px;
+}
 
 </style>

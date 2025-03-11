@@ -6,76 +6,76 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ </div>
-        <v-select v-model="prefixTh" :items="prefixOptions" outlined></v-select>
+        <v-select v-model="mp_name1" :items="prefixOptions" outlined></v-select>
       </v-col>
 
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ </div>
-        <v-text-field v-model="firstNameTh" outlined></v-text-field>
+        <v-text-field v-model="mp_name2" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล </div>
-        <v-text-field v-model="lastNameTh" outlined></v-text-field>
+        <v-text-field v-model="mp_name3" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ (อังกฤษ) </div>
-        <v-select v-model="prefixEn" :items="prefixOptionsEn" outlined></v-select>
+        <v-select v-model="mp_name1_eng" :items="prefixOptionsEn" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ (อังกฤษ) </div>
-        <v-text-field v-model="firstNameEn" outlined></v-text-field>
+        <v-text-field v-model="mp_name2_eng" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล (อังกฤษ) </div>
-        <v-text-field v-model="lastNameEn" outlined></v-text-field>
+        <v-text-field v-model="mp_name3_eng" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">เพศ </div>
-        <v-select v-model="gender" :items="genderOptions" outlined></v-select>
+        <v-select v-model="mp_gender" :items="mp_genderOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">สัญชาติ </div>
-        <v-text-field v-model="nationality" outlined></v-text-field>
+        <v-text-field v-model="mp_nationality" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">เชื้อชาติ </div>
-        <v-text-field v-model="ethnicity" outlined></v-text-field>
+        <v-text-field v-model="mp_ethnicity" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ศาสนา </div>
-        <v-text-field v-model="religion" outlined></v-text-field>
+        <v-text-field v-model="mp_religion" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">หมู่โลหิต </div>
-        <v-select v-model="bloodType" :items="bloodTypeOptions" outlined></v-select>
+        <v-select v-model="mp_blood" :items="mp_bloodOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ประเภทหน่วยงาน </div>
-        <v-select v-model="organizationType" :items="organizationTypeOptions" outlined></v-select>
+        <v-select v-model="mp_company_type" :items="mp_company_typeOptions" outlined></v-select>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำแหน่ง </div>
-        <v-select v-model="position" :items="positionOptions" outlined></v-select>
+        <v-select v-model="mp_position" :items="mp_positionOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field v-model="phoneNumber" outlined></v-text-field>
+        <v-text-field v-model="mp_tel" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field v-model="email" outlined></v-text-field>
+        <v-text-field v-model="mp_email" outlined></v-text-field>
       </v-col>
     </v-row>
     <v-row class="mt-4 ml-1 required">
@@ -84,19 +84,19 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">วัน</div>
-        <v-select v-model="day" :items="dayOptions" outlined></v-select>
+        <v-select v-model="birthday" :items="dayOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">เดือน</div>
-        <v-select v-model="month" :items="monthOptions" outlined></v-select>
+        <v-select v-model="birthmonth" :items="monthOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col margin-right">
         <div class="mb-3 required">ปี</div>
-        <v-select v-model="year" :items="yearOptions" outlined></v-select>
+        <v-select v-model="birthyear" :items="yearOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
-        <v-text-field v-model="idCard" outlined></v-text-field>
+        <v-text-field v-model="mp_customer_id" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -120,7 +120,7 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ออกโดย</div>
-        <v-text-field v-model="issuedBy" outlined></v-text-field>
+        <v-text-field v-model="mp_issued_by" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -134,29 +134,29 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-textarea v-model="homeaddress" outlined rows="3"></v-textarea>
+        <v-textarea v-model="mha_address" outlined rows="3"></v-textarea>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select v-model="homeprovince" :items="homeprovinceOptions" outlined></v-select>
+        <v-select v-model="mha_province" :items="mha_provinceOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
-        <v-select v-model="homedistrict" :items="homedistrictOptions" outlined></v-select>
+        <v-select v-model="mha_amphoe" :items="mha_amphoeOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำบล/แขวง </div>
-        <v-select v-model="homesubdistrict" :items="homesubdistrictOptions" outlined></v-select>
+        <v-select v-model="mha_district" :items="mha_districtOptions" outlined></v-select>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="homepostalCode" outlined></v-text-field>
+        <v-text-field v-model="mha_zipcode" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -168,29 +168,29 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ชื่อสถานที่ทำงาน </div>
-        <v-text-field v-model="workname" outlined></v-text-field>
+        <v-text-field v-model="mca_company" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field v-model="workaddress" outlined></v-text-field>
+        <v-text-field v-model="mca_address" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select v-model="workprovince" :items="workprovinceOptions" outlined></v-select>
+        <v-select v-model="mca_province" :items="mca_provinceOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
-        <v-select v-model="workdistrict" :items="workdistrictOptions" outlined></v-select>
+        <v-select v-model="mca_amphoe" :items="mca_amphoeOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำบล/แขวง </div>
-        <v-select v-model="worksubdistrict" :items="worksubdistrictOptions" outlined></v-select>
+        <v-select v-model="mca_district" :items="mca_districtOptions" outlined></v-select>
       </v-col>
     </v-row>
 
@@ -198,15 +198,15 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="workpostalCode" outlined></v-text-field>
+        <v-text-field v-model="mca_zipcode" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์ที่ทำงาน </div>
-        <v-text-field v-model="workPhone" outlined></v-text-field>
+        <v-text-field v-model="mca_phone" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field v-model="workEmail" outlined></v-text-field>
+        <v-text-field v-model="mca_email" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -220,33 +220,33 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field v-model="currentAddress" outlined></v-text-field>
+        <v-text-field v-model="moa_address" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select v-model="currentProvince" :items="currentprovinceOptions" outlined></v-select>
+        <v-select v-model="moa_province" :items="moa_provinceOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
-        <v-select v-model="currentDistrict" :items="currentdistrictOptions" outlined></v-select>
+        <v-select v-model="moa_amphoe" :items="moa_amphoeOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำบล/แขวง </div>
-        <v-select v-model="currentSubdistrict" :items="currentsubdistrictOptions" outlined></v-select>
+        <v-select v-model="moa_district" :items="moa_districtOptions" outlined></v-select>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="currentPostalCode" outlined></v-text-field>
+        <v-text-field v-model="moa_zipcode" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3" class="custom-margin">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field v-model="currentPhone" outlined></v-text-field>
+        <v-text-field v-model="moa_phone" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -336,7 +336,7 @@
         </div>
 
         <div class="mb-3 required">สำเนาบัตรประจำตัวประชาชน </div>
-        <v-file-input v-model="Copyof_IDcard" outlined placeholder="File input"></v-file-input>
+        <v-file-input v-model="Copyof_mp_customer_id" outlined placeholder="File input"></v-file-input>
         <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
           .pdf
         </div>
@@ -425,49 +425,49 @@ export default {
   data() {
     return {
       // คำนำหน้าชื่อภาษาไทย
-      prefixTh: '',
+      mp_name1: '',
       prefixOptions: ['นาย', 'นาง', 'นางสาว'],
 
       // คำนำหน้าชื่อภาษาอังกฤษ
-      prefixEn: '',
+      mp_name1_eng: '',
       prefixOptionsEn: ['Mr.', 'Mrs.', 'Miss'],
 
       // ชื่อและนามสกุล
-      firstNameTh: '',
-      lastNameTh: '',
-      firstNameEn: '',
-      lastNameEn: '',
+      mp_name2: '',
+      mp_name3: '',
+      mp_name2_eng: '',
+      mp_name3_eng: '',
 
       // เพศ
-      gender: '',
-      genderOptions: ['ชาย', 'หญิง', 'อื่น ๆ'],
+      mp_gender: '',
+      mp_genderOptions: ['ชาย', 'หญิง', 'อื่น ๆ'],
 
       // สัญชาติ & เชื้อชาติ
-      nationality: '',
-      ethnicity: '',
+      mp_nationality: '',
+      mp_ethnicity: '',
 
       // ศาสนา
-      religion: '',
+      mp_religion: '',
 
       // หมู่โลหิต
-      bloodType: '',
-      bloodTypeOptions: ['A', 'B', 'AB', 'O'],
+      mp_blood: '',
+      mp_bloodOptions: ['A', 'B', 'AB', 'O'],
 
       // ประเภทหน่วยงาน
-      organizationType: '',
-      organizationTypeOptions: ['ภาครัฐ', 'เอกชน', 'รัฐวิสาหกิจ', 'อื่น ๆ'],
+      mp_company_type: '',
+      mp_company_typeOptions: ['ภาครัฐ', 'เอกชน', 'รัฐวิสาหกิจ', 'อื่น ๆ'],
 
       // ตำแหน่ง
-      position: '',
-      positionOptions: ['พนักงาน', 'ผู้จัดการ', 'ผู้บริหาร'],
+      mp_position: '',
+      mp_positionOptions: ['พนักงาน', 'ผู้จัดการ', 'ผู้บริหาร'],
 
       // เบอร์โทรศัพท์ & อีเมล
-      phoneNumber: '',
-      email: '',
-      day: '',
-      month: '',
-      year: '',
-      idCard: '',
+      mp_tel: '',
+      mp_email: '',
+      birthday: '',
+      birthmonth: '',
+      birthyear: '',
+      mp_customer_id: '',
       dayOptions: Array.from({ length: 31 }, (_, i) => i + 1), // 1-31
       monthOptions: [
         "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
@@ -477,39 +477,39 @@ export default {
       expireDay: '',
       expireMonth: '',
       expireYear: '',
-      issuedBy: '',
+      mp_issued_by: '',
       yearOptions2: Array.from({ length: 50 }, (_, i) => new Date().getFullYear() + i),
 
-      homeaddress: '',
-      homeprovince: '',
-      homedistrict: '',
-      homesubdistrict: '',
-      homepostalCode: '',
-      homeprovinceOptions: ["ตามทะเบียนบ้าน", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
-      homedistrictOptions: [],
-      homesubdistrictOptions: [],
+      mha_address: '',
+      mha_province: '',
+      mha_amphoe: '',
+      mha_district: '',
+      mha_zipcode: '',
+      mha_provinceOptions: ["ตามทะเบียนบ้าน", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
+      mha_amphoeOptions: [],
+      mha_districtOptions: [],
 
-      workprovince: '',
-      workdistrict: '',
-      worksubdistrict: '',
-      workpostalCode: '',
-      workPhone: '',
-      workEmail: '',
-      workaddress: '',
-      workname: '',
-      workprovinceOptions: ["กรุงเทพมหานคร", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
-      workdistrictOptions: [],
-      worksubdistrictOptions: [],
+      mca_province: '',
+      mca_amphoe: '',
+      mca_district: '',
+      mca_zipcode: '',
+      mca_phone: '',
+      mca_email: '',
+      mca_address: '',
+      mca_company: '',
+      mca_provinceOptions: ["กรุงเทพมหานคร", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
+      mca_amphoeOptions: [],
+      mca_districtOptions: [],
 
-      currentAddress: '',
-      currentProvince: null,
-      currentDistrict: null,
-      currentSubdistrict: null,
-      currentPostalCode: '',
-      currentPhone: '',
-      currentprovinceOptions: ["กรุงเทพมหานคร", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
-      currentdistrictOptions: [],
-      currentsubdistrictOptions: [],
+      moa_address: '',
+      moa_province: null,
+      moa_amphoe: null,
+      moa_district: null,
+      moa_zipcode: '',
+      moa_phone: '',
+      moa_provinceOptions: ["กรุงเทพมหานคร", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
+      moa_amphoeOptions: [],
+      moa_districtOptions: [],
 
       radios: '',
 
@@ -517,7 +517,7 @@ export default {
       selected2: [],
       photo: null,
       Copyof_houseregistration: null,
-      Copyof_IDcard: null,
+      Copyof_mp_customer_id: null,
       Medical_certificate: null,
       Namechange_certificate: null,
 
