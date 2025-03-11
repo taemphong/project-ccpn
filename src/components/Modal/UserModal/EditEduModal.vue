@@ -204,6 +204,7 @@ export default {
 
 ::v-deep(.v-messages__message) {
   color: red !important;
+  margin: 5px;
 }
 
 </style>
