@@ -11,6 +11,11 @@
             <p class="font-weight-bold" style="font-size: 20px;">ตรวจสอบสถานะเอกสาร และตรวจสอบสถานะการชำระเงิน</p>
         </div>
 
+        <!-- Check Button -->
+        <div class="text-center my-4">
+            <v-btn color="primary" @click="checkStatus">Check</v-btn>
+        </div>
+
         <!-- Status table -->
         <v-container style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
             <v-simple-table class="custom-table">
@@ -26,12 +31,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in items" :key="item['วันที่จดทะเบียน']">
+                        <tr v-for="(item, index) in items" :key="index">
                             <td>{{ item['วันที่จดทะเบียน'] }}</td>
                             <td>{{ item['สถานะชำระเงิน'] }}</td>
-                            <td>{{ item['สถานะเอกสาร'] }}</td>
+                            <td :style="{ color: item['สถานะเอกสาร'] === 'ผ่าน' ? 'green' : 'black' }">
+                                {{ item['สถานะเอกสาร'] }}
+                            </td>
                             <td>{{ item['หมายเหตุ'] }}</td>
-                            <td>{{ item['ใบชำระเงิน'] }}</td>
+                            <td>
+                                <v-btn v-if="item['ใบชำระเงิน'] === 'พิมพ์'" small color="warning" class="px-3">
+                                    {{ item['ใบชำระเงิน'] }}
+                                </v-btn>
+                            </td>
                             <td>
                                 <v-btn small color="warning" class="px-3" v-if="item['ใบเสร็จ'] === 'พิมพ์'">
                                     {{ item['ใบเสร็จ'] }}
@@ -61,6 +72,14 @@ export default {
                 },
             ],
         };
+    },
+    methods: {
+        checkStatus() {
+            this.items.forEach(item => {
+                item['สถานะเอกสาร'] = 'ผ่าน';
+                item['ใบชำระเงิน'] = 'พิมพ์';
+            });
+        },
     },
 };
 </script>

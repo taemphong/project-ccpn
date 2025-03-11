@@ -1,39 +1,37 @@
 <template>
-    <v-container fluid class="login-container fill-height">
-        <v-row no-gutters class="fill-height">
-            <v-col cols="7" class="left-side">
-                <v-img :src="require('@/assets/images/logo5.png')" alt="Logo" class="logo" contain max-width="500" />
-                <div>
-                    <h2 class="text1">สภาการสาธารณสุขชุมชน</h2>
-                </div>
-            </v-col>
-            <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
-                <v-col cols="12" sm="6" md="6">
-                    <h1>คำขอเป็นสมาชิก</h1>
-                    <br />
-                    <v-form class="login-form">
-                        <div class="mb-4">เลขบัตรประชาชน</div>
-                        <v-text-field filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
-                            background-color="#82D6631F"></v-text-field>
-                        <div class="mb-4">รหัสรักษาความปลอดภัย</div>
-                        <v-text-field v-model="userBotCode" filled solo class="custom-input"
-                            placeholder="ใส่รหัสรักษาความปลอดภัย" background-color="#82D6631F">
-                        </v-text-field>
+    <v-row no-gutters class="fill-height">
+        <v-col cols="7" class="left-side">
+            <v-img :src="require('@/assets/images/logo5.png')" alt="Logo" class="logo" contain max-width="500" />
+            <div>
+                <h2 class="text1">สภาการสาธารณสุขชุมชน</h2>
+            </div>
+        </v-col>
+        <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
+            <v-col cols="12" sm="6" md="6">
+                <p style="font-size: 28px; font-weight: bold;">คำขอเป็นสมาชิก</p>
+                <br />
+                <v-form class="login-form">
+                    <div class="mb-4">เลขบัตรประชาชน</div>
+                    <v-text-field filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
+                        background-color="#82D6631F"></v-text-field>
+                    <div class="mb-4">รหัสรักษาความปลอดภัย</div>
+                    <v-text-field v-model="userBotCode" filled solo class="custom-input"
+                        placeholder="ใส่รหัสรักษาความปลอดภัย" background-color="#82D6631F">
+                    </v-text-field>
 
-                        <div class="captcha-box d-flex justify-center">
-                            <span class="captcha-code">{{ botCode }}</span>
-                            <v-btn icon @click="refreshBotCode">
-                                <v-icon>mdi-refresh</v-icon>
-                            </v-btn>
-                        </div>
-                        <v-btn block class="custom-button" @click="handleSearch">
-                            <v-icon left size="30">mdi-magnify</v-icon> ค้นหา
+                    <div class="captcha-box d-flex justify-center">
+                        <span class="captcha-code">{{ botCode }}</span>
+                        <v-btn icon @click="refreshBotCode">
+                            <v-icon>mdi-refresh</v-icon>
                         </v-btn>
-                    </v-form>
-                </v-col>
+                    </div>
+                    <v-btn block class="custom-button" @click="handleSearch">
+                        <v-icon left size="30">mdi-magnify</v-icon> ค้นหา
+                    </v-btn>
+                </v-form>
             </v-col>
-        </v-row>
-    </v-container>
+        </v-col>
+    </v-row>
 </template>
 
 <script>
@@ -79,12 +77,8 @@ export default {
 </script>
 
 <style scoped>
-.login-container {
-    height: 100vh;
-}
-
 .left-side {
-    background-image: url("@/assets/images/bg3.png");
+    background-image: url("@/assets/images/bgreal.jpg");
     background-size: cover;
     background-position: center;
 }
