@@ -1,31 +1,33 @@
 <template>
-    <v-container fluid class="pa-0 white-background full-page">
-        <!-- Banner image at the top -->
-        <div>
-            <v-img :src="require('@/assets/images/banner1.png')" alt="Logo" class="logo" contain max-width="auto" />
-        </div>
-        <div class="text-center my-6">
-            <p class="font-weight-bold" style="font-size: 28px; color: #48BF6A;">ข้อมูลการชำระเงิน</p>
-        </div>
-
-        <!-- QR Code Generator -->
-        <div class="text-center">
-            <div class="qrcode-container">
-                <qrcode-vue :value="paymentUrl" :size="600" level="H" />
+    <v-app>
+        <v-container fluid class="pa-0">
+            <!-- Banner image at the top -->
+            <div>
+                <v-img :src="require('@/assets/images/banner1.png')" alt="Logo" class="logo" contain max-width="auto" />
+            </div>
+            <div class="text-center my-6">
+                <p class="font-weight-bold" style="font-size: 28px; color: #48BF6A;">ข้อมูลการชำระเงิน</p>
             </div>
 
-            <p class="mt-2 expiration-text">
-                QR Code นี้จะหมดอายุภายในวันที่
-                <span class="text-danger">{{ expirationDate }}</span>
-                เวลา
-                <span class="text-danger">{{ expirationTime }}</span>
-            </p>
+            <!-- QR Code Generator -->
+            <div class="text-center">
+                <div class="qrcode-container">
+                    <qrcode-vue :value="paymentUrl" :size="600" level="H" />
+                </div>
 
-            <p>กรณีเกิน 30 นาที QR Code นี้ จะไม่สามารถชำระเงินได้ กรุณา Reload หน้านี้ใหม่อีกครั้ง
-            </p>
-            <p>ท่านสามารถชำระเงินด้วย QR Code ผ่าน Mobile Banking ได้ทุกธนาคาร</p>
-        </div>
-    </v-container>
+                <p class="mt-2 expiration-text">
+                    QR Code นี้จะหมดอายุภายในวันที่
+                    <span class="text-danger">{{ expirationDate }}</span>
+                    เวลา
+                    <span class="text-danger">{{ expirationTime }}</span>
+                </p>
+
+                <p>กรณีเกิน 30 นาที QR Code นี้ จะไม่สามารถชำระเงินได้ กรุณา Reload หน้านี้ใหม่อีกครั้ง
+                </p>
+                <p>ท่านสามารถชำระเงินด้วย QR Code ผ่าน Mobile Banking ได้ทุกธนาคาร</p>
+            </div>
+        </v-container>
+    </v-app>
 </template>
 
 <script>
@@ -60,15 +62,6 @@ export default {
 </script>
 
 <style scoped>
-.white-background {
-    background-color: white;
-}
-
-.full-page {
-    min-height: 100vh;
-    width: 100%;
-}
-
 .text-center {
     text-align: center;
 }

@@ -23,7 +23,8 @@
           <v-form class="login-form" @submit.prevent="loginUser">
             <div class="mb-4">เลขบัตรประชาชน</div>
             <v-text-field v-model="ml_customer_id" filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
-              background-color="#82D6631F" required autocomplete="cc-number"></v-text-field>
+              background-color="#82D6631F" required autocomplete="cc-number" maxlength="13"></v-text-field>
+
             <div class="mb-4">รหัสความปลอดภัย</div>
             <v-text-field v-model="ml_licenses" :type="passwordVisible ? 'text' : 'password'" filled solo
               class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F" required
@@ -45,6 +46,7 @@
 
 <script>
 import axios from "axios";
+import Swal from 'sweetalert2';
 import variable from "../../main.config.js";
 export default {
   data() {
@@ -71,11 +73,21 @@ export default {
           localStorage.setItem("authToken", JSON.stringify(response.data.data));
           this.$router.push("/home");
         } else {
-          alert("เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง");
+          Swal.fire({
+            title: 'Error!',
+            text: 'เลขบัตรประชาชนหรือรหัสผ่านไม่ถูกต้อง',
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
         }
       } catch (error) {
         console.error("Login error:", error);
-        alert("เกิดข้อผิดพลาดในการเข้าสู่ระบบ");
+        Swal.fire({
+          title: 'Error!',
+          text: 'เกิดข้อผิดพลาดในการเข้าสู่ระบบ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       }
     },
   },

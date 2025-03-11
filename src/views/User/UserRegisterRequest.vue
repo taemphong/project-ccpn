@@ -12,12 +12,11 @@
                 <br />
                 <v-form class="login-form">
                     <div class="mb-4">เลขบัตรประชาชน</div>
-                    <v-text-field filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
-                        background-color="#82D6631F"></v-text-field>
+                    <v-text-field v-model="citizenId" filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
+                        background-color="#82D6631F" maxlength="13"></v-text-field>
                     <div class="mb-4">รหัสรักษาความปลอดภัย</div>
                     <v-text-field v-model="userBotCode" filled solo class="custom-input"
-                        placeholder="ใส่รหัสรักษาความปลอดภัย" background-color="#82D6631F">
-                    </v-text-field>
+                        placeholder="ใส่รหัสรักษาความปลอดภัย" background-color="#82D6631F"></v-text-field>
 
                     <div class="captcha-box d-flex justify-center">
                         <span class="captcha-code">{{ botCode }}</span>
@@ -36,33 +35,57 @@
 
 <script>
 import Swal from "sweetalert2";
+import axios from "axios";
 
 export default {
     data() {
         return {
             userBotCode: "", // เก็บค่าที่ผู้ใช้กรอก
             botCode: this.generateBotCode(),
+            citizenId: "", // เพิ่ม input สำหรับเลขบัตรประชาชน
         };
     },
     methods: {
-        handleSearch() {
-            if (this.userBotCode.trim() === this.botCode) {
-                Swal.fire({
-                    icon: "success",
-                    title: "สำเร็จ!",
-                    text: "รหัสถูกต้อง กำลังนำทาง...",
-                    timer: 1000,
-                    showConfirmButton: false,
-                }).then(() => {
-                    this.$router.push("/check-document-status"); // นำทางไปหน้า /home
-                });
-            } else {
+        async handleSearch() {
+            if (this.userBotCode.trim() !== this.botCode) {
                 this.refreshBotCode(); // สร้างรหัสใหม่ทันทีเมื่อผิด
                 this.userBotCode = ""; // เคลียร์ค่าที่ผู้ใช้กรอก
                 Swal.fire({
                     icon: "error",
                     title: "ผิดพลาด!",
                     text: "รหัสรักษาความปลอดภัยไม่ถูกต้อง กรุณาลองใหม่",
+                });
+                return;
+            }
+
+            if (!this.citizenId.trim()) {
+                Swal.fire({
+                    icon: "warning",
+                    title: "กรุณากรอกเลขบัตรประชาชน",
+                });
+                return;
+            }
+
+            try {
+                const response = await axios.post("http://localhost:8002/ccph/api/get-all-member");
+                if (response.data.code === 200) {
+                    const members = response.data.data;
+                    const exists = members.some(member => member.ml_customer_id === this.citizenId.trim());
+                    Swal.fire({
+                        icon: exists ? "success" : "info",
+                        title: exists ? "พบข้อมูลในระบบ" : "ไม่พบข้อมูลในระบบ",
+                        text: exists ? "กำลังนำทาง..." : "โปรดลงทะเบียนใหม่",
+                        timer: 1000,
+                        showConfirmButton: false,
+                    }).then(() => {
+                        this.$router.push(exists ? "/" : "/user-register");
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "เกิดข้อผิดพลาด",
+                    text: "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้",
                 });
             }
         },
