@@ -123,7 +123,7 @@ export default {
         graduated_day: null,
         graduated_month: null,
         graduated_year: null,
-        edit_institutionsss: null,
+        edit_institution: null,
         edit_educationLevel: null,
         edit_major: null,
       },
