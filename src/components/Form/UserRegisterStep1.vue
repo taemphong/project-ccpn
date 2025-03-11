@@ -83,15 +83,15 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">วัน</div>
-        <v-select v-model="birthday" :items="dayOptions" outlined></v-select>
+        <v-select v-model="mp_birthday" :items="dayOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">เดือน</div>
-        <v-select v-model="birthmonth" :items="monthOptions" outlined></v-select>
+        <v-select v-model="mp_birthmonth" :items="monthOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col margin-right">
         <div class="mb-3 required">ปี</div>
-        <v-select v-model="birthyear" :items="yearOptions" outlined></v-select>
+        <v-select v-model="mp_birthyear" :items="yearOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
@@ -461,9 +461,9 @@ export default {
       // เบอร์โทรศัพท์ & อีเมล
       mp_tel: '',
       mp_email: '',
-      birthday: '',
-      birthmonth: '',
-      birthyear: '',
+      mp_birthday: '',
+      mp_birthmonth: '',
+      mp_birthyear: '',
       mp_customer_id: '',
       dayOptions: Array.from({ length: 31 }, (_, i) => i + 1), // 1-31
       monthOptions: [
