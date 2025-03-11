@@ -17,9 +17,8 @@
         <div class="mb-3 required">นามสกุล </div>
         <v-text-field v-model="mp_name3" outlined></v-text-field>
       </v-col>
-    </v-row>
-
-    <v-row class="v-raw-between">
+     </v-row> 
+    <v-row  class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ (อังกฤษ) </div>
         <v-select v-model="mp_name1_eng" :items="prefixOptionsEn" outlined></v-select>
@@ -78,21 +77,23 @@
         <v-text-field v-model="mp_email" outlined></v-text-field>
       </v-col>
     </v-row>
-    <v-row class="mt-4 ml-1 required">
+    <v-row class="ml-1 ">
+      <div class="required">
       วัน-เดือน-ปีเกิด
-    </v-row>
+      </div>
+</v-row>
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
-        <div class="mb-3 required">วัน</div>
-        <v-select v-model="birthday" :items="dayOptions" outlined></v-select>
+        <div class="mb-3 required">วัน </div>
+        <v-select v-model="mp_birthday" :items="dayOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col">
-        <div class="mb-3 required">เดือน</div>
-        <v-select v-model="birthmonth" :items="monthOptions" outlined></v-select>
+        <div class="mb-3 required">เดือน </div>
+        <v-select v-model="mp_birthmonth" :items="monthOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col margin-right">
-        <div class="mb-3 required">ปี</div>
-        <v-select v-model="birthyear" :items="yearOptions" outlined></v-select>
+        <div class="mb-3 required">ปี </div>
+        <v-select v-model="mp_birthyear" :items="yearOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
@@ -100,23 +101,23 @@
       </v-col>
     </v-row>
 
-
-
-    <v-row class="mt-4 ml-1 required">
-      วันหมดอายุบัตร
+    <v-row class="ml-1 ">
+      <div class="required">
+      วันหมดอายุบัตร 
+    </div>
     </v-row>
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
-        <div class="mb-3 required">วัน</div>
-        <v-select v-model="expireDay" :items="dayOptions" outlined></v-select>
+        <div class="mb-3 required">วัน </div>
+        <v-select v-model="ml_expired" :items="dayOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col">
-        <div class="mb-3 required">เดือน</div>
-        <v-select v-model="expireMonth" :items="monthOptions" outlined></v-select>
+        <div class="mb-3 required">เดือน </div>
+        <v-select v-model="ml_expired" :items="monthOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col margin-right">
-        <div class="mb-3 required">ปี</div>
-        <v-select v-model="expireYear" :items="yearOptions2" outlined></v-select>
+        <div class="mb-3 required">ปี </div>
+        <v-select v-model="ml_expired" :items="yearOptions2" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ออกโดย</div>
@@ -464,9 +465,9 @@ export default {
       // เบอร์โทรศัพท์ & อีเมล
       mp_tel: '',
       mp_email: '',
-      birthday: '',
-      birthmonth: '',
-      birthyear: '',
+      mp_birthday: '',
+      mp_birthmonth: '',
+      mp_birthyear: '',
       mp_customer_id: '',
       dayOptions: Array.from({ length: 31 }, (_, i) => i + 1), // 1-31
       monthOptions: [
@@ -474,9 +475,7 @@ export default {
         "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
       ],
       yearOptions: Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i),
-      expireDay: '',
-      expireMonth: '',
-      expireYear: '',
+      ml_expired: '',
       mp_issued_by: '',
       yearOptions2: Array.from({ length: 50 }, (_, i) => new Date().getFullYear() + i),
 
@@ -520,14 +519,6 @@ export default {
       Copyof_mp_customer_id: null,
       Medical_certificate: null,
       Namechange_certificate: null,
-
-
-
-
-
-
-
-
     };
   },
 };

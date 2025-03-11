@@ -38,7 +38,7 @@ export default {
 <style>
 * {
   font-size: 18px;
-  color: black;
+  /* color: black; */
   font-family: 'Prompt', sans-serif;
   font-weight: 400;
 }
