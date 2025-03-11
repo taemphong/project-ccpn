@@ -34,7 +34,7 @@
                         <tr v-for="(item, index) in items" :key="index">
                             <td>{{ item['วันที่จดทะเบียน'] }}</td>
                             <td>{{ item['สถานะชำระเงิน'] }}</td>
-                            <td :style="{ color: item['สถานะเอกสาร'] === 'ผ่าน' ? 'green' : 'black' }">
+                            <td :style="{ color: item['สถานะเอกสาร'] === 'ผ่าน' ? 'green' : 'red' }">
                                 {{ item['สถานะเอกสาร'] }}
                             </td>
                             <td>{{ item['หมายเหตุ'] }}</td>
