@@ -15,21 +15,18 @@
                         <div class="mb-4">เลขบัตรประชาชน</div>
                         <v-text-field filled solo class="custom-input" placeholder="เลขบัตรประชาชน"
                             background-color="#82D6631F"></v-text-field>
-                        <div class="mb-4">รหัสความปลอดภัย</div>
-                        <v-text-field v-model="password" :type="passwordVisible ? 'text' : 'password'" filled solo
-                            class="custom-input" placeholder="รหัสผ่าน" background-color="#82D6631F">
-                            <template v-slot:append>
-                                <v-icon @click="togglePasswordVisibility">
-                                    {{ passwordVisible ? "mdi-eye-off" : "mdi-eye" }}
-                                </v-icon>
-                            </template>
+                        <div class="mb-4">รหัสรักษาความปลอดภัย</div>
+                        <v-text-field v-model="userBotCode" filled solo class="custom-input"
+                            placeholder="ใส่รหัสรักษาความปลอดภัย" background-color="#82D6631F">
                         </v-text-field>
-                        <!-- reCAPTCHA -->
-                        <v-container cols="12" class="pa-0 d-flex justify-center">
-                            <vue-recaptcha ref="recaptcha" sitekey="6Lfx2O8qAAAAAAfbIEAzyxBU_aLzcBECQLBKvYfS"
-                                size="normal" @verify="onVerify" @expired="onExpired"></vue-recaptcha>
-                        </v-container>
-                        <v-btn block class="custom-button" :disabled="!isRecaptchaVerified" @click="handleSearch">
+
+                        <div class="captcha-box d-flex justify-center">
+                            <span class="captcha-code">{{ botCode }}</span>
+                            <v-btn icon @click="refreshBotCode">
+                                <v-icon>mdi-refresh</v-icon>
+                            </v-btn>
+                        </div>
+                        <v-btn block class="custom-button" @click="handleSearch">
                             <v-icon left size="30">mdi-magnify</v-icon> ค้นหา
                         </v-btn>
                     </v-form>
@@ -40,39 +37,44 @@
 </template>
 
 <script>
-import VueRecaptcha from "vue-recaptcha";
+import Swal from "sweetalert2";
 
 export default {
-    components: {
-        VueRecaptcha
-    },
     data() {
         return {
-            password: "",
-            passwordVisible: false,
-            isRecaptchaVerified: false
+            userBotCode: "", // เก็บค่าที่ผู้ใช้กรอก
+            botCode: this.generateBotCode(),
         };
     },
     methods: {
-        togglePasswordVisibility() {
-            this.passwordVisible = !this.passwordVisible;
-        },
-        onVerify(response) {
-            console.log("reCAPTCHA verified:", response);
-            this.isRecaptchaVerified = true;
-        },
-        onExpired() {
-            console.log("reCAPTCHA expired");
-            this.isRecaptchaVerified = false;
-        },
         handleSearch() {
-            if (this.isRecaptchaVerified) {
-                console.log("ดำเนินการค้นหา...");
+            if (this.userBotCode.trim() === this.botCode) {
+                Swal.fire({
+                    icon: "success",
+                    title: "สำเร็จ!",
+                    text: "รหัสถูกต้อง กำลังนำทาง...",
+                    timer: 1000,
+                    showConfirmButton: false,
+                }).then(() => {
+                    this.$router.push("/check-document-status"); // นำทางไปหน้า /home
+                });
             } else {
-                alert("กรุณายืนยัน reCAPTCHA ก่อนกดค้นหา");
+                this.refreshBotCode(); // สร้างรหัสใหม่ทันทีเมื่อผิด
+                this.userBotCode = ""; // เคลียร์ค่าที่ผู้ใช้กรอก
+                Swal.fire({
+                    icon: "error",
+                    title: "ผิดพลาด!",
+                    text: "รหัสรักษาความปลอดภัยไม่ถูกต้อง กรุณาลองใหม่",
+                });
             }
-        }
-    }
+        },
+        generateBotCode() {
+            return Math.random().toString(36).substr(2, 6).toUpperCase();
+        },
+        refreshBotCode() {
+            this.botCode = this.generateBotCode();
+        },
+    },
 };
 </script>
 
@@ -124,5 +126,21 @@ export default {
     background-color: #468041 !important;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
+}
+
+.captcha-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.captcha-code {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    user-select: none;
+    letter-spacing: 3px;
 }
 </style>

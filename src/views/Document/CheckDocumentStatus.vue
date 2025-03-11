@@ -1,55 +1,115 @@
 <template>
-    <v-container>
-        <!-- Banner Section -->
-        <v-img src="@/assets/images/banner1.png" aspect-ratio="2.2" class="mb-4"></v-img>
+    <v-container fluid class="pa-0">
+        <!-- Banner image at the top -->
+        <div>
+            <v-img :src="require('@/assets/images/banner1.png')" alt="Logo" class="logo" contain max-width="auto" />
+        </div>
 
-        <!-- Content Section -->
-        <v-card class="p-4">
-            <v-row justify="center" class="mb-4">
-                <v-col cols="12" class="text-center">
-                    <h2 class="font-weight-bold">สวัสดีคุณ ..... </h2>
-                    <p>ตรวจสอบสถานะเอกสาร และตรวจสอบสถานะการชำระเงิน</p>
-                </v-col>
-            </v-row>
+        <!-- Main content -->
+        <div class="text-center my-6">
+            <p class="font-weight-bold" style="font-size: 28px;">สวัสดีคุณ ....</p>
+            <p class="font-weight-bold" style="font-size: 20px;">ตรวจสอบสถานะเอกสาร และตรวจสอบสถานะการชำระเงิน</p>
+        </div>
 
-            <!-- Status Table -->
-            <v-simple-table>
-                <thead>
-                    <tr>
-                        <th class="text-left">วันที่ลงทะเบียน</th>
-                        <th class="text-left">สถานะชำระเงิน</th>
-                        <th class="text-left">สถานะเอกสาร</th>
-                        <th class="text-left">หมายเหตุ</th>
-                        <th class="text-left">ใบชำระเงิน</th>
-                        <th class="text-left">ใบสมัคร</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>3/4/2025</td>
-                        <td class="text-danger">รอชำระเงิน</td>
-                        <td class="text-danger">รอตรวจสอบเอกสาร</td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <v-btn color="yellow darken-2" dark>พิมพ์</v-btn>
-                        </td>
-                    </tr>
-                </tbody>
+        <!-- Status table -->
+        <v-container style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
+            <v-simple-table class="custom-table">
+                <template v-slot:default>
+                    <thead>
+                        <tr>
+                            <th class="column-type table-header">วันที่จดทะเบียน</th>
+                            <th class="column-address table-header">สถานะชำระเงิน</th>
+                            <th class="column-phone table-header">สถานะเอกสาร</th>
+                            <th class="column-tool table-header">หมายเหตุ</th>
+                            <th class="column-tool table-header">ใบชำระเงิน</th>
+                            <th class="column-tool table-header">ใบเสร็จ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in items" :key="item['วันที่จดทะเบียน']">
+                            <td>{{ item['วันที่จดทะเบียน'] }}</td>
+                            <td>{{ item['สถานะชำระเงิน'] }}</td>
+                            <td>{{ item['สถานะเอกสาร'] }}</td>
+                            <td>{{ item['หมายเหตุ'] }}</td>
+                            <td>{{ item['ใบชำระเงิน'] }}</td>
+                            <td>
+                                <v-btn small color="warning" class="px-3" v-if="item['ใบเสร็จ'] === 'พิมพ์'">
+                                    {{ item['ใบเสร็จ'] }}
+                                </v-btn>
+                            </td>
+                        </tr>
+                    </tbody>
+                </template>
             </v-simple-table>
-        </v-card>
+        </v-container>
     </v-container>
 </template>
 
 <script>
 export default {
-    name: 'CommunityPublicHealthPage'
-}
+    name: 'DocumentStatusTable',
+    data() {
+        return {
+            items: [
+                {
+                    'วันที่จดทะเบียน': '3/4/2025',
+                    'สถานะชำระเงิน': 'รอชำระเงิน',
+                    'สถานะเอกสาร': 'รอตรวจสอบเอกสาร',
+                    'หมายเหตุ': '',
+                    'ใบชำระเงิน': '',
+                    'ใบเสร็จ': 'พิมพ์',
+                },
+            ],
+        };
+    },
+};
 </script>
 
-<style>
+<style scoped>
+/* Custom table styles */
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-table th,
+.custom-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+
+.custom-table thead {
+    background: linear-gradient(to right, #6CC54B, #4FC281);
+    text-align: center;
+}
+
+.table-header {
+    font-weight: bold;
+    font-size: 1rem !important;
+    text-align: center !important;
+}
+
+.column-type,
+.column-address,
+.column-phone,
+.column-tool {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.custom-table td {
+    background: none;
+}
+
 .v-card {
-    border-radius: 16px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    margin: 50px;
+    width: 95%;
+    border-radius: 20px;
+    overflow: hidden;
 }
 </style>
