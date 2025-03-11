@@ -131,7 +131,7 @@ export default {
           subItems: [
             { text: "ข้อมูลส่วนตัว", icon: "mdi-checkbox-blank-circle-outline", to: "/user-information" },
             { text: "ข้อมูลที่อยู่", icon: "mdi-checkbox-blank-circle-outline", to: "/user-address" },
-            { text: "ข้อมูลการศึกษา", icon: "mdi-checkbox-blank-circle-outline", to: "/user-education-information" },
+            { text: "ข้อมูลการศึกษา", icon: "mdi-checkbox-blank-circle-outline", to: "/user-education-information", },
           ],
 
         },

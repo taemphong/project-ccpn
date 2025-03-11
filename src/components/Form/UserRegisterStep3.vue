@@ -3,11 +3,11 @@
     class="d-flex flex-column align-center justify-center mt-n7"
     style="min-height: 90vh"
   >
-    <h2 class="textheader text-center mb-4">
+    <h2 class="textheader2 text-center mb-3">
       เอกสารการสมัครของท่านได้รับส่งเข้าสู่ระบบเรียบร้อยแล้ว
     </h2>
     <v-card
-      class="pa-4"
+      class="pa-4 mt-3"
       max-width="800"
       width="100%"
       style="background-color: #52d6794a"
@@ -42,7 +42,7 @@
       </v-card-text>
     </v-card>
     <br />
-    <!-- <v-btn
+    <v-btn
       class="ma-2 mt-5"
       color="#A0D8F6"
       height="50px"
@@ -52,7 +52,7 @@
     >
       <v-icon left size="30">mdi-magnify</v-icon>
       ตรวจสอบสถานะคำขอเป็นสมาชิก
-    </v-btn> -->
+    </v-btn>
   </v-container>
 </template>
 
@@ -63,7 +63,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap');
 
 /* กำหนดฟอนต์สำหรับหัวข้อ */
-.textheader {
+.textheader2 {
   font-size: 24px;
   color: #34854b;
   font-family: 'Prompt', sans-serif;

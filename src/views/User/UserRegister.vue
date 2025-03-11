@@ -76,7 +76,7 @@
                 ย้อนกลับ
               </v-btn>
               <v-btn
-                @click="e1 = 3"
+                @click="confirmSubmission"
                 class="my-btn ml-5"
                 :style="{ backgroundColor: '#00B69B', color: '#fff' }"
               >
@@ -88,17 +88,6 @@
           <v-stepper-content step="3">
             <UserRegisterStep3 />
             <div class="d-flex justify-center">
-              <v-btn
-                class="ma-2 mt-5"
-                color="#A0D8F6"
-                height="50px"
-                width="400px"
-                variant="tonal"
-                style="color: white; font-size: 18px"
-              >
-                <v-icon left size="30">mdi-magnify</v-icon>
-                ตรวจสอบสถานะคำขอเป็นสมาชิก
-              </v-btn>
             </div>
           </v-stepper-content>
         </v-stepper-items>
@@ -109,8 +98,9 @@
 
 <script>
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
-import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
 import UserRegisterStep2 from "@/components/Form/UserRegisterStep2.vue";
+import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
+import Swal from "sweetalert2";
 
 export default {
   components: {
@@ -122,6 +112,44 @@ export default {
     return {
       e1: 1,
     };
+  },
+  methods: {
+    confirmSubmission() {
+      Swal.fire({
+        title: "กรุณาตรวจสอบความถูกต้องก่อนกดปุ่มยืนยันการสมัคร",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#00B69B",
+        cancelButtonColor: "#FF0000",
+        confirmButtonText: "ยืนยันการสมัคร",
+        cancelButtonText: "ยกเลิก",
+        customClass: {
+          confirmButton: "custom-confirm-btn",
+          cancelButton: "custom-cancel-btn",
+        },
+        didOpen: () => {
+          document.querySelector(".custom-confirm-btn").style.color = "white";
+          document.querySelector(".custom-cancel-btn").style.color = "white";
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "บันทึกข้อมูลเรียบร้อย",
+            icon: "success",
+            confirmButtonText: "ตกลง",
+            confirmButtonColor: "#00B69B",
+            customClass: {
+              confirmButton: "custom-ok-btn",
+            },
+            didOpen: () => {
+              document.querySelector(".custom-ok-btn").style.color = "white";
+            },
+          }).then(() => {
+            this.e1 = 3;
+          });
+        }
+      });
+    },
   },
 };
 </script>

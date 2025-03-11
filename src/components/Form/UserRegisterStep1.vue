@@ -17,8 +17,7 @@
         <div class="mb-3 required">นามสกุล </div>
         <v-text-field v-model="lastNameTh" outlined></v-text-field>
       </v-col>
-    </v-row>
-
+     </v-row> 
     <v-row  class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ (อังกฤษ) </div>
@@ -99,8 +98,6 @@
     <v-text-field v-model="idCard" outlined></v-text-field>
   </v-col>
 </v-row>
-
-
 
     <v-row class="mt-4 ml-1 required">
       วันหมดอายุบัตร
@@ -518,14 +515,6 @@ export default {
       Copyof_IDcard: null,
       Medical_certificate: null,
       Namechange_certificate: null,
-
-
-
-
-
-
-
-
     };
   },
 };
@@ -591,7 +580,5 @@ export default {
   border-radius: 8px;
   margin-bottom: 10px;
 }
-
-
 
 </style>
