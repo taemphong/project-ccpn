@@ -91,12 +91,13 @@
                 </v-list-item-title>
               </v-list-item>
 
-              <v-list-item>
-                <v-list-item-title>
-                  <v-icon left>mdi-cog</v-icon>
-                  Settings
-                </v-list-item-title>
-              </v-list-item>
+              <v-list-item @click="openSettingsModal">
+  <v-list-item-title>
+    <v-icon left>mdi-cog</v-icon>
+    Settings
+  </v-list-item-title>
+</v-list-item>
+
               <!-- ปรับการจัดตำแหน่งปุ่มลงชื่อออกให้กึ่งกลาง -->
               <v-btn class="d-flex justify-center" tile color="#3D8E56CC" @click="logout"
                 style="width: 220px;border-radius: 14px; height: 45px; margin: 15px auto;">
@@ -109,15 +110,22 @@
 
       </div>
     </v-app-bar>
+    <settings-modal v-model="settingsModal" />
   </div>
 </template>
 
 <script>
+import SettingsModal from "./Modal/Setting/SettingsModal.vue";
 import axios from 'axios';
 import variable from "../../main.config.js";
 export default {
+
+  components: {
+    SettingsModal
+  },
   data() {
     return {
+      settingsModal: false, 
       user: {
         avatar: require("@/assets/images/bot.png"),
       },
@@ -199,6 +207,9 @@ export default {
     logout() {
       localStorage.removeItem("authToken");
       this.$router.push({ name: "login" });
+    },
+    openSettingsModal() {
+      this.settingsModal = true; // เมื่อกดปุ่ม Settings ให้เปิด modal
     },
   },
 };
