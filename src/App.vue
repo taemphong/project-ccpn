@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <Navbar
-        v-if="$route.name !== 'login' && $route.name !== 'user-register' && $route.name !== 'user-register-request'" />
+        v-if="$route.name !== 'login' && $route.name !== 'user-register' && $route.name !== 'user-register-request' && $route.name !== 'check-document-status' && $route.name !== 'payment'" />
       <v-app :style="backgroundStyle">
         <router-view />
       </v-app>
