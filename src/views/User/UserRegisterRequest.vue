@@ -116,7 +116,7 @@ export default {
 }
 
 .text1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 1000;
     color: rgb(2, 2, 2);
     margin-top: 200px;

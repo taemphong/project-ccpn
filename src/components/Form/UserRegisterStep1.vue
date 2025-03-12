@@ -11,25 +11,25 @@
 
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ </div>
-        <v-text-field v-model="mp_name2" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_name2" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล </div>
-        <v-text-field v-model="mp_name3" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_name3" outlined></v-text-field>
       </v-col>
-     </v-row> 
-    <v-row  class="v-raw-between">
+    </v-row>
+    <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ (อังกฤษ) </div>
         <v-select v-model="mp_name1_eng" :items="prefixOptionsEn" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ (อังกฤษ) </div>
-        <v-text-field v-model="mp_name2_eng" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_name2_eng" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล (อังกฤษ) </div>
-        <v-text-field v-model="mp_name3_eng" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_name3_eng" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -40,18 +40,18 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">สัญชาติ </div>
-        <v-text-field v-model="mp_nationality" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_nationality" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">เชื้อชาติ </div>
-        <v-text-field v-model="mp_ethnicity" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_ethnicity" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ศาสนา </div>
-        <v-text-field v-model="mp_religion" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_religion" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">หมู่โลหิต </div>
@@ -70,18 +70,18 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field v-model="mp_tel" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired, validatePhone]" v-model="mp_tel" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field v-model="mp_email" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired, validateEmail]" v-model="mp_email" outlined></v-text-field>
       </v-col>
     </v-row>
     <v-row class="ml-1 ">
       <div class="required">
-      วัน-เดือน-ปีเกิด
+        วัน-เดือน-ปีเกิด
       </div>
-</v-row>
+    </v-row>
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">วัน </div>
@@ -97,14 +97,14 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
-        <v-text-field v-model="mp_customer_id" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_customer_id" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="ml-1 ">
       <div class="required">
-      วันหมดอายุบัตร 
-    </div>
+        วันหมดอายุบัตร
+      </div>
     </v-row>
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
@@ -121,7 +121,7 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ออกโดย</div>
-        <v-text-field v-model="mp_issued_by" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mp_issued_by" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -157,7 +157,7 @@
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="mha_zipcode" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mha_zipcode" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -169,14 +169,14 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ชื่อสถานที่ทำงาน </div>
-        <v-text-field v-model="mca_company" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mca_company" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field v-model="mca_address" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mca_address" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -199,15 +199,15 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="mca_zipcode" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="mca_zipcode" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์ที่ทำงาน </div>
-        <v-text-field v-model="mca_phone" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired, validatePhone]" v-model="mca_phone" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field v-model="mca_email" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired, validateEmail]" v-model="mca_email" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -221,14 +221,14 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field v-model="moa_address" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="moa_address" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select v-model="moa_province" :items="moa_provinceOptions" outlined></v-select>
+        <v-select :rules="[validateRequired]" v-model="moa_province" :items="moa_provinceOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
@@ -243,11 +243,11 @@
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="moa_zipcode" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="moa_zipcode" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3" class="custom-margin">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field v-model="moa_phone" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired, validatePhone]" v-model="moa_phone" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -315,7 +315,7 @@
         font-weight: 600;margin-bottom: 20px;">
           การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่างๆ (สมาคมที่เกี่ยวข้องเป็นหลัก)</h2>
         <div class="mb-3 required">โปรดระบุ (ถ้ามี) </div>
-        <v-text-field v-model="associations_involved" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="associations_involved" outlined></v-text-field>
       </v-col>
 
 
@@ -406,6 +406,7 @@
 </template>
 
 <script>
+import { validateRequired, validateEmail, validatePhone } from "../../plugins/validate";
 import Educational1 from "./Educational1.vue";
 import Educational2 from "./Educational2.vue";
 import Educational3 from "./Educational3.vue";
@@ -425,6 +426,7 @@ export default {
 
   data() {
     return {
+      formValid: false,
       // คำนำหน้าชื่อภาษาไทย
       mp_name1: '',
       prefixOptions: ['นาย', 'นาง', 'นางสาว'],
@@ -521,6 +523,18 @@ export default {
       Namechange_certificate: null,
     };
   },
+  methods: {
+    submitForm() {
+      if (this.$refs.form.validate()) {
+        console.log("Form Submitted!");
+      } else {
+        console.log("Form validation failed");
+      }
+    },
+    validateRequired,
+    validateEmail,
+    validatePhone,
+  }
 };
 
 
@@ -591,5 +605,10 @@ export default {
   width: 320px;
   border-radius: 8px;
   margin-bottom: 10px;
+}
+
+::v-deep(.v-messages__message) {
+  color: red !important;
+  margin: 5px;
 }
 </style>

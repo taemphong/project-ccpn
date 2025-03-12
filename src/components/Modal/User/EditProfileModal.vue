@@ -17,7 +17,7 @@
                             <v-col cols="12" sm="4">
                                 <div>คำนำหน้าชื่อ</div>
                                 <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_name1"
-                                    placeholder="นาย/นางสาว/นาง" outlined readonly></v-text-field>
+                                    placeholder="นาย/นางสาว/นาง" outlined readonly ></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="4">
                                 <div>ชื่อจริง</div>

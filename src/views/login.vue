@@ -4,17 +4,9 @@
       <v-col cols="7">
         <v-img :src="require('@/assets/images/logo5.png')" alt="Logo" class="logo" contain max-width="500" />
         <div>
-          <h2 class="text1">สภาการสาธารณสุขชุมชน</h2>
+          <h1 class="text1">สภาการสาธารณสุขชุมชน</h1>
         </div>
-        <div>
-          <h2 class="text2">หากคุณยังไม่มีบัญชี กรุณาสมัครสมาชิก</h2>
-        </div>
-        <div>
-          <h2 class="text3">
-            คุณสามารถ
-            <router-link to="/user-register" class="highlight">สมัครได้ที่นี้ !</router-link>
-          </h2>
-        </div>
+
       </v-col>
       <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
         <v-col cols="12" sm="6" md="6">
@@ -37,6 +29,15 @@
             </v-text-field>
             <router-link to="/forgotpassword" class="forgot-password">ลืมรหัสผ่าน?</router-link>
             <v-btn type="submit" block class="custom-button"> เข้าสู่ระบบ </v-btn>
+            <div>
+          <h2 class="text2">หากคุณยังไม่มีบัญชี กรุณาสมัครสมาชิก</h2>
+        </div>
+        <div>
+          <h2 class="text3">
+            คุณสามารถ
+            <router-link to="/user-register-request" class="highlight">สมัครสมาชิกได้ที่นี่!</router-link>
+          </h2>
+        </div>
           </v-form>
         </v-col>
       </v-col>
@@ -116,7 +117,7 @@ export default {
 }
 
 .text1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 1000;
   color: rgb(2, 2, 2);
   margin-top: 200px;
@@ -128,14 +129,15 @@ export default {
   font-size: 1.5rem;
   color: rgb(2, 2, 2);
   margin-top: 50px;
-  margin-left: 270px;
+  margin-left: 20px;
 }
 
 .text3 {
   font-size: 1.5rem;
   color: #000000;
   margin-top: 5px;
-  margin-left: 270px;
+  margin-left: 20px;
+
 }
 
 .text4 {
@@ -144,11 +146,11 @@ export default {
 }
 
 .highlight {
-  padding: 2px 5px;
   border-radius: 5px;
   text-decoration: none;
-  color: rgb(243, 168, 55);
+  color: #FF0000;
   font-weight: bold;
+  font-size: 1.5rem;
 }
 
 /* ปรับขนาดฟอร์ม */
