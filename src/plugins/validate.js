@@ -5,7 +5,7 @@ export const validateRequired = (value) => {
 
 export const validateEmail = (value) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(value) || "อีเมลไม่ถูกต้อง";
+    return emailPattern.test(value) || "กรุณากรอกอีเมลรูปแบบที่ถูกต้อง";
 };
 
 export const validatePhone = (value) => {

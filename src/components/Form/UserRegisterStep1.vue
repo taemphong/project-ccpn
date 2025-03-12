@@ -406,7 +406,7 @@
 </template>
 
 <script>
-import { validateRequired, validateEmail, validatePhone } from "../../plugins/validate";
+import { validateRequired, validateEmail, validatePhone } from "../../plugins/validate.js";
 import Educational1 from "./Educational1.vue";
 import Educational2 from "./Educational2.vue";
 import Educational3 from "./Educational3.vue";

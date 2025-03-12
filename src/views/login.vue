@@ -128,7 +128,7 @@ export default {
 .text2 {
   font-size: 1.5rem;
   color: rgb(2, 2, 2);
-  margin-top: 50px;
+  margin-top: 30px;
   margin-left: 20px;
 }
 
@@ -141,7 +141,7 @@ export default {
 }
 
 .text4 {
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: 600;
 }
 
@@ -179,7 +179,7 @@ export default {
   /* เพิ่ม !important เพื่อบังคับใช้ */
   color: white !important;
   /* เพิ่มสีข้อความ */
-  font-size: 1.4rem !important;
+  font-size: 1.5rem !important;
   /* ขนาดตัวอักษร */
   height: 56px !important;
   /* ความสูงของปุ่ม */
@@ -208,10 +208,10 @@ export default {
   /* หรือใช้ inline-block */
   color: #b0b0b0;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: right;
   position: relative;
-  top: -20px;
+  top: -15px;
 }
 
 .forgot-password:hover {
