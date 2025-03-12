@@ -12,7 +12,7 @@
         <div>
           <h2 class="text3">
             คุณสามารถ
-            <router-link to="/user-register-request" class="highlight">สมัครได้ที่นี้ !</router-link>
+            <router-link to="/user-register" class="highlight">สมัครได้ที่นี้ !</router-link>
           </h2>
         </div>
       </v-col>
