@@ -36,16 +36,18 @@
 
         <v-stepper-items>
           <v-stepper-content step="1">
-            <UserRegisterStep1 @updateValid="isStep1Valid = $event" />
+            <UserRegisterStep1 ref="step1" @validationChanged="updateStep1Validity" />
             <div class="d-flex justify-center">
               <v-btn 
   @click="e1 = 2" 
   class="my-btn" 
   :style="{ backgroundColor: '#00B69B', color: '#fff' }"
-  :disabled="!isStep1Valid"
+  :disabled="isStep1Invalid"
 >
   ถัดไป
 </v-btn>
+
+
             </div>
           </v-stepper-content>
 
@@ -92,9 +94,13 @@ export default {
   data() {
     return {
       e1: 1,
+      isStep1Invalid: true, 
     };
   },
   methods: {
+    updateStep1Validity(isInvalid) {
+    this.isStep1Invalid = isInvalid;
+  },
     confirmSubmission() {
       Swal.fire({
         title: "กรุณาตรวจสอบความถูกต้องก่อนกดปุ่มยืนยันการสมัคร",
