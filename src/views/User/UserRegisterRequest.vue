@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
 import axios from "axios";
 
 export default {
@@ -50,19 +49,12 @@ export default {
             if (this.userBotCode.trim() !== this.botCode) {
                 this.refreshBotCode(); // สร้างรหัสใหม่ทันทีเมื่อผิด
                 this.userBotCode = ""; // เคลียร์ค่าที่ผู้ใช้กรอก
-                Swal.fire({
-                    icon: "error",
-                    title: "ผิดพลาด!",
-                    text: "รหัสรักษาความปลอดภัยไม่ถูกต้อง กรุณาลองใหม่",
-                });
+                console.log("ผิดพลาด! รหัสรักษาความปลอดภัยไม่ถูกต้อง กรุณาลองใหม่");
                 return;
             }
 
             if (!this.citizenId.trim()) {
-                Swal.fire({
-                    icon: "warning",
-                    title: "กรุณากรอกเลขบัตรประชาชน",
-                });
+                console.log("กรุณากรอกเลขบัตรประชาชน");
                 return;
             }
 
@@ -71,22 +63,11 @@ export default {
                 if (response.data.code === 200) {
                     const members = response.data.data;
                     const exists = members.some(member => member.ml_customer_id === this.citizenId.trim());
-                    Swal.fire({
-                        icon: exists ? "success" : "info",
-                        title: exists ? "พบข้อมูลในระบบ" : "ไม่พบข้อมูลในระบบ",
-                        text: exists ? "กำลังนำทาง..." : "โปรดลงทะเบียนใหม่",
-                        timer: 1000,
-                        showConfirmButton: false,
-                    }).then(() => {
-                        this.$router.push(exists ? "/" : "/user-register");
-                    });
+                    console.log(exists ? "พบข้อมูลในระบบ" : "ไม่พบข้อมูลในระบบ");
+                    this.$router.push(exists ? "/" : "/user-register");
                 }
             } catch (error) {
-                Swal.fire({
-                    icon: "error",
-                    title: "เกิดข้อผิดพลาด",
-                    text: "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้",
-                });
+                console.log("เกิดข้อผิดพลาด ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้");
             }
         },
         generateBotCode() {
