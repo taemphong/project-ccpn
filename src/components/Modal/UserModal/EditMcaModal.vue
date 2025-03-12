@@ -5,7 +5,7 @@
                 แก้ไขข้อมูลที่อยู่
             </v-card-title>
             <v-card-text>
-                <v-form>
+                <v-form ref="form">
                     <v-card-title class="font-weight-bold">ที่อยู่ที่ทำงาน</v-card-title>
                     <v-row>
                         <v-col md="12">
@@ -39,13 +39,13 @@
                         </v-col>
                         <v-col cols="4">
                             <div class="mb-2">อีเมล</div>
-                            <v-text-field class="textfield" placeholder="กรอกรหัสไปรษณีย์" outlined
+                            <v-text-field class="textfield" placeholder="กรอกอีเมล" outlined
                                 v-model="editedAddress.mca_email" :rules="[validateEmail]"></v-text-field>
                         </v-col>
                         <v-col cols="4">
                             <div class="mb-2">เบอร์โทร</div>
-                            <v-text-field class="textfield" placeholder="กรอกรหัสไปรษณีย์" outlined
-                                v-model="editedAddress.mca_phone" :rules="[validateRequired]"></v-text-field>
+                            <v-text-field class="textfield" placeholder="กรอกเบอร์โทรศัพท์" outlined
+                                v-model="editedAddress.mca_phone" :rules="[validatePhone]"></v-text-field>
                         </v-col>
                     </v-row>
                 </v-form>
@@ -93,6 +93,14 @@ export default {
             this.isVisible = false;
         },
         async confirmEdit() {
+            if (!this.$refs.form.validate()) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+            text: 'มีช่องที่ต้องกรอกแต่ยังไม่ได้กรอกหรือกรอกข้อมูลไม่ถูกต้อง',
+        });
+        return;
+    }
             const authToken = localStorage.getItem('authToken');
             if (!authToken) return;
 

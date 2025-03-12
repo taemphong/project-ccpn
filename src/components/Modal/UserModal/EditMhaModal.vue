@@ -5,7 +5,7 @@
                 แก้ไขข้อมูลที่อยู่
             </v-card-title>
             <v-card-text>
-                <v-form>
+                <v-form ref="form">
                     <v-card-title class="font-weight-bold">ที่อยู่ตามทะเบียนบ้าน</v-card-title>
                     <v-row>
                         <v-col md="12">
@@ -82,6 +82,14 @@ export default {
             this.isVisible = false;
         },
         async confirmEdit() {
+            if (!this.$refs.form.validate()) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+            text: 'มีช่องที่ต้องกรอกแต่ยังไม่ได้กรอกหรือกรอกข้อมูลไม่ถูกต้อง',
+        });
+        return;
+    }
             const authToken = localStorage.getItem('authToken');
             if (!authToken) return;
 

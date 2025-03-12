@@ -36,11 +36,16 @@
 
         <v-stepper-items>
           <v-stepper-content step="1">
-            <UserRegisterStep1 />
+            <UserRegisterStep1 @updateValid="isStep1Valid = $event" />
             <div class="d-flex justify-center">
-              <v-btn @click="e1 = 2" class="my-btn" :style="{ backgroundColor: '#00B69B', color: '#fff' }">
-                ถัดไป
-              </v-btn>
+              <v-btn 
+  @click="e1 = 2" 
+  class="my-btn" 
+  :style="{ backgroundColor: '#00B69B', color: '#fff' }"
+  :disabled="!isStep1Valid"
+>
+  ถัดไป
+</v-btn>
             </div>
           </v-stepper-content>
 
