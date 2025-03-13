@@ -6,7 +6,15 @@
         <div>
           <h1 class="text1">สภาการสาธารณสุขชุมชน</h1>
         </div>
-
+        <div>
+          <h2 class="text2">หากคุณยังไม่มีบัญชี กรุณาสมัครสมาชิก</h2>
+        </div>
+        <div>
+          <h2 class="text3">
+            คุณสามารถ
+            <router-link to="/user-register" class="highlight">สมัครได้ที่นี้ !</router-link>
+          </h2>
+        </div>
       </v-col>
       <v-col cols="12" class="right-side d-flex align-center" style="padding-left: 150px">
         <v-col cols="12" sm="6" md="6">

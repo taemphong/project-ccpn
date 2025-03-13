@@ -68,17 +68,8 @@ export default {
 
             if (response.data.code === 200 && response.data.data.length > 0) {
                 const data = response.data.data[0];
-
-                // แปลงวันที่เป็นแบบไทย
-                const formatDateThai = (dateStr) => {
-                    if (!dateStr) return "-";
-                    const date = new Date(dateStr);
-                    return date.toLocaleDateString('th-TH', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                };
+                const date = new Date(data.mp_birthday);
+                const localDate = date.toISOString().split('T')[0];
 
                 this.userInfo = {
                     'เลขบัตรประชาชน': data.mp_customer_id,
@@ -86,7 +77,7 @@ export default {
                     'อีเมล': data.mp_email,
                     'เบอร์โทรศัพท์': data.mp_tel,
                     'เพศ': data.mp_gender,
-                    'วัน-เดือน-ปี เกิด': formatDateThai(data.mp_birthday)
+                    'วัน-เดือน-ปี เกิด': localDate
                 };
             } else {
                 console.error('Data not found');

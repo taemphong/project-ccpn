@@ -17,7 +17,7 @@
                             <v-col cols="12" sm="4">
                                 <div>คำนำหน้าชื่อ</div>
                                 <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_name1"
-                                    placeholder="นาย/นางสาว/นาง" outlined readonly ></v-text-field>
+                                    placeholder="นาย/นางสาว/นาง" outlined readonly></v-text-field>
                             </v-col>
                             <v-col cols="12" sm="4">
                                 <div>ชื่อจริง</div>
@@ -59,14 +59,15 @@
                             <v-col cols="12" sm="4">
                                 <div>วัน-เดือน-ปีเกิด</div>
                                 <v-text-field class="textfield" background-color="#f0f2f7" v-model="mp_birthday"
-                                    outlined placeholder="กรอกวัน-เดือน-ปีเกิด"></v-text-field>
+                                    v-mask="'####-##-##'" outlined placeholder="กรอกวัน-เดือน-ปีเกิด"></v-text-field>
                             </v-col>
+
                         </v-row>
 
                         <v-container class="d-flex justify-center align-center">
                             <v-row justify="center">
                                 <v-col cols="auto" class="mx-4 mt-4 mb-4">
-                                    <v-btn class="save-btn mr-4" large @click="submitData">
+                                    <v-btn class="save-btn mr-4" large @click="updateUserData">
                                         บันทึก
                                     </v-btn>
                                     <v-btn class="cancel-btn" large @click="dialog = false">
@@ -81,8 +82,10 @@
         </v-card>
     </v-dialog>
 </template>
+
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default {
     props: {
@@ -135,23 +138,58 @@ export default {
                 this.mp_name2 = userInfo.mp_name2 || '';
                 this.mp_name3 = userInfo.mp_name3 || '';
                 this.mp_customer_id = userInfo.mp_customer_id || '';
-
+                this.mp_email = userInfo.mp_email || '';
+                this.mp_tel = userInfo.mp_tel || '';
+                this.mp_gender = userInfo.mp_gender || '';
+                this.mp_birthday = userInfo.mp_birthday || '';
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
         },
-        submitData() {
-            console.log("Submitted Data:", {
-                mp_name1: this.mp_name1,
-                mp_name2: this.mp_name2,
-                mp_name3: this.mp_name3,
-                mp_customer_id: this.mp_customer_id,
+        async updateUserData() {
+            const authToken = localStorage.getItem('authToken');
+            if (!authToken) {
+                console.error('No auth token found');
+                return;
+            }
+            const userData = JSON.parse(authToken);
+            const payload = {
                 mp_email: this.mp_email,
                 mp_tel: this.mp_tel,
                 mp_gender: this.mp_gender,
-                mp_birthday: this.mp_birthday
-            });
-            this.dialog = false;
+                mp_birthday: this.mp_birthday,
+                mp_customer_id: userData.ml_customer_id
+            };
+
+            try {
+                const response = await axios.post('http://localhost:8002/ccph/api/update-info', payload);
+                if (response.data.code === 200) {
+                    Swal.fire({
+                        title: 'สำเร็จ!',
+                        text: 'ข้อมูลของคุณถูกอัปเดตเรียบร้อยแล้ว',
+                        icon: 'success',
+                        confirmButtonText: 'ตกลง'
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'ผิดพลาด!',
+                        text: 'ไม่มีข้อมูลที่เปลี่ยนแปลง',
+                        icon: 'error',
+                        confirmButtonText: 'ตกลง'
+                    });
+                }
+            } catch (error) {
+                console.error('Error updating user data:', error);
+                // แสดงข้อความหากเกิดข้อผิดพลาดในการส่งข้อมูล
+                Swal.fire({
+                    title: 'ข้อผิดพลาด!',
+                    text: 'ไม่สามารถอัปเดตข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
+                    icon: 'error',
+                    confirmButtonText: 'ตกลง'
+                });
+            }
         }
     }
 };

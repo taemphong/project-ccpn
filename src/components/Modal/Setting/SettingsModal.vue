@@ -15,14 +15,8 @@
             <v-row style="justify-content: center;">
               <v-col cols="12" sm="6">
                 <div>รหัสผ่านปัจจุบัน</div>
-                <v-text-field 
-                  class="textfield"
-                  background-color="#f0f2f7"
-                  v-model="currentPassword"
-                  outlined
-                  :type="showCurrentPassword ? 'text' : 'password'"
-                  placeholder="••••••••"
-                >
+                <v-text-field class="textfield" background-color="#f0f2f7" v-model="currentPassword" outlined
+                  :type="showCurrentPassword ? 'text' : 'password'" placeholder="••••••••">
                   <template v-slot:append>
                     <v-icon @click="showCurrentPassword = !showCurrentPassword">
                       {{ showCurrentPassword ? 'mdi-eye-off' : 'mdi-eye' }}
@@ -33,14 +27,8 @@
 
               <v-col cols="12" sm="6">
                 <div>รหัสผ่านใหม่</div>
-                <v-text-field 
-                  class="textfield"
-                  background-color="#f0f2f7"
-                  v-model="newPassword"
-                  outlined
-                  :type="showNewPassword ? 'text' : 'password'"
-                  placeholder="••••••••"
-                >
+                <v-text-field class="textfield" background-color="#f0f2f7" v-model="newPassword" outlined
+                  :type="showNewPassword ? 'text' : 'password'" placeholder="••••••••">
                   <template v-slot:append>
                     <v-icon @click="showNewPassword = !showNewPassword">
                       {{ showNewPassword ? 'mdi-eye-off' : 'mdi-eye' }}
@@ -52,7 +40,7 @@
 
             <v-container class="d-flex justify-center align-center">
               <v-row justify="center">
-                <v-col cols="auto" >
+                <v-col cols="auto">
                   <v-btn class="save-btn mr-4" large @click="changePassword" :disabled="!isValid">
                     เปลี่ยนรหัสผ่าน
                   </v-btn>
@@ -124,9 +112,7 @@ export default {
           oldPassword: this.currentPassword,
           newPassword: this.newPassword
         };
-
-        const response = await axios.post('http://localhost:8002/ccph/api/resetpassword', payload);
-
+        const response = await axios.post('http://localhost:8002/ccph/api/reset-password', payload);
         if (response.data.code === 200) {
           alert("เปลี่ยนรหัสผ่านสำเร็จ");
         } else {

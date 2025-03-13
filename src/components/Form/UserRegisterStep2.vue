@@ -7,27 +7,29 @@
       <v-col cols="12" md="3" >
         <div class="mb-3">คำนำหน้าชื่อ</div>
         <v-text-field
-          v-model="mp_name1"
-          :items="prefixOptions"
-          outlined
-          class="custom-input"
+        :value="formData.mp_name1"
+         outlined
+  class="custom-input"
+  readonly
         ></v-text-field>
       </v-col>
 
       <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ</div>
         <v-text-field
-          v-model="mp_name2"
-          outlined
-          class="custom-input"
-        ></v-text-field>
+  :value="formData.mp_name2"
+  outlined
+  class="custom-input"
+  readonly
+></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">นามสกุล</div>
         <v-text-field
-          v-model="mp_name3"
-          outlined
-          class="custom-input"
+         :value="formData.mp_name3"
+         outlined
+  class="custom-input"
+  readonly
         ></v-text-field>
       </v-col>
     </v-row>
@@ -764,6 +766,12 @@
 <script>
 
 export default {
+  props: {
+    formData: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       files: {

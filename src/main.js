@@ -3,7 +3,9 @@ import App from './App.vue';
 import router from './router';
 import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
+import VMask from 'v-mask';
 
+Vue.use(VMask);
 Vue.use(Vuetify);
 
 const vuetify = new Vuetify({
