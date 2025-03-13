@@ -24,6 +24,7 @@
           </v-row>
 
           <v-col cols="12" md="12" class="">
+
             <v-form ref="form">
               <v-row>
                 <v-col cols="12" md="4">
@@ -89,7 +90,7 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   <div>วัน-เดือน-ปี เกิด:</div>
-                  <v-text-field class="textfield" placeholder="กรอก วัน-เดือน-ปี เกิด" outlined
+                  <v-text-field class="textfield" v-mask="'####-##-##'" placeholder="กรอก วัน-เดือน-ปี เกิด" outlined
                     v-model="user.mp_birthday"></v-text-field>
                 </v-col>
               </v-row>
@@ -150,6 +151,7 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Import SweetAlert2
 
 export default {
   data() {
@@ -205,8 +207,41 @@ export default {
       this.fetchUserData();
     },
 
+    // Method for saving user data
     saveData() {
-      console.log('User data saved:', this.user);
+      Swal.fire({
+        title: 'ยืนยันการบันทึกข้อมูล?',
+        text: "คุณต้องการบันทึกข้อมูลที่แก้ไขหรือไม่?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'บันทึก',
+        cancelButtonText: 'ยกเลิก'
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          // Call API to update user data
+          try {
+            const response = await axios.post('http://localhost:8002/ccph/api/update-information', this.user);
+            if (response.data.code === 200) {
+              Swal.fire({
+                title: 'สำเร็จ!',
+                text: 'ข้อมูลของคุณถูกอัปเดตเรียบร้อยแล้ว',
+                icon: 'success',
+                confirmButtonText: 'ตกลง'
+              }).then(() => {
+                // รีโหลดหน้าเมื่อผู้ใช้คลิก "ตกลง"
+                location.reload();
+              });
+            } else {
+              Swal.fire('เกิดข้อผิดพลาด!', 'ไม่สามารถบันทึกข้อมูลได้', 'error');
+            }
+          } catch (error) {
+            console.error('Error saving data:', error);
+            Swal.fire('เกิดข้อผิดพลาด!', 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้', 'error');
+          }
+        }
+      });
     },
 
     uploadNewPhoto() {
@@ -215,6 +250,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .v-avatar {
   margin-bottom: 10px;

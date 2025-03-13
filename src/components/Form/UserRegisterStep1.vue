@@ -6,17 +6,15 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ </div>
-        <v-select :rules="[validateRequired]"  v-model="formData.mp_name1"
-        @input="validateForm" :items="prefixOptions" outlined></v-select>
+        <v-select :rules="[validateRequired]"  v-model="formData.mp_name1" :items="prefixOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ </div>
-        <v-text-field :rules="[validateRequired]"  v-model="formData.mp_name2"
-        @input="validateForm" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]"  v-model="formData.mp_name2" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล </div>
-        <v-text-field :rules="[validateRequired]"  v-model="formData.mp_name3" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="formData.mp_name3" outlined></v-text-field>
       </v-col>
     </v-row>
     <v-row class="v-raw-between">
@@ -26,11 +24,11 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ (อังกฤษ) </div>
-        <v-text-field  v-model="mp_name2_eng" outlined></v-text-field>
+        <v-text-field v-model="mp_name2_eng" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล (อังกฤษ) </div>
-        <v-text-field  v-model="mp_name3_eng" outlined></v-text-field>
+        <v-text-field v-model="mp_name3_eng" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -41,18 +39,18 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">สัญชาติ </div>
-        <v-text-field  v-model="mp_nationality" outlined></v-text-field>
+        <v-text-field v-model="mp_nationality" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">เชื้อชาติ </div>
-        <v-text-field  v-model="mp_ethnicity" outlined></v-text-field>
+        <v-text-field v-model="mp_ethnicity" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ศาสนา </div>
-        <v-text-field  v-model="mp_religion" outlined></v-text-field>
+        <v-text-field v-model="mp_religion" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">หมู่โลหิต </div>
@@ -71,11 +69,11 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field  v-model="mp_tel" outlined></v-text-field>
+        <v-text-field v-model="mp_tel" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field  v-model="mp_email" outlined></v-text-field>
+        <v-text-field v-model="mp_email" outlined></v-text-field>
       </v-col>
     </v-row>
     <v-row class="ml-1 ">
@@ -98,7 +96,7 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
-        <v-text-field  v-model="mp_customer_id" outlined></v-text-field>
+        <v-text-field v-model="mp_customer_id" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -122,7 +120,7 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ออกโดย</div>
-        <v-text-field  v-model="mp_issued_by" outlined></v-text-field>
+        <v-text-field v-model="mp_issued_by" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -158,7 +156,7 @@
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field  v-model="mha_zipcode" outlined></v-text-field>
+        <v-text-field v-model="mha_zipcode" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -170,14 +168,14 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ชื่อสถานที่ทำงาน </div>
-        <v-text-field  v-model="mca_company" outlined></v-text-field>
+        <v-text-field v-model="mca_company" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field  v-model="mca_address" outlined></v-text-field>
+        <v-text-field v-model="mca_address" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -200,15 +198,15 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field  v-model="mca_zipcode" outlined></v-text-field>
+        <v-text-field v-model="mca_zipcode" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์ที่ทำงาน </div>
-        <v-text-field  v-model="mca_phone" outlined></v-text-field>
+        <v-text-field v-model="mca_phone" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field  v-model="mca_email" outlined></v-text-field>
+        <v-text-field v-model="mca_email" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -222,14 +220,14 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field  v-model="moa_address" outlined></v-text-field>
+        <v-text-field v-model="moa_address" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select  v-model="moa_province" :items="moa_provinceOptions" outlined></v-select>
+        <v-select v-model="moa_province" :items="moa_provinceOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
@@ -244,25 +242,25 @@
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field  v-model="moa_zipcode" outlined></v-text-field>
+        <v-text-field v-model="moa_zipcode" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3" class="custom-margin">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field  v-model="moa_phone" outlined></v-text-field>
+        <v-text-field v-model="moa_phone" outlined></v-text-field>
       </v-col>
     </v-row>
 
 
     <v-row>
       <v-col cols="12">
-        <h2 style="  font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom:-10px ;">สถานที่ที่ต้องการให้ติดต่อ / จัดส่งเอกสาร </h2>
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom:-10px;">
+          สถานที่ที่ต้องการให้ติดต่อ / จัดส่งเอกสาร
+        </h2>
       </v-col>
     </v-row>
 
     <v-container fluid>
-      <v-radio-group v-model="radios">
+      <v-radio-group v-model="mp_contactus">
         <v-sheet outlined class="radio-box">
           <v-radio value="radiosHome">
             <template v-slot:label>
@@ -288,6 +286,7 @@
         </v-sheet>
       </v-radio-group>
     </v-container>
+
 
     <v-row>
       <v-col cols="12">
@@ -316,7 +315,7 @@
         font-weight: 600;margin-bottom: 20px;">
           การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่างๆ (สมาคมที่เกี่ยวข้องเป็นหลัก)</h2>
         <div class="mb-3 required">โปรดระบุ (ถ้ามี) </div>
-        <v-text-field  v-model="associations_involved" outlined></v-text-field>
+        <v-text-field v-model="associations_involved" outlined></v-text-field>
       </v-col>
 
 
@@ -330,15 +329,17 @@
         <v-file-input v-model="photo" outlined placeholder="File input"></v-file-input>
         <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png และ .jpeg
         </div>
-        
+
         <div class="mb-3 required">สำเนาทะเบียนบ้าน</div>
-    <v-file-input v-model="Copyof_houseregistration" outlined placeholder="File input" :accept="['image/jpeg', 'image/png', 'application/pdf']"></v-file-input>
-    <div style="text-align: end; margin-top: -20px;">
-      หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล .jpg .png .jpeg และ .pdf
-    </div>
+        <v-file-input v-model="Copyof_houseregistration" outlined placeholder="File input"
+          :accept="['image/jpeg', 'image/png', 'application/pdf']"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">
+          หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล .jpg .png .jpeg และ .pdf
+        </div>
 
         <div class="mb-3 required">สำเนาบัตรประจำตัวประชาชน </div>
-        <v-file-input v-model="Copyof_mp_customer_id" outlined placeholder="File input" :accept="['image/jpeg', 'image/png', 'application/pdf']"></v-file-input>
+        <v-file-input v-model="Copyof_mp_customer_id" outlined placeholder="File input"
+          :accept="['image/jpeg', 'image/png', 'application/pdf']"></v-file-input>
         <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
           .pdf
         </div>
@@ -365,10 +366,10 @@
           ข้าพเจ้าได้แนบหลักฐานประกอบการสมัครสมาชิกสภาการสาธาณสุขชุมชน ดังต่อไปนี้</h3>
         <v-container fluid>
           <v-checkbox :style="checkboxStyle" v-model="selectedhouse_registration" label="สำเนาทะเบียนบ้าน 1 ฉบับ"
-      :disabled="!Copyof_houseregistration || selectedhouse_registration"></v-checkbox>
+            :disabled="!Copyof_houseregistration || selectedhouse_registration"></v-checkbox>
 
           <v-checkbox :style="checkboxStyle2" v-model="selectedmp_customer_id" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
-      :disabled="!Copyof_mp_customer_id || selectedmp_customer_id"></v-checkbox>
+            :disabled="!Copyof_mp_customer_id || selectedmp_customer_id"></v-checkbox>
           <v-checkbox color="light-green" v-model="selected2"
             label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
             value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"></v-checkbox>
@@ -425,38 +426,43 @@ export default {
   },
   watch: {
     Copyof_houseregistration(newValue) {
-
-  // ถ้ามีไฟล์ ให้ติ๊ก checkbox อัตโนมัติ และล็อคการเปลี่ยนแปลง checkbox
-  if (newValue !== null) {
-    this.selectedhouse_registration = true;
-  } else {
-    // ถ้าไม่มีไฟล์ ให้ uncheck ออก
-    this.selectedhouse_registration = false;
-  }
-},
-Copyof_mp_customer_id(newValue) {
-
-// ถ้ามีไฟล์ ให้ติ๊ก checkbox อัตโนมัติ และล็อคการเปลี่ยนแปลง checkbox
-if (newValue !== null) {
-  this.selectedmp_customer_id = true;
-} else {
-  // ถ้าไม่มีไฟล์ ให้ uncheck ออก
-  this.selectedmp_customer_id = false;
-}
-},
-
-  formData: {
-    handler(newVal) {
-      console.log("formData changed: ", newVal);
-      const isInvalid = Object.values(newVal).some(value => validateRequired(value) !== true);
-      console.log("Validation result: ", isInvalid);
-      this.$emit("validationChanged", isInvalid);
+      if (newValue !== null) {
+        this.selectedhouse_registration = true;
+      } else {
+        this.selectedhouse_registration = false;
+      }
     },
-    deep: true,
-    immediate: true
+    Copyof_mp_customer_id(newValue) {
+      if (newValue !== null) {
+        this.selectedmp_customer_id = true;
+      } else {
+        this.selectedmp_customer_id = false;
+      }
+    },
+
+    methods: {
+      updateStep1Validity(isInvalid) {
+        this.isStep1Invalid = isInvalid;
+      },
+      moveToNextStep() {
+        // ส่งข้อมูลไปยัง parent component (UserRegister.vue)
+        this.$emit('formDataChanged', this.formData);
+        this.$emit('next-step'); // ใช้เพื่อให้ parent component เปลี่ยนขั้นตอน
+      },
+    },
+
+    formData: {
+      handler(newVal) {
+        console.log("formData changed: ", newVal);
+        const isInvalid = Object.values(newVal).some(value => validateRequired(value) !== true);
+        console.log("Validation result: ", isInvalid);
+        this.$emit("validationChanged", isInvalid);
+      },
+      deep: true,
+      immediate: true
+    }
   }
-}
-,
+  ,
 
   components: {
     Educational1,
@@ -478,8 +484,6 @@ if (newValue !== null) {
         mp_name3: "",
         // เพิ่มได้เรื่อยๆ
       },
-      // formData: this.value,
-      
      
       formValid: false,
       // คำนำหน้าชื่อภาษาไทย
@@ -524,6 +528,7 @@ if (newValue !== null) {
       mp_birthmonth: '',
       mp_birthyear: '',
       mp_customer_id: '',
+      mp_contactus: '',
       dayOptions: Array.from({ length: 31 }, (_, i) => i + 1), // 1-31
       monthOptions: [
         "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
@@ -596,6 +601,13 @@ if (newValue !== null) {
     }
   },
   methods: {
+    updateStep1Validity(isInvalid) {
+      this.isStep1Invalid = isInvalid;
+    },
+    moveToNextStep() {
+      this.$emit('formDataChanged', this.formData);
+      this.$emit('next-step');
+    },
     submitForm() {
       if (this.$refs.form.validate()) {
         console.log("Form Submitted!");
@@ -606,10 +618,10 @@ if (newValue !== null) {
     validateRequired,
     validateEmail,
     validatePhone,
-    
+
   },
-  
-  
+
+
 };
 
 
@@ -686,6 +698,4 @@ if (newValue !== null) {
   color: red !important;
   margin: 5px;
 }
-
-
 </style>

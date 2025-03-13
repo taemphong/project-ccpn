@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
-      <v-simple-table class="custom-table">
+      <v-simple-table class="custom-table" v-if="Education.length > 0">
         <template v-slot:default>
           <thead>
             <tr>
@@ -19,7 +19,7 @@
               <td>{{ item.me_institution }}</td>
               <td>{{ item.me_faculty }}</td>
               <td>{{ item.me_major }}</td>
-              <td>{{ item.me_graduated_date.slice(0,10) }}</td>
+              <td>{{ item.me_graduated_date.slice(0, 10) }}</td>
               <td>
                 <v-btn icon small @click="openEditEduModal(item)">
                   <v-icon color="blue">mdi-square-edit-outline</v-icon>
@@ -33,22 +33,20 @@
         </template>
       </v-simple-table>
 
-      <EditEduModal
-        v-model="editDialog"
-        :item="selectedEducation"
-        @save="updateEducation"
-        @close="editDialog = false"
-      />
+      <!-- ถ้าไม่มีข้อมูล -->
+      <div v-else class="no-data-message" style="text-align: center; padding: 20px;">
+        <p>ไม่มีข้อมูล</p>
+      </div>
 
-      <DeleteEduModal
-        v-model="deleteDialog"
-        :item="selectedEducation"
-        @delete="deleteEducation"
-        @close="deleteDialog = false"
-      />
+      <EditEduModal v-model="editDialog" :item="selectedEducation" @save="updateEducation"
+        @close="editDialog = false" />
+
+      <DeleteEduModal v-model="deleteDialog" :item="selectedEducation" @delete="deleteEducation"
+        @close="deleteDialog = false" />
     </v-card>
   </v-container>
 </template>
+
 
 <script>
 import EditEduModal from '@/components/Modal/UserModal/EditEduModal.vue';
@@ -104,48 +102,48 @@ export default {
       this.editDialog = true;
     },
     openDeleteEduModal(item) {
-  this.selectedEducation = item;
-  Swal.fire({
-  title: 'ต้องการลบข้อมูลใช่หรือไม่',
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonText: 'ใช่',
-  confirmButtonColor: '#00B69B',
-  cancelButtonText: 'ยกเลิก',
-  cancelButtonColor: '#FF0000',
-  reverseButtons: false,
-  didOpen: () => {
+      this.selectedEducation = item;
+      Swal.fire({
+        title: 'ต้องการลบข้อมูลใช่หรือไม่',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ใช่',
+        confirmButtonColor: '#00B69B',
+        cancelButtonText: 'ยกเลิก',
+        cancelButtonColor: '#FF0000',
+        reverseButtons: false,
+        didOpen: () => {
 
-    // เปลี่ยนสีข้อความของปุ่ม
-    const confirmButton = Swal.getConfirmButton();
-    const cancelButton = Swal.getCancelButton();
-    confirmButton.style.color = '#FFFFFF';  
-    cancelButton.style.color = '#FFFFFF';  
-    
-    // ปรับขนาดของปุ่ม
-    confirmButton.style.width ='158px'
-    cancelButton.style.width ='158px'
-    confirmButton.style.height ='54px'
-    cancelButton.style.height ='54px'
+          // เปลี่ยนสีข้อความของปุ่ม
+          const confirmButton = Swal.getConfirmButton();
+          const cancelButton = Swal.getCancelButton();
+          confirmButton.style.color = '#FFFFFF';
+          cancelButton.style.color = '#FFFFFF';
 
-    confirmButton.style.margin = '40px 15px'; 
-    cancelButton.style.margin = '40px 15px';  
-    confirmButton.style.marginBottom = '80px'; 
-    cancelButton.style.marginBottom = '80px'; 
+          // ปรับขนาดของปุ่ม
+          confirmButton.style.width = '158px'
+          cancelButton.style.width = '158px'
+          confirmButton.style.height = '54px'
+          cancelButton.style.height = '54px'
+
+          confirmButton.style.margin = '40px 15px';
+          cancelButton.style.margin = '40px 15px';
+          confirmButton.style.marginBottom = '80px';
+          cancelButton.style.marginBottom = '80px';
 
 
-    const title = Swal.getTitle();
-    title.style.fontSize = '40px'; 
-    
-    const popup = Swal.getPopup();  
-    popup.style.width = '665px';   
-  }
-}).then((result) => {
-    if (result.isConfirmed) {
-      this.deleteEducation(item);
-    }
-  });
-},
+          const title = Swal.getTitle();
+          title.style.fontSize = '40px';
+
+          const popup = Swal.getPopup();
+          popup.style.width = '665px';
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteEducation(item);
+        }
+      });
+    },
     async updateEducation(updatedData) {
       try {
         await axios.post("http://localhost:8002/ccph/api/update-education", updatedData);
@@ -186,14 +184,15 @@ export default {
   /* เพิ่มมุมมนให้กับตาราง */
   overflow: hidden;
   /* ซ่อนส่วนที่เกินจากมุมโค้ง */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้ตาราง */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* เพิ่มเงาให้ตาราง */
 }
 
 .custom-table th,
 .custom-table td {
   border: 1px solid #ddd;
   padding: 12px;
-  text-align: center; 
+  text-align: center;
 }
 
 /* ทำให้หัวตาราง (thead) เป็นบาร์เดียวที่มีไล่สี */
@@ -216,6 +215,7 @@ export default {
   /* เพิ่มมุมมนให้กับ v-card */
   overflow: hidden;
   /* ซ่อนส่วนเกินที่เกินมุมโค้ง */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* เพิ่มเงาให้ v-card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  /* เพิ่มเงาให้ v-card */
 }
 </style>

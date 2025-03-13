@@ -6,31 +6,27 @@
     <div style="justify-items: center">
       <v-stepper v-model="e1" alt-labels style="padding-left: 200px; padding-right: 200px; justify-items: center">
         <v-stepper-header style="width: 100%; max-width: 700px; border: none; box-shadow: none">
-          <v-stepper-step :complete="e1 > 1" step="1" class="no-number" 
-  :class="{ active: e1 === 1 }">
-  <div :style="{ color: e1 === 1 ? '#5FC77D' : '#858585' }">
-    กรอกข้อมูล
-  </div>
-</v-stepper-step>
+          <v-stepper-step :complete="e1 > 1" step="1" class="no-number" :class="{ active: e1 === 1 }">
+            <div :style="{ color: e1 === 1 ? '#5FC77D' : '#858585' }">
+              กรอกข้อมูล
+            </div>
+          </v-stepper-step>
 
-<v-divider></v-divider>
+          <v-divider></v-divider>
 
-<v-stepper-step :complete="e1 > 2" step="2" class="no-number" 
-  :class="{ active: e1 === 2 }">
-  <div :style="{ color: e1 === 2 ? '#5FC77D' : '#858585' }">
-    ตรวจสอบข้อมูล
-  </div>
-</v-stepper-step>
+          <v-stepper-step :complete="e1 > 2" step="2" class="no-number" :class="{ active: e1 === 2 }">
+            <div :style="{ color: e1 === 2 ? '#5FC77D' : '#858585' }">
+              ตรวจสอบข้อมูล
+            </div>
+          </v-stepper-step>
 
-<v-divider></v-divider>
+          <v-divider></v-divider>
 
-<v-stepper-step step="3" class="no-number" 
-  :class="{ active: e1 === 3 }">
-  <div :style="{ color: e1 === 3 ? '#5FC77D' : '#858585' }">
-    ชำระเงิน
-  </div>
-</v-stepper-step>
-
+          <v-stepper-step step="3" class="no-number" :class="{ active: e1 === 3 }">
+            <div :style="{ color: e1 === 3 ? '#5FC77D' : '#858585' }">
+              ชำระเงิน
+            </div>
+          </v-stepper-step>
 
         </v-stepper-header>
 
@@ -44,7 +40,6 @@
   class="my-btn" 
   :style="{ backgroundColor: '#00B69B', color: '#fff' }"
   :disabled="isStep1Invalid"
-  
 >
   ถัดไป
 </v-btn>
@@ -61,11 +56,8 @@
                 :style="{ backgroundColor: '#4169E1', color: '#fff' }">
                 ย้อนกลับ
               </v-btn>
-              <v-btn
-                @click="confirmSubmission"
-                class="my-btn ml-5"
-                :style="{ backgroundColor: '#00B69B', color: '#fff' }"
-              >
+              <v-btn @click="confirmSubmission" class="my-btn ml-5"
+                :style="{ backgroundColor: '#00B69B', color: '#fff' }">
                 ส่งใบสมัคร
               </v-btn>
             </div>
@@ -98,13 +90,12 @@ export default {
     return {
       e1: 1,
       isStep1Invalid: true, 
-      formData: {},
     };
   },
   methods: {
     updateStep1Validity(isInvalid) {
-    this.isStep1Invalid = isInvalid;
-  },
+      this.isStep1Invalid = isInvalid;
+    },
     confirmSubmission() {
       Swal.fire({
         title: "กรุณาตรวจสอบความถูกต้องก่อนกดปุ่มยืนยันการสมัคร",
@@ -176,16 +167,17 @@ export default {
 
 /* ซ่อนตัวเลขใน v-stepper-step */
 /* กำหนดสีของวงกลมรอบ step */
-.no-number >>> .v-stepper__step__step {
-  border: 2px solid #C2C2C2 !important; /* สีเทาเมื่อไม่ active */
+.no-number>>>.v-stepper__step__step {
+  border: 2px solid #C2C2C2 !important;
+  /* สีเทาเมื่อไม่ active */
   background-color: white !important;
 }
 
-.no-number.active >>> .v-stepper__step__step {
-  border: 2px solid #48BF6A !important; /* สีเขียวเมื่อ active */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
-  
+.no-number.active>>>.v-stepper__step__step {
+  border: 2px solid #48BF6A !important;
+  /* สีเขียวเมื่อ active */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  /* เพิ่มเงา */
+
 }
-
-
 </style>
