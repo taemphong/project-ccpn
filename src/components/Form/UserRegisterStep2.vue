@@ -418,9 +418,9 @@
     </v-row>
 
     <v-container fluid>
-  <v-radio-group v-model="radios">
+  <v-radio-group v-model="mp_contactus">
     <v-sheet outlined class="radio-box">
-      <v-radio value="radiosHome">
+      <v-radio value="1">
         <template v-slot:label>
           <div>ที่อยู่ตามทะเบียนบ้าน</div>
         </template>
@@ -428,7 +428,7 @@
     </v-sheet>
 
     <v-sheet outlined class="radio-box">
-      <v-radio value="radiosWork">
+      <v-radio value="2">
         <template v-slot:label>
           <div>สถานที่ทำงาน</div>
         </template>
@@ -436,7 +436,7 @@
     </v-sheet>
 
     <v-sheet outlined class="radio-box">
-      <v-radio value="radiosCurrent">
+      <v-radio value="3">
         <template v-slot:label>
           <div>ที่อยู่ปัจจุบัน</div>
         </template>
@@ -762,6 +762,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
