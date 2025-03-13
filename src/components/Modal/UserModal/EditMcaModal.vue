@@ -5,47 +5,47 @@
                 แก้ไขข้อมูลที่อยู่
             </v-card-title>
             <v-card-text>
-                <v-form>
-                    <v-card-title class="font-weight-bold">ที่อยู่ตามทะเบียนบ้าน</v-card-title>
+                <v-form ref="form">
+                    <v-card-title class="font-weight-bold">ที่อยู่ที่ทำงาน</v-card-title>
                     <v-row>
                         <v-col md="12">
                             <div class="mb-2">ที่อยู่</div>
                             <v-textarea class="textfield" placeholder="กรอกที่อยู่" outlined
-                                v-model="editedAddress.mca_address"></v-textarea>
+                                v-model="editedAddress.mca_address" :rules="[validateRequired]"></v-textarea>
                         </v-col>
                     </v-row>
                     <v-row>
                         <v-col md="4">
                             <div class="mb-2">จังหวัด</div>
                             <v-text-field class="textfield" placeholder="กรอกจังหวัด" outlined
-                                v-model="editedAddress.mca_province"></v-text-field>
+                                v-model="editedAddress.mca_province" :rules="[validateRequired]"></v-text-field>
                         </v-col>
                         <v-col md="4">
                             <div class="mb-2">อำเภอ / เขต</div>
                             <v-text-field class="textfield" placeholder="กรอกอำเภอ / เขต" outlined
-                                v-model="editedAddress.mca_amphoe"></v-text-field>
+                                v-model="editedAddress.mca_amphoe" :rules="[validateRequired]"></v-text-field>
                         </v-col>
                         <v-col md="4">
                             <div class="mb-2">ตำบล / แขวง</div>
                             <v-text-field class="textfield" placeholder="กรอกตำบล / แขวง" outlined
-                                v-model="editedAddress.mca_district"></v-text-field>
+                                v-model="editedAddress.mca_district" :rules="[validateRequired]"></v-text-field>
                         </v-col>
                     </v-row>
                     <v-row>
                         <v-col cols="4">
                             <div class="mb-2">รหัสไปรษณีย์</div>
                             <v-text-field class="textfield" placeholder="กรอกรหัสไปรษณีย์" outlined
-                                v-model="editedAddress.mca_zipcode"></v-text-field>
+                                v-model="editedAddress.mca_zipcode" :rules="[validateRequired]"></v-text-field>
                         </v-col>
                         <v-col cols="4">
                             <div class="mb-2">อีเมล</div>
-                            <v-text-field class="textfield" placeholder="กรอกรหัสไปรษณีย์" outlined
-                                v-model="editedAddress.mca_email"></v-text-field>
+                            <v-text-field class="textfield" placeholder="กรอกอีเมล" outlined
+                                v-model="editedAddress.mca_email" :rules="[validateEmail]"></v-text-field>
                         </v-col>
                         <v-col cols="4">
                             <div class="mb-2">เบอร์โทร</div>
-                            <v-text-field class="textfield" placeholder="กรอกรหัสไปรษณีย์" outlined
-                                v-model="editedAddress.mca_phone"></v-text-field>
+                            <v-text-field class="textfield" placeholder="กรอกเบอร์โทรศัพท์" outlined
+                                v-model="editedAddress.mca_phone" :rules="[validatePhone]"></v-text-field>
                         </v-col>
                     </v-row>
                 </v-form>
@@ -63,6 +63,7 @@
 <script>
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { validateRequired, validateEmail, validatePhone } from "../../../plugins/validate.js";
 
 
 export default {
@@ -92,6 +93,14 @@ export default {
             this.isVisible = false;
         },
         async confirmEdit() {
+            if (!this.$refs.form.validate()) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+            text: 'มีช่องที่ต้องกรอกแต่ยังไม่ได้กรอกหรือกรอกข้อมูลไม่ถูกต้อง',
+        });
+        return;
+    }
             const authToken = localStorage.getItem('authToken');
             if (!authToken) return;
 
@@ -141,6 +150,10 @@ export default {
                 });
             }
         },
+        validateRequired,
+        validateEmail,
+        validatePhone,
+        
     },
 };
 </script>
@@ -154,5 +167,9 @@ export default {
 
 .v-text-field {
     border-radius: 10px;
+}
+::v-deep(.v-messages__message) {
+  color: red !important;
+  margin: 5px;
 }
 </style>

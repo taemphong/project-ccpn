@@ -14,7 +14,7 @@
                 v-model="editedItem.edit_institution"
                 :items="institutions"
                 outlined
-                :rules="[rules.required]"
+                :rules="[validateSelect]"
               ></v-select>
             </v-col>
 
@@ -25,7 +25,7 @@
                 v-model="editedItem.edit_educationLevel"
                 :items="educationLevels"
                 outlined
-                :rules="[rules.required]"
+                :rules="[validateSelect]"
               ></v-select>
             </v-col>
           </v-row>
@@ -38,7 +38,7 @@
                 v-model="editedItem.edit_major"
                 :items="majors"
                 outlined
-                :rules="[rules.required]"
+                :rules="[validateSelect]"
               ></v-select>
             </v-col>
           </v-row>
@@ -57,8 +57,8 @@
                 v-model="editedItem.graduated_day"
                 :items="graduationDays"
                 outlined
-                :rules="[rules.required]"
                 placeholder="วัน"
+                :rules="[validateSelect]"
               ></v-select>
             </v-col>
             <v-col md="4">
@@ -67,8 +67,8 @@
                 v-model="editedItem.graduated_month"
                 :items="graduationMonths"
                 outlined
-                :rules="[rules.required]"
                 placeholder="เดือน"
+                :rules="[validateSelect]"
               ></v-select>
             </v-col>
             <v-col md="4">
@@ -77,8 +77,8 @@
                 v-model="editedItem.graduated_year"
                 :items="graduationYears"
                 outlined
-                :rules="[rules.required]"
                 placeholder="ปี"
+                :rules="[validateSelect]"
               ></v-select>
             </v-col>
           </v-row>
@@ -111,6 +111,10 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+import {validateSelect } from "../../../plugins/validate.js";
+
+
 export default {
   props: {
     value: Boolean,
@@ -136,9 +140,6 @@ export default {
         "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
       ],
       graduationYears: ["2565", "2566", "2567"],
-      rules: {
-        required: (value) => !!value || "กรุณากรอกข้อมูล",
-      },
       valid: false,
     };
   },
@@ -168,6 +169,14 @@ export default {
   },
   methods: {
     saveChanges() {
+      if (!this.$refs.form.validate()) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+            text: 'มีช่องที่ต้องกรอกแต่ยังไม่ได้กรอกหรือกรอกข้อมูลไม่ถูกต้อง',
+        });
+        return;
+    }
   console.log("Before validation:", this.editedItem);
   if (this.$refs.form.validate()) {
     this.editedItem.me_graduated_date = this.formattedGraduationDate;
@@ -177,6 +186,7 @@ export default {
     console.log("Validation failed");
   }
 },
+        validateSelect,
   },
 };
 </script>
@@ -206,5 +216,4 @@ export default {
   color: red !important;
   margin: 5px;
 }
-
 </style>
