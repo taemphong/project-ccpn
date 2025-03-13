@@ -21,7 +21,7 @@
                   v-model="currentPassword"
                   outlined
                   :type="showCurrentPassword ? 'text' : 'password'"
-                  placeholder="••••••"
+                  placeholder="••••••••"
                 >
                   <template v-slot:append>
                     <v-icon @click="showCurrentPassword = !showCurrentPassword">
@@ -39,7 +39,7 @@
                   v-model="newPassword"
                   outlined
                   :type="showNewPassword ? 'text' : 'password'"
-                  placeholder="••••••"
+                  placeholder="••••••••"
                 >
                   <template v-slot:append>
                     <v-icon @click="showNewPassword = !showNewPassword">
@@ -67,10 +67,12 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   computed: {
     isValid() {
-      return this.currentPassword.length > 0 && this.newPassword.length >= 6;
+      return this.currentPassword.length > 0 && this.newPassword.length >= 8;
     }
   },
   props: {
@@ -95,17 +97,53 @@ export default {
   },
   methods: {
     closeModal() {
-    this.$emit('input', false);
-    this.currentPassword = "";
-    this.newPassword = "";
-  },
-    changePassword() {
+      this.$emit('input', false);
+      this.currentPassword = "";
+      this.newPassword = "";
+    },
+    async changePassword() {
       console.log("Changing password...");
-      this.closeModal();
+
+      // ตรวจสอบว่า valid หรือไม่
+      if (!this.isValid) {
+        alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+        return;
+      }
+
+      try {
+        // ดึงค่า ml_customer_id จาก localStorage
+        const authToken = localStorage.getItem('authToken');
+        if (!authToken) {
+          console.error('No auth token found');
+          return;
+        }
+
+        const userData = JSON.parse(authToken);
+        const payload = {
+          ml_customer_id: userData.ml_customer_id,
+          oldPassword: this.currentPassword,
+          newPassword: this.newPassword
+        };
+
+        const response = await axios.post('http://localhost:8002/ccph/api/resetpassword', payload);
+
+        if (response.data.code === 200) {
+          alert("เปลี่ยนรหัสผ่านสำเร็จ");
+        } else {
+          alert(response.data.data || "เกิดข้อผิดพลาด");
+        }
+      } catch (error) {
+        console.error("Error changing password:", error);
+        alert("ไม่สามารถเปลี่ยนรหัสผ่านได้");
+      }
+
+      this.closeModal(); // ปิด Modal หลังจากเปลี่ยนรหัส
     }
   }
 };
 </script>
+
+
 
 <style scoped>
 .v-text-field--outlined>>>fieldset {
