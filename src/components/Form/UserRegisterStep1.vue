@@ -6,11 +6,13 @@
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ </div>
-        <v-select :rules="[validateRequired]"  v-model="formData.mp_name1" :items="prefixOptions" outlined></v-select>
+        <v-select :rules="[validateRequired]"  v-model="formData.mp_name1"
+        @input="validateForm" :items="prefixOptions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ </div>
-        <v-text-field :rules="[validateRequired]"  v-model="formData.mp_name2" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]"  v-model="formData.mp_name2"
+        @input="validateForm" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล </div>
@@ -372,9 +374,9 @@
             value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"></v-checkbox>
           <div style="margin-left: 30px;">
             <v-checkbox color="light-green" v-model="selected2" label="Transcript" value="Transcript"></v-checkbox>
-            <v-checkbox color="light-green" v-model="selected2" label="ปริญญาบัคร" value="ปริญญาบัคร"></v-checkbox>
-            <v-checkbox color="light-green" v-model="selected2" label="อนุปริญญาบัคร"
-              value="อนุปริญญาบัคร"></v-checkbox>
+            <v-checkbox color="light-green" v-model="selected2" label="ปริญญาบัตร" value="ปริญญาบัตร"></v-checkbox>
+            <v-checkbox color="light-green" v-model="selected2" label="อนุปริญญาบัตร"
+              value="อนุปริญญาบัตร"></v-checkbox>
             <v-checkbox color="light-green" v-model="selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
               value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"></v-checkbox>
           </div>
@@ -415,6 +417,12 @@ import Educational5 from "./Educational5.vue";
 
 
 export default {
+  props: {
+    value: {
+      type: Object,
+      required: true,
+    },
+  },
   watch: {
     Copyof_houseregistration(newValue) {
 
@@ -470,6 +478,8 @@ if (newValue !== null) {
         mp_name3: "",
         // เพิ่มได้เรื่อยๆ
       },
+      // formData: this.value,
+      
      
       formValid: false,
       // คำนำหน้าชื่อภาษาไทย

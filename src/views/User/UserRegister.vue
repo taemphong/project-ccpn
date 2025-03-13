@@ -36,13 +36,15 @@
 
         <v-stepper-items>
           <v-stepper-content step="1">
-            <UserRegisterStep1 ref="step1" @validationChanged="updateStep1Validity" />
+            <UserRegisterStep1 ref="step1" @validationChanged="updateStep1Validity"
+            v-model="formData"  />
             <div class="d-flex justify-center">
               <v-btn 
   @click="e1 = 2" 
   class="my-btn" 
   :style="{ backgroundColor: '#00B69B', color: '#fff' }"
   :disabled="isStep1Invalid"
+  
 >
   ถัดไป
 </v-btn>
@@ -52,7 +54,8 @@
           </v-stepper-content>
 
           <v-stepper-content step="2">
-            <UserRegisterStep2 />
+            <UserRegisterStep2 
+            :formData="formData"/>
             <div class="d-flex justify-center">
               <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn"
                 :style="{ backgroundColor: '#4169E1', color: '#fff' }">
@@ -95,6 +98,7 @@ export default {
     return {
       e1: 1,
       isStep1Invalid: true, 
+      formData: {},
     };
   },
   methods: {
