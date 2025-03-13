@@ -18,44 +18,51 @@
             </div>
 
             <!-- Status table -->
-            <v-container style="padding: 50px; margin: 50px; width: 95%; border-radius: 20px;">
-                <v-simple-table class="custom-table">
-                    <template v-slot:default>
-                        <thead>
-                            <tr>
-                                <th class="column-type table-header">วันที่จดทะเบียน</th>
-                                <th class="column-address table-header">สถานะชำระเงิน</th>
-                                <th class="column-phone table-header">สถานะเอกสาร</th>
-                                <th class="column-tool table-header">หมายเหตุ</th>
-                                <th class="column-tool table-header">ใบชำระเงิน</th>
-                                <th class="column-tool table-header">ใบเสร็จ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(item, index) in items" :key="index">
-                                <td>{{ item['วันที่จดทะเบียน'] }}</td>
-                                <td :style="{ color: item['สถานะชำระเงิน'] === 'รอชำระเงิน' ? 'red' : 'green' }">{{
-                                    item['สถานะชำระเงิน'] }}</td>
-                                <td :style="{ color: item['สถานะเอกสาร'] === 'ผ่าน' ? 'green' : 'red' }">
-                                    {{ item['สถานะเอกสาร'] }}
-                                </td>
-                                <td>{{ item['หมายเหตุ'] }}</td>
-                                <td>
-                                    <v-btn to="/payment" v-if="item['ใบชำระเงิน'] === 'พิมพ์'" small color="warning"
-                                        class="px-3">
-                                        {{ item['ใบชำระเงิน'] }}
-                                    </v-btn>
-                                </td>
-                                <td>
-                                    <v-btn small color="warning" class="px-3" v-if="item['ใบเสร็จ'] === 'พิมพ์'">
-                                        {{ item['ใบเสร็จ'] }}
-                                    </v-btn>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </template>
-                </v-simple-table>
-            </v-container>
+            <v-row justify="center" align="center">
+                <v-col cols="12" md="8">
+                    <v-container class="table-container" style="padding: 50px; width: 100%; border-radius: 20px;">
+                        <v-simple-table class="custom-table">
+                            <template v-slot:default>
+                                <thead>
+                                    <tr>
+                                        <th class="column-type table-header">วันที่จดทะเบียน</th>
+                                        <th class="column-address table-header">สถานะชำระเงิน</th>
+                                        <th class="column-phone table-header">สถานะเอกสาร</th>
+                                        <th class="column-tool table-header">หมายเหตุ</th>
+                                        <th class="column-tool table-header">ใบชำระเงิน</th>
+                                        <th class="column-tool table-header">ใบเสร็จ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(item, index) in items" :key="index">
+                                        <td>{{ item['วันที่จดทะเบียน'] }}</td>
+                                        <td
+                                            :style="{ color: item['สถานะชำระเงิน'] === 'รอชำระเงิน' ? 'red' : 'green' }">
+                                            {{
+                                                item['สถานะชำระเงิน'] }}</td>
+                                        <td :style="{ color: item['สถานะเอกสาร'] === 'ผ่าน' ? 'green' : 'red' }">
+                                            {{ item['สถานะเอกสาร'] }}
+                                        </td>
+                                        <td>{{ item['หมายเหตุ'] }}</td>
+                                        <td>
+                                            <v-btn to="/payment" v-if="item['ใบชำระเงิน'] === 'พิมพ์'" small
+                                                color="warning" class="px-3">
+                                                {{ item['ใบชำระเงิน'] }}
+                                            </v-btn>
+                                        </td>
+                                        <td>
+                                            <v-btn small color="warning" class="px-3"
+                                                v-if="item['ใบเสร็จ'] === 'พิมพ์'">
+                                                {{ item['ใบเสร็จ'] }}
+                                            </v-btn>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </template>
+                        </v-simple-table>
+                    </v-container>
+                </v-col>
+            </v-row>
         </v-container>
     </v-app>
 </template>
@@ -134,5 +141,11 @@ export default {
     width: 95%;
     border-radius: 20px;
     overflow: hidden;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>
