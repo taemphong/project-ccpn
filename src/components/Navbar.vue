@@ -1,8 +1,12 @@
 <template>
   <div>
     <v-navigation-drawer v-model="drawer" app width="300">
-
-      <v-img :src="require('@/assets/images/Logo4.png')" contain max-height="120" class="drawer-image"></v-img>
+      <v-img
+        :src="require('@/assets/images/Logo4.png')"
+        contain
+        max-height="120"
+        class="drawer-image"
+      ></v-img>
       <v-list dense>
         <template v-for="item in menuItems">
           <v-list-group v-if="item.subItems" :key="item.text">
@@ -15,16 +19,20 @@
               </v-list-item-content>
             </template>
 
-            <v-list-item v-for="subItem in item.subItems" :key="subItem.text" :to="subItem.to">
+            <v-list-item
+              v-for="subItem in item.subItems"
+              :key="subItem.text"
+              :to="subItem.to"
+            >
               <v-list-item-icon>
                 <v-icon>{{ subItem.icon }}</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title class="large-font">{{ subItem.text }}</v-list-item-title>
+                <v-list-item-title class="large-font">{{
+                  subItem.text
+                }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-
-
           </v-list-group>
 
           <v-list-item v-else :key="item.text" :to="item.to">
@@ -48,11 +56,15 @@
         <v-spacer></v-spacer>
         <div class="ml-3 mr-4 d-flex flex-column">
           <span class="username font-weight-medium">{{ user.name }}</span>
-          <span class="user-role" style="font-size: 14px;">{{
-            user.role
-          }}</span>
+          <span class="user-role" style="font-size: 14px">{{ user.role }}</span>
         </div>
-        <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-y :nudge-bottom="20">
+        <v-menu
+          v-model="menu"
+          :close-on-content-click="false"
+          :nudge-width="200"
+          offset-y
+          :nudge-bottom="20"
+        >
           <template v-slot:activator="{ on, attrs }">
             <v-btn v-bind="attrs" v-on="on" icon class="icon-btn" elevation="0">
               <v-icon :class="{ 'rotate-icon': menu }" color="gray" size="30">
@@ -92,22 +104,31 @@
               </v-list-item>
 
               <v-list-item @click="openSettingsModal">
-  <v-list-item-title>
-    <v-icon left>mdi-cog</v-icon>
-    Settings
-  </v-list-item-title>
-</v-list-item>
+                <v-list-item-title>
+                  <v-icon left>mdi-cog</v-icon>
+                  Settings
+                </v-list-item-title>
+              </v-list-item>
 
               <!-- ปรับการจัดตำแหน่งปุ่มลงชื่อออกให้กึ่งกลาง -->
-              <v-btn class="d-flex justify-center" tile color="#3D8E56CC" @click="logout"
-                style="width: 220px;border-radius: 14px; height: 45px; margin: 15px auto;">
+              <v-btn
+                class="d-flex justify-center"
+                tile
+                color="#3D8E56CC"
+                @click="logout"
+                style="
+                  width: 220px;
+                  border-radius: 14px;
+                  height: 45px;
+                  margin: 15px auto;
+                "
+              >
                 ลงชื่อออก
                 <v-icon class="ml-4" left>mdi-logout</v-icon>
               </v-btn>
             </v-list>
           </v-card>
         </v-menu>
-
       </div>
     </v-app-bar>
     <settings-modal v-model="settingsModal" />
@@ -116,16 +137,15 @@
 
 <script>
 import SettingsModal from "./Modal/Setting/SettingsModal.vue";
-import axios from 'axios';
+import axios from "axios";
 import variable from "../../main.config.js";
 export default {
-
   components: {
-    SettingsModal
+    SettingsModal,
   },
   data() {
     return {
-      settingsModal: false, 
+      settingsModal: false,
       user: {
         avatar: require("@/assets/images/bot.png"),
       },
@@ -137,11 +157,22 @@ export default {
           text: "ข้อมูล",
           icon: "mdi-account-outline",
           subItems: [
-            { text: "ข้อมูลส่วนตัว", icon: "mdi-checkbox-blank-circle-outline", to: "/user-information" },
-            { text: "ข้อมูลที่อยู่", icon: "mdi-checkbox-blank-circle-outline", to: "/user-address" },
-            { text: "ข้อมูลการศึกษา", icon: "mdi-checkbox-blank-circle-outline", to: "/user-education-information", },
+            {
+              text: "ข้อมูลส่วนตัว",
+              icon: "mdi-checkbox-blank-circle-outline",
+              to: "/user-information",
+            },
+            {
+              text: "ข้อมูลที่อยู่",
+              icon: "mdi-checkbox-blank-circle-outline",
+              to: "/user-address",
+            },
+            {
+              text: "ข้อมูลการศึกษา",
+              icon: "mdi-checkbox-blank-circle-outline",
+              to: "/user-education-information",
+            },
           ],
-
         },
         {
           text: "หลักสูตรที่เปิดอบรม",
@@ -169,30 +200,33 @@ export default {
   },
   async mounted() {
     try {
-      const authToken = localStorage.getItem('authToken');
+      const authToken = localStorage.getItem("authToken");
       if (!authToken) {
-        console.error('No auth token found');
+        console.error("No auth token found");
         return;
       }
 
       const userData = JSON.parse(authToken);
       const payload = { CustomerID: userData.ml_customer_id };
 
-      const response = await axios.post(variable.URL_BACKEND + "/get-info-member", payload);
+      const response = await axios.post(
+        variable.URL_BACKEND + "/get-info-member",
+        payload
+      );
 
       if (response.data.code === 200 && response.data.data.length > 0) {
         const data = response.data.data[0];
 
         this.user = {
           name: `${data.mp_name2} ${data.mp_name3}`,
-          role: data.mp_name1 || "N/A",  // กันค่า null หรือ undefined
+          role: data.mp_name1 || "N/A", // กันค่า null หรือ undefined
           avatar: require("@/assets/images/bot.png"),
         };
       } else {
-        console.error('Data not found');
+        console.error("Data not found");
       }
     } catch (error) {
-      console.error('Error fetching user info:', error);
+      console.error("Error fetching user info:", error);
     }
   },
   computed: {
@@ -225,7 +259,7 @@ export default {
 }
 
 :deep(.v-list-item.v-list-item--active) {
-  background: linear-gradient(45deg, #48BF6A, #64CA97CC) !important;
+  background: linear-gradient(45deg, #48bf6a, #64ca97cc) !important;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3) !important;
   padding: 10px 16px !important;
   border-radius: 8px !important;
@@ -240,7 +274,6 @@ export default {
   border-radius: 8px;
   width: 90% !important;
   transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
 }
 
 :deep(.v-list-item:hover) {
