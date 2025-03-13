@@ -98,6 +98,7 @@ export default {
     return {
       e1: 1,
       isStep1Invalid: true, 
+      formData: {},
     };
   },
   methods: {
