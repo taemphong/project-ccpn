@@ -61,9 +61,9 @@ export default {
       e1: 1,
       isStep1Invalid: true,
       formData: {
-        mp_name1:"",
-        mp_name2:"",
-        mp_name3:"",
+        mp_name1: "",
+        mp_name2: "",
+        mp_name3: "",
       },
     };
   },

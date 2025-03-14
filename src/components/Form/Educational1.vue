@@ -33,40 +33,27 @@
           </v-col>
         </v-row>
       </v-col>
-
-      <v-col cols="12" md="12">
-        <div class="mb-3 required">Transcript({{ localSelected }})</div>
-        <v-file-input v-model="Transcript" outlined placeholder="File input"></v-file-input>
-        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
-          .pdf</div>
-      </v-col>
-
-      <v-col cols="12" md="12">
-        <div class="mb-3 required">สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ประกาศนียบัตร
-        </div>
-        <v-file-input v-model="educational_qualifications" outlined placeholder="File input"></v-file-input>
-        <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
-          .pdf</div>
-      </v-col>
-
-
-
-
     </v-row>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    selected: Array,
-  },
   data() {
     return {
-      label: "ประกาศนียบัตร",
-      value: "ประกาศนียบัตร",
       localSelected: false,
-
+      educational_institution: null,
+      educational_qualification: null,
+      fieldofstudy: null,
+      daygraduation: null,
+      monthgraduation: null,
+      yeargraduation: null,
+      formData: {
+        educational_institution: "",
+        educational_qualification: "",
+        fieldofstudy: "",
+        graduationDate: "",
+      },
       // 🔹 ตัวเลือกสำหรับ v-select
       educationalInstitutions: ["มหาวิทยาลัย A", "มหาวิทยาลัย B", "มหาวิทยาลัย C"],
       educationalQualifications: ["ปวช.", "ปวส.", "ปริญญาตรี", "ปริญญาโท", "ปริญญาเอก"],
@@ -79,39 +66,33 @@ export default {
         "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
       ],
       yeargraduationOptions: Array.from({ length: 50 }, (_, i) => (new Date().getFullYear() - i).toString()),
-      Transcript: null,
-      educational_qualifications: null,
-
-      educational_institution: null,
-      educational_qualification: null,
-      fieldofstudy: null,
-
-      daygraduation: null,
-      monthgraduation: null,
-      yeargraduation: null,
     };
   },
   watch: {
-    selected: {
-      handler(newVal) {
-        this.localSelected = newVal.includes(this.value);
-      },
-      immediate: true,
+    // คอยจับการเปลี่ยนแปลงของข้อมูลใน formData
+    educational_institution(newVal) {
+      this.formData.educational_institution = newVal;
+    },
+    educational_qualification(newVal) {
+      this.formData.educational_qualification = newVal;
+    },
+    fieldofstudy(newVal) {
+      this.formData.fieldofstudy = newVal;
+    },
+    daygraduation(newVal) {
+      this.formData.graduationDate = `${newVal}-${this.monthgraduation}-${this.yeargraduation}`;
+    },
+    monthgraduation(newVal) {
+      this.formData.graduationDate = `${this.daygraduation}-${newVal}-${this.yeargraduation}`;
+    },
+    yeargraduation(newVal) {
+      this.formData.graduationDate = `${this.daygraduation}-${this.monthgraduation}-${newVal}`;
     },
   },
   methods: {
     updateSelected() {
-      let newSelected = [...this.selected];
-      if (this.localSelected) {
-
-        if (!newSelected.includes(this.value)) {
-          newSelected.push(this.value);
-        }
-      } else {
-
-        newSelected = newSelected.filter((item) => item !== this.value);
-      }
-      this.$emit("update:selected", newSelected);
+      // เพิ่มการอัพเดทเมื่อ checkbox เปลี่ยน
+      this.$emit('input', this.formData); // ส่งข้อมูลกลับไปยัง parent component
     },
   },
 };
