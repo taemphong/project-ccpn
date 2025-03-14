@@ -22,7 +22,6 @@
           </v-stepper-content>
 
           <v-stepper-content step="2">
-            <!-- Pass formData to UserRegisterStep2 component -->
             <UserRegisterStep2 :formData="formData" />
             <div class="d-flex justify-center">
               <v-btn v-if="e1 > 1" text @click="e1--" class="my-btn"
@@ -60,11 +59,7 @@ export default {
     return {
       e1: 1,
       isStep1Invalid: true,
-      formData: {
-        mp_name1: "",
-        mp_name2: "",
-        mp_name3: "",
-      },
+      formData: {},
     };
   },
   methods: {

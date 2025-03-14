@@ -69,7 +69,6 @@ export default {
     };
   },
   watch: {
-    // คอยจับการเปลี่ยนแปลงของข้อมูลใน formData
     educational_institution(newVal) {
       this.formData.educational_institution = newVal;
     },

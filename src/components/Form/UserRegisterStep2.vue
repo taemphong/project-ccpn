@@ -10,7 +10,7 @@
       </v-col>
 
       <v-col cols="12" md="3">
-        <div class="mb-3">ชื่อ</div>
+        <div class="mb-3">ชื่อ </div>
         <v-text-field :value="formData.mp_name2" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
@@ -22,81 +22,85 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ (อังกฤษ)</div>
-        <v-text-field :value="formData.mp_name1_eng" :items="prefixOptionsEn" outlined
-          class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_name1_eng" :items="prefixOptionsEn" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ (อังกฤษ)</div>
-        <v-text-field :value="formData.mp_name2_eng" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_name2_eng" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">นามสกุล (อังกฤษ)</div>
-        <v-text-field :value="formData.mp_name3_eng" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_name3_eng" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">เพศ</div>
-        <v-text-field v-model="mp_gender" :items="genderOptions" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_gender" :items="genderOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">สัญชาติ</div>
-        <v-text-field v-model="mp_nationality" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_nationality" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เชื้อชาติ</div>
-        <v-text-field v-model="mp_ethnicity" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_ethnicity" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">ศาสนา</div>
-        <v-text-field v-model="mp_religion" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_religion" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">หมู่โลหิต</div>
-        <v-text-field v-model="mp_blood" :items="bloodTypeOptions" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_blood" :items="bloodTypeOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ประเภทหน่วยงาน</div>
-        <v-text-field v-model="mp_company_type" :items="organizationTypeOptions" outlined
-          class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_company_type" :items="organizationTypeOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">ตำแหน่ง</div>
-        <v-text-field v-model="mp_position" :items="positionOptions" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_position" :items="positionOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">โทรศัพท์มือถือ</div>
-        <v-text-field v-model="mp_tel" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_tel" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">อีเมล</div>
-        <v-text-field v-model="mp_email" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_email" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
     <v-row class="custom-left-margin"> วัน-เดือน-ปีเกิด </v-row>
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">วัน</div>
-        <v-text-field v-model="day" :items="mp_birthday" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.day" :items="mp_birthday" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เดือน</div>
-        <v-text-field v-model="month" :items="mp_birthday" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.month" :items="mp_birthday" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ปี</div>
-        <v-text-field v-model="year" :items="mp_birthday" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.year" :items="mp_birthday" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
-        <v-text-field v-model="mp_customer_id" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_customer_id" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
@@ -104,19 +108,22 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">วัน</div>
-        <v-text-field v-model="mp_dateexp" :items="dayOptions" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_dateexp" :items="dayOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เดือน</div>
-        <v-text-field v-model="mp_dateexp" :items="monthOptions" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_dateexp" :items="monthOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ปี</div>
-        <v-text-field v-model="mp_dateexp" :items="yearOptions2" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_dateexp" :items="yearOptions2" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ออกโดย</div>
-        <v-text-field v-model="mp_issued_by" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_issued_by" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
@@ -129,29 +136,31 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 ">ที่อยู่ </div>
-        <v-text-field v-model="mha_address" outlined rows="3"></v-text-field>
+        <v-text-field :value="formData.mha_address" outlined rows="3"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">จังหวัด</div>
-        <v-text-field v-model="mha_province" :items="positionOptions" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mha_province" :items="positionOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">อำเภอ/เขต</div>
-        <v-text-field v-model="mha_amphoe" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mha_amphoe" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ตำบล/แขวง</div>
-        <v-text-field v-model="mha_district" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mha_district" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">รหัสไปรษณีย์</div>
-        <v-text-field v-model="mha_zipcode" :items="positionOptions" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mha_zipcode" :items="positionOptions" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
     </v-row>
 
@@ -164,44 +173,46 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 ">ชื่อสถานที่ทำงาน </div>
-        <v-text-field v-model="mca_company" outlined rows="3"></v-text-field>
+        <v-text-field :value="formData.mca_company" outlined rows="3"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 ">ที่อยู่ </div>
-        <v-text-field v-model="mca_address" outlined rows="3"></v-text-field>
+        <v-text-field :value="formData.mca_address" outlined rows="3"></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">จังหวัด</div>
-        <v-text-field v-model="position" :items="mca_province" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.position" :items="mca_province" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">อำเภอ/เขต</div>
-        <v-text-field v-model="mca_amphoe" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mca_amphoe" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ตำบล/แขวง</div>
-        <v-text-field v-model="mca_district" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mca_district" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">รหัสไปรษณีย์</div>
-        <v-text-field v-model="mca_zipcode" :items="workpostalCode" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mca_zipcode" :items="workpostalCode" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">โทรศัพท์ที่ทำงาน</div>
-        <v-text-field v-model="mca_phone" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mca_phone" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">อีเมล</div>
-        <v-text-field v-model="mca_email" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mca_email" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
@@ -214,32 +225,34 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 ">ที่อยู่ </div>
-        <v-text-field v-model="moa_address" outlined rows="3"></v-text-field>
+        <v-text-field :value="formData.moa_address" outlined rows="3"></v-text-field>
       </v-col>
     </v-row>
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">จังหวัด</div>
-        <v-text-field v-model="moa_province" :items="currentProvince" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.moa_province" :items="currentProvince" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">อำเภอ/เขต</div>
-        <v-text-field v-model="moa_amphoe" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.moa_amphoe" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ตำบล/แขวง</div>
-        <v-text-field v-model="moa_district" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.moa_district" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">รหัสไปรษณีย์</div>
-        <v-text-field v-model="moa_zipcode" :items="currentPostalCode" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.moa_zipcode" :items="currentPostalCode" outlined class="custom-input"
+          readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="8">
         <div class="mb-3 currentphone">โทรศัพท์มือถือ</div>
-        <v-text-field v-model="moa_phone" outlined class="custom-input3"></v-text-field>
+        <v-text-field :value="formData.moa_phone" outlined class="custom-input3"></v-text-field>
       </v-col>
     </v-row>
 
@@ -250,32 +263,32 @@
     </v-row>
 
     <v-container fluid>
-  <v-radio-group v-model="radios">
-    <v-sheet outlined class="radio-box">
-      <v-radio value="radiosHome">
-        <template v-slot:label>
-          <div>ที่อยู่ตามทะเบียนบ้าน</div>
-        </template>
-      </v-radio>
-    </v-sheet>
+      <v-radio-group v-model="radios">
+        <v-sheet outlined class="radio-box">
+          <v-radio value="radiosHome">
+            <template v-slot:label>
+              <div>ที่อยู่ตามทะเบียนบ้าน</div>
+            </template>
+          </v-radio>
+        </v-sheet>
 
-    <v-sheet outlined class="radio-box">
-      <v-radio value="radiosWork">
-        <template v-slot:label>
-          <div>สถานที่ทำงาน</div>
-        </template>
-      </v-radio>
-    </v-sheet>
+        <v-sheet outlined class="radio-box">
+          <v-radio value="radiosWork">
+            <template v-slot:label>
+              <div>สถานที่ทำงาน</div>
+            </template>
+          </v-radio>
+        </v-sheet>
 
-    <v-sheet outlined class="radio-box">
-      <v-radio value="radiosCurrent">
-        <template v-slot:label>
-          <div>ที่อยู่ปัจจุบัน</div>
-        </template>
-      </v-radio>
-    </v-sheet>
-  </v-radio-group>
-</v-container>
+        <v-sheet outlined class="radio-box">
+          <v-radio value="radiosCurrent">
+            <template v-slot:label>
+              <div>ที่อยู่ปัจจุบัน</div>
+            </template>
+          </v-radio>
+        </v-sheet>
+      </v-radio-group>
+    </v-container>
 
     <v-row class="custom-left-margin">
       <v-col cols="12">
@@ -294,34 +307,34 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <div class="mb-3">สถานที่ศึกษา</div>
-        <v-text-field v-model="me_institution" outlined class="custom-input"></v-text-field>
+        <v-text-field v-model="me_institution" outlined class="custom-input" readonly></v-text-field>
       </v-col>
 
       <v-col cols="12" md="6">
         <div class="mb-3">วุฒิการศึกษา</div>
-        <v-text-field v-model="me_faculty" outlined class="custom-input"></v-text-field>
+        <v-text-field v-model="me_faculty" outlined class="custom-input" readonly></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <div class="mb-3">สาขาวิชา</div>
-        <v-text-field v-model="me_major" outlined class="custom-input"></v-text-field>
+        <v-text-field v-model="me_major" outlined class="custom-input" readonly></v-text-field>
       </v-col>
 
       <v-col cols="12" md="6">
         <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
         <v-row class="d-flex">
           <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field v-model="me_graduated_date" outlined class="custom-input"></v-text-field>
+            <v-text-field v-model="me_graduated_date" outlined class="custom-input" readonly></v-text-field>
           </v-col>
 
           <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field v-model="me_graduated_date" outlined class="custom-input"></v-text-field>
+            <v-text-field v-model="me_graduated_date" outlined class="custom-input" readonly></v-text-field>
           </v-col>
 
           <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field v-model="me_graduated_date" outlined class="custom-input"></v-text-field>
+            <v-text-field v-model="me_graduated_date" outlined class="custom-input" readonly></v-text-field>
           </v-col>
         </v-row>
       </v-col>
@@ -495,7 +508,6 @@
 </template>
 
 <script>
-
 export default {
   props: {
     formData: {

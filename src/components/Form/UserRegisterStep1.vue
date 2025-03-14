@@ -38,45 +38,46 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">เพศ </div>
-        <v-select v-model="mp_gender" :items="mp_genderOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mp_gender" :items="mp_genderOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">สัญชาติ </div>
-        <v-text-field v-model="mp_nationality" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mp_nationality" @input="logFormData" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">เชื้อชาติ </div>
-        <v-text-field v-model="mp_ethnicity" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mp_ethnicity" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ศาสนา </div>
-        <v-text-field v-model="mp_religion" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mp_religion" @input="logFormData" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">หมู่โลหิต </div>
-        <v-select v-model="mp_blood" :items="mp_bloodOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mp_blood" :items="mp_bloodOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ประเภทหน่วยงาน </div>
-        <v-select v-model="mp_company_type" :items="mp_company_typeOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mp_company_type" :items="mp_company_typeOptions" @input="logFormData"
+          outlined></v-select>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำแหน่ง </div>
-        <v-select v-model="mp_position" :items="mp_positionOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mp_position" :items="mp_positionOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field v-model="mp_tel" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mp_tel" @input="logFormData" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field v-model="mp_email" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mp_email" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
     <v-row class="ml-1 ">
@@ -87,19 +88,19 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">วัน </div>
-        <v-select v-model="mp_birthday" :items="dayOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mp_birthday" :items="dayOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">เดือน </div>
-        <v-select v-model="mp_birthmonth" :items="monthOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mp_birthmonth" :items="monthOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col margin-right">
         <div class="mb-3 required">ปี </div>
-        <v-select v-model="mp_birthyear" :items="yearOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mp_birthyear" :items="yearOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">เลขบัตรประชาชน</div>
-        <v-text-field v-model="mp_customer_id" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mp_customer_id" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -111,19 +112,19 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">วัน </div>
-        <v-select v-model="ml_expired" :items="dayOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.ml_expired" :items="dayOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col">
         <div class="mb-3 required">เดือน </div>
-        <v-select v-model="ml_expired" :items="monthOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.ml_expired" :items="monthOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3" class="custom-col margin-right">
         <div class="mb-3 required">ปี </div>
-        <v-select v-model="ml_expired" :items="yearOptions2" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.ml_expired" :items="yearOptions2" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ออกโดย</div>
-        <v-text-field v-model="mp_issued_by" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mp_issued_by" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -137,29 +138,29 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-textarea v-model="mha_address" @input="logFormData" outlined rows="3"></v-textarea>
+        <v-textarea v-model="formData.mha_address" @input="logFormData" outlined rows="3"></v-textarea>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select v-model="mha_province" :items="mha_provinceOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mha_province" :items="mha_provinceOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
-        <v-select v-model="mha_amphoe" :items="mha_amphoeOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mha_amphoe" :items="mha_amphoeOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำบล/แขวง </div>
-        <v-select v-model="mha_district" :items="mha_districtOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mha_district" :items="mha_districtOptions" @input="logFormData" outlined></v-select>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="mha_zipcode" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mha_zipcode" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -171,29 +172,29 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ชื่อสถานที่ทำงาน </div>
-        <v-text-field v-model="mca_company" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mca_company" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field v-model="mca_address" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mca_address" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select v-model="mca_province" :items="mca_provinceOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mca_province" :items="mca_provinceOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
-        <v-select v-model="mca_amphoe" :items="mca_amphoeOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mca_amphoe" :items="mca_amphoeOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำบล/แขวง </div>
-        <v-select v-model="mca_district" :items="mca_districtOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.mca_district" :items="mca_districtOptions" @input="logFormData" outlined></v-select>
       </v-col>
     </v-row>
 
@@ -201,15 +202,15 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="mca_zipcode" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mca_zipcode" @input="logFormData" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">โทรศัพท์ที่ทำงาน </div>
-        <v-text-field v-model="mca_phone" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mca_phone" @input="logFormData" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 ">อีเมล </div>
-        <v-text-field v-model="mca_email" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.mca_email" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -223,33 +224,33 @@
     <v-row>
       <v-col cols="12" md="12">
         <div class="mb-3 required">ที่อยู่ </div>
-        <v-text-field v-model="moa_address" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.moa_address" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">จังหวัด </div>
-        <v-select v-model="moa_province" :items="moa_provinceOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.moa_province" :items="moa_provinceOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">อำเภอ/เขต </div>
-        <v-select v-model="moa_amphoe" :items="moa_amphoeOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.moa_amphoe" :items="moa_amphoeOptions" @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ตำบล/แขวง </div>
-        <v-select v-model="moa_district" :items="moa_districtOptions" @input="logFormData" outlined></v-select>
+        <v-select v-model="formData.moa_district" :items="moa_districtOptions" @input="logFormData" outlined></v-select>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col cols="12" md="3">
         <div class="mb-3 required">รหัสไปรษณีย์ </div>
-        <v-text-field v-model="moa_zipcode" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.moa_zipcode" @input="logFormData" outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3" class="custom-margin">
         <div class="mb-3 required">โทรศัพท์มือถือ </div>
-        <v-text-field v-model="moa_phone" @input="logFormData" outlined></v-text-field>
+        <v-text-field v-model="formData.moa_phone" @input="logFormData" outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -464,7 +465,6 @@ export default {
       Copyof_mp_customer_id: null,
       selectedmp_customer_id: false,
       formData: this.value,
-      // formData: this.value,
 
 
       formValid: false,
@@ -512,8 +512,8 @@ export default {
       mp_customer_id: '',
       dayOptions: Array.from({ length: 31 }, (_, i) => i + 1), // 1-31
       monthOptions: [
-        "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
-        "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+        "01", "02", "03", "04", "05", "06",
+        "07", "08", "09", "10", "11", "12"
       ],
       yearOptions: Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i),
       ml_expired: '',
