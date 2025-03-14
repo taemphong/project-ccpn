@@ -283,12 +283,19 @@
     </v-row>
 
     <v-row class="custom-left-margin">
-      <v-col cols="12" md="12">
-        <div class="mb-3">ระดับการศึกษา</div>
-        <v-checkbox v-for="(option, index) in educationLevels" :key="index" v-model="selectedEducation"
-          :label="option.label" :value="option.value" color="green"></v-checkbox>
-      </v-col>
-    </v-row>
+  <v-col cols="12" md="12">
+    <div class="mb-3">ระดับการศึกษา</div>
+    <v-checkbox
+      v-for="(option, index) in educationLevels"
+      :key="index"
+      v-model="selectedEducation"
+      :label="option.label"
+      :value="option.value"
+      hide-details
+      :disabled="true"
+    ></v-checkbox>
+  </v-col>
+</v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
@@ -413,7 +420,7 @@
         <div class="mb-3">สำเนาบัตรประจำตัวประชาชน</div>
       </v-col>
       <v-col cols="12" md="6" v-if="files.Namechange">
-        <div class="mb-3">ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่น ๆ ถ้ามี</div>
+        <div class="mb-3">ใบรับรองแพทย์</div>
       </v-col>
     </v-row>
 
@@ -425,7 +432,7 @@
       </v-col>
       <v-col cols="12" md="6" v-if="files.Namechange">
         <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Namechange)">
+          @click="viewFile(files.Medical)"> 
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -433,14 +440,14 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
-        <div class="mb-3">ใบรับรองแพทย์</div>
+        <div class="mb-3">ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่น ๆ ถ้ามี</div>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
         <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Medical)">
+          @click="viewFile(files.Namechange)"> 
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -602,4 +609,7 @@ export default {
   border-radius: 8px;
   margin-bottom: 10px;
 }
+
+
+
 </style>
