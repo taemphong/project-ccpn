@@ -460,6 +460,8 @@ export default {
 
   data() {
     return {
+      A: '',
+      selected2: [],
       Copyof_houseregistration: null, // เก็บไฟล์
       selectedhouse_registration: false, // ค่า Checkbox
       Copyof_mp_customer_id: null,
@@ -526,8 +528,8 @@ export default {
       mha_district: '',
       mha_zipcode: '',
       mha_provinceOptions: ["ตามทะเบียนบ้าน", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
-      mha_amphoeOptions: [],
-      mha_districtOptions: [],
+      mha_amphoeOptions: ["ดินแดง", "เมือง"],
+      mha_districtOptions: ["รัชดา", "ห้วยขวาง"],
 
       mca_province: '',
       mca_amphoe: '',
@@ -538,8 +540,8 @@ export default {
       mca_address: '',
       mca_company: '',
       mca_provinceOptions: ["กรุงเทพมหานคร", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
-      mca_amphoeOptions: [],
-      mca_districtOptions: [],
+      mca_amphoeOptions: ["ดินแดง", "เมือง"],
+      mca_districtOptions: ["รัชดา", "ห้วยขวาง"],
 
       moa_address: '',
       moa_province: null,
@@ -548,8 +550,8 @@ export default {
       moa_zipcode: '',
       moa_phone: '',
       moa_provinceOptions: ["กรุงเทพมหานคร", "เชียงใหม่", "ขอนแก่น", "ภูเก็ต"], // เพิ่มจังหวัดที่ต้องการ
-      moa_amphoeOptions: [],
-      moa_districtOptions: [],
+      moa_amphoeOptions: ["ดินแดง", "เมือง"],
+      moa_districtOptions: ["รัชดา", "ห้วยขวาง"],
 
       radios: '',
 
@@ -592,6 +594,7 @@ export default {
         console.log("Form validation failed");
       }
     },
+
     validateRequired,
     validateEmail,
     validatePhone,

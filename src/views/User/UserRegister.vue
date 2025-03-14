@@ -66,36 +66,24 @@ export default {
     updateStep1Validity(isInvalid) {
       this.isStep1Invalid = isInvalid;
     },
-
-    async confirmSubmission() {
+    async submitFormData() {
       try {
-        // ส่งข้อมูลสมาชิกไปยัง API
-        const memberResponse = await axios.post(`http://localhost:8002/ccph/api/add-member`, this.formData);
+        const response = await axios.post('http://localhost:8002/ccph/api/member-register', this.formData);
 
-        // ตรวจสอบว่า memberResponse ถูกต้องและมีข้อมูลที่ต้องการ
-        if (memberResponse && memberResponse.data && memberResponse.data.code === 200) {
-          // หากเพิ่มสมาชิกสำเร็จ, ส่งข้อมูลการศึกษาไปยัง API
-          const educationResponse = await axios.post(`http://localhost:8002/ccph/api/add-education`, this.formData);
-
-          // ตรวจสอบว่า educationResponse ถูกต้องและมีข้อมูลที่ต้องการ
-          if (educationResponse && educationResponse.data && educationResponse.data.code === 200) {
-            this.$toast.success("สมัครสมาชิกสำเร็จ!");
-            // รีเซ็ตฟอร์มหรือทำการเปลี่ยนหน้า
-          } else {
-            // แสดงข้อความผิดพลาดเมื่อเพิ่มข้อมูลการศึกษา
-            this.$toast.error("เกิดข้อผิดพลาดในการเพิ่มข้อมูลการศึกษา");
-          }
+        // ตรวจสอบผลลัพธ์จาก API
+        if (response.data.code === 200) {
+          this.$router.push('/success');
         } else {
-          // แสดงข้อความผิดพลาดเมื่อเพิ่มสมาชิก
-          this.$toast.error("เกิดข้อผิดพลาดในการเพิ่มสมาชิก");
+          alert('เกิดข้อผิดพลาดในการสมัคร: ' + response.data.message);
         }
       } catch (error) {
-        // การจับข้อผิดพลาดที่เกิดขึ้นในกรณีที่ axios ล้มเหลว
-        console.error("Error during submission:", error);
-        this.$toast.error(error.response?.data?.error || "เกิดข้อผิดพลาดในการสมัครสมาชิก");
+        console.error("Error submitting form:", error);
+        alert('เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์');
       }
-    }
-
+    },
+    confirmSubmission() {
+      this.submitFormData();
+    },
   },
 };
 </script>

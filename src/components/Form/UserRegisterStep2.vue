@@ -517,6 +517,7 @@ export default {
   },
   data() {
     return {
+      selected2: [],
       files: {
         transcript: "https://example.com/transcript.pdf",
         educational: "https://example.com/educational.pdf",
