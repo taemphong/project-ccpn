@@ -7,16 +7,16 @@
     <v-row v-if="localSelected">
       <v-col cols="12" md="6">
         <div class="mb-3 required">เลือกสถาบันสถานศึกษา </div>
-        <v-select v-model="educational_institution" :items="educationalInstitutions" outlined></v-select>
+        <v-select v-model="educational_institution1" :items="educationalInstitutions" outlined></v-select>
       </v-col>
       <v-col cols="12" md="6">
         <div class="mb-3 required">เลือกวุฒิการศึกษา </div>
-        <v-select v-model="educational_qualification" :items="educationalQualifications" outlined></v-select>
+        <v-select v-model="educational_qualification1" :items="educationalQualifications" outlined></v-select>
       </v-col>
 
       <v-col cols="12" md="6">
         <div class="mb-3 required">เลือกสาขาวิชา </div>
-        <v-select v-model="fieldofstudy" :items="fieldsOfStudy" outlined></v-select>
+        <v-select v-model="fieldofstudy1" :items="fieldsOfStudy" outlined></v-select>
       </v-col>
 
       <v-col cols="12" md="6">
@@ -41,18 +41,21 @@
 export default {
   data() {
     return {
+      label: "ประกาศนียบัตร",
+      value: "ประกาศนียบัตร",
+
       localSelected: false,
-      educational_institution: null,
-      educational_qualification: null,
-      fieldofstudy: null,
+      educational_institution1: null,
+      educational_qualification1: null,
+      fieldofstudy1: null,
       daygraduation: null,
       monthgraduation: null,
       yeargraduation: null,
       formData: {
-        educational_institution: "",
-        educational_qualification: "",
-        fieldofstudy: "",
-        graduationDate: "",
+        educational_institution1: "",
+        educational_qualification1: "",
+        fieldofstudy1: "",
+        graduationDate1: "",
       },
       // 🔹 ตัวเลือกสำหรับ v-select
       educationalInstitutions: ["มหาวิทยาลัย A", "มหาวิทยาลัย B", "มหาวิทยาลัย C"],
@@ -70,23 +73,23 @@ export default {
   },
   watch: {
     // คอยจับการเปลี่ยนแปลงของข้อมูลใน formData
-    educational_institution(newVal) {
-      this.formData.educational_institution = newVal;
+    educational_institution1(newVal) {
+      this.formData.educational_institution1 = newVal;
     },
-    educational_qualification(newVal) {
-      this.formData.educational_qualification = newVal;
+    educational_qualification1(newVal) {
+      this.formData.educational_qualification1 = newVal;
     },
-    fieldofstudy(newVal) {
-      this.formData.fieldofstudy = newVal;
+    fieldofstudy1(newVal) {
+      this.formData.fieldofstudy1 = newVal;
     },
     daygraduation(newVal) {
-      this.formData.graduationDate = `${newVal}-${this.monthgraduation}-${this.yeargraduation}`;
+      this.formData.graduationDate1 = `${newVal}-${this.monthgraduation}-${this.yeargraduation}`;
     },
     monthgraduation(newVal) {
-      this.formData.graduationDate = `${this.daygraduation}-${newVal}-${this.yeargraduation}`;
+      this.formData.graduationDate1 = `${this.daygraduation}-${newVal}-${this.yeargraduation}`;
     },
     yeargraduation(newVal) {
-      this.formData.graduationDate = `${this.daygraduation}-${this.monthgraduation}-${newVal}`;
+      this.formData.graduationDate1 = `${this.daygraduation}-${this.monthgraduation}-${newVal}`;
     },
   },
   methods: {
