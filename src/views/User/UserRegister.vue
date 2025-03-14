@@ -60,7 +60,11 @@ export default {
     return {
       e1: 1,
       isStep1Invalid: true,
-      formData: {},
+      formData: {
+        mp_name1:"",
+        mp_name2:"",
+        mp_name3:"",
+      },
     };
   },
   methods: {

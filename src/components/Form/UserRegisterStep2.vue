@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="custom-left-margin">
       <v-col cols="12">
-        <h2 class="textheader">ข้อมูลส่วนตัว</h2>
+        <h2 class="textheader">ข้อมูลส่วนตัว {{ formData }}</h2>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ</div>
@@ -22,15 +22,15 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ (อังกฤษ)</div>
-        <v-text-field v-model="mp_name1_eng" :items="prefixOptionsEn" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_name1_eng" :items="prefixOptionsEn" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ (อังกฤษ)</div>
-        <v-text-field v-model="mp_name2_eng" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_name2_eng" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">นามสกุล (อังกฤษ)</div>
-        <v-text-field v-model="mp_name3_eng" outlined class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_name3_eng" outlined class="custom-input"></v-text-field>
       </v-col>
     </v-row>
 
@@ -519,7 +519,7 @@ export default {
         { label: "ปริญญาโท", value: "master" },
         { label: "ปริญญาเอก", value: "phd" },
       ],
-      me_level: ["bachelor"],
+      me_level: ["master"],
 
     };
   },
