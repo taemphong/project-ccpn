@@ -22,8 +22,7 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ (อังกฤษ)</div>
-        <v-text-field :value="formData.mp_name1_eng" :items="prefixOptionsEn" outlined
-          class="custom-input"></v-text-field>
+        <v-text-field :value="formData.mp_name1_eng" :items="prefixOptionsEn" outlined class="custom-input"></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">ชื่อ (อังกฤษ)</div>
@@ -334,95 +333,94 @@
       </v-col>
     </v-row>
 
-    <v-container>
-      <v-row class="custom-left-margin">
-        <v-col cols="12">
-          <h2 class="textheader">สิ่งที่แนบมา</h2>
-        </v-col>
-      </v-row>
+    <v-row class="custom-left-margin">
+      <v-col cols="12">
+        <h2 class="textheader">สิ่งที่แนบมา</h2>
+      </v-col>
+    </v-row>
 
-      <v-row class="custom-left-margin">
-        <v-col cols="12" md="6">
-          <div class="mb-3">Transcript ({{ selectedEducationLabel }})</div>
-        </v-col>
-        <v-col cols="12" md="6">
-          <div class="mb-3">
-            สำเนาหลักฐานแสดงวุฒิการศึกษา <br />
-            หรือหนังสือรับรองการจบการศึกษาในระดับ {{ selectedEducationLabel }}
-          </div>
-        </v-col>
-      </v-row>
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <div class="mb-3">Transcript ({{ selectedEducationLabel }})</div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3">
+          สำเนาหลักฐานแสดงวุฒิการศึกษา <br />
+          หรือหนังสือรับรองการจบการศึกษาในระดับ {{ selectedEducationLabel }}
+        </div>
+      </v-col>
+    </v-row>
 
-      <v-row class="custom-left-margin">
-        <v-col cols="12" md="6">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.transcript)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
-        </v-col>
-        <v-col cols="12" md="6">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.educational)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
-        </v-col>
-      </v-row>
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.transcript)">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.educational)">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
 
-      <v-row class="custom-left-margin">
-        <v-col cols="12">
-          <h2 class="textheader">
-            การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่าง ๆ
-            (สมาคมที่เกี่ยวข้องเป็นหลัก)
-          </h2>
-        </v-col>
-      </v-row>
+    <v-row class="custom-left-margin">
+      <v-col cols="12">
+        <h2 class="textheader">
+          การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่าง ๆ
+          (สมาคมที่เกี่ยวข้องเป็นหลัก)
+        </h2>
+      </v-col>
+    </v-row>
 
-      <v-row class="custom-left-margin">
-        <v-col cols="12" md="12">
-          <div class="mb-3">โปรดระบุ (ถ้ามี)</div>
-          <v-text-field v-model="A" outlined class="w-100"></v-text-field>
-        </v-col>
-      </v-row>
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="12">
+        <div class="mb-3">โปรดระบุ (ถ้ามี)</div>
+        <v-text-field v-model="A" outlined class="w-100"></v-text-field>
+      </v-col>
+    </v-row>
 
-      <v-row class="custom-left-margin">
-        <v-col cols="12">
-          <h2 class="textheader">แนบหลักฐานประกอบการพิจารณา</h2>
-        </v-col>
-      </v-row>
-      <!--  แนบไฟล์ -->
-      <v-row class="custom-left-margin">
-        <v-col cols="12" md="6" v-if="files.picture">
-          <div class="mb-3">
-            ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก <br />
-            ซึ่งถ่ายไว้แล้วไม่เกิน 6 เดือน ขนาด 1 นิ้ว
-          </div>
-        </v-col>
-        <v-col cols="12" md="6" v-if="files.houseregistration">
-          <div class="mb-3">สำเนาทะเบียนบ้าน</div>
-        </v-col>
-      </v-row>
+    <v-row class="custom-left-margin">
+      <v-col cols="12">
+        <h2 class="textheader">แนบหลักฐานประกอบการพิจารณา</h2>
+      </v-col>
+    </v-row>
+    <!--  แนบไฟล์ -->
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6" v-if="files.picture">
+        <div class="mb-3">
+          ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก <br />
+          ซึ่งถ่ายไว้แล้วไม่เกิน 6 เดือน ขนาด 1 นิ้ว
+        </div>
+      </v-col>
+      <v-col cols="12" md="6" v-if="files.houseregistration">
+        <div class="mb-3">สำเนาทะเบียนบ้าน</div>
+      </v-col>
+    </v-row>
 
-      <v-row class="custom-left-margin">
-        <v-col cols="12" md="6" v-if="files.picture">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.picture)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
-        </v-col>
-        <v-col cols="12" md="6" v-if="files.houseregistration">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.houseregistration)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
-        </v-col>
-      </v-row>
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6" v-if="files.picture">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.picture)">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6" v-if="files.houseregistration">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+          @click="viewFile(files.houseregistration)">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.idCard">
         <div class="mb-3">สำเนาบัตรประจำตัวประชาชน</div>
       </v-col>
       <v-col cols="12" md="6" v-if="files.Namechange">
-        <div class="mb-3">ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่น ๆ ถ้ามี</div>
+        <div class="mb-3">ใบรับรองแพทย์</div>
       </v-col>
     </v-row>
 
@@ -434,7 +432,7 @@
       </v-col>
       <v-col cols="12" md="6" v-if="files.Namechange">
         <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Namechange)">
+          @click="viewFile(files.Medical)"> 
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -442,14 +440,14 @@
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
-        <div class="mb-3">ใบรับรองแพทย์</div>
+        <div class="mb-3">ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่น ๆ ถ้ามี</div>
       </v-col>
     </v-row>
 
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6" v-if="files.Medical">
         <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-          @click="viewFile(files.Medical)">
+          @click="viewFile(files.Namechange)"> 
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
