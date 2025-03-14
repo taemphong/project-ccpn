@@ -10,7 +10,7 @@
       </v-col>
 
       <v-col cols="12" md="3">
-        <div class="mb-3">ชื่อ {}</div>
+        <div class="mb-3">ชื่อ</div>
         <v-text-field :value="formData.mp_name2" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
