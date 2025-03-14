@@ -11,7 +11,6 @@
 
         <v-stepper-items>
           <v-stepper-content step="1">
-            <!-- Pass the formData to UserRegisterStep1 component via v-model -->
             <UserRegisterStep1 ref="step1" v-model="formData" @validationChanged="updateStep1Validity" />
             <div class="d-flex justify-center">
               <v-btn @click="e1 = 2" class="my-btn" :style="{ backgroundColor: '#00B69B', color: '#fff' }"
@@ -45,6 +44,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import UserRegisterStep1 from "@/components/Form/UserRegisterStep1.vue";
 import UserRegisterStep2 from "@/components/Form/UserRegisterStep2.vue";
 import UserRegisterStep3 from "@/components/Form/UserRegisterStep3.vue";
@@ -66,8 +66,36 @@ export default {
     updateStep1Validity(isInvalid) {
       this.isStep1Invalid = isInvalid;
     },
-    confirmSubmission() {
-    },
+
+    async confirmSubmission() {
+      try {
+        // ส่งข้อมูลสมาชิกไปยัง API
+        const memberResponse = await axios.post(`http://localhost:8002/ccph/api/add-member`, this.formData);
+
+        // ตรวจสอบว่า memberResponse ถูกต้องและมีข้อมูลที่ต้องการ
+        if (memberResponse && memberResponse.data && memberResponse.data.code === 200) {
+          // หากเพิ่มสมาชิกสำเร็จ, ส่งข้อมูลการศึกษาไปยัง API
+          const educationResponse = await axios.post(`http://localhost:8002/ccph/api/add-education`, this.formData);
+
+          // ตรวจสอบว่า educationResponse ถูกต้องและมีข้อมูลที่ต้องการ
+          if (educationResponse && educationResponse.data && educationResponse.data.code === 200) {
+            this.$toast.success("สมัครสมาชิกสำเร็จ!");
+            // รีเซ็ตฟอร์มหรือทำการเปลี่ยนหน้า
+          } else {
+            // แสดงข้อความผิดพลาดเมื่อเพิ่มข้อมูลการศึกษา
+            this.$toast.error("เกิดข้อผิดพลาดในการเพิ่มข้อมูลการศึกษา");
+          }
+        } else {
+          // แสดงข้อความผิดพลาดเมื่อเพิ่มสมาชิก
+          this.$toast.error("เกิดข้อผิดพลาดในการเพิ่มสมาชิก");
+        }
+      } catch (error) {
+        // การจับข้อผิดพลาดที่เกิดขึ้นในกรณีที่ axios ล้มเหลว
+        console.error("Error during submission:", error);
+        this.$toast.error(error.response?.data?.error || "เกิดข้อผิดพลาดในการสมัครสมาชิก");
+      }
+    }
+
   },
 };
 </script>
@@ -75,45 +103,22 @@ export default {
 <style scoped>
 .my-btn {
   width: 100%;
-  /* ทำให้ปุ่มยาวเต็ม */
   max-width: 300px;
-  /* กำหนดความกว้างสูงสุด */
   height: 50px !important;
-  /* กำหนดความสูงของปุ่ม */
   font-size: 1.25rem;
 }
 
 @media (max-width: 768px) {
   .my-btn {
     max-width: 200px;
-    /* ขนาดปุ่มจะเล็กลงเมื่อหน้าจอขนาดเล็ก */
     height: 40px !important;
-    /* ลดความสูงของปุ่ม */
   }
 }
 
 @media (max-width: 480px) {
   .my-btn {
     max-width: 150px;
-    /* ขนาดปุ่มจะเล็กลงอีกเมื่อหน้าจอขนาดเล็กลง */
     height: 35px !important;
-    /* ลดความสูงของปุ่มมากขึ้น */
   }
-}
-
-/* ซ่อนตัวเลขใน v-stepper-step */
-/* กำหนดสีของวงกลมรอบ step */
-.no-number>>>.v-stepper__step__step {
-  border: 2px solid #C2C2C2 !important;
-  /* สีเทาเมื่อไม่ active */
-  background-color: white !important;
-}
-
-.no-number.active>>>.v-stepper__step__step {
-  border: 2px solid #48BF6A !important;
-  /* สีเขียวเมื่อ active */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  /* เพิ่มเงา */
-
 }
 </style>
