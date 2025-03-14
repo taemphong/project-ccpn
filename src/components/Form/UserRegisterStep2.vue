@@ -10,7 +10,7 @@
       </v-col>
 
       <v-col cols="12" md="3">
-        <div class="mb-3">ชื่อ </div>
+        <div class="mb-3">ชื่อ</div>
         <v-text-field :value="formData.mp_name2" outlined class="custom-input" readonly></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
@@ -250,32 +250,32 @@
     </v-row>
 
     <v-container fluid>
-      <v-radio-group v-model="radios">
-        <v-sheet outlined class="radio-box">
-          <v-radio value="radiosHome">
-            <template v-slot:label>
-              <div>ที่อยู่ตามทะเบียนบ้าน</div>
-            </template>
-          </v-radio>
-        </v-sheet>
+  <v-radio-group v-model="radios">
+    <v-sheet outlined class="radio-box">
+      <v-radio value="radiosHome">
+        <template v-slot:label>
+          <div>ที่อยู่ตามทะเบียนบ้าน</div>
+        </template>
+      </v-radio>
+    </v-sheet>
 
-        <v-sheet outlined class="radio-box">
-          <v-radio value="radiosWork">
-            <template v-slot:label>
-              <div>สถานที่ทำงาน</div>
-            </template>
-          </v-radio>
-        </v-sheet>
+    <v-sheet outlined class="radio-box">
+      <v-radio value="radiosWork">
+        <template v-slot:label>
+          <div>สถานที่ทำงาน</div>
+        </template>
+      </v-radio>
+    </v-sheet>
 
-        <v-sheet outlined class="radio-box">
-          <v-radio value="radiosCurrent">
-            <template v-slot:label>
-              <div>ที่อยู่ปัจจุบัน</div>
-            </template>
-          </v-radio>
-        </v-sheet>
-      </v-radio-group>
-    </v-container>
+    <v-sheet outlined class="radio-box">
+      <v-radio value="radiosCurrent">
+        <template v-slot:label>
+          <div>ที่อยู่ปัจจุบัน</div>
+        </template>
+      </v-radio>
+    </v-sheet>
+  </v-radio-group>
+</v-container>
 
     <v-row class="custom-left-margin">
       <v-col cols="12">
@@ -495,6 +495,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     formData: {
