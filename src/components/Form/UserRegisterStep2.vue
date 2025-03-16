@@ -312,7 +312,7 @@
     </v-row>
 
     <!-- วุฒิที่1 -->
-    <template v-if="hasEducationalData">
+    <template v-if="formData.educationalData1 && Object.keys(formData.educationalData1).length > 0">
   <v-row class="custom-left-margin ml-10">
     <v-col><div>ประกาศนียบัตร</div></v-col>
   </v-row>
@@ -341,7 +341,7 @@
     </v-col>
   </v-row>
 
-  <v-container v-if="transcriptPreview || qualificationPreview">
+  <v-container v-if="transcriptPreview(1) || qualificationPreview(1)">
     <v-row class="custom-left-margin">
       <v-col cols="12">
         <h2 class="textheader">สิ่งที่แนบมา</h2>
@@ -363,13 +363,13 @@
     <v-row class="custom-left-margin">
       <v-col cols="12" md="6">
         <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-        v-if="transcriptPreview" :href="transcriptPreview" target="_blank">
+        v-if="transcriptPreview(1)" :href="transcriptPreview(1)" target="_blank">
           คลิกดูไฟล์ที่แนบ 
         </v-btn>
       </v-col>
       <v-col cols="12" md="6">
         <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-        v-if="qualificationPreview" :href="qualificationPreview" target="_blank">
+        v-if="qualificationPreview(1)" :href="qualificationPreview(1)" target="_blank">
           คลิกดูไฟล์ที่แนบ
         </v-btn>
       </v-col>
@@ -377,41 +377,270 @@
   </v-container>
 </template>
 
-    <!-- วุฒิที่2 -->
-    <template v-if="formData.educationalData2">
-      <v-row class="custom-left-margin ml-10">
-        <v-col>
-          <div>อนุปริญญา</div>
-        </v-col>
-      </v-row>
-      <v-row class="custom-left-margin">
-        <v-col cols="12" md="6">
-          <div class="mb-3">สถานที่ศึกษา</div>
-          <v-text-field :value="formData.educationalData2.educational_institution2" outlined class="custom-input"
-            readonly></v-text-field>
-        </v-col>
+   <!-- วุฒิที่2 -->
+   <template v-if="formData.educationalData2 && Object.keys(formData.educationalData2).length > 0">
+  <v-row class="custom-left-margin ml-10">
+    <v-col><div>อนุปริญญา</div></v-col>
+  </v-row>
 
-        <v-col cols="12" md="6">
-          <div class="mb-3">วุฒิการศึกษา</div>
-          <v-text-field :value="formData.educationalData2.educational_qualification2" outlined class="custom-input"
-            readonly></v-text-field>
-        </v-col>
-      </v-row>
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สถานที่ศึกษา</div>
+      <v-text-field :value="formData.educationalData2.educational_institution2" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
 
-      <v-row class="custom-left-margin">
-        <v-col cols="12" md="6">
-          <div class="mb-3">สาขาวิชา</div>
-          <v-text-field :value="formData.educationalData2.fieldofstudy2" outlined class="custom-input"
-            readonly></v-text-field>
-        </v-col>
+    <v-col cols="12" md="6">
+      <div class="mb-3">วุฒิการศึกษา</div>
+      <v-text-field :value="formData.educationalData2.educational_qualification2" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
 
-        <v-col cols="12" md="6">
-          <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
-          <v-text-field :value="formData.educationalData2.graduationDate2" outlined class="custom-input"
-            readonly></v-text-field>
-        </v-col>
-      </v-row>
-    </template>
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สาขาวิชา</div>
+      <v-text-field :value="formData.educationalData2.fieldofstudy2" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
+      <v-text-field :value="formData.educationalData2.graduationDate2" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
+
+  <v-container v-if="transcriptPreview(2) || qualificationPreview(2)">
+    <v-row class="custom-left-margin">
+      <v-col cols="12">
+        <h2 class="textheader">สิ่งที่แนบมา</h2>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <div class="mb-3">Transcript ({{ formData.educationalData2.educational_qualification2 }})</div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3">
+          สำเนาหลักฐานแสดงวุฒิการศึกษา <br />
+          หรือหนังสือรับรองการจบการศึกษาในระดับ {{ formData.educationalData2.educational_qualification2 }}
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="transcriptPreview(2)" :href="transcriptPreview(2)" target="_blank">
+          คลิกดูไฟล์ที่แนบ 
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="qualificationPreview(2)" :href="qualificationPreview(2)" target="_blank">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<!-- วุฒิที่3 -->
+<template v-if="formData.educationalData3 && Object.keys(formData.educationalData3).length > 0">
+  <v-row class="custom-left-margin ml-10">
+    <v-col><div>ปริญญาตรี</div></v-col>
+  </v-row>
+
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สถานที่ศึกษา</div>
+      <v-text-field :value="formData.educationalData3.educational_institution3" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <div class="mb-3">วุฒิการศึกษา</div>
+      <v-text-field :value="formData.educationalData3.educational_qualification3" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
+
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สาขาวิชา</div>
+      <v-text-field :value="formData.educationalData3.fieldofstudy3" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
+      <v-text-field :value="formData.educationalData3.graduationDate3" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
+
+  <v-container v-if="transcriptPreview(3) || qualificationPreview(3)">
+    <v-row class="custom-left-margin">
+      <v-col cols="12">
+        <h2 class="textheader">สิ่งที่แนบมา</h2>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <div class="mb-3">Transcript ({{ formData.educationalData3.educational_qualification3 }})</div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3">
+          สำเนาหลักฐานแสดงวุฒิการศึกษา <br />
+          หรือหนังสือรับรองการจบการศึกษาในระดับ {{ formData.educationalData3.educational_qualification3 }}
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="transcriptPreview(3)" :href="transcriptPreview(3)" target="_blank">
+          คลิกดูไฟล์ที่แนบ 
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="qualificationPreview(3)" :href="qualificationPreview(3)" target="_blank">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<!-- วุฒิที่4 -->
+<template v-if="formData.educationalData4 && Object.keys(formData.educationalData4).length > 0">
+  <v-row class="custom-left-margin ml-10">
+    <v-col><div>ปริญญาโท</div></v-col>
+  </v-row>
+
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สถานที่ศึกษา</div>
+      <v-text-field :value="formData.educationalData4.educational_institution4" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <div class="mb-3">วุฒิการศึกษา</div>
+      <v-text-field :value="formData.educationalData4.educational_qualification4" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
+
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สาขาวิชา</div>
+      <v-text-field :value="formData.educationalData4.fieldofstudy4" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
+      <v-text-field :value="formData.educationalData4.graduationDate4" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
+
+  <v-container v-if="transcriptPreview(4) || qualificationPreview(4)">
+    <v-row class="custom-left-margin">
+      <v-col cols="12">
+        <h2 class="textheader">สิ่งที่แนบมา</h2>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <div class="mb-3">Transcript ({{ formData.educationalData4.educational_qualification4 }})</div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3">
+          สำเนาหลักฐานแสดงวุฒิการศึกษา <br />
+          หรือหนังสือรับรองการจบการศึกษาในระดับ {{ formData.educationalData4.educational_qualification4 }}
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="transcriptPreview(4)" :href="transcriptPreview(4)" target="_blank">
+          คลิกดูไฟล์ที่แนบ 
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="qualificationPreview(4)" :href="qualificationPreview(4)" target="_blank">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<!-- วุฒิที่5 -->
+<template v-if="formData.educationalData5 && Object.keys(formData.educationalData5).length > 0">
+  <v-row class="custom-left-margin ml-10">
+    <v-col><div>ปริญญาเอก</div></v-col>
+  </v-row>
+
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สถานที่ศึกษา</div>
+      <v-text-field :value="formData.educationalData5.educational_institution5" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <div class="mb-3">วุฒิการศึกษา</div>
+      <v-text-field :value="formData.educationalData5.educational_qualification5" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
+
+  <v-row class="custom-left-margin">
+    <v-col cols="12" md="6">
+      <div class="mb-3">สาขาวิชา</div>
+      <v-text-field :value="formData.educationalData5.fieldofstudy5" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+
+    <v-col cols="12" md="6">
+      <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
+      <v-text-field :value="formData.educationalData5.graduationDate5" outlined class="custom-input" readonly></v-text-field>
+    </v-col>
+  </v-row>
+
+  <v-container v-if="transcriptPreview(5) || qualificationPreview(5)">
+    <v-row class="custom-left-margin">
+      <v-col cols="12">
+        <h2 class="textheader">สิ่งที่แนบมา</h2>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <div class="mb-3">Transcript ({{ formData.educationalData5.educational_qualification5 }})</div>
+      </v-col>
+      <v-col cols="12" md="6">
+        <div class="mb-3">
+          สำเนาหลักฐานแสดงวุฒิการศึกษา <br />
+          หรือหนังสือรับรองการจบการศึกษาในระดับ {{ formData.educationalData5.educational_qualification5 }}
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-row class="custom-left-margin">
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="transcriptPreview(5)" :href="transcriptPreview(5)" target="_blank">
+          คลิกดูไฟล์ที่แนบ 
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="6">
+        <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
+        v-if="qualificationPreview(5)" :href="qualificationPreview(5)" target="_blank">
+          คลิกดูไฟล์ที่แนบ
+        </v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
 
 
     <v-container>
@@ -607,6 +836,15 @@ export default {
       if (newVal.educationalData2) {
         selected.push("advanced-certificate"); // ติ๊กอัตโนมัติ
       }
+      if (newVal.educationalData3) {
+        selected.push("bachelor"); // ติ๊กอัตโนมัติ
+      }
+      if (newVal.educationalData4) {
+        selected.push("master"); // ติ๊กอัตโนมัติ
+      }
+      if (newVal.educationalData5) {
+        selected.push("phd"); // ติ๊กอัตโนมัติ
+      }
 
       this.selectedEducation = selected;
     },
@@ -617,51 +855,88 @@ export default {
   computed: {
     shouldShowEducationData() {
     return this.formData.educationalData1 ||
-           this.transcriptPreview ||
-           this.qualificationPreview;
-  },
-    hasEducationalData() {
-    return this.formData.educationalData1 && 
-           Object.keys(this.formData.educationalData1).length > 0;
-  },
+           this.formData.educationalData2 ||
+           this.formData.educationalData3 ||
+           this.formData.educationalData4 ||
+           this.formData.educationalData5 ||
+           this.transcriptPreview(1) ||
+           this.transcriptPreview(2) ||
+           this.transcriptPreview(3) ||
+           this.transcriptPreview(4) ||
+           this.transcriptPreview(5) ||
+           this.qualificationPreview(1) ||
+           this.qualificationPreview(2) ||
+           this.qualificationPreview(3) ||
+           this.qualificationPreview(4) ||
+           this.qualificationPreview(5);
+},
+hasEducationalData() {
+    return (this.formData.educationalData1 && Object.keys(this.formData.educationalData1).length > 0) ||
+           (this.formData.educationalData2 && Object.keys(this.formData.educationalData2).length > 0) ||
+           (this.formData.educationalData3 && Object.keys(this.formData.educationalData3).length > 0) ||
+           (this.formData.educationalData4 && Object.keys(this.formData.educationalData4).length > 0) ||
+           (this.formData.educationalData5 && Object.keys(this.formData.educationalData5).length > 0);
+},
   transcriptPreview() {
-    console.log("transcript1 value:", this.formData.educationalData1.transcript1);
-    if (this.formData.educationalData1.transcript1 instanceof Blob) {
-      return URL.createObjectURL(this.formData.educationalData1.transcript1);
-    }
-    return null;
+    return (index) => {
+      const transcriptKey = `transcript${index}`;
+      if (this.formData[`educationalData${index}`]?.[transcriptKey] instanceof Blob) {
+        return URL.createObjectURL(this.formData[`educationalData${index}`][transcriptKey]);
+      }
+      return null;
+    };
   },
   qualificationPreview() {
-    console.log("qualification1 value:", this.formData.educationalData1.showing_educational_qualifications1);
-    if (this.formData.educationalData1.showing_educational_qualifications1 instanceof Blob) {
-      return URL.createObjectURL(this.formData.educationalData1.showing_educational_qualifications1);
-    }
-    return null;
+    return (index) => {
+      const qualificationKey = `showing_educational_qualifications${index}`;
+      if (this.formData[`educationalData${index}`]?.[qualificationKey] instanceof Blob) {
+        return URL.createObjectURL(this.formData[`educationalData${index}`][qualificationKey]);
+      }
+      return null;
+    };
   },
     isEducationDisabled() {
-    return (value) => {
-      if (value === "certificate") {
-        return !!this.formData.educationalData1; // ถ้ามี educationalData1 ปิดการติ๊ก
-      }
-      if (value === "advanced-certificate") {
-        return !!this.formData.educationalData2; // ถ้ามี educationalData2 ปิดการติ๊ก
-      }
-      return false;
+      return (value) => {
+        if (value === "certificate") {
+            return !!this.formData.educationalData1;
+        }
+        if (value === "advanced-certificate") {
+            return !!this.formData.educationalData2;
+        }
+        if (value === "bachelor") {
+            return !!this.formData.educationalData3;
+        }
+        if (value === "master") {
+            return !!this.formData.educationalData4;
+        }
+        if (value === "phd") {
+            return !!this.formData.educationalData5;
+        }
+        return false;
     };
   },
     // เช็กว่า educationalData1 มีข้อมูลหรือไม่
     isCertificateDisabled() {
-      return !!this.formData.educationalData1;
-    },
-    isAdvancedCertificateDisabled() {
-      return !!this.formData.educationalData2;
-    },
-    selectedEducationLabel() {
-      return this.educationLevels
+    return !!this.formData.educationalData1;
+},
+isAdvancedCertificateDisabled() {
+    return !!this.formData.educationalData2;
+},
+isBachelorDisabled() {
+    return !!this.formData.educationalData3;
+},
+isMasterDisabled() {
+    return !!this.formData.educationalData4;
+},
+isPhdDisabled() {
+    return !!this.formData.educationalData5;
+},
+selectedEducationLabel() {
+    return this.educationLevels
         .filter(option => this.selectedEducation.includes(option.value))
         .map(option => option.label)
         .join(", ") || "ไม่ระบุ";
-    }
+}
   }
 };
 </script>
