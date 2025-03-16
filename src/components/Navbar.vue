@@ -220,7 +220,7 @@ export default {
         this.user = {
           name: `${data.mp_name2} ${data.mp_name3}`,
           role: data.mp_name1 || "N/A", // กันค่า null หรือ undefined
-          avatar: require("@/assets/images/bot.png"),
+          avatar: require("@/assets/images/profile.png"),
         };
       } else {
         console.error("Data not found");

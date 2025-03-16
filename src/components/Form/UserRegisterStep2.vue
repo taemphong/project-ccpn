@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="custom-left-margin">
       <v-col cols="12">
-        <h2 class="textheader">ข้อมูลส่วนตัว {{ formData }}</h2>
+        <h2 class="textheader">ข้อมูลส่วนตัว</h2>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ</div>
