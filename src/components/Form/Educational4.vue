@@ -33,6 +33,22 @@
           </v-col>
         </v-row>
       </v-col>
+      <v-col cols="12" md="12">
+        <div class="mb-3 required">Transcript</div>
+        <v-file-input v-model="transcript4" outlined placeholder="File input" multiple show-size
+          :accept="['image/jpeg', 'image/png', 'application/pdf']" @change="onFileChange"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">
+          หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล .jpg .png .jpeg และ .pdf
+        </div>
+      </v-col>
+      <v-col cols="12" md="12">
+        <div class="mb-3 required">สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญาเอก *</div>
+        <v-file-input v-model="showing_educational_qualifications4" outlined placeholder="File input" multiple show-size
+          :accept="['image/jpeg', 'image/png', 'application/pdf']" @change="onFileChange"></v-file-input>
+        <div style="text-align: end; margin-top: -20px;">
+          หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล .jpg .png .jpeg และ .pdf
+        </div>
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -47,42 +63,46 @@ export default {
       localSelected: false,
       educational_institution4: null,
       educational_qualification4: null,
-      fieldofstudy4: null,
+      transcript4: [],
+      showing_educational_qualifications4: [],
       daygraduation: null,
       monthgraduation: null,
       yeargraduation: null,
+      fieldofstudy4: null,
       formData: {
         educational_institution4: "",
         educational_qualification4: "",
         fieldofstudy4: "",
         graduationDate4: "",
+        transcript4: "",
+        showing_educational_qualifications4: "",
+
       },
       // 🔹 ตัวเลือกสำหรับ v-select
       educationalInstitutions: ["มหาวิทยาลัย A", "มหาวิทยาลัย B", "มหาวิทยาลัย C"],
-      educationalQualifications: ["ปวช.", "ปวส.", "ปริญญาตรี", "ปริญญาโท", "ปริญญาเอก"],
+      educationalQualifications: ["ประกาศนียบัตร", "อนุปริญญา", "ปริญญาตรี", "ปริญญาโท", "ปริญญาเอก"],
       fieldsOfStudy: ["วิศวกรรมศาสตร์", "วิทยาศาสตร์", "บริหารธุรกิจ", "ศิลปศาสตร์"],
 
       // 🔹 ตัวเลือกสำหรับวัน/เดือน/ปี ที่จบการศึกษา
       daygraduationOptions: Array.from({ length: 31 }, (_, i) => (i + 1).toString()),
       monthgraduationOptions: [
-      { text: "มกราคม", value: 1 },
-      { text: "กุมภาพันธ์", value: 2 },
-      { text: "มีนาคม", value: 3 },
-      { text: "เมษายน", value: 4 },
-      { text: "พฤษภาคม", value: 5 },
-      { text: "มิถุนายน", value: 6 },
-      { text: "กรกฎาคม", value: 7 },
-      { text: "สิงหาคม", value: 8 },
-      { text: "กันยายน", value: 9 },
-      { text: "ตุลาคม", value: 10 },
-      { text: "พฤศจิกายน", value: 11 },
-      { text: "ธันวาคม", value: 12 },
+        { text: "มกราคม", value: 1 },
+        { text: "กุมภาพันธ์", value: 2 },
+        { text: "มีนาคม", value: 3 },
+        { text: "เมษายน", value: 4 },
+        { text: "พฤษภาคม", value: 5 },
+        { text: "มิถุนายน", value: 6 },
+        { text: "กรกฎาคม", value: 7 },
+        { text: "สิงหาคม", value: 8 },
+        { text: "กันยายน", value: 9 },
+        { text: "ตุลาคม", value: 10 },
+        { text: "พฤศจิกายน", value: 11 },
+        { text: "ธันวาคม", value: 12 },
       ],
       yeargraduationOptions: Array.from({ length: 50 }, (_, i) => (new Date().getFullYear() - i).toString()),
     };
   },
   watch: {
-    // คอยจับการเปลี่ยนแปลงของข้อมูลใน formData
     educational_institution4(newVal) {
       this.formData.educational_institution4 = newVal;
     },
@@ -101,12 +121,36 @@ export default {
     yeargraduation(newVal) {
       this.formData.graduationDate4 = `${this.daygraduation}-${this.monthgraduation}-${newVal}`;
     },
+    transcript4(newVal) {
+      if (newVal instanceof File) {
+        this.formData.transcript4 = newVal; // เก็บไฟล์ทั้งก้อน
+      } else if (Array.isArray(newVal) && newVal.length > 0) {
+        this.formData.transcript4 = newVal[0]; // เก็บไฟล์แรก (ถ้ามีหลายไฟล์)
+      } else {
+        this.formData.transcript4 = null;
+      }
+      console.log("ข้อมูลไฟล์:", this.formData.transcript4);
+    },
+    showing_educational_qualifications4(newVal) {
+      if (newVal instanceof File) {
+        this.formData.showing_educational_qualifications4 = newVal; // เก็บไฟล์ทั้งก้อน
+      } else if (Array.isArray(newVal) && newVal.length > 0) {
+        this.formData.showing_educational_qualifications4 = newVal[0]; // เก็บไฟล์แรก (ถ้ามีหลายไฟล์)
+      } else {
+        this.formData.showing_educational_qualifications4 = null;
+      }
+      console.log("ข้อมูลไฟล์:", this.formData.showing_educational_qualifications4);
+    },
+
   },
   methods: {
     updateSelected() {
       // เพิ่มการอัพเดทเมื่อ checkbox เปลี่ยน
       this.$emit('input', this.formData); // ส่งข้อมูลกลับไปยัง parent component
     },
+    onFileChange() {
+      console.log("ไฟล์ที่เลือก:", this.transcript4);
+    }
   },
 };
 </script>
