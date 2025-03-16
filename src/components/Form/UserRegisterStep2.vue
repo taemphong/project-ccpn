@@ -304,41 +304,78 @@
       </v-col>
     </v-row>
 
-    <v-row class="custom-left-margin">
-      <v-col cols="12" md="6">
-        <div class="mb-3">สถานที่ศึกษา</div>
-        <v-text-field v-model="me_institution" outlined class="custom-input" readonly></v-text-field>
-      </v-col>
+    <!-- วุฒิที่1 -->
+    <template v-if="formData.educationalData1">
+      <v-row class="custom-left-margin ml-10">
+        <v-col>
+          <div>ประกาศนียบัตร</div>
+        </v-col>
+      </v-row>
+      <v-row class="custom-left-margin">
+        <v-col cols="12" md="6">
+          <div class="mb-3">สถานที่ศึกษา</div>
+          <v-text-field :value="formData.educationalData1.educational_institution1" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
 
-      <v-col cols="12" md="6">
-        <div class="mb-3">วุฒิการศึกษา</div>
-        <v-text-field v-model="me_faculty" outlined class="custom-input" readonly></v-text-field>
-      </v-col>
-    </v-row>
+        <v-col cols="12" md="6">
+          <div class="mb-3">วุฒิการศึกษา</div>
+          <v-text-field :value="formData.educationalData1.educational_qualification1" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
+      </v-row>
 
-    <v-row class="custom-left-margin">
-      <v-col cols="12" md="6">
-        <div class="mb-3">สาขาวิชา</div>
-        <v-text-field v-model="me_major" outlined class="custom-input" readonly></v-text-field>
-      </v-col>
+      <v-row class="custom-left-margin">
+        <v-col cols="12" md="6">
+          <div class="mb-3">สาขาวิชา</div>
+          <v-text-field :value="formData.educationalData1.fieldofstudy1" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
 
-      <v-col cols="12" md="6">
-        <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
-        <v-row class="d-flex">
-          <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field v-model="me_graduated_date" outlined class="custom-input" readonly></v-text-field>
-          </v-col>
+        <v-col cols="12" md="6">
+          <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
+          <v-text-field :value="formData.educationalData1.graduationDate1" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
+      </v-row>
+    </template>
 
-          <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field v-model="me_graduated_date" outlined class="custom-input" readonly></v-text-field>
-          </v-col>
+    <!-- วุฒิที่2 -->
+    <template v-if="formData.educationalData2">
+      <v-row class="custom-left-margin ml-10">
+        <v-col>
+          <div>อนุปริญญา</div>
+        </v-col>
+      </v-row>
+      <v-row class="custom-left-margin">
+        <v-col cols="12" md="6">
+          <div class="mb-3">สถานที่ศึกษา</div>
+          <v-text-field :value="formData.educationalData2.educational_institution2" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
 
-          <v-col cols="12" sm="4" class="d-flex">
-            <v-text-field v-model="me_graduated_date" outlined class="custom-input" readonly></v-text-field>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
+        <v-col cols="12" md="6">
+          <div class="mb-3">วุฒิการศึกษา</div>
+          <v-text-field :value="formData.educationalData2.educational_qualification2" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
+      </v-row>
+
+      <v-row class="custom-left-margin">
+        <v-col cols="12" md="6">
+          <div class="mb-3">สาขาวิชา</div>
+          <v-text-field :value="formData.educationalData2.fieldofstudy2" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
+
+        <v-col cols="12" md="6">
+          <div class="mb-3">วัน/เดือน/ปี ที่จบการศึกษา</div>
+          <v-text-field :value="formData.educationalData2.graduationDate2" outlined class="custom-input"
+            readonly></v-text-field>
+        </v-col>
+      </v-row>
+    </template>
+
 
     <v-container>
       <v-row class="custom-left-margin">
@@ -553,11 +590,31 @@ export default {
     this.selectedEducation = [...this.me_level];
   },
   watch: {
-    me_level(newVal) {
-      this.selectedEducation = [...newVal];
-    }
+    formData: {
+      handler(newVal) {
+        let selected = [];
+
+        if (newVal.educationalData1) {
+          selected.push("certificate"); // ถ้ามีข้อมูล ติ๊กอัตโนมัติ
+        }
+        if (newVal.educationalData2) {
+          selected.push("advanced-certificate");
+        }
+
+        this.selectedEducation = selected;
+      },
+      deep: true,
+      immediate: true,
+    },
   },
   computed: {
+    // เช็กว่า educationalData1 มีข้อมูลหรือไม่
+    isCertificateDisabled() {
+      return !!this.formData.educationalData1;
+    },
+    isAdvancedCertificateDisabled() {
+      return !!this.formData.educationalData2;
+    },
     selectedEducationLabel() {
       return this.educationLevels
         .filter(option => this.selectedEducation.includes(option.value))
