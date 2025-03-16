@@ -74,6 +74,7 @@ export default {
         educational_qualification1: "",
         fieldofstudy1: "",
         graduationDate1: "",
+        transcript1: "",
         showing_educational_qualifications1: "",
 
       },
@@ -148,9 +149,6 @@ export default {
       // เพิ่มการอัพเดทเมื่อ checkbox เปลี่ยน
       this.$emit('input', this.formData); // ส่งข้อมูลกลับไปยัง parent component
     },
-    onFileChange() {
-      console.log("ไฟล์ที่เลือก:", this.transcript1);
-    }
   },
 };
 </script>
