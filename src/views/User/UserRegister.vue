@@ -6,8 +6,36 @@
     <div style="justify-items: center">
       <v-stepper v-model="e1" alt-labels style="padding-left: 200px; padding-right: 200px; justify-items: center">
         <v-stepper-header style="width: 100%; max-width: 700px; border: none; box-shadow: none">
-          <!-- Stepper Headers -->
-        </v-stepper-header>
+  <v-stepper-step 
+    :complete="e1 > 1" 
+    step="1"  
+    class="no-number"
+    :class="{ 'active-step': e1 === 1, 'inactive-step': e1 !== 1 }"
+  >
+    กรอกข้อมูล
+  </v-stepper-step>
+
+  <v-divider></v-divider>
+
+  <v-stepper-step 
+    :complete="e1 > 2" 
+    step="2"  
+    class="no-number"
+    :class="{ 'active-step': e1 === 2, 'inactive-step': e1 !== 2 }"
+  >
+    ตรวจสอบข้อมูล
+  </v-stepper-step>
+
+  <v-divider></v-divider>
+
+  <v-stepper-step 
+    step="3"  
+    class="no-number"
+    :class="{ 'active-step': e1 === 3, 'inactive-step': e1 !== 3 }"
+  >
+    ชำระเงิน
+  </v-stepper-step>
+</v-stepper-header>
 
         <v-stepper-items>
           <v-stepper-content step="1">
@@ -109,4 +137,31 @@ export default {
     height: 35px !important;
   }
 }
+
+
+
+.active-step >>> .v-stepper__step__step {
+  border: 2px solid #48BF6A !important; /* ขอบสีเขียว */
+  background-color: white !important;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  font-size: 0px !important;
+}
+
+/* ขอบและสีของจุดกลมเมื่อไม่ active */
+.inactive-step >>> .v-stepper__step__step {
+  border: 2px solid #C2C2C2 !important; /* ขอบสีเทา */
+  background-color: white !important;
+  font-size: 0px !important;
+}
+
+/* สีตัวหนังสือของสเต็ปที่ active */
+.active-step >>> .v-stepper__label {
+  color: #48BF6A !important; /* ตัวหนังสือสีเขียว */
+}
+
+/* สีตัวหนังสือของสเต็ปที่ไม่ active */
+.inactive-step >>> .v-stepper__label {
+  color: #858585 !important; /* ตัวหนังสือสีเทา */
+}
+
 </style>
