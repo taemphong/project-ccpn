@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="custom-left-margin">
       <v-col cols="12">
-        <h2 class="textheader">ข้อมูลส่วนตัว</h2>
+        <h2 class="textheader">ข้อมูลส่วนตัว </h2>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ</div>
@@ -668,6 +668,9 @@
           <h2 class="textheader">แนบหลักฐานประกอบการพิจารณา</h2>
         </v-col>
       </v-row>
+
+
+
       <!--  แนบไฟล์ -->
       <v-row class="custom-left-margin">
         <v-col cols="12" md="6" v-if="files.picture">
@@ -683,16 +686,36 @@
 
       <v-row class="custom-left-margin">
         <v-col cols="12" md="6" v-if="files.picture">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.picture)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
+           <v-btn 
+      x-large 
+      color="#FFD56D" 
+      style="width: 400px; height: 50px; color: black"
+      @click="showPhotoInfo = !showPhotoInfo"
+    >
+      คลิกดูไฟล์ที่แนบ
+    </v-btn>
+    <div style="margin-top: 10px;" v-if="showPhotoInfo">
+      <p>photoName: {{ formData.photo.name }}</p>
+      <p>photoSize: {{ (formData.photo.size / 1024).toFixed(2) }} KB</p>
+      <p>photoType: {{ formData.photo.type }}</p>
+    </div>
+
+
         </v-col>
         <v-col cols="12" md="6" v-if="files.houseregistration">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.houseregistration)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
+          <v-btn 
+      x-large 
+      color="#FFD56D" 
+      style="width: 400px; height: 50px; color: black"
+      @click="showHouseInfo = !showHouseInfo"
+    >
+      คลิกดูไฟล์ที่แนบ
+    </v-btn>
+    <div style="margin-top: 10px;" v-if="showHouseInfo">
+      <p>COH_Name: {{ formData.Copyof_houseregistration.name }}</p>
+      <p>COH_Size: {{ (formData.Copyof_houseregistration.size / 1024).toFixed(2) }} KB</p>
+      <p>COH_Type: {{ formData.Copyof_houseregistration.type }}</p>
+    </div>
         </v-col>
       </v-row>
 
@@ -707,16 +730,34 @@
 
       <v-row class="custom-left-margin">
         <v-col cols="12" md="6" v-if="files.idCard">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.idCard)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
+          <v-btn 
+      x-large 
+      color="#FFD56D" 
+      style="width: 400px; height: 50px; color: black"
+      @click="showCustomerInfo = !showCustomerInfo"
+    >
+      คลิกดูไฟล์ที่แนบ
+    </v-btn>
+    <div style="margin-top: 10px;" v-if="showCustomerInfo">
+      <p>IdCardName: {{ formData.Copyof_mp_customer_id.name }}</p>
+      <p>IdCardSize: {{ (formData.Copyof_mp_customer_id.size / 1024).toFixed(2) }} KB</p>
+      <p>IdCardType: {{ formData.Copyof_mp_customer_id.type }}</p>
+    </div>
         </v-col>
         <v-col cols="12" md="6" v-if="files.Namechange">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.Namechange)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
+          <v-btn 
+      x-large 
+      color="#FFD56D" 
+      style="width: 400px; height: 50px; color: black"
+      @click="showOtherinfo = !showOtherinfo"
+    >
+      คลิกดูไฟล์ที่แนบ
+    </v-btn>
+    <div style="margin-top: 10px;" v-if="showOtherinfo">
+      <p>OtherName: {{ formData.Namechange_certificate.name }}</p>
+      <p>OtherSize: {{ (formData.Namechange_certificate.size / 1024).toFixed(2) }} KB</p>
+      <p>OtherType: {{ formData.Namechange_certificate.type }}</p>
+    </div>
         </v-col>
       </v-row>
 
@@ -728,10 +769,19 @@
 
       <v-row class="custom-left-margin">
         <v-col cols="12" md="6" v-if="files.Medical">
-          <v-btn x-large color="#FFD56D" style="width: 400px; height: 50px; color: black"
-            @click="viewFile(files.Medical)">
-            คลิกดูไฟล์ที่แนบ
-          </v-btn>
+          <v-btn 
+      x-large 
+      color="#FFD56D" 
+      style="width: 400px; height: 50px; color: black"
+      @click="showMedicalInfo = !showMedicalInfo"
+    >
+      คลิกดูไฟล์ที่แนบ
+    </v-btn>
+    <div style="margin-top: 10px;" v-if="showMedicalInfo">
+      <p>MedicalName: {{ formData.Medical_certificate.name }}</p>
+      <p>MedicalSize: {{ (formData.Medical_certificate.size / 1024).toFixed(2) }} KB</p>
+      <p>MedicalType: {{ formData.Medical_certificate.type }}</p>
+    </div>
         </v-col>
       </v-row>
     </v-container>
@@ -744,27 +794,27 @@
           ดังต่อไปนี้
         </h3>
         <v-container fluid>
-          <v-checkbox v-model="selected2" label="สำเนาทะเบียนบ้าน 1 ฉบับ" value="สำเนาทะเบียนบ้าน 1 ฉบับ"
+          <v-checkbox v-model="Copyof_houseregistration" label="สำเนาทะเบียนบ้าน 1 ฉบับ" value="สำเนาทะเบียนบ้าน 1 ฉบับ"
             color="success"></v-checkbox>
-          <v-checkbox v-model="selected2" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
+          <v-checkbox v-model="Copyof_mp_customer_id" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
             value="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ" color="success"></v-checkbox>
           <v-checkbox v-model="selected2"
             label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
             value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
-            color="success"></v-checkbox>
+            color="success" readonly></v-checkbox>
           <div style="margin-left: 30px">
-            <v-checkbox v-model="selected2" label="Transcript" value="Transcript" color="success"></v-checkbox>
-            <v-checkbox v-model="selected2" label="ปริญญาบัคร" value="ปริญญาบัคร" color="success"></v-checkbox>
-            <v-checkbox v-model="selected2" label="อนุปริญญาบัคร" value="อนุปริญญาบัคร" color="success"></v-checkbox>
+            <v-checkbox v-model="selected2" label="Transcript" value="Transcript" color="success" readonly></v-checkbox>
+            <v-checkbox v-model="selected2" label="ปริญญาบัตร" value="ปริญญาบัตร" color="success" readonly></v-checkbox>
+            <v-checkbox v-model="selected2" label="อนุปริญญาบัตร" value="อนุปริญญาบัตร" color="success" readonly></v-checkbox>
             <v-checkbox v-model="selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
-              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา" color="success"></v-checkbox>
+              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา" color="success" readonly></v-checkbox>
           </div>
-          <v-checkbox v-model="selected2"
+          <v-checkbox v-model="photo"
             label="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
             value="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
             color="success"></v-checkbox>
-          <v-checkbox v-model="selected2" label="ใบรับรองแพทย์" value="ใบรับรองแพทย์" color="success"></v-checkbox>
-          <v-checkbox v-model="selected2" label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)" value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+          <v-checkbox v-model="Medical_certificate" label="ใบรับรองแพทย์" value="ใบรับรองแพทย์" color="success"></v-checkbox>
+          <v-checkbox v-model="Namechange_certificate" label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)" value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
             color="success"></v-checkbox>
 
           <v-col cols="12" md="12">
@@ -790,7 +840,33 @@ export default {
   },
   data() {
     return {
-      selected2: [],
+      showPhotoInfo: false,
+      showHouseInfo: false,
+      showCustomerInfo: false,
+      showMedicalInfo: false,
+      showOtherinfo: false,
+      selected2: [
+        "สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง",
+        "Transcript",
+        "ปริญญาบัตร",
+        "อนุปริญญาบัตร",
+        "วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+      ],
+      Copyof_houseregistration: [
+        "สำเนาทะเบียนบ้าน 1 ฉบับ",
+      ],
+      Copyof_mp_customer_id: [
+        "สำเนาบัตรประจำตัวประชาชน 1 ฉบับ",
+      ],
+      photo: [
+        "ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ",
+      ],
+      Medical_certificate: [
+        "ใบรับรองแพทย์",
+      ],
+      Namechange_certificate: [
+        "สำเนาหลักฐานอื่น ๆ(ถ้ามี)",
+      ],
       files: {
         transcript: "https://example.com/transcript.pdf",
         educational: "https://example.com/educational.pdf",
@@ -827,6 +903,7 @@ export default {
   },
   watch: {
      formData: {
+      photo: null,
     handler(newVal) {
       let selected = [];
 
@@ -894,6 +971,10 @@ hasEducationalData() {
       }
       return null;
     };
+  },
+  photoPreview() {
+    console.log("📌 Computed photoPreview - formData.photo:", this.formData.photo);
+    return this.formData.photo ? URL.createObjectURL(this.formData.photo) : null;
   },
     isEducationDisabled() {
       return (value) => {

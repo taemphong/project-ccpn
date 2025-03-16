@@ -23,30 +23,36 @@
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">คำนำหน้าชื่อ (อังกฤษ) </div>
-        <v-select v-model="formData.mp_name1_eng" :items="prefixOptionsEn" @input="logFormData" outlined></v-select>
+        <v-select :rules="[validateRequired]" v-model="formData.mp_name1_eng" :items="prefixOptionsEn"
+          @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">ชื่อ (อังกฤษ) </div>
-        <v-text-field v-model="formData.mp_name2_eng" @input="logFormData" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="formData.mp_name2_eng" @input="logFormData"
+          outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">นามสกุล (อังกฤษ) </div>
-        <v-text-field v-model="formData.mp_name3_eng" @input="logFormData" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="formData.mp_name3_eng" @input="logFormData"
+          outlined></v-text-field>
       </v-col>
     </v-row>
 
     <v-row class="v-raw-between">
       <v-col cols="12" md="3">
         <div class="mb-3 required">เพศ </div>
-        <v-select v-model="formData.mp_gender" :items="mp_genderOptions" @input="logFormData" outlined></v-select>
+        <v-select :rules="[validateRequired]" v-model="formData.mp_gender" :items="mp_genderOptions"
+          @input="logFormData" outlined></v-select>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">สัญชาติ </div>
-        <v-text-field v-model="formData.mp_nationality" @input="logFormData" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="formData.mp_nationality" @input="logFormData"
+          outlined></v-text-field>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3 required">เชื้อชาติ </div>
-        <v-text-field v-model="formData.mp_ethnicity" @input="logFormData" outlined></v-text-field>
+        <v-text-field :rules="[validateRequired]" v-model="formData.mp_ethnicity" @input="logFormData"
+          outlined></v-text-field>
       </v-col>
     </v-row>
 
@@ -312,7 +318,7 @@
         <h2 style="  font-size: 1.5rem;
         font-weight: 600;margin-bottom: 20px;">
           การเป็นสมาชิกสมาคมหรือองค์กรวิชาชีพ ต่างๆ (สมาคมที่เกี่ยวข้องเป็นหลัก)</h2>
-        <div class="mb-3 required">โปรดระบุ (ถ้ามี) </div>
+        <div class="mb-3 ">โปรดระบุ (ถ้ามี) </div>
         <v-text-field v-model="associations_involved" outlined></v-text-field>
       </v-col>
 
@@ -324,7 +330,8 @@
         <div class="mb-3 required">ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก ซึ่งถ่ายไว้แล้วไม่เกิน 6
           เดือน
           ขนาด 1 นิ้ว </div>
-        <v-file-input v-model="photo" outlined placeholder="File input"></v-file-input>
+        <v-file-input v-model="photo" outlined placeholder="File input"
+          :accept="['image/jpeg', 'image/png', 'application/pdf']"></v-file-input>
         <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png และ .jpeg
         </div>
 
@@ -343,13 +350,15 @@
         </div>
 
         <div class="mb-3 required">ใบรับรองแพทย์ </div>
-        <v-file-input v-model="Medical_certificate" outlined placeholder="File input"></v-file-input>
+        <v-file-input v-model="Medical_certificate" outlined placeholder="File input"
+          :accept="['image/jpeg', 'image/png', 'application/pdf']"></v-file-input>
         <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
           .pdf
         </div>
 
         <div class="mb-3 required">ใบเปลี่ยนชื่อ - นามสกุล หรือ เอกสารอื่นๆ (ถ้ามี) </div>
-        <v-file-input v-model="Namechange_certificate" outlined placeholder="File input"></v-file-input>
+        <v-file-input v-model="Namechange_certificate" outlined placeholder="File input"
+          :accept="['image/jpeg', 'image/png', 'application/pdf']"></v-file-input>
         <div style="text-align: end; margin-top: -20px;">หมายเหตุ : ขอให้ท่านบันทึกไฟล์เป็นนามสกุล.jpg .png .jpeg และ
           .pdf
         </div>
@@ -364,27 +373,40 @@
           ข้าพเจ้าได้แนบหลักฐานประกอบการสมัครสมาชิกสภาการสาธาณสุขชุมชน ดังต่อไปนี้</h3>
         <v-container fluid>
           <v-checkbox :style="checkboxStyle" v-model="selectedhouse_registration" label="สำเนาทะเบียนบ้าน 1 ฉบับ"
-            :disabled="!Copyof_houseregistration || selectedhouse_registration"></v-checkbox>
+            :readonly="!Copyof_houseregistration || selectedhouse_registration" color="light-green"></v-checkbox>
 
           <v-checkbox :style="checkboxStyle2" v-model="selectedmp_customer_id" label="สำเนาบัตรประจำตัวประชาชน 1 ฉบับ"
-            :disabled="!Copyof_mp_customer_id || selectedmp_customer_id"></v-checkbox>
-          <v-checkbox color="light-green" v-model="selected2"
+            :readonly="!Copyof_mp_customer_id || selectedmp_customer_id" color="light-green"></v-checkbox>
+
+          <v-checkbox color="light-green" v-model="formData.selected2"
             label="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
-            value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"></v-checkbox>
+            value="สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง"
+            readonly></v-checkbox>
+
           <div style="margin-left: 30px;">
-            <v-checkbox color="light-green" v-model="selected2" label="Transcript" value="Transcript"></v-checkbox>
-            <v-checkbox color="light-green" v-model="selected2" label="ปริญญาบัตร" value="ปริญญาบัตร"></v-checkbox>
-            <v-checkbox color="light-green" v-model="selected2" label="อนุปริญญาบัตร"
-              value="อนุปริญญาบัตร"></v-checkbox>
-            <v-checkbox color="light-green" v-model="selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
-              value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"></v-checkbox>
+            <v-checkbox  class="check" color="light-green" v-model="formData.selected2" label="Transcript" value="Transcript"
+            readonly ></v-checkbox>
+
+            <v-checkbox color="light-green" v-model="formData.selected2" label="ปริญญาบัตร" value="ปริญญาบัตร"
+            readonly></v-checkbox>
+
+            <v-checkbox color="light-green" v-model="formData.selected2" label="อนุปริญญาบัตร"
+            readonly value="อนุปริญญาบัตร"></v-checkbox>
+
+            <v-checkbox color="light-green" v-model="formData.selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+            readonly value="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"></v-checkbox>
+
           </div>
-          <v-checkbox color="light-green" v-model="selected2"
-            label="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"
-            value="ภาพถ่ายหน้าตรงครึ่งตัวท่าปกติไม่สวมแว่นดำซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว จำนวน 2 ภาพ"></v-checkbox>
-          <v-checkbox color="light-green" v-model="selected2" label="ใบรับรองแพทย์" value="ใบรับรองแพทย์"></v-checkbox>
-          <v-checkbox color="light-green" v-model="selected2" label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
-            value="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"></v-checkbox>
+          <v-checkbox :style="checkboxStylePhoto" v-model="selectedPhoto"
+            label="ภาพถ่ายหน้าตรง ครึ่งตัว ท่าปกติ ไม่สวมแว่นตา ไม่สวมหมวก ซึ่งถ่ายไว้ไม่เกิน 6 เดือน ขนาด 1 นิ้ว"
+            :readonly="!photo || selectedPhoto" color="light-green"></v-checkbox>
+
+          <v-checkbox :style="checkboxStyleMedicalCertificate" v-model="selectedMedicalCertificate"
+            label="ใบรับรองแพทย์" :readonly="!Medical_certificate || selectedMedicalCertificate" color="light-green"></v-checkbox>
+
+          <v-checkbox :style="checkboxStyleNameChange" v-model="selectedNameChange" label="สำเนาหลักฐานอื่น ๆ(ถ้ามี)"
+            :readonly="!Namechange_certificate || selectedNameChange" color="light-green"></v-checkbox>
+
         </v-container>
       </v-col>
     </v-row>
@@ -394,7 +416,7 @@
         <h2 style=" font-size: 1.5rem;
         font-weight: 600;" class="mt-5 required2">การให้ความยินยอม</h2>
         <v-container fluid>
-          <v-checkbox color="light-green" v-model="selected2"
+          <v-checkbox color="light-green" v-model="formData.acceptpage"
             label="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"
             value="ข้าพเจ้าขอรับรองว่า ข้าพเจ้ามีคุณสมบัติและไม่มีลักษณะต้องห้ามตามที่กำหนดในมาตรา 10 แห่งพระราชบัญญัติวิชาชีพการสาธารณสุขชุมชน พ.ศ. 2556 และข้อความที่ให้ไว้ข้างต้นเป็นความจริงทุกประการ นอกจากนี้ เพื่อประโยชน์ในการพิจารณารับเป็นสมาชิก ข้าพเจ้ายินยอมให้เจ้าหน้าที่ของสภาการสาธารณสุขชุมชนขอเอกสารและหลักฐานการสมัครสมาชิกสภาการสาธารณสุขชุมชนเพิ่มเติมจากข้าพเจ้าได้"></v-checkbox>
         </v-container>
@@ -424,20 +446,75 @@ export default {
     },
   },
   watch: {
-    Copyof_houseregistration(newValue) {
-      if (newValue !== null) {
-        this.selectedhouse_registration = true;
-      } else {
-        this.selectedhouse_registration = false;
-      }
-    },
-    Copyof_mp_customer_id(newValue) {
-      if (newValue !== null) {
-        this.selectedmp_customer_id = true;
-      } else {
-        this.selectedmp_customer_id = false;
-      }
-    },
+    Copyof_houseregistration(newVal) {
+  if (newVal instanceof File) {
+    this.formData.Copyof_houseregistration = newVal; // เก็บไฟล์ทั้งก้อน
+    this.selectedhouse_registration = true; // ติ๊ก checkbox อัตโนมัติ
+  } else if (Array.isArray(newVal) && newVal.length > 0) {
+    this.formData.Copyof_houseregistration = newVal[0]; // เก็บไฟล์แรก (ถ้ามีหลายไฟล์)
+    this.selectedhouse_registration = true; // ติ๊ก checkbox อัตโนมัติ
+  } else {
+    this.formData.Copyof_houseregistration = null; // ไม่มีไฟล์
+    this.selectedhouse_registration = false; // ยกเลิกติ๊ก checkbox
+  }
+  console.log("ข้อมูลไฟล์:", this.formData.Copyof_houseregistration);
+},
+    // เมื่อไฟล์ Copyof_mp_customer_id เปลี่ยนแปลง
+    Copyof_mp_customer_id(newVal) {
+  if (newVal instanceof File) {
+    this.formData.Copyof_mp_customer_id = newVal; // เก็บไฟล์ทั้งก้อน
+    this.selectedmp_customer_id = true; // ติ๊ก checkbox อัตโนมัติ
+  } else if (Array.isArray(newVal) && newVal.length > 0) {
+    this.formData.Copyof_mp_customer_id = newVal[0]; // เก็บไฟล์แรก (ถ้ามีหลายไฟล์)
+    this.selectedmp_customer_id = true; // ติ๊ก checkbox อัตโนมัติ
+  } else {
+    this.formData.Copyof_mp_customer_id = null; // ไม่มีไฟล์
+    this.selectedmp_customer_id = false; // ยกเลิกติ๊ก checkbox
+  }
+  console.log("ข้อมูลไฟล์:", this.formData.Copyof_mp_customer_id);
+},
+    // เพิ่มการจัดการไฟล์ภาพถ่ายหน้าตรง
+    photo(newVal) {
+  if (newVal instanceof File) {
+    this.formData.photo = newVal; // เก็บไฟล์ทั้งก้อน
+    this.selectedPhoto = true; // ติ๊ก checkbox อัตโนมัติ
+  } else if (Array.isArray(newVal) && newVal.length > 0) {
+    this.formData.photo = newVal[0]; // เก็บไฟล์แรก (ถ้ามีหลายไฟล์)
+    this.selectedPhoto = true; // ติ๊ก checkbox อัตโนมัติ
+  } else {
+    this.formData.photo = null; // ไม่มีไฟล์
+    this.selectedPhoto = false; // ยกเลิกติ๊ก checkbox
+  }
+  console.log("ข้อมูลไฟล์:", this.formData.photo);
+},
+    // เพิ่มการจัดการใบรับรองแพทย์
+    Medical_certificate(newVal) {
+  if (newVal instanceof File) {
+    this.formData.Medical_certificate = newVal; // เก็บไฟล์ทั้งก้อน
+    this.selectedMedicalCertificate = true; // ติ๊ก checkbox อัตโนมัติ
+  } else if (Array.isArray(newVal) && newVal.length > 0) {
+    this.formData.Medical_certificate = newVal[0]; // เก็บไฟล์แรก (ถ้ามีหลายไฟล์)
+    this.selectedMedicalCertificate = true; // ติ๊ก checkbox อัตโนมัติ
+  } else {
+    this.formData.Medical_certificate = null; // ไม่มีไฟล์
+    this.selectedMedicalCertificate = false; // ยกเลิกติ๊ก checkbox
+  }
+  console.log("ข้อมูลไฟล์:", this.formData.Medical_certificate);
+},
+    // เพิ่มการจัดการใบเปลี่ยนชื่อ - นามสกุล หรือเอกสารอื่นๆ
+    Namechange_certificate(newVal) {
+  if (newVal instanceof File) {
+    this.formData.Namechange_certificate = newVal; // เก็บไฟล์ทั้งก้อน
+    this.selectedNameChange = true; // ติ๊ก checkbox อัตโนมัติ
+  } else if (Array.isArray(newVal) && newVal.length > 0) {
+    this.formData.Namechange_certificate = newVal[0]; // เก็บไฟล์แรก (ถ้ามีหลายไฟล์)
+    this.selectedNameChange = true; // ติ๊ก checkbox อัตโนมัติ
+  } else {
+    this.formData.Namechange_certificate = null; // ไม่มีไฟล์
+    this.selectedNameChange = false; // ยกเลิกติ๊ก checkbox
+  }
+  console.log("ข้อมูลไฟล์:", this.formData.Namechange_certificate);
+},
 
     formData: {
       handler(newVal) {
@@ -447,8 +524,23 @@ export default {
       },
       deep: true,
     },
-  }
-  ,
+    'formData.educationalData1': function () {
+      this.updateCheckboxes();
+    },
+    'formData.educationalData2': function () {
+      this.updateCheckboxes2();
+    },
+    'formData.educationalData3': function () {
+      this.updateCheckboxes();
+    },
+    'formData.educationalData4': function () {
+      this.updateCheckboxes();
+    },
+    'formData.educationalData5': function () {
+      this.updateCheckboxes();
+    },
+    
+  },
 
   components: {
     Educational1,
@@ -461,11 +553,16 @@ export default {
   data() {
     return {
       A: '',
-      selected2: [],
-      Copyof_houseregistration: null, // เก็บไฟล์
-      selectedhouse_registration: false, // ค่า Checkbox
+      Copyof_houseregistration: null,  // เก็บไฟล์
+      selectedhouse_registration: false,  // ค่า Checkbox
       Copyof_mp_customer_id: null,
       selectedmp_customer_id: false,
+      photo: null,  // เก็บไฟล์ภาพถ่ายหน้าตรง
+      selectedPhoto: false,  // ค่า Checkbox สำหรับภาพถ่ายหน้าตรง
+      Medical_certificate: null,  // เก็บไฟล์ใบรับรองแพทย์
+      selectedMedicalCertificate: false,  // ค่า Checkbox สำหรับใบรับรองแพทย์
+      Namechange_certificate: null,  // เก็บไฟล์ใบเปลี่ยนชื่อ - นามสกุล
+      selectedNameChange: false,  // ค่า Checkbox สำหรับใบเปลี่ยนชื่อ - นามสกุล
       formData: this.value,
 
 
@@ -556,9 +653,7 @@ export default {
       radios: '',
 
       selected: [],
-      photo: null,
-      Medical_certificate: null,
-      Namechange_certificate: null,
+
 
     };
   },
@@ -579,11 +674,79 @@ export default {
       }
       return {};
     },
+    checkboxStylePhoto() {
+      if (this.photo && this.selectedPhoto) {
+        return {
+          color: '#4caf50',
+        };
+      }
+      return {};
+    },
+    checkboxStyleMedicalCertificate() {
+      if (this.Medical_certificate && this.selectedMedicalCertificate) {
+        return {
+          color: '#4caf50',
+        };
+      }
+      return {};
+    },
+    checkboxStyleNameChange() {
+      if (this.Namechange_certificate && this.selectedNameChange) {
+        return {
+          color: '#4caf50',
+        };
+      }
+      return {};
+    },
+    // ตรวจสอบว่ามีข้อผิดพลาดในฟอร์มหรือไม่
     hasError() {
       return this.validateForm();
-    }
+    },
   },
   methods: {
+   updateCheckboxes() {
+  // ตรวจสอบว่าอย่างน้อยหนึ่งช่องถูกเลือกหรือไม่
+  if (
+    this.formData.educationalData1 ||
+    this.formData.educationalData2 ||
+    this.formData.educationalData3 ||
+    this.formData.educationalData4 ||
+    this.formData.educationalData5
+  ) {
+    // ถ้ามีการเลือกให้ติ๊ก checkbox ที่เกี่ยวข้อง
+    this.formData.selected2 = [
+      "สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง",
+      "Transcript",
+      "ปริญญาบัตร",
+      "วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+    ];
+  } else {
+    // ถ้าไม่มีการเลือกให้ยกเลิกการติ๊ก
+    this.formData.selected2 = [];
+  }
+},
+updateCheckboxes2() {
+  // ตรวจสอบว่าอย่างน้อยหนึ่งช่องถูกเลือกหรือไม่
+  if (
+    this.formData.educationalData1 ||
+    this.formData.educationalData2 ||
+    this.formData.educationalData3 ||
+    this.formData.educationalData4 ||
+    this.formData.educationalData5
+  ) {
+    // ถ้ามีการเลือกให้ติ๊ก checkbox ที่เกี่ยวข้อง
+    this.formData.selected2 = [
+      "สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง",
+      "Transcript",
+      "ปริญญาบัตร",
+      "อนุปริญญาบัตร",
+      "วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+    ];
+  } else {
+    // ถ้าไม่มีการเลือกให้ยกเลิกการติ๊ก
+    this.formData.selected2 = [];
+  }
+},
     logFormData() {
       console.log("ข้อมูลทั้งหมดที่กรอก: ", this.formData);
     },
@@ -677,5 +840,9 @@ export default {
 ::v-deep(.v-messages__message) {
   color: red !important;
   margin: 5px;
+}
+.checked {
+  background-color: #4caf50; /* สีเขียวเมื่อถูกติ๊ก */
+  color: white;
 }
 </style>
