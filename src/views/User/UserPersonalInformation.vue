@@ -3,7 +3,7 @@
         <v-card elevation="3" class="pa-5" style="border-radius: 14px; width: 600px;">
             <v-row class="mt-4" justify="center">
                 <v-avatar style="width: 200px; height: 260px; border-radius: 16px;">
-                    <v-img :src="require('@/assets/images/bot.png')" alt="User Profile" />
+                    <v-img :src="require('@/assets/images/profile.png')" alt="User Profile" />
                 </v-avatar>
             </v-row>
 
