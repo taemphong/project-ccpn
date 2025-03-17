@@ -390,7 +390,7 @@
             <v-checkbox color="light-green" v-model="formData.selected2" label="ปริญญาบัตร" value="ปริญญาบัตร"
             readonly></v-checkbox>
 
-            <v-checkbox color="light-green" v-model="formData.selected2" label="อนุปริญญาบัตร"
+            <v-checkbox color="light-green" v-model="formData.anuparinya" label="อนุปริญญาบัตร"
             readonly value="อนุปริญญาบัตร"></v-checkbox>
 
             <v-checkbox color="light-green" v-model="formData.selected2" label="วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
@@ -734,17 +734,24 @@ updateCheckboxes2() {
     this.formData.educationalData4 ||
     this.formData.educationalData5
   ) {
-    // ถ้ามีการเลือกให้ติ๊ก checkbox ที่เกี่ยวข้อง
-    this.formData.selected2 = [
+    this.formData.anuparinya = [
       "สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง",
       "Transcript",
       "ปริญญาบัตร",
       "อนุปริญญาบัตร",
       "วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
     ];
+    // ถ้ามีการเลือกให้ติ๊ก checkbox ที่เกี่ยวข้อง
+    this.formData.selected2 = [
+      "สำเนาหลักฐานแสดงวุฒิการศึกษา หรือหนังสือรับรองการจบการศึกษาในระดับ ปริญญา ประกาศนียบัตรเทียบเท่าปริญญา อนุปริญญา ประกาศนียบัตร หรือวุฒิบัตรในวิชาชีพการสาธารณสุขชุมชน จากสถาบันการศึกษาที่สภาการสาธารณสุขชุมชนรับรอง",
+      "Transcript",
+      "ปริญญาบัตร",
+      "วุฒิบัตร หนังสือรับรองสำเร็จการศึกษา"
+    ];
   } else {
     // ถ้าไม่มีการเลือกให้ยกเลิกการติ๊ก
     this.formData.selected2 = [];
+    this.formData.anuparinya = [];
   }
 },
     logFormData() {

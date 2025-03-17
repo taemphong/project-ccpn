@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="custom-left-margin">
       <v-col cols="12">
-        <h2 class="textheader">ข้อมูลส่วนตัว </h2>
+        <h2 class="textheader">ข้อมูลส่วนตัว</h2>
       </v-col>
       <v-col cols="12" md="3">
         <div class="mb-3">คำนำหน้าชื่อ</div>
@@ -885,7 +885,7 @@ export default {
         { label: "ปริญญาโท", value: "master" },
         { label: "ปริญญาเอก", value: "phd" },
       ],
-      me_level: ["master"],
+
 
     };
   },
@@ -902,6 +902,19 @@ export default {
     this.selectedEducation = [...this.me_level];
   },
   watch: {
+    "formData.anuparinya": {
+    handler(newVal) {
+      if (newVal && newVal.includes("อนุปริญญาบัตร")) {
+        if (!this.selected2.includes("อนุปริญญาบัตร")) {
+          this.selected2.push("อนุปริญญาบัตร");
+        }
+      } else {
+        this.selected2 = this.selected2.filter(item => item !== "อนุปริญญาบัตร");
+      }
+    },
+    deep: true,
+    immediate: true
+  },
      formData: {
       photo: null,
     handler(newVal) {
